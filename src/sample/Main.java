@@ -2,17 +2,21 @@ package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
+        primaryStage.setTitle("iMat");
+        primaryStage.setScene(new Scene(root, 1024, 768));
+       //Fundera på att fixa fullscreen
+        primaryStage.setMaximized(true);
         primaryStage.show();
     }
 
