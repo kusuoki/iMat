@@ -1,0 +1,35 @@
+
+.add-button {
+    -fx-background-color: #00441C;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 0, 0.9, 4, 4);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+}
+
+.item-name {
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 21px;
+    -fx-text-fill: #000000;
+}
+
+
+.price-tag-circle {
+    -fx-fill: #FFB422;
+}
+
+.price-tag-text {
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.item-unit-name {
+    -fx-font-family: Lato;
+    -fx-font-size: 15px;
+    -fx-text-fill: #000000;
+}
