@@ -107,11 +107,11 @@
             </children>
         </Pane>
         <TextField layoutX="320.0" layoutY="97.0" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="399.0" AnchorPane.topAnchor="97.0" />
-        <Button fx:id="buttonSok" layoutX="891.0" layoutY="97.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="97.0">
+        <Button fx:id="buttonSok" layoutX="891.0" layoutY="97.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" styleClass="nonRoundedButton" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="97.0">
          <font>
             <Font size="14.0" />
          </font></Button>
-        <Button fx:id="buttonBetala" layoutX="1052.0" layoutY="666.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="227.0" style="-fx-background-color: #FFB422;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="630.0">
+        <Button fx:id="buttonBetala" layoutX="1052.0" layoutY="666.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="227.0" style="-fx-background-color: #FFB422;" styleClass="nonRoundedButton" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="630.0">
          <font>
             <Font size="18.0" />
          </font></Button>
