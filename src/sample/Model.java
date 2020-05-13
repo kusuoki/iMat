@@ -30,7 +30,7 @@ public class Model {
     private void init() {
 
         iMatDataHandler = IMatDataHandler.getInstance();
-
+        productHandler = ProductHandler.getInstance();
     }
     //Alla dessa under är i princip setters och getters
     public List<ProductA> getProducts() {
