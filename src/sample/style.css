@@ -1,0 +1,9 @@
+#root{
+-fx-border-style: solid;
+-fx-border: none;
+-fx-focus-color: #51B479;  /*kanske inte detta, blir otydligt för keyboard only users*/
+}
+
+#nonRoundedButton {
+  -fx-background-radius: 0;
+}
