@@ -18,6 +18,7 @@ public class Main extends Application {
        //Fundera på att fixa fullscreen
         primaryStage.setMaximized(true);
         primaryStage.show();
+        
     }
 
 
