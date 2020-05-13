@@ -49,7 +49,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man trycker på sökknappen
     @FXML
     public void onSearch() {
-        List<Product> searchList = model.findProducts(searchField.getText());
+        List<ProductA> searchList = model.findProducts(searchField.getText());
         updateProductList(searchList);
     }
 
@@ -64,7 +64,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
-    private void updateProductList(List<Product> searchList) {
+    private void updateProductList(List<ProductA> searchList) {
 /*productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
