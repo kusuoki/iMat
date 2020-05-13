@@ -1,9 +1,22 @@
 #root{
--fx-border-style: solid;
--fx-border: none;
--fx-focus-color: #51B479;  /*kanske inte detta, blir otydligt för keyboard only users*/
+/*-fx-border-style: solid;
+-fx-border: none;*/
+-fx-focus-color: #00692a;  /*kanske inte detta, kan bli otydligt för keyboard only users*/
 }
 
-#nonRoundedButton {
-  -fx-background-radius: 0;
+.menuButton {
+-fx-background-color: white;
+-fx-background-radius: 0px;
+}
+
+.topMenuButton{
+-fx-background-radius: 0px;
+-fx-background-color: #144f2c;
+-fx-border-style: solid;
+-fx-border-color: white;
+-fx-height: 36px;
+}
+
+.nonRoundedButton{
+-fx-background-radius: 0px;
 }
