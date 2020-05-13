@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.webkit.Timer;
 import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
@@ -13,6 +12,7 @@ public class Model {
     //referens till DataHandlerns som lagrar all information om programmet
     private IMatDataHandler iMatDataHandler;
 
+    private ProductHandler productHandler;
 
     //privat default konstruktor för singleton pattern
     private Model(){}
@@ -33,18 +33,19 @@ public class Model {
 
     }
     //Alla dessa under är i princip setters och getters
-    public List<Product> getProducts() {
-        return iMatDataHandler.getProducts();
+    public List<ProductA> getProducts() {
+        return productHandler.getProducts();
     }
 
-    public Product getProduct(int idNbr) {
-        return iMatDataHandler.getProduct(idNbr);
+    public ProductA getProduct(int idNbr) {
+        return productHandler.getProduct(idNbr);
     }
 
-    public List<Product> findProducts(java.lang.String s) {
-        return iMatDataHandler.findProducts(s);
+    public List<ProductA> findProducts(String s) {
+        return productHandler.getProductAList(iMatDataHandler.findProducts(s));
     }
 
+    // dont need ProductA here because ProductA extends Product
     public Image getImage(Product p) {
         return iMatDataHandler.getFXImage(p);
     }
@@ -110,7 +111,7 @@ public class Model {
 
     }
 
-    public List <Product> getFavorites(){
-        return iMatDataHandler.getProducts();
+    public List<ProductA> getFavorites() {
+        return productHandler.getProductAList(iMatDataHandler.favorites());
     }
 }
