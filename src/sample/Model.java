@@ -3,7 +3,9 @@ package sample;
 import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Model {
 
@@ -12,6 +14,8 @@ public class Model {
     //referens till DataHandlerns som lagrar all information om programmet
     private IMatDataHandler iMatDataHandler;
     private ProductHandler productHandler;
+
+    private Map<Integer, ShoppingItem> shoppingItemMap = new HashMap<>();
 
     //privat default konstruktor för singleton pattern
     private Model(){}
@@ -54,12 +58,27 @@ public class Model {
     }
 
     public void addToShoppingCart(Product p) {
-        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
         ShoppingItem item = new ShoppingItem(p);
+        shoppingItemMap.put(p.getProductId(), item);
+        getShoppingCart().addItem(item);
+    }
 
-        Model.getInstance().getShoppingCart().addItem(item);
+    public boolean updateShoppingCart(Product p, int amount) {
+        ShoppingItem item = shoppingItemMap.get(p.getProductId());
+        if (item != null) {
+            item.setAmount(item.getAmount() + amount);
+            return true;
+        }
+        return false;
+    }
 
-        //shoppingCart.addProduct(p);
+    public boolean setShoppingCartItem(Product p, int amount) {
+        ShoppingItem item = shoppingItemMap.get(p.getProductId());
+        if (item != null) {
+            item.setAmount(amount);
+            return true;
+        }
+        return false;
     }
 
 
