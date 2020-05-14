@@ -3,13 +3,10 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-<<<<<<< HEAD
 import javafx.scene.layout.Pane;
-=======
 import javafx.scene.layout.FlowPane;
->>>>>>> 3b6493ff49c1dfcb6bb79ba9e4fc9adb8decf825
+import javafx.scene.control.ScrollPane;
 import se.chalmers.cse.dat216.project.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.net.URL;
@@ -22,13 +19,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     TextField searchField;
     @FXML
     FlowPane flowPaneMainPage;
+    @FXML
+    ScrollPane scrollPaneVarukorg;
 
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-<<<<<<< HEAD
-=======
-
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
@@ -41,7 +37,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
->>>>>>> 3b6493ff49c1dfcb6bb79ba9e4fc9adb8decf825
     }
 
     //När man klickar på tidigare köp

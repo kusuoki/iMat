@@ -5,11 +5,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="227.0" stylesheets="@ListItem.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="227.0" stylesheets="@ListItem.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.VarukorgItem">
     <children>
         <ImageView fitHeight="50.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@../../Resources/Icons/ic_delete_forever_black_18dp.png" />
+                <Image url="@resources/Icons/ic_delete_forever_black_18dp.png" />
             </image>
         </ImageView>
         <Label fx:id="labelVarukorgVara" layoutX="50.0" layoutY="17.0" text="Label" />
