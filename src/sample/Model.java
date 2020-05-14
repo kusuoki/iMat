@@ -11,7 +11,6 @@ public class Model {
     private static Model model;
     //referens till DataHandlerns som lagrar all information om programmet
     private IMatDataHandler iMatDataHandler;
-
     private ProductHandler productHandler;
 
     //privat default konstruktor för singleton pattern
