@@ -19,7 +19,7 @@ public class TidigareKopItem extends AnchorPane {
     private TidigareKopController parentController;
 
     public TidigareKopItem(Order prevOrder, TidigareKopController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tidigareköpitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tidigarekopitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
