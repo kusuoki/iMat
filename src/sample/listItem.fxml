@@ -9,36 +9,36 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="217.0" prefWidth="152.0" style="-fx-background-color: #FFFFFF;" stylesheets="@ListItem.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="158.0" style="-fx-background-color: #FFFFFF;" styleClass="card-effect" stylesheets="@ListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="listItemImage" fitHeight="117.0" fitWidth="152.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+      <Label fx:id="listItemPrice" layoutX="96.0" layoutY="15.0" styleClass="price-tag-text" text="999kr" />
+      <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="75.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
+      <ImageView fx:id="listItemImage" fitHeight="132.0" fitWidth="152.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Resources/Images/product_6.jpg" />
+            <Image url="@resources/Images/product_6.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="listItemName" layoutX="11.0" layoutY="117.0" prefHeight="16.0" prefWidth="106.0" styleClass="item-name" text="Varunamn" />
-      <Label fx:id="listItemUnit" layoutX="11.0" layoutY="146.0" styleClass="item-unit-name" text="Enhet" />
-      <Circle fill="DODGERBLUE" layoutX="122.0" layoutY="30.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
-      <Label fx:id="listItemPrice" layoutX="95.0" layoutY="15.0" styleClass="price-tag-text" text="999kr" />
-      <Pane fx:id="listItemPlusMinusPane" layoutY="169.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #FFFFFF;">
+      <Label fx:id="listItemName" layoutX="11.0" layoutY="126.0" prefHeight="16.0" prefWidth="106.0" styleClass="item-name" text="Varunamn" />
+      <Label fx:id="listItemUnit" layoutX="11.0" layoutY="147.0" styleClass="item-unit-name" text="Enhet" />
+      <Pane fx:id="listItemPlusMinusPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <TextField fx:id="listItemQuantityTextField" layoutX="49.0" layoutY="13.0" prefHeight="25.0" prefWidth="54.0" />
             <ImageView fx:id="listItemMinusButton" fitHeight="31.0" fitWidth="30.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
                <image>
-                  <Image url="@../../Resources/Buttons/Minus-knapp.png" />
+                  <Image url="@resources/Buttons/Minus-knapp.png" />
                </image>
             </ImageView>
             <ImageView fx:id="listItemPlusButton" fitHeight="31.0" fitWidth="30.0" layoutX="108.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
                <image>
-                  <Image url="@../../Resources/Buttons/Plus-knapp.png" />
+                  <Image url="@resources/Buttons/Plus-knapp.png" />
                </image>
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="listItemAddPane" layoutY="169.0" prefHeight="50.0" prefWidth="152.0" style="-fx-background-color: #FFFFFF;">
+      <Pane fx:id="listItemAddPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Button fx:id="listItemFirstAddButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addFirstProduct" prefHeight="30.0" prefWidth="125.0" styleClass="add-button" text="LÄGG TILL" />
          </children>
       </Pane>
    </children>
-</AnchorPane>
+</fx:root>

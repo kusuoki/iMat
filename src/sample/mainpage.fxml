@@ -6,7 +6,11 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
+<<<<<<< HEAD
 <AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
+>>>>>>> 3b6493ff49c1dfcb6bb79ba9e4fc9adb8decf825
     <children>
       <AnchorPane fx:id="anchorPaneUndermenyMejeri" layoutX="277.0" layoutY="431.0" prefHeight="246.0" prefWidth="227.0">
          <children>
