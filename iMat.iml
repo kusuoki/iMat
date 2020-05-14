@@ -10,7 +10,16 @@
     <orderEntry type="library" name="lib1" level="project" />
     <orderEntry type="library" name="lib2" level="project" />
     <orderEntry type="library" name="projectbackend" level="project" />
-    <orderEntry type="library" name="lib" level="application" />
     <orderEntry type="library" name="library" level="project" />
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/lib/projectbackend.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="library" name="lib" level="application" />
   </component>
 </module>

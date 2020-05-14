@@ -7,6 +7,9 @@
 .menuButton {
 -fx-background-color: white;
 -fx-background-radius: 0px;
+    -fx-pref-width: 225px;
+    -fx-pref-height: 47px;
+    -fx-font-size: 15px;
 }
 
 .menuButton:hover {
@@ -17,7 +20,7 @@
 }
 
 .menuButtonOnClick{
-    -fx-background-color: #DFDFDF; /*Glöm inte att göra så att koden under menuButtonIndicatorActivated aktiveras*/
+    -fx-background-color: #DFDFDF; /*Glöm inte att göra så att den lilla indikatorn på menygrejerna blir samma färg som står under "menubuttonindicatoractivated"*/
     -fx-border-style: solid;
     -fx-border-color: #002D12;
     -fx-border-width: 1px;
@@ -27,7 +30,7 @@
     -fx-background-color: white;
 }
 .menuButtonIndicatorActivated{
-    -fx-background-color: 51B479;
+    -fx-background-color: #51B479;
 }
 
 .payButton{
@@ -57,6 +60,17 @@
     -fx-background-color:  #00692a;
 }
 
+.filterButton{
+    -fx-background-color:  #144f2c;
+    -fx-background-radius: 0px;
+}
+.filterButton:hover{
+    -fx-background-color: #51B479;
+    -fx-background-insets: 0px, 0px, 1px, 0px;
+    -fx-border-style: solid;
+    -fx-border-color: #144f2c;
+}
+
 .topMenuButtonOnClick{
     -fx-background-radius: 0px;
     -fx-background-color: #002D12;
@@ -67,4 +81,9 @@
 
 .nonRoundedButton{
 -fx-background-radius: 0px;
+}
+
+
+.subMenu{
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 2, 2);
 }
