@@ -3,6 +3,7 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.awt.*;
@@ -19,7 +20,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
 
     //När man klickar på tidigare köp

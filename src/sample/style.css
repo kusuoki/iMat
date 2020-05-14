@@ -4,6 +4,16 @@
 -fx-focus-color: #00692a;  /*kanske inte detta, kan bli otydligt för keyboard only users*/
 }
 
+.links{
+    -fx-font-size: 14 px;
+    -fx-underline: true;
+}
+
+.links:hover{
+-fx-font-weight: bold;
+}
+
+
 .menuButton {
 -fx-background-color: white;
 -fx-background-radius: 0px;
@@ -36,16 +46,12 @@
 .payButton{
     -fx-background-color:#FFB422;
     -fx-background-radius: 0px;
+    -fx-font-size: 18px;
 }
 
 .payButton:hover{
-    -fx-background-color: #FFCD6C; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
-    -fx-border-style: solid;
-    -fx-border-color: #FFB422;
-    -fx-border-width: 1px;
-    -fx-background-insets: 0px, 0px, 1px, 0px;
+    -fx-background-color: #51B479; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
     -fx-font-weight: bold;
-    -fx-font-size: 18px;
 }
 
 .topMenuButton{
@@ -69,6 +75,15 @@
     -fx-background-insets: 0px, 0px, 1px, 0px;
     -fx-border-style: solid;
     -fx-border-color: #144f2c;
+}
+
+.searchButton{
+    -fx-background-color: #00692a;
+    -fx-background-radius: 0px;
+}
+
+.searchButton:hover{
+    -fx-background-color: #144f2c;
 }
 
 .topMenuButtonOnClick{

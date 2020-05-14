@@ -1,20 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-      <AnchorPane fx:id="anchorPaneUndermenyBaljvaxter11" layoutX="276.0" layoutY="430.0" prefHeight="239.0" prefWidth="227.0">
+      <AnchorPane fx:id="anchorPaneUndermenyMejeri" layoutX="277.0" layoutY="431.0" prefHeight="246.0" prefWidth="227.0">
+         <children>
+            <Pane prefHeight="246.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
+               <children>
+                  <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" prefWidth="249.0" styleClass="menuButton" text="Allt i Mejeri" />
+                  <Button layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Mjölk" />
+                  <Button layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Ost" />
+                  <Button layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Ägg" />
+                  <Button layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Yoghurt &amp; Filmjölk" />
+                  <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="50.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="99.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="148.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="197.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneUndermenyFrukt1" layoutX="277.0" layoutY="185.0" prefHeight="478.0" prefWidth="213.0">
+         <children>
+            <Pane fx:id="paneFruktOchGront1" prefHeight="491.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;" styleClass="dropshadowTest">
+               <children>
+                  <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Skafferi" />
+                  <Button fx:id="anchorPaneUndermenySkafferi" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bröd" />
+                  <Button layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Knäckebröd" />
+                  <Button layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Mjöl" />
+                  <Button layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Kakao" />
+                  <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="50.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="99.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="148.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="197.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Button layoutX="1.0" layoutY="246.0" mnemonicParsing="false" styleClass="menuButton" text="Socker &amp; Salt" />
+                  <Button layoutX="1.0" layoutY="295.0" mnemonicParsing="false" styleClass="menuButton" text="Nötter" />
+                  <Button layoutX="1.0" layoutY="344.0" mnemonicParsing="false" styleClass="menuButton" text="Frön" />
+                  <Button layoutX="1.0" layoutY="393.0" mnemonicParsing="false" styleClass="menuButton" text="Pasta" />
+                  <Pane layoutX="1.0" layoutY="246.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="295.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="344.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="393.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Button layoutX="1.0" layoutY="442.0" mnemonicParsing="false" styleClass="menuButton" text="Ris" />
+                  <Pane layoutX="1.0" layoutY="442.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneUndermenyKött" layoutX="277.0" layoutY="528.0" prefHeight="142.0" prefWidth="227.0">
+         <children>
+            <Pane prefHeight="148.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
+               <children>
+                  <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Allt kött &amp; fågel" />
+                  <Button layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Nötkött" />
+                  <Button layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Kyckling" />
+                  <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="50.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="99.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneUndermenyFrukt" layoutX="276.0" layoutY="185.0" prefHeight="492.0" prefWidth="227.0">
+         <children>
+            <Pane fx:id="paneFruktOchGront" prefHeight="491.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;" styleClass="dropshadowTest">
+               <children>
+                  <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla Frukt &amp; Grönt" />
+                  <Button layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bär" />
+                  <Button layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Citrusfrukter" />
+                  <Button layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Exotiska frukter" />
+                  <Button layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Färska örtkryddor" />
+                  <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="50.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="99.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="148.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="197.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Button layoutX="1.0" layoutY="246.0" mnemonicParsing="false" styleClass="menuButton" text="Grönsaker" />
+                  <Button layoutX="1.0" layoutY="295.0" mnemonicParsing="false" styleClass="menuButton" text="Kål" />
+                  <Button layoutX="1.0" layoutY="344.0" mnemonicParsing="false" styleClass="menuButton" text="Melon" />
+                  <Button layoutX="1.0" layoutY="393.0" mnemonicParsing="false" styleClass="menuButton" text="Potatis &amp; Rotfrukter" />
+                  <Pane layoutX="1.0" layoutY="246.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="295.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="344.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Pane layoutX="1.0" layoutY="393.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                  <Button layoutX="1.0" layoutY="442.0" mnemonicParsing="false" styleClass="menuButton" text="Söta stenfrukter" />
+                  <Pane layoutX="1.0" layoutY="442.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneUndermenyFIsk" layoutX="276.0" layoutY="430.0" prefHeight="239.0" prefWidth="227.0">
          <children>
             <Pane prefHeight="246.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
                <children>
@@ -32,7 +114,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneUndermenyBaljvaxter2" layoutX="277.0" layoutY="381.0" prefHeight="149.0" prefWidth="227.0">
+      <AnchorPane fx:id="anchorPaneUndermenyDrycker" layoutX="277.0" layoutY="381.0" prefHeight="149.0" prefWidth="227.0">
          <children>
             <Pane prefHeight="148.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
                <children>
@@ -62,7 +144,7 @@
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneUndermenyBaljvaxter1" layoutX="278.0" layoutY="333.0" prefHeight="243.0" prefWidth="225.0">
+      <AnchorPane fx:id="anchorPaneUndermenySotsaker" layoutX="278.0" layoutY="333.0" prefHeight="243.0" prefWidth="225.0">
          <children>
             <Pane prefHeight="246.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
                <children>
@@ -201,35 +283,48 @@
               </Pane>
               <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
                   <children>
-                  <Label fx:id="labelBreadcrumbFirst" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="35.0" text="Label" textFill="WHITE">
+                  <Button fx:id="buttonFiltrera" layoutX="557.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" styleClass="filterButton" text="Filtrera" textFill="WHITE" />
+                  <Label fx:id="labelVarusida" layoutX="284.0" layoutY="509.0" text="x av x sidor" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelBreadcrumbSecond" layoutX="64.0" layoutY="14.0" prefHeight="27.0" prefWidth="35.0" text="Label" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelBreadcrumbThird" layoutX="110.0" layoutY="14.0" prefHeight="27.0" prefWidth="35.0" text="Label" textFill="WHITE">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="buttonFiltrera" layoutX="557.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #00441C;" text="Filtrera" textFill="WHITE" />
-                  <Label fx:id="labelVarusida" layoutX="303.0" layoutY="510.0" text="Label" textFill="WHITE">
-                     <font>
-                        <Font size="13.0" />
                      </font>
 
                   </Label>
-                  <Label layoutX="150.0" layoutY="510.0" text="Föregående sida" textFill="WHITE" />
-                  <Label layoutX="430.0" layoutY="510.0" text="Nästa sida" textFill="WHITE" />
+                  <Label layoutX="156.0" layoutY="509.0" styleClass="links" text="Föregående sida" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="383.0" layoutY="509.0" styleClass="links" text="Nästa sida" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <FlowPane fx:id="flowPaneMainPage" layoutY="48.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
+                  <Label layoutX="14.0" layoutY="27.0" styleClass="links" text="Crumb 1 &gt; " textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="84.0" layoutY="27.0" styleClass="links" text="Crumb 2 &gt; " textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="154.0" layoutY="27.0" styleClass="links" text="Crumb 3" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="128.0" layoutY="509.0" prefHeight="20.0" prefWidth="28.0" text="&lt;  " textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="447.0" layoutY="509.0" prefHeight="20.0" prefWidth="35.0" text="  &gt;" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                   </children>
               </Pane>
               <TextField prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="399.0" AnchorPane.topAnchor="97.0" />
-              <Button fx:id="buttonSok" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="97.0">
+              <Button fx:id="buttonSok" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" styleClass="searchButton" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="97.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -259,34 +354,6 @@
                   <Font size="15.0" />
                </font>
             </Button>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorPaneUndermenyBaljvaxter111" layoutX="276.0" layoutY="185.0" prefHeight="517.0" prefWidth="337.0">
-         <children>
-            <Pane fx:id="paneFruktOchGront" styleClass="dropshadowTest" prefHeight="491.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
-               <children>
-                  <Button layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla Frukt &amp; Grönt" />
-                  <Button layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bär" />
-                  <Button layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Citrusfrukter" />
-                  <Button layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Exotiska frukter" />
-                  <Button layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Färska örtkryddor" />
-                  <Pane layoutX="1.0" layoutY="1.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="50.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="99.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="148.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="197.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Button layoutX="1.0" layoutY="246.0" mnemonicParsing="false" styleClass="menuButton" text="Grönsaker" />
-                  <Button layoutX="1.0" layoutY="295.0" mnemonicParsing="false" styleClass="menuButton" text="Kål" />
-                  <Button layoutX="1.0" layoutY="344.0" mnemonicParsing="false" styleClass="menuButton" text="Melon" />
-                  <Button layoutX="1.0" layoutY="393.0" mnemonicParsing="false" styleClass="menuButton" text="Skaldjur" />
-                  <Pane layoutX="1.0" layoutY="246.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="295.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="344.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Pane layoutX="1.0" layoutY="393.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                  <Button layoutX="1.0" layoutY="442.0" mnemonicParsing="false" styleClass="menuButton" text="Skaldjur" />
-                  <Pane layoutX="1.0" layoutY="442.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
     </children>
