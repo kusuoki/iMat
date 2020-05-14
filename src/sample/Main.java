@@ -26,6 +26,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-
-
-//git commit test från Paint
