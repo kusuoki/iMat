@@ -56,8 +56,8 @@ public class Model {
 
     public void addToShoppingCart(Product p) {
         ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
-
         ShoppingItem item = new ShoppingItem(p);
+
         Model.getInstance().getShoppingCart().addItem(item);
 
         //shoppingCart.addProduct(p);
