@@ -71,6 +71,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 radioHemLeverans.setSelected(true);
                 radioHemLeverans.setToggleGroup(leveransToggleGroup);
                 radioAffarLeverans.setToggleGroup(leveransToggleGroup);
+                comboAffar.setDisable(true);
                 leveransToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
 
                         @Override
@@ -80,8 +81,25 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         RadioButton selected = (RadioButton) leveransToggleGroup.getSelectedToggle();
                                         //model.setLeverans(selected.getText());
                                 }
+                                if (radioHemLeverans.isSelected())
+                                {
+                                        comboAffar.setDisable(true);
+                                        comboHem.setDisable(false);
+                                        radioTid10.setDisable(false);
+                                        radioTid12.setDisable(false);
+                                        radioTid20.setDisable(false);
+                                }
+                                else if (radioAffarLeverans.isSelected())
+                                {
+                                        comboHem.setDisable(true);
+                                        comboAffar.setDisable(false);
+                                        radioTid10.setDisable(true);
+                                        radioTid12.setDisable(true);
+                                        radioTid20.setDisable(true);
+                                }
                         }
                 });
+
 
                 radioTid10.setSelected(true);
                 radioTid10.setToggleGroup(tidToggleGroup);
@@ -94,6 +112,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
                                 if (tidToggleGroup.getSelectedToggle() != null) {
                                         RadioButton selected = (RadioButton) tidToggleGroup.getSelectedToggle();
+
                                         //model.setTime(selected.getText());
                                 }
                         }
