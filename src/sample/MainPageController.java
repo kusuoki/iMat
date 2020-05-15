@@ -89,8 +89,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initMenuItems();
 
-/*
-       flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
@@ -100,7 +100,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
     }
 
