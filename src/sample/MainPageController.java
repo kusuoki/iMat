@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -28,8 +29,45 @@ import java.util.ResourceBundle;
 
 public class MainPageController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
-    @FXML
-    TextField searchField;
+
+    @FXML Pane paneIndicatorErbjudanden;
+    @FXML Pane paneIndicatorFavoriter;
+    @FXML Pane paneIndicatorBaljvaxter;
+    @FXML Pane paneIndicatorSotsaker;
+    @FXML Pane paneIndicatorDrycker;
+    @FXML Pane paneIndicatorFisk;
+    @FXML Pane paneIndicatorFrukt;
+    @FXML Pane paneIndicatorKott;
+    @FXML Pane paneIndicatorMejeri;
+    @FXML Pane paneIndicatorSkafferi;
+
+    @FXML javafx.scene.control.Button buttonErbjudanden;
+    @FXML javafx.scene.control.Button buttonFavoriter;
+    @FXML javafx.scene.control.Button buttonBaljvaxter;
+    @FXML javafx.scene.control.Button buttonSotsaker;
+    @FXML javafx.scene.control.Button buttonDrycker;
+    @FXML javafx.scene.control.Button buttonFisk;
+    @FXML javafx.scene.control.Button buttonFrukt;
+    @FXML javafx.scene.control.Button buttonKott;
+    @FXML javafx.scene.control.Button buttonMejeri;
+    @FXML javafx.scene.control.Button buttonSkafferi;
+
+    @FXML ImageView imageViewArrowErbjudanden;
+    @FXML ImageView imageViewArrowFavoriter;
+    @FXML ImageView imageViewArrowBaljvaxter;
+    @FXML ImageView imageViewArrowSotsaker;
+    @FXML ImageView imageViewArrowDrycker;
+    @FXML ImageView imageViewArrowFisk;
+    @FXML ImageView imageViewArrowFrukt;
+    @FXML ImageView imageViewArrowKott;
+    @FXML ImageView imageViewArrowMejeri;
+    @FXML ImageView imageViewArrowSkafferi;
+
+    ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
+    ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
+    ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
+
+    @FXML TextField searchField;
 
     //AnchorPane som ligger som grund till allt i MainPage
     @FXML
@@ -58,31 +96,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
-    @FXML Pane paneIndicatorEbjudanden;
-    @FXML Pane paneIndicatorFavoriter;
-    @FXML Pane paneIndicatorBaljvaxter;
-    @FXML Pane paneIndicatorSotsaker;
-    @FXML Pane paneIndicatorDrycker;
-    @FXML Pane paneIndicatorFisk;
-    @FXML Pane paneIndicatorFrukt;
-    @FXML Pane paneIndicatorKott;
-    @FXML Pane paneIndicatorMejeri;
-    @FXML Pane paneIndicatorSkafferi;
-
-    @FXML javafx.scene.control.Button buttonErbjudanden;
-    @FXML javafx.scene.control.Button buttonFavoriter;
-    @FXML javafx.scene.control.Button buttonBaljvaxter;
-    @FXML javafx.scene.control.Button buttonSotsaker;
-    @FXML javafx.scene.control.Button buttonDrycker;
-    @FXML javafx.scene.control.Button buttonFisk;
-    @FXML javafx.scene.control.Button buttonFrukt;
-    @FXML javafx.scene.control.Button buttonKott;
-    @FXML javafx.scene.control.Button buttonMejeri;
-    @FXML javafx.scene.control.Button buttonSkafferi;
-
-    ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
-    ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
-
 
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
@@ -105,7 +118,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     void initMenuItems(){
-        menuIndicators.add(paneIndicatorEbjudanden);
+        menuIndicators.add(paneIndicatorErbjudanden);
         menuIndicators.add(paneIndicatorFavoriter);
         menuIndicators.add(paneIndicatorBaljvaxter);
         menuIndicators.add(paneIndicatorSotsaker);
@@ -126,6 +139,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         menuButtons.add(buttonKott);
         menuButtons.add(buttonMejeri);
         menuButtons.add(buttonSkafferi);
+
+        menuArrows.add(imageViewArrowErbjudanden);
+        menuArrows.add(imageViewArrowFavoriter);
+        menuArrows.add(imageViewArrowBaljvaxter);
+        menuArrows.add(imageViewArrowSotsaker);
+        menuArrows.add(imageViewArrowErbjudanden);
+
+
 
         for (Pane p : menuIndicators) {
             p.toBack();
@@ -198,7 +219,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 if (button.getStyleClass().toString().equals("menuButtonClicked")) {
                     button.getStyleClass().clear();
                     button.getStyleClass().add("menuButton");
-                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar och hela nya menyvyn
+                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar, bilder på pilar och hela nya undermenyvyn
                 }
             }
 
