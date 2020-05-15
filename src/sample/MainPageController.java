@@ -4,6 +4,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -28,43 +29,8 @@ import java.util.List;
 
 public class MainPageController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
-    @FXML
-    TextField searchField;
 
-    //AnchorPane som ligger som grund till allt i MainPage
-    @FXML
-    AnchorPane mainAnchor;
-    @FXML
-    FlowPane flowPaneMainPage;
-    @FXML
-    FlowPane flowPaneVarukorg;
-
-    @FXML
-    Label totalQuantityLabel;
-    @FXML
-    Label totalPriceLabel;
-
-    Parent betalsida;
-    Parent konto;
-    Parent kundservice;
-    Parent tidigarekop;
-    Parent listor;
-    Stage stage;
-
-    private List<ListItem> listItems = new ArrayList<>();
-
-    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
-        this.stage = stage;
-        this.betalsida = betalsida;
-        this.konto = konto;
-        this.kundservice = kundservice;
-        this.tidigarekop = tidigarekop;
-        this.listor = listor;
-
-
-    }
-
-    @FXML Pane paneIndicatorEbjudanden;
+    @FXML Pane paneIndicatorErbjudanden;
     @FXML Pane paneIndicatorFavoriter;
     @FXML Pane paneIndicatorBaljvaxter;
     @FXML Pane paneIndicatorSotsaker;
@@ -86,8 +52,58 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML javafx.scene.control.Button buttonMejeri;
     @FXML javafx.scene.control.Button buttonSkafferi;
 
+    @FXML ImageView imageViewArrowErbjudanden;
+    @FXML ImageView imageViewArrowFavoriter;
+    @FXML ImageView imageViewArrowBaljvaxter;
+    @FXML ImageView imageViewArrowSotsaker;
+    @FXML ImageView imageViewArrowDrycker;
+    @FXML ImageView imageViewArrowFisk;
+    @FXML ImageView imageViewArrowFrukt;
+    @FXML ImageView imageViewArrowKott;
+    @FXML ImageView imageViewArrowMejeri;
+    @FXML ImageView imageViewArrowSkafferi;
+
     ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
+    ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
+
+    @FXML TextField searchField;
+
+    //AnchorPane som ligger som grund till allt i MainPage
+    @FXML
+    AnchorPane mainAnchor;
+    @FXML
+    FlowPane flowPaneMainPage;
+    @FXML
+    FlowPane flowPaneVarukorg;
+
+    @FXML
+    Label totalQuantityLabel;
+    @FXML
+    Label totalPriceLabel;
+
+    Parent betalsida;
+    Parent konto;
+    Parent kundservice;
+    Parent tidigarekop;
+    Parent listor;
+    Stage stage;
+
+    BackButton backButton=BackButton.getBackButton();
+
+    private List<ListItem> listItems = new ArrayList<>();
+
+
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+        this.stage = stage;
+        this.betalsida = betalsida;
+        this.konto = konto;
+        this.kundservice = kundservice;
+        this.tidigarekop = tidigarekop;
+        this.listor = listor;
+
+
+    }
 
 
     //Används för att sätta denna till kontroller för mainpage.fxml
@@ -117,7 +133,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     void initMenuItems(){
-        menuIndicators.add(paneIndicatorEbjudanden);
+        menuIndicators.add(paneIndicatorErbjudanden);
         menuIndicators.add(paneIndicatorFavoriter);
         menuIndicators.add(paneIndicatorBaljvaxter);
         menuIndicators.add(paneIndicatorSotsaker);
@@ -138,6 +154,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         menuButtons.add(buttonKott);
         menuButtons.add(buttonMejeri);
         menuButtons.add(buttonSkafferi);
+
+        menuArrows.add(imageViewArrowErbjudanden);
+        menuArrows.add(imageViewArrowFavoriter);
+        menuArrows.add(imageViewArrowBaljvaxter);
+        menuArrows.add(imageViewArrowSotsaker);
+        menuArrows.add(imageViewArrowErbjudanden);
+
+
 
         for (Pane p : menuIndicators) {
             p.toBack();
@@ -161,6 +185,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(tidigarekop);
     }
 
@@ -176,6 +201,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(kundservice);
+
     }
 
     //När man trycker på kontoinställningar
@@ -210,7 +236,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 if (button.getStyleClass().toString().equals("menuButtonClicked")) {
                     button.getStyleClass().clear();
                     button.getStyleClass().add("menuButton");
-                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar och hela nya menyvyn
+                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar, bilder på pilar och hela nya undermenyvyn
                 }
             }
 

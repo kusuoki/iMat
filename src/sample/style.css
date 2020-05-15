@@ -21,6 +21,7 @@
     -fx-pref-height: 47px;
     -fx-font-size: 15px;
     -fx-alignment: center;
+    -fx-background-insets: 0px, 0px, 0px, 0px;
 }
 
 .menuButton:hover {
@@ -63,7 +64,9 @@
 
 .payButton:hover{
     -fx-background-color: #51B479; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
-    -fx-font-weight: bold;
+}
+.payButton:pressed {
+    -fx-background-color: #53996f; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
 }
 
 .topMenuButton{
@@ -72,6 +75,7 @@
 -fx-border-color: white;
 -fx-border-width: 1px;
 -fx-background-insets: 1px, 1px, 1px, 1px;
+    -fx-font-size: 15px;
 }
 
 .topMenuButton:hover{
@@ -87,6 +91,7 @@
     -fx-background-insets: 0px, 0px, 1px, 0px;
     -fx-border-style: solid;
     -fx-border-color: #144f2c;
+    -fx-font-size: 18px;
 }
 
 .searchButton{
