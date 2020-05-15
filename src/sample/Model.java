@@ -76,7 +76,7 @@ public class Model {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(item.getAmount() + amount);
-            getShoppingCart().fireShoppingCartChanged(item, true);
+            getShoppingCart().fireShoppingCartChanged(item, false);
             return true;
         }
         return false;
@@ -86,6 +86,7 @@ public class Model {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(amount);
+            getShoppingCart().fireShoppingCartChanged(item, false);
             return true;
         }
         return false;
