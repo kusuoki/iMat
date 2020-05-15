@@ -9,19 +9,7 @@
     </content>
     <orderEntry type="jdk" jdkName="14" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib1" level="project" />
-    <orderEntry type="library" name="lib2" level="project" />
     <orderEntry type="library" name="projectbackend" level="project" />
-    <orderEntry type="library" name="library (3)" level="project" />
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/projectbackend.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="lib" level="application" />
+    <orderEntry type="library" name="JavaFX-11" level="application" />
   </component>
 </module>
