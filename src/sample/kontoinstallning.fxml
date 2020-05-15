@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.KontoinstallningController">
     <children>
         <Pane layoutX="538.0" layoutY="139.0" prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
             <children>
                 <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;">
                <children>
-                  <Button layoutX="516.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #144f2c;" text="Spara" textFill="WHITE" />
+                  <Button fx:id="sparaButton" layoutX="516.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #144f2c;" text="Spara" textFill="WHITE" />
                   <Label fx:id="labelSparadeUppgifter" layoutX="29.0" layoutY="15.0" text="Label" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="325.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="194.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
@@ -41,16 +41,16 @@
                   </Label>
                   <Label alignment="CENTER_RIGHT" layoutX="29.0" layoutY="134.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="224.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                  <TextField layoutX="176.0" layoutY="291.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="321.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="130.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="160.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="392.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="190.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="220.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="422.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="452.0" prefHeight="25.0" prefWidth="324.0" />
-                  <TextField layoutX="176.0" layoutY="100.0" prefHeight="0.0" prefWidth="324.0" />
+                  <TextField fx:id="eMailTextField" layoutX="176.0" layoutY="291.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="phoneTextField" layoutX="176.0" layoutY="321.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="lastNameTextField" layoutX="176.0" layoutY="130.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="adressTextField" layoutX="176.0" layoutY="160.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="cardNumberTextField" layoutX="176.0" layoutY="392.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="cityTextField" layoutX="176.0" layoutY="190.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="postNumberTextField" layoutX="176.0" layoutY="220.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="cardExpiryDateTextField" layoutX="176.0" layoutY="422.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="CVVTextField" layoutX="176.0" layoutY="452.0" prefHeight="25.0" prefWidth="324.0" />
+                  <TextField fx:id="firstNameTextField" layoutX="176.0" layoutY="100.0" prefHeight="0.0" prefWidth="324.0" />
                </children></Pane>
             <Label layoutX="222.0" layoutY="10.0" text="Kontoinställningar" textFill="WHITE">
                <font>
