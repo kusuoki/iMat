@@ -76,6 +76,7 @@ public class Model {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(item.getAmount() + amount);
+            getShoppingCart().fireShoppingCartChanged(item, true);
             return true;
         }
         return false;

@@ -62,7 +62,8 @@ public class ListItem extends AnchorPane {
         //listItemPrice.setText(Double.toString(product.getPrice()) + "kr");
         listItemImage.setImage(model.getImage(product));
 
-        if (model.getShoppingCart().getItems().contains(new ShoppingItem(product))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
+        //TODO KOMMER GE PROBLEM (KANSKE FIXAD??)
+        if (model.getShoppingCart().getItems().contains(model.getShoppingItemMap().get(product.getProductId()))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
             listItemPlusMinusPane.toFront();
             updateTextfieldWithAmountOfProduct();
         }

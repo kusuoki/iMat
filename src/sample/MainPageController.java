@@ -20,7 +20,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     FlowPane flowPaneMainPage;
     @FXML
-    ScrollPane scrollPaneVarukorg;
+    FlowPane flowPaneVarukorg;
 
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
@@ -37,6 +37,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
+        model.addToShoppingCart(model.getProduct(10));
+        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));
     }
 
     //När man klickar på tidigare köp
