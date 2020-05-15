@@ -6,11 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<<<<<<< HEAD
 <AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
-=======
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
->>>>>>> 3b6493ff49c1dfcb6bb79ba9e4fc9adb8decf825
     <children>
       <AnchorPane fx:id="anchorPaneUndermenyMejeri" layoutX="277.0" layoutY="431.0" prefHeight="246.0" prefWidth="227.0">
          <children>
@@ -172,7 +168,7 @@
                <children>
                   <ImageView fitHeight="199.0" fitWidth="176.0" layoutX="237.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Images/product_6.jpg" />
+                        <Image url="@Resources/Images/product_6.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelMainLightboxVara" layoutX="311.0" layoutY="14.0" text="Label" />
@@ -182,13 +178,13 @@
                   <Label fx:id="labelMainLightboxBeskrivning" layoutX="32.0" layoutY="273.0" text="Label" />
                   <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Icons/ic_close_black_24dp.png" />
+                        <Image url="@Resources/Icons/ic_close_black_24dp.png" />
                      </image>
                   </ImageView>
                   <Circle fill="#ffb422" layoutX="62.0" layoutY="80.0" radius="49.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
                   <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="583.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Resources/Icons/ic_favorite_border_black_36dp.png" />
+                        <Image url="@Resources/Icons/ic_favorite_border_black_36dp.png" />
                      </image>
                   </ImageView>
                   <Label alignment="CENTER" layoutX="26.0" layoutY="49.0" prefHeight="62.0" prefWidth="73.0" text="00kr" textAlignment="CENTER" textFill="WHITE">

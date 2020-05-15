@@ -11,7 +11,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("betalsida.fxml"));
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1277, 750));
         //Fundera på att fixa fullscreen
