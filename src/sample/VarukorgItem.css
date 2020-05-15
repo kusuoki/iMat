@@ -1,0 +1,19 @@
+
+.varu-text {
+    -fx-font-family: Lato;
+    -fx-font-size: 15px;
+    -fx-text-fill: #000000;
+}
+
+.varu-kort {
+    -fx-border-style: solid;
+    -fx-border-color: #DFDFDF;
+    -fx-background-color: white;
+}
+
+.varu-pris {
+    -fx-font-family: Lato;
+    -fx-font-size: 15px;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
