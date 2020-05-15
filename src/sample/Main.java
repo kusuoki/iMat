@@ -11,6 +11,10 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        /*Här laddas Fxml filerna in som sedan kommer bytas sinse mellan.
+        * Filerna byts genom att scenens root förändras till en ny root. För att göra detta
+        * krävs att Varje controller får en referens både till "Stage" instansen samt
+        * till de Parents som de kommer byta till */
         FXMLLoader f = new FXMLLoader();
         f.setLocation(getClass().getResource("mainpage.fxml"));
         Parent root =f.load();
@@ -44,10 +48,11 @@ public class Main extends Application {
 
 
         primaryStage.setTitle("iMat");
-        primaryStage.setScene(new Scene(root, 1277, 750));
+        primaryStage.setScene(new Scene(root, 1377, 750));
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();
+        BackButton.getBackButton().setStage(primaryStage);
         mainPagec.setStage(primaryStage,betal,konto,kundservice,tidigareKop,listor);
 
     }

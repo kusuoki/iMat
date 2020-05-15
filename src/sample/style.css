@@ -21,6 +21,7 @@
     -fx-pref-height: 47px;
     -fx-font-size: 15px;
     -fx-alignment: center;
+    -fx-background-insets: 0px, 0px, 0px, 0px;
 }
 
 .menuButton:hover {
@@ -63,7 +64,9 @@
 
 .payButton:hover{
     -fx-background-color: #51B479; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
-    -fx-font-weight: bold;
+}
+.payButton:pressed {
+    -fx-background-color: #53996f; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
 }
 
 .topMenuButton{

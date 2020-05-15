@@ -97,6 +97,14 @@ public class ListItem extends AnchorPane {
         }
     }
 
+    public void switchButtons(){
+        if (model.getAmountOfThisProductInShoppinCart(product) == 0){
+            listItemAddPane.toFront();
+        } else {
+            listItemPlusMinusPane.toFront();
+        }
+    }
+
     private void updateTextfieldWithAmountOfProduct() {
         int amount = model.getAmountOfThisProductInShoppinCart(product);       //Hämtar hur mycket av varan som finns i varukorgen
         listItemQuantityTextField.setText(Integer.toString(amount));        //Uppdaterar textfältet på kortet med antalet som finns i varukorgen

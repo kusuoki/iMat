@@ -10,7 +10,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
@@ -18,13 +18,13 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 import se.chalmers.cse.dat216.project.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class MainPageController implements Initializable, ShoppingCartListener {
@@ -72,11 +72,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //AnchorPane som ligger som grund till allt i MainPage
     @FXML
     AnchorPane mainAnchor;
-
     @FXML
     FlowPane flowPaneMainPage;
     @FXML
     FlowPane flowPaneVarukorg;
+
+    @FXML
+    Label totalQuantityLabel;
+    @FXML
+    Label totalPriceLabel;
 
     Parent betalsida;
     Parent konto;
@@ -84,6 +88,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Parent tidigarekop;
     Parent listor;
     Stage stage;
+
+    BackButton backButton=BackButton.getBackButton();
+
+    private List<ListItem> listItems = new ArrayList<>();
+
 
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
         this.stage = stage;
@@ -103,7 +112,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuItems();
 
 
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+        saveListItemByCategory("Varma drycker");
+
+        /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
@@ -113,7 +124,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(20), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
 
     }
 
@@ -170,6 +185,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(tidigarekop);
     }
 
@@ -185,6 +201,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(kundservice);
+
     }
 
     //När man trycker på kontoinställningar
@@ -268,6 +285,43 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         for (VarukorgItem item : varukorgItems) {
             item.updateThisItem();
             flowPaneVarukorg.getChildren().add(item);
+        }
+
+        if (!cartEvent.isAddEvent()) {
+            displayListItems();
+        }
+
+        updateShoppingCartPriceAndQuantity();
+    }
+
+    private void updateShoppingCartPriceAndQuantity() {
+        totalPriceLabel.setText(model.getShoppingCart().getTotal() + "kr");
+
+        int quantity = 0;
+        for (ShoppingItem item : model.getShoppingCart().getItems()){
+            quantity += item.getAmount();
+        }
+        totalQuantityLabel.setText(quantity + " varor");
+    }
+
+    private void saveListItemByCategory(String category){
+        listItems.clear();
+
+        List<ProductA> productList = model.getProducts(category);
+
+        for (ProductA p : productList){
+            ListItem item = new ListItem(p, model);
+            listItems.add(item);
+        }
+
+        displayListItems();
+    }
+
+    private void displayListItems() {
+        flowPaneMainPage.getChildren().clear();
+        for (ListItem item : listItems){
+            flowPaneMainPage.getChildren().add(item);
+            item.switchButtons();
         }
     }
 }

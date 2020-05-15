@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
       <AnchorPane fx:id="anchorPaneMainLightbox" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
          <children>
@@ -140,7 +140,7 @@
       </AnchorPane>
       <AnchorPane fx:id="anchorPaneMainPage" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
-              <Pane prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="1000.0" AnchorPane.topAnchor="139.0">
+              <Pane prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="50.0">
                   <children>
                       <Pane layoutY="45.0" prefHeight="492.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
                      <children>
@@ -185,18 +185,34 @@
                       </Label>
                   </children>
               </Pane>
-              <Pane prefHeight="656.0" prefWidth="227.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
-                  <children>
-                  <FlowPane fx:id="flowPaneVarukorg" layoutY="44.0" prefHeight="499.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;" />
-                      <Label layoutX="14.0" layoutY="-1.0" prefHeight="45.0" prefWidth="194.0" text="Varukorg" textFill="WHITE">
-                          <font>
-                              <Font size="24.0" />
-                          </font>
-                      </Label>
-                  <Pane layoutY="543.0" prefHeight="48.0" prefWidth="227.0" style="-fx-background-color: DFDFDF;" />
-                  </children>
-              </Pane>
-              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
+             <Pane prefHeight="656.0" prefWidth="327.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="76.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="40.0">
+                 <children>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="324.0">
+                         <children>
+                             <ScrollPane layoutY="49.0" prefHeight="496.0" prefWidth="327.0">
+                                 <content>
+                                     <FlowPane fx:id="flowPaneVarukorg" prefHeight="499.0" prefWidth="312.0" style="-fx-background-color: #DFDFDF;" />
+                                 </content>
+                             </ScrollPane>
+                         </children>
+                     </AnchorPane>
+                     <Label layoutX="14.0" layoutY="-1.0" prefHeight="45.0" prefWidth="294.0" text="Varukorg" textFill="WHITE">
+                         <font>
+                             <Font size="24.0" />
+                         </font>
+                     </Label>
+                     <Pane layoutY="543.0" prefHeight="48.0" prefWidth="327.0" style="-fx-background-color: DFDFDF;">
+                         <children>
+                             <Line endX="200.0" layoutX="114.0" layoutY="6.0" startX="-100.0" stroke="#979797" />
+                             <Line endX="200.0" layoutX="114.0" layoutY="41.0" startX="-100.0" stroke="#979797" style="-fx: #979797;" />
+                             <Label layoutX="22.0" layoutY="15.0" text="Totalpris" />
+                             <Label fx:id="totalPriceLabel" alignment="CENTER" layoutX="115.0" layoutY="11.0" prefHeight="25.0" prefWidth="55.0" text="PRIS" textAlignment="CENTER" />
+                             <Label fx:id="totalQuantityLabel" alignment="CENTER" layoutX="221.0" layoutY="15.0" text="ANTAL" />
+                         </children>
+                     </Pane>
+                 </children>
+             </Pane>
+              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="139.0">
                   <children>
                   <Label layoutX="156.0" layoutY="509.0" styleClass="links" text="Föregående sida" textFill="WHITE">
                      <font>
@@ -239,17 +255,18 @@
                   </children>
               </Pane>
               <TextField prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="399.0" AnchorPane.topAnchor="97.0" />
-              <Button fx:id="buttonSok" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="97.0">
+              <Button fx:id="buttonSok" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-              <Button fx:id="buttonBetala" mnemonicParsing="false" prefHeight="45.0" prefWidth="227.0" styleClass="payButton" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="630.0" />
-              <Button fx:id="buttonTidigareKöp" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="797.0" AnchorPane.topAnchor="40.0" />
-              <Button fx:id="buttonListor" layoutX="480.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" styleClass="topMenuButton" text="Listor" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="40.0" />
-              <Button fx:id="buttonKundservice" layoutX="798.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" styleClass="topMenuButton" text="Kundservice &amp; Hjälp" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.rightAnchor="319.0" AnchorPane.topAnchor="40.0" />
-              <Button fx:id="buttonKonto" layoutX="639.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" styleClass="topMenuButton" text="Kontoinställningar" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.topAnchor="40.0" />
+              <Button fx:id="buttonBetala" mnemonicParsing="false" prefHeight="45.0" prefWidth="327.0" styleClass="payButton" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="630.0" />
+              <Button fx:id="buttonTidigareKöp" mnemonicParsing="false" prefHeight="36.0" prefWidth="161.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0" />
+              <Button fx:id="buttonListor" layoutX="480.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" styleClass="topMenuButton" text="Listor" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="40.0" />
+              <Button fx:id="buttonKundservice" layoutX="798.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" styleClass="topMenuButton" text="Kundservice &amp; Hjälp" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.topAnchor="40.0" />
+              <Button fx:id="buttonKonto" layoutX="639.0" layoutY="42.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" styleClass="topMenuButton" text="Kontoinställningar" textFill="WHITE" AnchorPane.bottomAnchor="675.0" AnchorPane.topAnchor="40.0" />
          </children>
       </AnchorPane>
+
     </children>
 </AnchorPane>
