@@ -12,7 +12,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
-public class VarukorgItem extends AnchorPane implements ShoppingCartListener {
+public class VarukorgItem extends AnchorPane {
 
     ShoppingItem shoppingItem;
     Model model;
@@ -49,19 +49,13 @@ public class VarukorgItem extends AnchorPane implements ShoppingCartListener {
 
          */
 
-        model.getShoppingCart().addShoppingCartListener(this);
+
 
     }
 
-    @Override
-    public void shoppingCartChanged(CartEvent cartEvent) {
-        if (cartEvent.getShoppingItem().getProduct().getProductId() == shoppingItem.getProduct().getProductId()) {
-            updateThisItem();
-        }
 
-    }
 
-    private void updateThisItem(){
+    public void updateThisItem(){
         labelVarukorgAntal.setText(Integer.toString( (int) shoppingItem.getAmount() ));
         labelVarukorgVara.setText(shoppingItem.getProduct().getName());
         labelVarukorgPris.setText(Integer.toString( (int) shoppingItem.getTotal() ));

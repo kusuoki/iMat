@@ -19,6 +19,7 @@ import java.awt.*;
 import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -71,10 +72,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         model.getShoppingCart().addShoppingCartListener(this);
 
-
-        model.addToShoppingCart(model.getProduct(10));
-        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));
-
+       /* model.addToShoppingCart(model.getProduct(10));
+        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));*/
 
     }
 
@@ -137,20 +136,21 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
+    //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
-        ShoppingCart shoppingCart = model.getShoppingCart();
-        List<ShoppingItem> shoppingItems = shoppingCart.getItems();
-        //CartFlowPane.getChildren().clear();
+        List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
+        List<VarukorgItem> varukorgItems = new ArrayList<>();
 
-
-        for (ShoppingItem shoppingItem : shoppingItems) {
-
-            //  CartFlowPane.getChildren().add(new CartPanel(ShoppingItem)); */
+        for (ShoppingItem shoppingItem : shoppingItems){
+            VarukorgItem item = new VarukorgItem(shoppingItem, model);
+            varukorgItems.add(item);
         }
 
-        //Lyssnar på om kundvagnen ändras och visar sedan ipp de nya varorna
-
-
+        flowPaneVarukorg.getChildren().clear();
+        for (VarukorgItem item : varukorgItems) {
+            item.updateThisItem();
+            flowPaneVarukorg.getChildren().add(item);
+        }
     }
 }
