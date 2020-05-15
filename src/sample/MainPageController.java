@@ -22,9 +22,8 @@ import se.chalmers.cse.dat216.project.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
 
 
 public class MainPageController implements Initializable, ShoppingCartListener {
@@ -51,7 +50,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Parent tidigarekop;
     Parent listor;
     Stage stage;
+
     BackButton backButton=BackButton.getBackButton();
+
+    private List<ListItem> listItems = new ArrayList<>();
+
+
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
         this.stage = stage;
         this.betalsida = betalsida;
@@ -95,7 +99,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuItems();
 
 
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+        saveListItemByCategory("Varma drycker");
+
+        /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
@@ -109,7 +115,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
 
     }
 
@@ -260,6 +266,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             flowPaneVarukorg.getChildren().add(item);
         }
 
+        if (!cartEvent.isAddEvent()) {
+            displayListItems();
+        }
+
         updateShoppingCartPriceAndQuantity();
     }
 
@@ -273,4 +283,24 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         totalQuantityLabel.setText(quantity + " varor");
     }
 
+    private void saveListItemByCategory(String category){
+        listItems.clear();
+
+        List<ProductA> productList = model.getProducts(category);
+
+        for (ProductA p : productList){
+            ListItem item = new ListItem(p, model);
+            listItems.add(item);
+        }
+
+        displayListItems();
+    }
+
+    private void displayListItems() {
+        flowPaneMainPage.getChildren().clear();
+        for (ListItem item : listItems){
+            flowPaneMainPage.getChildren().add(item);
+            item.switchButtons();
+        }
+    }
 }
