@@ -37,7 +37,7 @@ public class Main extends Application {
        // ListorController listorC = f.getController();
 
         FXMLLoader kontoLoader = new FXMLLoader();
-        kontoLoader.setLocation(getClass().getResource("kontoinstallningar.fxml"));
+        kontoLoader.setLocation(getClass().getResource("kontoinstallning.fxml"));
         Parent konto = kontoLoader.load();
 
 
