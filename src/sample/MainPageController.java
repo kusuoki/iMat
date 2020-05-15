@@ -4,15 +4,17 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 
+import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -30,6 +32,23 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     FlowPane flowPaneMainPage;
 
+    Parent betalsida;
+    Parent konto;
+    Parent kundservice;
+    Parent tidigarekop;
+    Parent listor;
+    Stage stage;
+
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+        this.stage = stage;
+        this.betalsida = betalsida;
+        this.konto = konto;
+        this.kundservice = kundservice;
+        this.tidigarekop = tidigarekop;
+        this.listor = listor;
+
+
+    }
 
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
@@ -46,41 +65,39 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
-
+        model.getShoppingCart().addShoppingCartListener(this);
     }
 
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        stage.getScene().setRoot(tidigarekop);
     }
 
     //När man klickar på listor
     @FXML
     public void onListsClick(ActionEvent event) throws IOException {
-        AnchorPane list = FXMLLoader.load(getClass().getResource("listor.fxml"));
-        mainAnchor.getChildren().setAll(list);
+        stage.getScene().setRoot(listor);
 
 
     }
 
     //När man klickar på kundservice och hjälp
     @FXML
-    public void onCustomerServiceAndHelpClick(ActionEvent event) throws  IOException {
-        AnchorPane service = FXMLLoader.load(getClass().getResource("kundservice.fxml"));
-        mainAnchor.getChildren().setAll(service);
+    public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
+        stage.getScene().setRoot(kundservice);
     }
 
     //När man trycker på kontoinställningar
     @FXML
     public void onAccountSettingsClick(ActionEvent event) throws IOException {
-        AnchorPane account = FXMLLoader.load(getClass().getResource("kontoinställningar.fxml"));
-        mainAnchor.getChildren().setAll(account);
+        stage.getScene().setRoot(konto);
     }
+
     //När man trycker på betala
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
-        AnchorPane payment = FXMLLoader.load(getClass().getResource("betalsida.fxml"));
-        mainAnchor.getChildren().setAll(payment);
+        stage.getScene().setRoot(betalsida);
     }
 
     //När man trycker på sökknappen
@@ -110,7 +127,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
-    //Lyssnar på om kundvagnen ändras och visar sedan ipp de nya varorna
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
         ShoppingCart shoppingCart = model.getShoppingCart();
@@ -121,7 +137,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         for (ShoppingItem shoppingItem : shoppingItems) {
 
             //  CartFlowPane.getChildren().add(new CartPanel(ShoppingItem)); */
-
         }
+
+        //Lyssnar på om kundvagnen ändras och visar sedan ipp de nya varorna
+
+
     }
 }
