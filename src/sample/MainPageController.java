@@ -7,11 +7,19 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.FlowPane;
+import javafx.stage.Stage;
+import javafx.scene.control.ScrollPane;
+import se.chalmers.cse.dat216.project.*;
+import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +30,33 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
     @FXML
     TextField searchField;
+
+    //AnchorPane som ligger som grund till allt i MainPage
+    @FXML
+    AnchorPane mainAnchor;
+
     @FXML
     FlowPane flowPaneMainPage;
+    @FXML
+    FlowPane flowPaneVarukorg;
+
+    Parent betalsida;
+    Parent konto;
+    Parent kundservice;
+    Parent tidigarekop;
+    Parent listor;
+    Stage stage;
+
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+        this.stage = stage;
+        this.betalsida = betalsida;
+        this.konto = konto;
+        this.kundservice = kundservice;
+        this.tidigarekop = tidigarekop;
+        this.listor = listor;
+
+
+    }
 
     @FXML Pane paneIndicatorEbjudanden;
     @FXML Pane paneIndicatorFavoriter;
@@ -56,8 +89,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initMenuItems();
 
-
-       /* flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+/*
+       flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
@@ -106,30 +139,43 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             });
         }
 
+        model.getShoppingCart().addShoppingCartListener(this);
+
+       /* model.addToShoppingCart(model.getProduct(10));
+        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));*/
+
     }
 
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        stage.getScene().setRoot(tidigarekop);
     }
 
     //När man klickar på listor
     @FXML
-    public void onListsClick() {
+    public void onListsClick(ActionEvent event) throws IOException {
+        stage.getScene().setRoot(listor);
+
+
     }
 
     //När man klickar på kundservice och hjälp
     @FXML
-    public void onCustomerServiceAndHelp() {
+    public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
+        stage.getScene().setRoot(kundservice);
     }
 
     //När man trycker på kontoinställningar
     @FXML
-    public void onAccountSettings() {
+    public void onAccountSettingsClick(ActionEvent event) throws IOException {
+        stage.getScene().setRoot(konto);
     }
+
     //När man trycker på betala
     @FXML
-    public void onPaymentButton() {
+    public void onPaymentButton(ActionEvent event) throws IOException {
+        stage.getScene().setRoot(betalsida);
     }
 
     //När man trycker på sökknappen
@@ -186,18 +232,21 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
-    //Lyssnar på om kundvagnen ändras och visar sedan ipp de nya varorna
+    //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
-        ShoppingCart shoppingCart = model.getShoppingCart();
-        List<ShoppingItem> shoppingItems = shoppingCart.getItems();
-        //CartFlowPane.getChildren().clear();
+        List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
+        List<VarukorgItem> varukorgItems = new ArrayList<>();
 
+        for (ShoppingItem shoppingItem : shoppingItems){
+            VarukorgItem item = new VarukorgItem(shoppingItem, model);
+            varukorgItems.add(item);
+        }
 
-        for (ShoppingItem shoppingItem : shoppingItems) {
-
-            //  CartFlowPane.getChildren().add(new CartPanel(ShoppingItem)); */
-
+        flowPaneVarukorg.getChildren().clear();
+        for (VarukorgItem item : varukorgItems) {
+            item.updateThisItem();
+            flowPaneVarukorg.getChildren().add(item);
         }
     }
 }

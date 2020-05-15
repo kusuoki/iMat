@@ -63,10 +63,20 @@ public class Model {
         getShoppingCart().addItem(item);
     }
 
+    public void removeFromShoppingCart(Product p) {
+        getShoppingCart().removeItem(getShoppingItemMap().get(p.getProductId()));   //Tar bort varan från shoppingcarten
+        shoppingItemMap.remove(p.getProductId());       //Tar bort varan från HashMap:en också
+    }
+
+    public int getAmountOfThisProductInShoppinCart(Product p){
+        return (int) getShoppingItemMap().get(p.getProductId()).getAmount();
+    }
+
     public boolean updateShoppingCart(Product p, int amount) {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(item.getAmount() + amount);
+            getShoppingCart().fireShoppingCartChanged(item, false);
             return true;
         }
         return false;
@@ -76,9 +86,14 @@ public class Model {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(amount);
+            getShoppingCart().fireShoppingCartChanged(item, false);
             return true;
         }
         return false;
+    }
+
+    public Map<Integer, ShoppingItem> getShoppingItemMap() {
+        return shoppingItemMap;
     }
 
 
