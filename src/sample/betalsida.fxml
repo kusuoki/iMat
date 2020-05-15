@@ -172,75 +172,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
-         <children>
-              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
-                  <children>
-                      <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;" />
-                  <Label layoutX="220.0" layoutY="5.0" text="Bekräfta kundvagn" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  </children>
-              </Pane>
-            <Label layoutX="320.0" layoutY="96.0" text="Bekräfta kundvagn">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="504.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="874.0" layoutY="96.0" text="Slutför köp">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="670.0" layoutY="96.0" text="Betalningsuppgifter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="997.0" layoutY="284.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="997.0" layoutY="234.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Lägg till en annan inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Spara inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: dfdfdf;" text="Tillbaka" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-      <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tillbaka till butiken" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
       <AnchorPane fx:id="anchorPaneKontakt" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
             <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
@@ -331,5 +262,74 @@
             </Button>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
+         <children>
+              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
+                  <children>
+                      <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;" />
+                  <Label layoutX="220.0" layoutY="5.0" text="Bekräfta kundvagn" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  </children>
+              </Pane>
+            <Label layoutX="320.0" layoutY="96.0" text="Bekräfta kundvagn">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="504.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="874.0" layoutY="96.0" text="Slutför köp">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="670.0" layoutY="96.0" text="Betalningsuppgifter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="997.0" layoutY="284.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="997.0" layoutY="234.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Lägg till en annan inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Spara inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: dfdfdf;" text="Tillbaka" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tillbaka till butiken" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
     </children>
 </AnchorPane>
