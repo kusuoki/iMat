@@ -9,7 +9,7 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
