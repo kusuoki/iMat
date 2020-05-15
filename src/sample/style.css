@@ -20,6 +20,7 @@
     -fx-pref-width: 225px;
     -fx-pref-height: 47px;
     -fx-font-size: 15px;
+    -fx-alignment: center;
 }
 
 .menuButton:hover {
@@ -29,13 +30,24 @@
     -fx-background-insets: 1px, 1px, 1px, 1px;
 }
 
-.menuButtonOnClick{
-    -fx-background-color: #DFDFDF; /*Glöm inte att göra så att den lilla indikatorn på menygrejerna blir samma färg som står under "menubuttonindicatoractivated"*/
+.menuButton:pressed {
+    -fx-background-color: #dfdfdd; /*Glöm inte att göra så att den lilla indikatorn på menygrejerna blir samma färg som står under "menubuttonindicatoractivated"*/
     -fx-border-style: solid;
-    -fx-border-color: #002D12;
+    -fx-border-color: #51B479;
     -fx-border-width: 1px;
     -fx-background-insets: 1px, 1px, 1px, 1px;
 }
+
+.menuButtonClicked {
+    -fx-background-color: #dfdfdd; /*Glöm inte att göra så att den lilla indikatorn på menygrejerna blir samma färg som står under "menubuttonindicatoractivated"*/
+    -fx-border-style: solid;
+    -fx-border-color: #51B479;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1px, 1px, 1px, 1px;
+    -fx-font-size: 15px;
+    -fx-alignment: center;
+}
+
 .menuButtonIndicator{
     -fx-background-color: white;
 }

@@ -1,28 +1,31 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-
-import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
-
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
-
-
+import se.chalmers.cse.dat216.project.*;
+import javax.swing.*;
+import java.awt.*;
+import javafx.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javafx.scene.Parent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Label;
-
 import se.chalmers.cse.dat216.project.*;
 import java.awt.*;
-import javafx.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
 
 public class MainPageController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
@@ -60,9 +63,38 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
+    @FXML Pane paneIndicatorEbjudanden;
+    @FXML Pane paneIndicatorFavoriter;
+    @FXML Pane paneIndicatorBaljvaxter;
+    @FXML Pane paneIndicatorSotsaker;
+    @FXML Pane paneIndicatorDrycker;
+    @FXML Pane paneIndicatorFisk;
+    @FXML Pane paneIndicatorFrukt;
+    @FXML Pane paneIndicatorKott;
+    @FXML Pane paneIndicatorMejeri;
+    @FXML Pane paneIndicatorSkafferi;
+
+    @FXML javafx.scene.control.Button buttonErbjudanden;
+    @FXML javafx.scene.control.Button buttonFavoriter;
+    @FXML javafx.scene.control.Button buttonBaljvaxter;
+    @FXML javafx.scene.control.Button buttonSotsaker;
+    @FXML javafx.scene.control.Button buttonDrycker;
+    @FXML javafx.scene.control.Button buttonFisk;
+    @FXML javafx.scene.control.Button buttonFrukt;
+    @FXML javafx.scene.control.Button buttonKott;
+    @FXML javafx.scene.control.Button buttonMejeri;
+    @FXML javafx.scene.control.Button buttonSkafferi;
+
+    ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
+    ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
+
+
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        initMenuItems();
+
+
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
@@ -78,6 +110,43 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
+
+    }
+
+    void initMenuItems(){
+        menuIndicators.add(paneIndicatorEbjudanden);
+        menuIndicators.add(paneIndicatorFavoriter);
+        menuIndicators.add(paneIndicatorBaljvaxter);
+        menuIndicators.add(paneIndicatorSotsaker);
+        menuIndicators.add(paneIndicatorDrycker);
+        menuIndicators.add(paneIndicatorFisk);
+        menuIndicators.add(paneIndicatorFrukt);
+        menuIndicators.add(paneIndicatorKott);
+        menuIndicators.add(paneIndicatorMejeri);
+        menuIndicators.add(paneIndicatorSkafferi);
+
+        menuButtons.add(buttonErbjudanden);
+        menuButtons.add(buttonFavoriter);
+        menuButtons.add(buttonBaljvaxter);
+        menuButtons.add(buttonSotsaker);
+        menuButtons.add(buttonDrycker);
+        menuButtons.add(buttonFisk);
+        menuButtons.add(buttonFrukt);
+        menuButtons.add(buttonKott);
+        menuButtons.add(buttonMejeri);
+        menuButtons.add(buttonSkafferi);
+
+        for (Pane p : menuIndicators) {
+            p.toBack();
+        }
+
+        System.out.println(menuButtons);
+
+        for(javafx.scene.control.Button b : menuButtons){
+            b.setOnAction((event)->{
+                onMenuClick(b);
+            });
+        }
 
         model.getShoppingCart().addShoppingCartListener(this);
 
@@ -125,10 +194,37 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         updateProductList(searchList);
     }
 
+
+
     //När man klickar på menyn
+
+
     @FXML
-    public void onMenyClick() {
+    public void onMenuClick(javafx.scene.control.Button b) {
+        for(javafx.scene.control.Button button : menuButtons) //Clears any button that may've been clicked before
+        {
+            if(button != b) {
+                if (button.getStyleClass().toString().equals("menuButtonClicked")) {
+                    button.getStyleClass().clear();
+                    button.getStyleClass().add("menuButton");
+                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar och hela nya menyvyn
+                }
+            }
+
+        }
+            System.out.println(b.getStyleClass());
+            if (b.getStyleClass().toString().equals("menuButtonClicked")) {
+                b.getStyleClass().clear();
+                b.getStyleClass().add("menuButton");
+            } else {
+                b.getStyleClass().clear();
+                b.getStyleClass().add("menuButtonClicked");
+            }
+
     }
+
+
+
 
     //När man hoovrar över menyn
     @FXML

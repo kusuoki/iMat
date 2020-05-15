@@ -21,7 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class BetalsidaController implements Initializable {
+public class BetalsidaController implements Initializable, ShoppingCartListener {
 
         private final Model model = Model.getInstance();
         @FXML TextField searchField;
@@ -50,6 +50,7 @@ public class BetalsidaController implements Initializable {
                 comboHem.getItems().removeAll(comboHem.getItems());
                 comboHem.getItems().addAll("Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag");
                 comboHem.getSelectionModel().select("Måndag");
+                shoppingCart.addShoppingCartListener(this::shoppingCartChanged);
 
                 comboHem.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
@@ -190,11 +191,19 @@ public class BetalsidaController implements Initializable {
         {
                 if (shoppingCart.getItems().size() != 0)
                 {
-                        for (int i = 0; i < shoppingCart.getItems().size(); i++) {
+                        System.out.println(shoppingCart.getItems().size());
+                        for (int i = 1; i < shoppingCart.getItems().size(); i++) {
+
                                 flowPaneBekrafta.getChildren().add(new BetalsidaItem(model.getInstance().getProduct(i), model));
                                 model.getShoppingCart();
                         }
                 }
         }
-    }
+
+        @Override
+        public void shoppingCartChanged(CartEvent cartEvent) {
+                getShoppingCart();
+                System.out.println("hej");
+        }
+}
 
