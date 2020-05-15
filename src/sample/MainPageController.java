@@ -10,9 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 
-import javafx.stage.Stage;
-import se.chalmers.cse.dat216.project.*;
 
+import javafx.stage.Stage;
+import javafx.scene.control.ScrollPane;
+
+import se.chalmers.cse.dat216.project.*;
 import java.awt.*;
 import javafx.event.ActionEvent;
 import java.io.IOException;
@@ -31,6 +33,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     FlowPane flowPaneMainPage;
+    @FXML
+    FlowPane flowPaneVarukorg;
 
     Parent betalsida;
     Parent konto;
@@ -53,7 +57,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
@@ -65,7 +68,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
+
         model.getShoppingCart().addShoppingCartListener(this);
+
+
+        model.addToShoppingCart(model.getProduct(10));
+        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));
+
+
     }
 
     //När man klickar på tidigare köp
