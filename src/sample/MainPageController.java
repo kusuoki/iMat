@@ -13,6 +13,7 @@ import javafx.scene.layout.FlowPane;
 
 import javafx.stage.Stage;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 
 import se.chalmers.cse.dat216.project.*;
 import java.awt.*;
@@ -31,11 +32,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //AnchorPane som ligger som grund till allt i MainPage
     @FXML
     AnchorPane mainAnchor;
-
     @FXML
     FlowPane flowPaneMainPage;
     @FXML
     FlowPane flowPaneVarukorg;
+
+    @FXML
+    Label totalQuantityLabel;
+    @FXML
+    Label totalPriceLabel;
 
     Parent betalsida;
     Parent konto;
@@ -68,6 +73,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(20), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
         model.getShoppingCart().addShoppingCartListener(this);
@@ -152,5 +161,18 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             item.updateThisItem();
             flowPaneVarukorg.getChildren().add(item);
         }
+
+        updateShoppingCartPriceAndQuantity();
     }
+
+    private void updateShoppingCartPriceAndQuantity() {
+        totalPriceLabel.setText(model.getShoppingCart().getTotal() + "kr");
+
+        int quantity = 0;
+        for (ShoppingItem item : model.getShoppingCart().getItems()){
+            quantity += item.getAmount();
+        }
+        totalQuantityLabel.setText(quantity + " varor");
+    }
+
 }
