@@ -44,7 +44,7 @@ public class Main extends Application {
 
 
         primaryStage.setTitle("iMat");
-        primaryStage.setScene(new Scene(root, 1277, 750));
+        primaryStage.setScene(new Scene(root, 1377, 750));
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();

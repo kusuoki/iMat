@@ -33,10 +33,10 @@ public class KontoinstallningController implements Initializable {
         card = handler.getCreditCard();
         customer = handler.getCustomer();
 
-        checkInformation();
+        updateInformation();
     }
 
-    private void checkInformation(){
+    private void updateInformation(){
         StringBuilder sb = new StringBuilder();
 
         sb.append(card.getCardNumber()).append(card.getValidMonth()).append(card.getValidYear())
@@ -44,11 +44,30 @@ public class KontoinstallningController implements Initializable {
                 .append(customer.getEmail()).append(customer.getFirstName()).append(customer.getLastName())
                 .append(customer.getPhoneNumber()).append(customer.getPostCode());
 
-        // check the saved information to determine the displayed message
         if (sb.toString().length() == 0) {
             labelSparadeUppgifter.setText("Du har inga sparade uppgifter.");
         } else {
             labelSparadeUppgifter.setText("Nedan är dina sparade uppgifter.");
         }
+
+        firstNameTextField.setText(customer.getFirstName());
+        lastNameTextField.setText(customer.getLastName());
+        adressTextField.setText(getStreetAddress(customer.getAddress()));
+        cityTextField.setText(getCity(customer.getAddress()));
+        postNumberTextField.setText(customer.getPostCode());
+        eMailTextField.setText(customer.getEmail());
+        phoneTextField.setText(customer.getPhoneNumber());
+        cardNumberTextField.setText(card.getCardNumber());
+        cardExpiryDateTextField.setText(card.getValidMonth()+"/"+card.getValidYear());
+        CVVTextField.setText(String.valueOf(card.getVerificationCode()));
+    }
+
+    // customer.getAddress() combines streetAddress and city
+    private String getStreetAddress(String address) {
+       return address.split(";", 0)[0];
+    }
+
+    private String getCity(String address){
+        return address.split(";", 0)[1];
     }
 }
