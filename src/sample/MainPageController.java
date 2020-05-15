@@ -261,9 +261,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             flowPaneVarukorg.getChildren().add(item);
         }
 
-        if (!cartEvent.isAddEvent()) {
-            displayListItems();
-        }
+        displayListItems();
+
+
 
         updateShoppingCartPriceAndQuantity();
     }
@@ -296,6 +296,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         for (ListItem item : listItems){
             flowPaneMainPage.getChildren().add(item);
             item.switchButtons();
+            item.updateTextfieldWithAmountOfProduct();
         }
     }
 }

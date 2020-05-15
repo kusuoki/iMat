@@ -67,6 +67,7 @@ public class ListItem extends AnchorPane {
             listItemPlusMinusPane.toFront();
             updateTextfieldWithAmountOfProduct();
         }
+
     }
 
     @FXML
@@ -105,7 +106,7 @@ public class ListItem extends AnchorPane {
         }
     }
 
-    private void updateTextfieldWithAmountOfProduct() {
+    public void updateTextfieldWithAmountOfProduct() {
         int amount = model.getAmountOfThisProductInShoppinCart(product);       //Hämtar hur mycket av varan som finns i varukorgen
         listItemQuantityTextField.setText(Integer.toString(amount));        //Uppdaterar textfältet på kortet med antalet som finns i varukorgen
     }

@@ -54,6 +54,22 @@ public class VarukorgItem extends AnchorPane {
 
     }
 
+    @FXML
+    public void plusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), 1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, true);
+    }
+
+    @FXML
+    public void minusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), -1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, false);
+        if ((int) shoppingItem.getAmount() == 0){
+            trashObjectButton();
+        }
+
+    }
+
 
 
 }
