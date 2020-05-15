@@ -320,6 +320,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
+            <Label layoutX="130.0" layoutY="244.0" text="Funkar det?" />
          </children>
       </AnchorPane>
       <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
