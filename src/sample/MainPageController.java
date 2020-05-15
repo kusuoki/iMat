@@ -39,6 +39,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         model.addToShoppingCart(model.getProduct(10));
         flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));
+
     }
 
     //När man klickar på tidigare köp
