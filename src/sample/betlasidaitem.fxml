@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="637.0" stylesheets="@ListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Label fx:id="betalItemVara" layoutX="66.0" layoutY="17.0" text="Label" />
+        <Label fx:id="betalItemMangd" layoutX="417.0" layoutY="17.0" text="Label" />
+        <Label fx:id="betalItemPris" layoutX="588.0" layoutY="17.0" text="Pris" />
+      <ImageView fitHeight="44.0" fitWidth="51.0" layoutX="6.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Icons/ic_close_black_64dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="365.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Buttons/Minus-knapp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="474.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Buttons/Plus-knapp.png" />
+         </image>
+      </ImageView>
+    </children>
+</fx:root>
