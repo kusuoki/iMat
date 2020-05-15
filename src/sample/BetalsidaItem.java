@@ -19,7 +19,7 @@ public class BetalsidaItem extends AnchorPane {
     private BetalsidaController parentController;
 
     public BetalsidaItem(ProductA product, Model parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("betalsida.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("betlasidaitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -30,6 +30,7 @@ public class BetalsidaItem extends AnchorPane {
         }
 
         this.model = parentController;
+
 
         betalItemVara.setText(product.getName());
         betalItemMangd.setText(product.getUnit());

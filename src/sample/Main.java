@@ -18,7 +18,7 @@ public class Main extends Application {
 
         FXMLLoader betalLoader = new FXMLLoader();
         betalLoader.setLocation(getClass().getResource("betalsida.fxml"));
-        Parent betal = betalLoader.load();
+        Parent betal=betalLoader.load(); //ader.load();
         BetalsidaController betalC = betalLoader.getController();
 
         FXMLLoader tidigareKopLoader = new FXMLLoader();
