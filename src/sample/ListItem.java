@@ -43,7 +43,7 @@ public class ListItem extends AnchorPane {
     ProductA product;
     Model model;
 
-    public ListItem(ProductA product, Model model){
+    public ListItem(ProductA product, Model model) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -62,21 +62,44 @@ public class ListItem extends AnchorPane {
         //listItemPrice.setText(Double.toString(product.getPrice()) + "kr");
         listItemImage.setImage(model.getImage(product));
 
-        if (model.getShoppingCart().getItems().contains(new ShoppingItem(product))){ //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
+        //TODO KOMMER GE PROBLEM (KANSKE FIXAD??)
+        if (model.getShoppingCart().getItems().contains(model.getShoppingItemMap().get(product.getProductId()))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
             listItemPlusMinusPane.toFront();
-
+            updateTextfieldWithAmountOfProduct();
         }
     }
 
     @FXML
-    public void addFirstProduct(){
+    public void addFirstProduct() {          //Metod som kallas på då produkten inte finns i varukorgen
         model.addToShoppingCart(product);   //Lägg till produkten i shoppingcart
         listItemPlusMinusPane.toFront();    //Visa "plus, minus och antal" istället för "Lägg till"-knappen
-        listItemQuantityTextField.setText("1"); //Sätt "antalet tillagda"-textfältet till 1
+        updateTextfieldWithAmountOfProduct();   //Uppdatera textfältet med det nya antalet tillagda (alltid 1 efter att man klickar på "LÄGG TILL" knappen)
     }
 
-    public void addMoreOfProduct(){
+    @FXML
+    public void addOneOfProduct() {
+        model.updateShoppingCart(product, 1);
+        updateTextfieldWithAmountOfProduct();
+    }
 
+    @FXML
+    public void removeOneOfProduct() {
+        /*
+        hämta listan
+        hämta antalet av produkten i listan
+         */
+        if (model.getAmountOfThisProductInShoppinCart(product) == 1) {   //Kollar om antalet av den specifika proukten är 1
+            model.removeFromShoppingCart(product);   //Om antalet är 1 tas varan bort från shoppingcarten och varan måste tas bort från HashMap:en också
+            listItemAddPane.toFront();  //Flytta fram den andra knappen
+        } else {
+            model.updateShoppingCart(product, -1);
+            updateTextfieldWithAmountOfProduct();
+        }
+    }
+
+    private void updateTextfieldWithAmountOfProduct() {
+        int amount = model.getAmountOfThisProductInShoppinCart(product);       //Hämtar hur mycket av varan som finns i varukorgen
+        listItemQuantityTextField.setText(Integer.toString(amount));        //Uppdaterar textfältet på kortet med antalet som finns i varukorgen
     }
 
 
