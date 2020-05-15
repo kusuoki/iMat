@@ -3,7 +3,12 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+
 import javafx.scene.layout.AnchorPane;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.FlowPane;
+
 import se.chalmers.cse.dat216.project.*;
 
 import java.awt.*;
@@ -17,13 +22,30 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private final Model model = Model.getInstance();
     @FXML
     TextField searchField;
+
     //AnchorPane som ligger som grund till allt i MainPage
     @FXML
     AnchorPane mainAnchor;
 
+    @FXML
+    FlowPane flowPaneMainPage;
+
+
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(14), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(15), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(16), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
     }
 
