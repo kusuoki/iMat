@@ -14,5 +14,6 @@
     <orderEntry type="library" name="library (3)" level="project" />
     <orderEntry type="library" name="lib" level="application" />
     <orderEntry type="library" name="projectbackend" level="project" />
+    <orderEntry type="library" name="JavaFX-11" level="application" />
   </component>
 </module>
