@@ -1,0 +1,6 @@
+
+.tooltip {
+    -fx-show-delay: 0s;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
