@@ -4,10 +4,13 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.CartEvent;
 import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingCartListener;
@@ -16,7 +19,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.TextField;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -43,6 +46,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private ComboBox comboAffar;
         @FXML private FlowPane flowPaneBekrafta;
         private ShoppingCart shoppingCart = model.getShoppingCart();
+        private Parent mainPage;
+        private Stage stage;
+
 
         //Används för att sätta denna till kontroller för mainpage.fxml
         @Override
@@ -124,7 +130,18 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
                 getShoppingCart();
         }
+        //setter för stage och mainpage root
+        public void setStage(Stage stage,Parent mainPage){
+             this.stage=stage;
+             this.mainPage=mainPage;
 
+        }
+        //När man trycker på hemknappen
+        @FXML
+        public void onHomeClick(ActionEvent event){
+                stage.getScene().setRoot(mainPage);
+
+        }
         //När man klickar på första nästa
         @FXML
         public void onNextClick1() {

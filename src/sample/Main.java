@@ -43,6 +43,7 @@ public class Main extends Application {
         FXMLLoader kontoLoader = new FXMLLoader();
         kontoLoader.setLocation(getClass().getResource("kontoinstallning.fxml"));
         Parent konto = kontoLoader.load();
+        KontoinstallningController kontoC = kontoLoader.getController();
 
 
 
@@ -54,6 +55,9 @@ public class Main extends Application {
         primaryStage.show();
         BackButton.getBackButton().setStage(primaryStage);
         mainPagec.setStage(primaryStage,betal,konto,kundservice,tidigareKop,listor);
+        betalC.setStage(primaryStage,root);
+        tidigareKopC.setStage(primaryStage,root,listor,konto,kundservice,betal);
+        kontoC.setStage(primaryStage,root,listor,tidigareKop,kundservice,betal);
 
     }
 
