@@ -52,8 +52,8 @@ public class KontoinstallningController implements Initializable {
 
         firstNameTextField.setText(customer.getFirstName());
         lastNameTextField.setText(customer.getLastName());
-        adressTextField.setText(getStreetAddress(customer.getAddress()));
-        cityTextField.setText(getCity(customer.getAddress()));
+       // adressTextField.setText(getStreetAddress(customer.getAddress()));
+        //cityTextField.setText(getCity(customer.getAddress()));
         postNumberTextField.setText(customer.getPostCode());
         eMailTextField.setText(customer.getEmail());
         phoneTextField.setText(customer.getPhoneNumber());

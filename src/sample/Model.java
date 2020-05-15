@@ -44,6 +44,10 @@ public class Model {
         return productHandler.getProduct(idNbr);
     }
 
+    public List<ProductA> getProducts(String category) {
+        return productHandler.getProducts(category);
+    }
+
     public List<ProductA> findProducts(String s) {
         return productHandler.getProductAList(iMatDataHandler.findProducts(s));
     }
@@ -64,19 +68,25 @@ public class Model {
     }
 
     public void removeFromShoppingCart(Product p) {
-        getShoppingCart().removeItem(getShoppingItemMap().get(p.getProductId()));   //Tar bort varan från shoppingcarten
+        ShoppingItem item = getShoppingItemMap().get(p.getProductId());
+        item.setAmount(0);
+        getShoppingCart().removeItem(item);   //Tar bort varan från shoppingcarten
         shoppingItemMap.remove(p.getProductId());       //Tar bort varan från HashMap:en också
     }
 
     public int getAmountOfThisProductInShoppinCart(Product p){
-        return (int) getShoppingItemMap().get(p.getProductId()).getAmount();
+        ShoppingItem item = getShoppingItemMap().get(p.getProductId());
+        if (item == null) {
+            return 0;
+        }
+        return (int) item.getAmount();
     }
 
     public boolean updateShoppingCart(Product p, int amount) {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(item.getAmount() + amount);
-            getShoppingCart().fireShoppingCartChanged(item, false);
+            getShoppingCart().fireShoppingCartChanged(item, true);
             return true;
         }
         return false;
@@ -86,7 +96,7 @@ public class Model {
         ShoppingItem item = shoppingItemMap.get(p.getProductId());
         if (item != null) {
             item.setAmount(amount);
-            getShoppingCart().fireShoppingCartChanged(item, false);
+            getShoppingCart().fireShoppingCartChanged(item, true);
             return true;
         }
         return false;
