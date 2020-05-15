@@ -15,9 +15,10 @@ public class TidigareKopController implements Initializable {
 
     @FXML private FlowPane centerStage;
 
+
     private IMatDataHandler handler;
     private List<TidigareKopItem> prevOrders;
-
+    private BackButton backButton = BackButton.getBackButton();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         handler = IMatDataHandler.getInstance();
@@ -38,5 +39,7 @@ public class TidigareKopController implements Initializable {
             centerStage.getChildren().add(order);
         }
     }
-
+    public void onBack(){
+        backButton.goBack();
+    }
 }

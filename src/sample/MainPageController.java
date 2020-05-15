@@ -46,7 +46,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Parent tidigarekop;
     Parent listor;
     Stage stage;
-
+    BackButton backButton=BackButton.getBackButton();
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
         this.stage = stage;
         this.betalsida = betalsida;
@@ -149,6 +149,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(tidigarekop);
     }
 
@@ -164,6 +165,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(kundservice);
+
     }
 
     //När man trycker på kontoinställningar
