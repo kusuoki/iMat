@@ -263,16 +263,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tillbaka till butiken" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
-      <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
       <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
               <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
@@ -332,5 +322,15 @@
             </Button>
          </children>
       </AnchorPane>
+      <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tillbaka till butiken" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
     </children>
 </AnchorPane>
