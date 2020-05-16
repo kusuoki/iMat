@@ -173,22 +173,20 @@ public class KontoinstallningController implements Initializable {
                 }
             }
         });
-
-
         //---------------------------------------------------------------------------------------------
         postNumberTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(postNumberTextField, oldValue, newValue, 5);
-            if (isValidValue(newValue, "PostNumber")) {
+            if (isValidValue(newValue, "PostNumber") || newValue.length() == 0) {
                 postNumberTextField.getStyleClass().remove("error");
             }
         });
         eMailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (isValidValue(newValue, "Email")) {
+            if (isValidValue(newValue, "Email") || newValue.length() == 0) {
                 eMailTextField.getStyleClass().remove("error");
             }
         });
         phoneTextField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (isValidValue(newValue, "Phone")) {
+            if (isValidValue(newValue, "Phone") || newValue.length() == 0) {
                 phoneTextField.getStyleClass().remove("error");
             }
         });
@@ -198,8 +196,10 @@ public class KontoinstallningController implements Initializable {
             String cardType = checkCardType(newValue);
             cardTypeImageView.setImage(getCardTypeImage(cardType));
 
-            if (isValidValue(newValue, "CardType")) {
-                cardNumberTextField_1.getStyleClass().remove("error");
+            if (getCardNumber().length() == 0) {
+                removeCardNumberError();
+            } else if (getCardNumber().length() == 16 && isValidValue(newValue, "CardType")) {
+                removeCardNumberError();
             }
 
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
@@ -210,6 +210,10 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_2.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_2, oldValue, newValue, 4);
 
+            if (getCardNumber().length() == 0){
+                removeCardNumberError();
+            }
+
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardNumberTextField_3.requestFocus();
                 cardNumberTextField_3.positionCaret(4);
@@ -218,6 +222,9 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_3.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_3, oldValue, newValue, 4);
 
+            if (getCardNumber().length() == 0){
+                removeCardNumberError();
+            }
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardNumberTextField_4.requestFocus();
                 cardNumberTextField_4.positionCaret(4);
@@ -226,6 +233,10 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_4.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_4, oldValue, newValue, 4);
 
+            if (getCardNumber().length() == 0){
+                removeCardNumberError();
+            }
+
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardExpiryMonthTextField.requestFocus();
                 cardExpiryMonthTextField.positionCaret(2);
@@ -233,6 +244,10 @@ public class KontoinstallningController implements Initializable {
         });
         cardExpiryMonthTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryMonthTextField, oldValue, newValue, 2);
+
+            if (isValidValue(newValue, "Month") || newValue.length() == 0) {
+                cardExpiryMonthTextField.getStyleClass().remove("error");
+            }
 
             if (isInteger(newValue)) {
                 int month = Integer.parseInt(newValue);
@@ -245,8 +260,13 @@ public class KontoinstallningController implements Initializable {
         cardExpiryYearTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryYearTextField, oldValue, newValue, 2);
 
+            if (isValidValue(newValue, "Year") || newValue.length() == 0) {
+                cardExpiryYearTextField.getStyleClass().remove("error");
+            }
+
             if (isInteger(newValue)) {
                 int year = Integer.parseInt(newValue);
+
                 // hardcoded year value lmao
                 if (year >= 20 && newValue.length() == 2 && oldValue.length() != 3) {
                     CVVTextField.requestFocus();
@@ -256,6 +276,11 @@ public class KontoinstallningController implements Initializable {
         });
         CVVTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(CVVTextField, oldValue, newValue, 3);
+
+            if (isValidValue(newValue, "CVV") || newValue.length() == 0) {
+                CVVTextField.getStyleClass().remove("error");
+            }
+
         });
         //---------------------------------------------------------------------------------------------
     }
@@ -272,7 +297,7 @@ public class KontoinstallningController implements Initializable {
             customer.setPostCode(postNumberTextField.getText());
             card.setCardNumber(getCardNumber());
             card.setValidMonth((cardExpiryMonthTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryMonthTextField.getText()));
-            card.setValidYear((cardExpiryMonthTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
+            card.setValidYear((cardExpiryYearTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
             System.out.println("Account settings saved! Probably.");
         }
@@ -359,7 +384,9 @@ public class KontoinstallningController implements Initializable {
      */
     private boolean isReadyToSave() {
         boolean isReady = true;
-        if (getCardNumber().length() != 16 || !isValidValue(cardNumberTextField_1.getText(), "CardType")) {
+        int cardNumberLength = getCardNumber().length();
+        if ((cardNumberLength != 0 && !isValidValue(cardNumberTextField_1.getText(), "CardType")) ||
+                (cardNumberLength != 0 && cardNumberLength != 16)) {
             removeCardNumberError();
             setCardNumberError();
             isReady = false;
@@ -390,7 +417,7 @@ public class KontoinstallningController implements Initializable {
             eMailTextField.getStyleClass().add("error");
             isReady = false;
         }
-        if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostCode")) {
+        if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostNumber")) {
             postNumberTextField.getStyleClass().remove("error");
             postNumberTextField.getStyleClass().add("error");
             isReady = false;
@@ -447,6 +474,7 @@ public class KontoinstallningController implements Initializable {
     }
 
     private void setCardNumberError() {
+        removeCardNumberError();
         cardNumberTextField_1.getStyleClass().add("error");
         cardNumberTextField_2.getStyleClass().add("error");
         cardNumberTextField_3.getStyleClass().add("error");
