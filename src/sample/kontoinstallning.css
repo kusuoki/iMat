@@ -4,3 +4,9 @@
     -fx-background-color: white;
     -fx-text-fill: black;
 }
+
+.error {
+    -fx-border-color: red;
+    -fx-border-radius: 3;
+    -fx-focus-color: transparent;
+}

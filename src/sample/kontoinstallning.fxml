@@ -50,7 +50,7 @@
                   <TextField fx:id="cityTextField" layoutX="176.0" layoutY="190.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
                   <TextField fx:id="postNumberTextField" layoutX="176.0" layoutY="220.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />
                   <TextField fx:id="eMailTextField" layoutX="176.0" layoutY="291.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="example@mail.com" />
-                  <TextField fx:id="phoneTextField" layoutX="176.0" layoutY="321.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 735 22 1234, 0735221234..." />
+                  <TextField fx:id="phoneTextField" layoutX="176.0" layoutY="321.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 73 522 12 34, 0735221234..." />
                   <TextField fx:id="cardNumberTextField_1" alignment="CENTER" layoutX="176.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
                   <TextField fx:id="cardNumberTextField_2" alignment="CENTER" layoutX="231.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
                   <TextField fx:id="cardNumberTextField_3" alignment="CENTER" layoutX="286.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />

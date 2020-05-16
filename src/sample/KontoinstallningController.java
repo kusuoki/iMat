@@ -59,108 +59,150 @@ public class KontoinstallningController implements Initializable {
         updateInformation();
 
 
-        //--------------------------------------------------------------------------------------------
+        //--------------------------------no error handling on these-----------------------------------
         firstNameTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = lastNameTextField;
-            } else {
-                System.out.println("Textfield out focus");
             }
         });
         lastNameTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = adressTextField;
-            } else {
-                System.out.println("Textfield out focus");
             }
         });
         adressTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = cityTextField;
-            } else {
-                System.out.println("Textfield out focus");
             }
         });
         cityTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = postNumberTextField;
-            } else {
-                System.out.println("Textfield out focus");
             }
         });
+        //--------------------------------------------------------------------------------------------
         postNumberTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = eMailTextField;
-            } else {
-                System.out.println("Textfield out focus");
+            } else if (postNumberTextField.getText().length() != 0) {
+                postNumberTextField.getStyleClass().remove("error");
+                if (!isValidValue(postNumberTextField.getText(), "PostNumber")) {
+                    postNumberTextField.getStyleClass().add("error");
+                }
             }
         });
         eMailTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = phoneTextField;
-            } else {
-                System.out.println("Textfield out focus");
+            } else if (eMailTextField.getText().length() != 0) {
+                eMailTextField.getStyleClass().remove("error");
+                if (!isValidValue(eMailTextField.getText(), "Email")) {
+                    eMailTextField.getStyleClass().add("error");
+                }
             }
         });
         phoneTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
                 nextTextfield = cardNumberTextField_1;
-            } else {
-                System.out.println("Textfield out focus");
+            } else if (phoneTextField.getText().length() != 0) {
+                phoneTextField.getStyleClass().remove("error");
+                if (isValidValue(phoneTextField.getText(), "Phone")) {
+                    phoneTextField.setText(getFormattedPhoneNumber(phoneTextField.getText()));
+                } else {
+                    phoneTextField.getStyleClass().add("error");
+                }
             }
         });
         cardNumberTextField_1.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardNumberTextField_1.getText().length() != 0 && !isFocus) {
+                removeCardNumberError();
+                if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_1.getText().length() != 4) {
+                    setCardNumberError();
+                }
             }
         });
         cardNumberTextField_2.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardNumberTextField_2.getText().length() != 0 && !isFocus) {
+                removeCardNumberError();
+                if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_2.getText().length() != 4) {
+                    setCardNumberError();
+                }
             }
         });
         cardNumberTextField_3.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardNumberTextField_3.getText().length() != 0 && !isFocus) {
+                removeCardNumberError();
+                if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_3.getText().length() != 4) {
+                    setCardNumberError();
+                }
             }
         });
         cardNumberTextField_4.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardNumberTextField_4.getText().length() != 0 && !isFocus) {
+                removeCardNumberError();
+                if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_4.getText().length() != 4) {
+                    setCardNumberError();
+                }
             }
         });
         cardExpiryMonthTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardExpiryMonthTextField.getText().length() != 0 && !isFocus) {
+                cardExpiryMonthTextField.getStyleClass().remove("error");
+                if (isValidValue(cardExpiryMonthTextField.getText(), "Month")) {
+                    cardExpiryMonthTextField.setText(getMonth(Integer.parseInt(cardExpiryMonthTextField.getText())));
+                } else {
+                    cardExpiryMonthTextField.getStyleClass().add("error");
+                }
             }
         });
         cardExpiryYearTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-            if (isFocus) {
-                System.out.println("Textfield on focus");
-            } else {
-                System.out.println("Textfield out focus");
+            if (cardExpiryYearTextField.getText().length() != 0 && !isFocus) {
+                cardExpiryYearTextField.getStyleClass().remove("error");
+                if (!isValidValue(cardExpiryYearTextField.getText(), "Year")) {
+                    cardExpiryYearTextField.getStyleClass().add("error");
+                }
+            }
+        });
+        CVVTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
+            if (CVVTextField.getText().length() != 0 && !isFocus) {
+                CVVTextField.getStyleClass().remove("error");
+                if (isValidValue(CVVTextField.getText(), "CVV")) {
+                    CVVTextField.setText(getCVV(Integer.parseInt(CVVTextField.getText())));
+                } else {
+                    CVVTextField.getStyleClass().add("error");
+                }
             }
         });
 
 
         //---------------------------------------------------------------------------------------------
+        postNumberTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            numberOnlyTextField(postNumberTextField, oldValue, newValue, 5);
+            if (isValidValue(newValue, "PostNumber")) {
+                postNumberTextField.getStyleClass().remove("error");
+            }
+        });
+        eMailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (isValidValue(newValue, "Email")) {
+                eMailTextField.getStyleClass().remove("error");
+            }
+        });
+        phoneTextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (isValidValue(newValue, "Phone")) {
+                phoneTextField.getStyleClass().remove("error");
+            }
+        });
         cardNumberTextField_1.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_1, oldValue, newValue, 4);
 
             String cardType = checkCardType(newValue);
             cardTypeImageView.setImage(getCardTypeImage(cardType));
 
-            if (newValue.length() == 4 && oldValue.length() != 5) {
+            if (isValidValue(newValue, "CardType")) {
+                cardNumberTextField_1.getStyleClass().remove("error");
+            }
+
+            if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardNumberTextField_2.requestFocus();
                 cardNumberTextField_2.positionCaret(4);
             }
@@ -168,7 +210,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_2.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_2, oldValue, newValue, 4);
 
-            if (newValue.length() == 4 && oldValue.length() != 5) {
+            if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardNumberTextField_3.requestFocus();
                 cardNumberTextField_3.positionCaret(4);
             }
@@ -176,7 +218,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_3.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_3, oldValue, newValue, 4);
 
-            if (newValue.length() == 4 && oldValue.length() != 5) {
+            if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardNumberTextField_4.requestFocus();
                 cardNumberTextField_4.positionCaret(4);
             }
@@ -184,7 +226,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_4.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_4, oldValue, newValue, 4);
 
-            if (newValue.length() == 4 && oldValue.length() != 5) {
+            if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardExpiryMonthTextField.requestFocus();
                 cardExpiryMonthTextField.positionCaret(2);
             }
@@ -215,24 +257,25 @@ public class KontoinstallningController implements Initializable {
         CVVTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(CVVTextField, oldValue, newValue, 3);
         });
-
+        //---------------------------------------------------------------------------------------------
     }
 
     @FXML
     public void save() {
-        customer.setFirstName(firstNameTextField.getText());
-        customer.setLastName(lastNameTextField.getText());
-        customer.setAddress(adressTextField.getText());
-        customer.setPhoneNumber(phoneTextField.getText());
-        customer.setEmail(eMailTextField.getText());
-        customer.setPostAddress(cityTextField.getText());
-        customer.setPostCode(postNumberTextField.getText());
-        card.setCardNumber(getCardNumber());
-        card.setValidMonth(Integer.parseInt(cardExpiryMonthTextField.getText()));
-        card.setValidYear(Integer.parseInt(cardExpiryYearTextField.getText()));
-        card.setVerificationCode(Integer.parseInt(CVVTextField.getText()));
-
-        System.out.println("Account settings saved! I hope.");
+        if (isReadyToSave()) {
+            customer.setFirstName(firstNameTextField.getText());
+            customer.setLastName(lastNameTextField.getText());
+            customer.setAddress(adressTextField.getText());
+            customer.setPhoneNumber(getStrippedPhoneNumber(phoneTextField.getText()));
+            customer.setEmail(eMailTextField.getText());
+            customer.setPostAddress(cityTextField.getText());
+            customer.setPostCode(postNumberTextField.getText());
+            card.setCardNumber(getCardNumber());
+            card.setValidMonth((cardExpiryMonthTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryMonthTextField.getText()));
+            card.setValidYear((cardExpiryMonthTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
+            card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
+            System.out.println("Account settings saved! Probably.");
+        }
     }
 
     public void setStage(Stage stage, Parent mainPage, Parent listPage, Parent earlierPurchases, Parent customerServicePage, Parent paymentPage){
@@ -278,7 +321,7 @@ public class KontoinstallningController implements Initializable {
         nextTextfield.requestFocus();
     }
 
-    private void updateInformation() {
+    public void updateInformation() {
         StringBuilder sb = new StringBuilder();
 
         sb.append(card.getCardNumber()).append(customer.getAddress()).append(customer.getPostAddress())
@@ -298,14 +341,61 @@ public class KontoinstallningController implements Initializable {
         cityTextField.setText(customer.getPostAddress());
         postNumberTextField.setText(customer.getPostCode());
         eMailTextField.setText(customer.getEmail());
-        phoneTextField.setText(customer.getPhoneNumber());
+        phoneTextField.setText(getFormattedPhoneNumber(customer.getPhoneNumber()));
         cardNumberTextField_1.setText(getCardNumberBySection(1));
         cardNumberTextField_2.setText(getCardNumberBySection(2));
         cardNumberTextField_3.setText(getCardNumberBySection(3));
         cardNumberTextField_4.setText(getCardNumberBySection(4));
         cardExpiryYearTextField.setText(getYear(card.getValidYear()));
         cardExpiryMonthTextField.setText(getMonth(card.getValidMonth()));
-        CVVTextField.setText((card.getVerificationCode() > 99) ? String.valueOf(card.getVerificationCode()) : "");
+        CVVTextField.setText(getCVV(card.getVerificationCode()));
+    }
+
+    /*
+     * validate all input, ignores empty text field,
+     * and returns true if all text field are ready
+     *
+     * please don't look at this method
+     */
+    private boolean isReadyToSave() {
+        boolean isReady = true;
+        if (getCardNumber().length() != 16 || !isValidValue(cardNumberTextField_1.getText(), "CardType")) {
+            removeCardNumberError();
+            setCardNumberError();
+            isReady = false;
+        }
+
+        if (cardExpiryMonthTextField.getText().length() != 0 && !isValidValue(cardExpiryMonthTextField.getText(), "Month")) {
+            cardExpiryMonthTextField.getStyleClass().remove("error");
+            cardExpiryMonthTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        if (cardExpiryYearTextField.getText().length() != 0 && !isValidValue(cardExpiryYearTextField.getText(), "Year")) {
+            cardExpiryYearTextField.getStyleClass().remove("error");
+            cardExpiryYearTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        if (CVVTextField.getText().length() != 0 && !isValidValue(CVVTextField.getText(), "CVV")) {
+            CVVTextField.getStyleClass().remove("error");
+            CVVTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        if (phoneTextField.getText().length() != 0 && !isValidValue(phoneTextField.getText(), "Phone")) {
+            phoneTextField.getStyleClass().remove("error");
+            phoneTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        if (eMailTextField.getText().length() != 0 && !isValidValue(eMailTextField.getText(), "Email")) {
+            eMailTextField.getStyleClass().remove("error");
+            eMailTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostCode")) {
+            postNumberTextField.getStyleClass().remove("error");
+            postNumberTextField.getStyleClass().add("error");
+            isReady = false;
+        }
+        return isReady;
     }
 
     /*
@@ -349,6 +439,20 @@ public class KontoinstallningController implements Initializable {
         }
     }
 
+    private void removeCardNumberError() {
+        cardNumberTextField_1.getStyleClass().remove("error");
+        cardNumberTextField_2.getStyleClass().remove("error");
+        cardNumberTextField_3.getStyleClass().remove("error");
+        cardNumberTextField_4.getStyleClass().remove("error");
+    }
+
+    private void setCardNumberError() {
+        cardNumberTextField_1.getStyleClass().add("error");
+        cardNumberTextField_2.getStyleClass().add("error");
+        cardNumberTextField_3.getStyleClass().add("error");
+        cardNumberTextField_4.getStyleClass().add("error");
+    }
+
     private String getCardNumber() {
         return cardNumberTextField_1.getText()+cardNumberTextField_2.getText()
                 +cardNumberTextField_3.getText()+cardNumberTextField_4.getText();
@@ -366,16 +470,16 @@ public class KontoinstallningController implements Initializable {
 
         return switch (section) {
             case 1 -> fullLengthCardNumber.substring(0, 4);
-            case 2 -> fullLengthCardNumber.substring(3, 8);
-            case 3 -> fullLengthCardNumber.substring(7, 12);
-            case 4 -> fullLengthCardNumber.substring(11, 16);
+            case 2 -> fullLengthCardNumber.substring(4, 8);
+            case 3 -> fullLengthCardNumber.substring(8, 12);
+            case 4 -> fullLengthCardNumber.substring(12, 16);
             default -> "";
         };
     }
 
-    private boolean isInteger(String validMonth) {
+    private boolean isInteger(String str) {
         try {
-            Integer.parseInt(validMonth);
+            Long.parseLong(str);
         } catch (NumberFormatException e) {
             return false;
         }
@@ -398,6 +502,44 @@ public class KontoinstallningController implements Initializable {
         return String.valueOf(validYear);
     }
 
+    private String getCVV(int CVV) {
+        if (CVV == 0) {
+            return "";
+        } else if (CVV < 10) {
+            return "00"+CVV;
+        } else if (CVV < 100) {
+            return "0"+CVV;
+        }
+        return Integer.toString(CVV);
+    }
+
+    // assuming only whitespace, + and - are used in a phone number
+    private String getStrippedPhoneNumber(String phone) {
+        return phone.replace("-", "").replace("+", "").replaceAll("\\s","");
+    }
+
+    // format phone number into 072-222 33 44
+    private String getFormattedPhoneNumber(String phone) {
+        phone = getStrippedPhoneNumber(phone);
+        StringBuilder sb = new StringBuilder();
+
+        switch (phone.length()) {
+            case 9:
+                sb.append("0").append(phone, 0, 2).append("-")
+                        .append(phone, 2, 5).append(" ").append(phone, 5, 7)
+                        .append(" ").append(phone, 7, 9);
+                break;
+            case 10:
+                sb.append(phone, 0, 3).append("-").append(phone,3, 6)
+                        .append(" ").append(phone, 6, 8).append(" ").append(phone, 8, 10);
+                break;
+            case 11:
+                sb.append("0").append(phone, 2, 4).append("-").append(phone, 4, 7)
+                        .append(" ").append(phone, 7, 9).append(" ").append(phone, 9, 11);
+        }
+        return sb.toString();
+    }
+
     /*
      *  by adding this as a textfield's listener will make the textfield numeric,
      *  the textfield will therefor only accept numbers
@@ -409,6 +551,63 @@ public class KontoinstallningController implements Initializable {
 
         if (newValue.length() > digitCount) {
             tf.setText(oldValue);
+        }
+    }
+
+    // should probably divide this into different methods
+    private boolean isValidValue(String value, String textField) {
+        switch (textField) {
+            case "PostNumber": {
+                if (isInteger(value)) {
+                    int postNumber = Integer.parseInt(value);
+                    return postNumber > 9999;
+                }
+                return false;
+            }
+            case "Email": {
+                String[] strArr1 = value.split("@");
+                if (strArr1.length == 2) {
+                    String[] strArr2 = strArr1[1].split("\\.");
+                    return strArr2.length == 2 && strArr2[1].length() > 1;
+                }
+                return false;
+            }
+            case "Phone": { // mobile phone number format
+                String strippedValue = getStrippedPhoneNumber(value);
+                if (isInteger(strippedValue)) {
+                    switch (strippedValue.length()) {
+                        case 11: return strippedValue.startsWith("467");
+                        case 10: return strippedValue.startsWith("07");
+                        case 9: return strippedValue.startsWith("7");
+                    }
+                }
+                return false;
+            }
+            case "CardType": {
+                return checkCardType(value).length() != 0;
+            }
+            case "Month": {
+                if (isInteger(value)) {
+                    int month = Integer.parseInt(value);
+                    return month > 0 && month <= 12;
+                }
+                return false;
+            }
+            case "Year": {
+                if (isInteger(value)) {
+                    int year = Integer.parseInt(value);
+                    return year >= 20;
+                }
+                return false;
+            }
+            case "CVV": {
+                if (isInteger(value)) {
+                    int CVV = Integer.parseInt(value);
+                    return CVV != 0;
+                }
+                return false;
+            }
+            default: return false;
         }
     }
 }
