@@ -1,14 +1,16 @@
 package sample;
 
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
-import javafx.util.Duration;
+import javafx.event.ActionEvent;
+import javafx.scene.Parent;
+import javafx.stage.Stage;
+
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
@@ -34,6 +36,15 @@ public class KontoinstallningController implements Initializable {
     private Model handler = Model.getInstance();
     private CreditCard card;
     private Customer customer;
+
+    private Stage stage;
+    private Parent mainPage;
+    private Parent listPage;
+    private Parent earlierPurchases;
+    private Parent customerServicePage;
+    private Parent paymentPage;
+    private BackButton backButton = BackButton.getBackButton();
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -210,4 +221,45 @@ public class KontoinstallningController implements Initializable {
         }
         return String.valueOf(validYear);
     }
+
+    public void setStage(Stage stage, Parent mainPage, Parent listPage, Parent earlierPurchases, Parent customerServicePage, Parent paymentPage){
+        this.stage=stage;
+        this.mainPage=mainPage;
+        this.listPage=listPage;
+        this.earlierPurchases=earlierPurchases;
+        this.customerServicePage=customerServicePage;
+        this.paymentPage=paymentPage;
+    }
+
+
+    @FXML
+    public void onHomeButtonClick(ActionEvent actionEvent){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(mainPage);
+    }
+    @FXML
+    public void onListPageClick(ActionEvent actionEvent){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(listPage);
+    }
+    @FXML
+    public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(earlierPurchases);
+    }@FXML
+    public void onCustomerServicePageClick(ActionEvent actionEvent){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(customerServicePage);
+    }
+    @FXML
+    public void onPaymentPageClick(ActionEvent actionEvent){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(paymentPage);
+    }
+
+    @FXML
+    public void onBackButtonClick(ActionEvent actionEvent){
+        backButton.goBack();
+    }
+
 }
