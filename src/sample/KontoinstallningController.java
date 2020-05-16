@@ -138,7 +138,7 @@ public class KontoinstallningController implements Initializable {
         });
 
     }
-    
+
 
     private void numberOnlyTextField(TextField tf, String oldValue, String newValue, int digitCount) {
         if (!newValue.matches("\\d*")) {
@@ -150,16 +150,33 @@ public class KontoinstallningController implements Initializable {
         }
     }
 
+    @FXML
+    public void save() {
+        customer.setFirstName(firstNameTextField.getText());
+        customer.setLastName(lastNameTextField.getText());
+        customer.setAddress(adressTextField.getText());
+        customer.setPhoneNumber(phoneTextField.getText());
+        customer.setEmail(eMailTextField.getText());
+        customer.setPostAddress(cityTextField.getText());
+        customer.setPostCode(postNumberTextField.getText());
+        card.setCardNumber(cardNumberTextField.getText());
+        card.setValidMonth(Integer.parseInt(cardExpiryMonthTextField.getText()));
+        card.setValidYear(Integer.parseInt(cardExpiryYearTextField.getText()));
+        card.setVerificationCode(Integer.parseInt(CVVTextField.getText()));
+
+        System.out.println("Account settings saved! I hope.");
+    }
+
 
     private void updateInformation(){
         StringBuilder sb = new StringBuilder();
 
-        sb.append(card.getCardNumber()).append(card.getValidMonth()).append(card.getValidYear())
-                .append(customer.getAddress()).append(customer.getPostAddress())
+        sb.append(card.getCardNumber()).append(customer.getAddress()).append(customer.getPostAddress())
                 .append(customer.getEmail()).append(customer.getFirstName()).append(customer.getLastName())
                 .append(customer.getPhoneNumber()).append(customer.getPostCode());
 
-        if (sb.toString().length() == 0 && card.getVerificationCode() > 99) {
+        if (sb.toString().length() == 0 &&
+                (card.getVerificationCode() + card.getValidYear() + card.getValidMonth()) == 0) {
             labelSparadeUppgifter.setText("Du har inga sparade uppgifter.");
         } else {
             labelSparadeUppgifter.setText("Nedan är dina sparade uppgifter.");
@@ -167,8 +184,8 @@ public class KontoinstallningController implements Initializable {
 
         firstNameTextField.setText(customer.getFirstName());
         lastNameTextField.setText(customer.getLastName());
-        adressTextField.setText(getStreetAddress(customer.getAddress()));
-        cityTextField.setText(getCity(customer.getAddress()));
+        adressTextField.setText(customer.getAddress());
+        cityTextField.setText(customer.getPostAddress());
         postNumberTextField.setText(customer.getPostCode());
         eMailTextField.setText(customer.getEmail());
         phoneTextField.setText(customer.getPhoneNumber());
@@ -192,16 +209,5 @@ public class KontoinstallningController implements Initializable {
             return "";
         }
         return String.valueOf(validYear);
-    }
-
-    // customer.getAddress() combines streetAddress and city
-    private String getStreetAddress(String address) { return address.split(";", 2)[0]; }
-
-    private String getCity(String address) {
-        String[] strArr = address.split(";", 2);
-        if (strArr.length > 1) {
-            return strArr[1];
-        }
-        return strArr[0];
     }
 }
