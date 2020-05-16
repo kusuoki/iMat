@@ -153,8 +153,8 @@
                         </Label>
                     </children>
                 </Pane>
-                <TextField prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
-                <Button fx:id="buttonSok" mnemonicParsing="false" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
+                <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
+                <Button fx:id="buttonSok" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
                     <font>
                         <Font size="14.0" />
                     </font>

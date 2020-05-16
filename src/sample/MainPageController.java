@@ -2,12 +2,12 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
-import java.awt.*;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
@@ -16,7 +16,6 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.*;
 import java.util.List;
 
@@ -61,7 +60,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
     ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
 
-    @FXML TextField searchField;
+    @FXML
+    TextField searchField;
 
     //AnchorPane som ligger som grund till allt i MainPage
     @FXML
@@ -214,7 +214,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onSearch() {
         List<ProductA> searchList = model.findProducts(searchField.getText());
-        updateProductList(searchList);
+        
+        //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
+        //updateProductList(searchList);
+
+        //TODO: VISAR ENDAST DE FÖRSTA 8 VARORNA NU ANNARS LAGGAR DET
+        List<ProductA> first8ItemsInList;
+        if (searchList.size() > 8) {
+            first8ItemsInList = searchList.subList(0, 8);
+        } else {
+            first8ItemsInList = searchList;
+        }
+
+        displayListItemFromList(first8ItemsInList);
     }
 
 
@@ -254,6 +266,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void onMenyHoover() {
     }
 
+    //TODO: ANVÄNDS INTE LÄNGRE, använder istället displayListItemFromList(searchList)
     //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
     private void updateProductList(List<ProductA> searchList) {
 /*productsFlowPane.getChildren().clear();
@@ -300,11 +313,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         totalQuantityLabel.setText(quantity + " varor");
     }
 
-    double roundTo2Decimals(double val) {
-        DecimalFormat df2 = new DecimalFormat("###.##");
-        return Double.valueOf(df2.format(val));
-    }
-
     private void displayListItemByCategory(String category){
         listItems.clear();
 
@@ -322,6 +330,17 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         listItems.clear();
 
         List<ProductA> productList = model.getFavorites();
+        for (ProductA p : productList){
+            ListItem item = new ListItem(p, model);
+            listItems.add(item);
+        }
+
+        displayListItems();
+    }
+
+    private void displayListItemFromList(List<ProductA> productList){
+        listItems.clear();
+
         for (ProductA p : productList){
             ListItem item = new ListItem(p, model);
             listItems.add(item);
