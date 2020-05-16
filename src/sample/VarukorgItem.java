@@ -45,7 +45,8 @@ public class VarukorgItem extends AnchorPane {
     public void updateThisItem(){
         labelVarukorgAntal.setText(Integer.toString( (int) shoppingItem.getAmount() ));
         labelVarukorgVara.setText(shoppingItem.getProduct().getName());
-        labelVarukorgPris.setText(Double.toString(shoppingItem.getTotal() ) + "kr");
+        double roundedTotal = Math.round(shoppingItem.getTotal()*100.0)/100.0;
+        labelVarukorgPris.setText(roundedTotal + "kr");
     }
 
     @FXML
