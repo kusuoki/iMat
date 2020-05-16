@@ -16,7 +16,7 @@
             <children>
                 <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;">
                <children>
-                  <Button fx:id="sparaButton" layoutX="516.0" layoutY="452.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #144f2c;" text="Spara" textFill="WHITE" />
+                  <Button fx:id="sparaButton" layoutX="516.0" layoutY="452.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="107.0" style="-fx-background-color: #144f2c;" text="Spara" textFill="WHITE" />
                   <Label fx:id="labelSparadeUppgifter" layoutX="29.0" layoutY="15.0" text="Label" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="325.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="194.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
@@ -44,17 +44,20 @@
                   </Label>
                   <Label alignment="CENTER_RIGHT" layoutX="29.0" layoutY="134.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="224.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                  <TextField fx:id="eMailTextField" layoutX="176.0" layoutY="291.0" prefHeight="25.0" prefWidth="324.0" promptText="example@mail.com" />
-                  <TextField fx:id="phoneTextField" layoutX="176.0" layoutY="321.0" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 735 22 1234, 0735221234..." />
-                  <TextField fx:id="lastNameTextField" layoutX="176.0" layoutY="130.0" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Trump" />
-                  <TextField fx:id="adressTextField" layoutX="176.0" layoutY="160.0" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Katerinesbergsgatan 11C" />
-                  <TextField fx:id="cardNumberTextField" layoutX="176.0" layoutY="392.0" prefHeight="25.0" prefWidth="324.0" promptText="1234 1234 1234 1234" />
-                  <TextField fx:id="cityTextField" layoutX="176.0" layoutY="190.0" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
-                  <TextField fx:id="postNumberTextField" layoutX="176.0" layoutY="220.0" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />
-                  <TextField fx:id="cardExpiryMonthTextField" layoutX="176.0" layoutY="422.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
-                  <TextField fx:id="CVVTextField" layoutX="425.0" layoutY="422.0" prefHeight="25.0" prefWidth="36.0" promptText="123" />
-                  <TextField fx:id="firstNameTextField" layoutX="176.0" layoutY="100.0" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Donald" />
-                  <TextField fx:id="cardExpiryYearTextField" layoutX="213.0" layoutY="422.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                  <TextField fx:id="firstNameTextField" layoutX="176.0" layoutY="100.0" onAction="#goToNextTextField" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Donald" />
+                  <TextField fx:id="lastNameTextField" layoutX="176.0" layoutY="130.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Trump" />
+                  <TextField fx:id="adressTextField" layoutX="176.0" layoutY="160.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Katerinesbergsgatan 11C" />
+                  <TextField fx:id="cityTextField" layoutX="176.0" layoutY="190.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
+                  <TextField fx:id="postNumberTextField" layoutX="176.0" layoutY="220.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />
+                  <TextField fx:id="eMailTextField" layoutX="176.0" layoutY="291.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="example@mail.com" />
+                  <TextField fx:id="phoneTextField" layoutX="176.0" layoutY="321.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 735 22 1234, 0735221234..." />
+                  <TextField fx:id="cardNumberTextField_1" alignment="CENTER" layoutX="176.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                  <TextField fx:id="cardNumberTextField_2" alignment="CENTER" layoutX="231.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                  <TextField fx:id="cardNumberTextField_3" alignment="CENTER" layoutX="286.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                  <TextField fx:id="cardNumberTextField_4" alignment="CENTER" layoutX="341.0" layoutY="392.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                  <TextField fx:id="cardExpiryMonthTextField" alignment="CENTER" layoutX="176.0" layoutY="422.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                  <TextField fx:id="cardExpiryYearTextField" alignment="CENTER" layoutX="213.0" layoutY="422.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                  <TextField fx:id="CVVTextField" alignment="CENTER" layoutX="425.0" layoutY="422.0" prefHeight="25.0" prefWidth="36.0" promptText="123" />
                   <Label layoutX="206.0" layoutY="421.0" text="/">
                      <font>
                         <Font size="18.0" />
@@ -76,6 +79,27 @@
                         </Tooltip>
                      </tooltip>
                   </Button>
+                  <Label alignment="CENTER" layoutX="219.0" layoutY="387.0" prefHeight="35.0" prefWidth="14.0" text="-">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="270.0" layoutY="387.0" prefHeight="35.0" prefWidth="21.0" text="-">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="321.0" layoutY="387.0" prefHeight="35.0" prefWidth="30.0" text="-">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label contentDisplay="RIGHT" layoutX="421.0" layoutY="396.0" text="Korttyp:" />
+                  <ImageView fx:id="cardTypeImageView" fitHeight="25.0" fitWidth="45.0" layoutX="467.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/Icons/unknown_card.png" />
+                     </image>
+                  </ImageView>
                </children></Pane>
             <Label layoutX="222.0" layoutY="10.0" text="Kontoinställningar" textFill="WHITE">
                <font>
