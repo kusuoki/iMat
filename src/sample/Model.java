@@ -154,6 +154,10 @@ public class Model {
 
     }
 
+    public void removeFavorite(Product p){
+        iMatDataHandler.removeFavorite(p);
+    }
+
     public List<ProductA> getFavorites() {
         return productHandler.getProductAList(iMatDataHandler.favorites());
     }

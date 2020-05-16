@@ -66,7 +66,7 @@
                                 <Button fx:id="buttonMejeri" layoutX="1.0" layoutY="394.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="225.0" styleClass="menuButton" text="Mejeriprodukter &amp; Ägg" />
                                 <Button fx:id="buttonSkafferi" layoutX="1.0" layoutY="443.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="225.0" styleClass="menuButton" text="Skafferi" />
                             </children>
-                            <Pane fx:id="paneIndicatorEbjudanden" layoutX="1.0" layoutY="2.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                            <Pane fx:id="paneIndicatorErbjudanden" layoutX="1.0" layoutY="2.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                             <Pane fx:id="paneIndicatorFavoriter" layoutX="1.0" layoutY="51.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                             <Pane fx:id="paneIndicatorBaljvaxter" layoutX="1.0" layoutY="100.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                             <Pane fx:id="paneIndicatorSotsaker" layoutX="1.0" layoutY="149.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
