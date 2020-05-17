@@ -37,6 +37,13 @@ public class KundserviceController implements Initializable {
         backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(mainPage);
     }
+
+    @FXML void onHomeButtonClickIcon(){
+        backButton.addToBackList(stage.getScene().getRoot());
+        stage.getScene().setRoot(mainPage);
+    }
+
+
     @FXML
     public void onListPageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());

@@ -142,6 +142,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 stage.getScene().setRoot(mainPage);
 
         }
+        //När man trycker på ikonen på hemknappen... enklare att lösa så här eftersom metoden ovanför kräver ett event och klickar man på ikonen fås inget event...
+        @FXML void onHomeButtonClickIcon(){
+                stage.getScene().setRoot(mainPage);
+        }
+
+
         //När man klickar på första nästa
         @FXML
         public void onNextClick1() {

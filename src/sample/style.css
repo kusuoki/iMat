@@ -1,19 +1,19 @@
-#root{
-/*-fx-border-style: solid;
--fx-border: none;*/
--fx-focus-color: #00692a;  /*kanske inte detta, kan bli otydligt för keyboard only users*/
+#root {
+    /*-fx-border-style: solid;
+    -fx-border: none;*/
+    -fx-focus-color: #00692a; /*kanske inte detta, kan bli otydligt för keyboard only users*/
 }
 
-.links{
-    -fx-font-size: 14 px;
+.links {
+    -fx-font-size: 14px;
     -fx-underline: true;
 }
 
-.links:hover{
--fx-font-weight: bold;
+.links:hover {
+    -fx-font-weight: bold;
 }
 
-.varukorgTotal{
+.varukorgTotal {
     -fx-font-family: Lato;
     -fx-font-size: 15px;
     -fx-text-fill: #000000;
@@ -28,8 +28,8 @@
 }
 
 .menuButton {
--fx-background-color: white;
--fx-background-radius: 0px;
+    -fx-background-color: white;
+    -fx-background-radius: 0px;
     -fx-pref-width: 225px;
     -fx-pref-height: 47px;
     -fx-font-size: 15px;
@@ -62,44 +62,47 @@
     -fx-alignment: center;
 }
 
-.menuButtonIndicator{
+.menuButtonIndicator {
     -fx-background-color: white;
 }
-.menuButtonIndicatorActivated{
+
+.menuButtonIndicatorActivated {
     -fx-background-color: #51B479;
 }
 
-.payButton{
-    -fx-background-color:#FFB422;
+.payButton {
+    -fx-background-color: #FFB422;
     -fx-background-radius: 0px;
     -fx-font-size: 18px;
 }
 
-.payButton:hover{
+.payButton:hover {
     -fx-background-color: #51B479; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
 }
+
 .payButton:pressed {
     -fx-background-color: #53996f; /*kanske ändra denna färg. ser ut som att man inte ska kunna klicka på den*/
 }
 
-.topMenuButton{
--fx-background-radius: 0px;
--fx-background-color:  #144f2c;
--fx-border-color: white;
--fx-border-width: 1px;
--fx-background-insets: 1px, 1px, 1px, 1px;
+.topMenuButton {
+    -fx-background-radius: 0px;
+    -fx-background-color: #144f2c;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1px, 1px, 1px, 1px;
     -fx-font-size: 15px;
 }
 
-.topMenuButton:hover{
-    -fx-background-color:  #00692a;
+.topMenuButton:hover {
+    -fx-background-color: #00692a;
 }
 
-.filterButton{
-    -fx-background-color:  #144f2c;
+.filterButton {
+    -fx-background-color: #144f2c;
     -fx-background-radius: 0px;
 }
-.filterButton:hover{
+
+.filterButton:hover {
     -fx-background-color: #51B479;
     -fx-background-insets: 0px, 0px, 1px, 0px;
     -fx-border-style: solid;
@@ -107,16 +110,16 @@
     -fx-font-size: 18px;
 }
 
-.searchButton{
+.searchButton {
     -fx-background-color: #00692a;
     -fx-background-radius: 0px;
 }
 
-.searchButton:hover{
+.searchButton:hover {
     -fx-background-color: #144f2c;
 }
 
-.topMenuButtonOnClick{
+.topMenuButtonOnClick {
     -fx-background-radius: 0px;
     -fx-background-color: #002D12;
     -fx-border-color: white;
@@ -124,11 +127,19 @@
     -fx-background-insets: 1px, 1px, 1px, 1px;
 }
 
-.nonRoundedButton{
--fx-background-radius: 0px;
+.nonRoundedButton {
+    -fx-background-radius: 0px;
 }
 
 
-.subMenu{
+.subMenu {
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 2, 2);
+}
+
+.mainpageBoxBorder {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.6, 1, 1);
+}
+
+.backToStoreButton {
+    -fx-background-radius: 20;
 }
