@@ -33,12 +33,12 @@ public class Main extends Application {
         FXMLLoader kundServiceLoader = new FXMLLoader();
         kundServiceLoader.setLocation(getClass().getResource("kundservice.fxml"));
         Parent kundservice = kundServiceLoader.load();
-         //kundserviceC = betalLoader.getController();
+         KundserviceController kundC = kundServiceLoader.getController();
 
         FXMLLoader listorLoader = new FXMLLoader();
         listorLoader.setLocation(getClass().getResource("listor.fxml"));
         Parent listor  =listorLoader.load();
-       // ListorController listorC = f.getController();
+        ListorController listorC = listorLoader.getController();
 
         FXMLLoader kontoLoader = new FXMLLoader();
         kontoLoader.setLocation(getClass().getResource("kontoinstallning.fxml"));
@@ -58,6 +58,8 @@ public class Main extends Application {
         betalC.setStage(primaryStage,root);
         tidigareKopC.setStage(primaryStage,root,listor,konto,kundservice,betal);
         kontoC.setStage(primaryStage,root,listor,tidigareKop,kundservice,betal);
+        listorC.setStage(primaryStage,root,kundservice,tidigareKop,konto,betal);
+        kundC.setStage(primaryStage,root,listor,tidigareKop,konto,betal);
 
     }
 
