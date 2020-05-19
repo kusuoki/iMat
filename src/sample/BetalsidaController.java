@@ -18,13 +18,14 @@ import java.awt.*;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class BetalsidaController implements Initializable, ShoppingCartListener {
 
         private final Model model = Model.getInstance();
-        @FXML TextField searchField;
         @FXML private AnchorPane anchorPaneBekraftaKundvagn;
         @FXML private AnchorPane anchorPaneKontakt;
         @FXML private AnchorPane anchorPaneBetalningsuppgifter;
@@ -43,6 +44,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private ComboBox comboAffar;
         @FXML private FlowPane flowPaneBekrafta;
         private ShoppingCart shoppingCart = model.getShoppingCart();
+        private Map<String, BetalsidaItem> betalsidaItemMap = new HashMap<String, BetalsidaItem>();
 
         //Används för att sätta denna till kontroller för mainpage.fxml
         @Override
@@ -191,13 +193,24 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         {
                 if (shoppingCart.getItems().size() != 0)
                 {
-                        System.out.println(shoppingCart.getItems().size());
-                        for (int i = 1; i < shoppingCart.getItems().size(); i++) {
 
-                                flowPaneBekrafta.getChildren().add(new BetalsidaItem(model.getInstance().getProduct(i), model));
-                                model.getShoppingCart();
+                        for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
+                                BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
+                                betalsidaItemMap.put(shoppingItem.getProduct().getName(), betalsidaItem);
+                        }
+                        flowPaneBekrafta.getChildren().clear();
+                        List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
+                        for (ShoppingItem shoppingItem : shoppingItems)
+                        {
+                                flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
                         }
                 }
+
+        }
+
+        public Map<String, BetalsidaItem> getHashMap()
+        {
+                return betalsidaItemMap;
         }
 
         @Override
