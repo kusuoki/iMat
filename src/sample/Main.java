@@ -1,11 +1,13 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 public class Main extends Application {
@@ -52,6 +54,12 @@ public class Main extends Application {
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1377, 750));
         primaryStage.getIcons().add(new Image("sample/resources/Icons/burger.png"));
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Model.getInstance().shutDown();
+            }
+        });
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();
