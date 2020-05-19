@@ -88,13 +88,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private List<ListItem> listItems = new ArrayList<>();
 
 
-    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
         this.konto = konto;
         this.kundservice = kundservice;
-        this.tidigarekop = tidigarekop;
-        this.listor = listor;
 
 
     }

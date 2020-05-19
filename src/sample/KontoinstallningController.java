@@ -303,11 +303,9 @@ public class KontoinstallningController implements Initializable {
         }
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent listPage, Parent earlierPurchases, Parent customerServicePage, Parent paymentPage){
+    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
         this.stage=stage;
         this.mainPage=mainPage;
-        this.listPage=listPage;
-        this.earlierPurchases=earlierPurchases;
         this.customerServicePage=customerServicePage;
         this.paymentPage=paymentPage;
     }

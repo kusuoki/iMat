@@ -24,21 +24,21 @@ public class Main extends Application {
         betalLoader.setLocation(getClass().getResource("betalsida.fxml"));
         Parent betal=betalLoader.load(); //ader.load();
         BetalsidaController betalC = betalLoader.getController();
-
+/*
         FXMLLoader tidigareKopLoader = new FXMLLoader();
         tidigareKopLoader.setLocation(getClass().getResource("tidigarekop.fxml"));
         Parent tidigareKop  =tidigareKopLoader.load();
         TidigareKopController tidigareKopC = tidigareKopLoader.getController();
-
+*/
         FXMLLoader kundServiceLoader = new FXMLLoader();
         kundServiceLoader.setLocation(getClass().getResource("kundservice.fxml"));
         Parent kundservice = kundServiceLoader.load();
          KundserviceController kundC = kundServiceLoader.getController();
-
+/*
         FXMLLoader listorLoader = new FXMLLoader();
         listorLoader.setLocation(getClass().getResource("listor.fxml"));
         Parent listor  =listorLoader.load();
-        ListorController listorC = listorLoader.getController();
+        ListorController listorC = listorLoader.getController();*/
 
         FXMLLoader kontoLoader = new FXMLLoader();
         kontoLoader.setLocation(getClass().getResource("kontoinstallning.fxml"));
@@ -54,12 +54,12 @@ public class Main extends Application {
         //primaryStage.setMaximized(true);
         primaryStage.show();
         BackButton.getBackButton().setStage(primaryStage);
-        mainPagec.setStage(primaryStage,betal,konto,kundservice,tidigareKop,listor);
+        mainPagec.setStage(primaryStage,betal,konto,kundservice);
         betalC.setStage(primaryStage,root);
-        tidigareKopC.setStage(primaryStage,root,listor,konto,kundservice,betal);
-        kontoC.setStage(primaryStage,root,listor,tidigareKop,kundservice,betal);
-        listorC.setStage(primaryStage,root,kundservice,tidigareKop,konto,betal);
-        kundC.setStage(primaryStage,root,listor,tidigareKop,konto,betal);
+
+        kontoC.setStage(primaryStage,root,kundservice,betal);
+
+        kundC.setStage(primaryStage,root,konto,betal);
 
     }
 
