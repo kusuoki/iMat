@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
@@ -50,6 +51,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1377, 750));
+        primaryStage.getIcons().add(new Image("sample/resources/Icons/burger.png"));
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();
