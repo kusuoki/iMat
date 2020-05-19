@@ -141,11 +141,16 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onHomeClick(ActionEvent event){
                 stage.getScene().setRoot(mainPage);
+                model.getShoppingCart().clear();
+                anchorPaneBekraftaKundvagn.toFront();
 
         }
         //När man trycker på ikonen på hemknappen... enklare att lösa så här eftersom metoden ovanför kräver ett event och klickar man på ikonen fås inget event...
         @FXML void onHomeButtonClickIcon(){
                 stage.getScene().setRoot(mainPage);
+                buttonTidigareKop.toFront();
+                anchorPaneBekraftaKundvagn.toFront();
+
         }
 
 

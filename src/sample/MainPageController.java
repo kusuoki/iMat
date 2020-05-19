@@ -113,6 +113,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuItems();
 
 
+
         displayListItemByCategory("Frukt & Grönt");
 
         /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
