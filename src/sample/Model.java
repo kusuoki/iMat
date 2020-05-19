@@ -162,6 +162,10 @@ public class Model {
         iMatDataHandler.removeFavorite(p);
     }
 
+    public boolean isFavorite(Product p) {
+        return iMatDataHandler.isFavorite(p);
+    }
+
     public List<ProductA> getFavorites() {
         return productHandler.getProductAList(iMatDataHandler.favorites());
     }
@@ -184,7 +188,9 @@ public class Model {
             @Override
             public void handle(MouseEvent mouseEvent) {
                 iv.setCursor(Cursor.DEFAULT);
-                iv.setImage(beforeHover);
+                if (afterHover != null) {
+                    iv.setImage(beforeHover);
+                }
             }
         });
     }

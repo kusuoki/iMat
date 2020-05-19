@@ -43,7 +43,7 @@
                             </image>
                         </ImageView>
                         <Circle fill="#ffb422" layoutX="72.0" layoutY="76.0" radius="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
-                        <ImageView fx:id="imageViewMainLightboxFavourite" fitHeight="45.0" fitWidth="39.0" layoutX="594.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageViewMainLightboxFavourite" fitHeight="45.0" fitWidth="39.0" layoutX="594.0" layoutY="203.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@resources/Icons/ic_favorite_border_red_48d.png" />
                             </image>

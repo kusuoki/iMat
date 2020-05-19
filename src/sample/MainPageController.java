@@ -72,7 +72,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML ImageView imageViewMainLightboxFavourite;
     @FXML Label labelMainLightboxPrice;
 
-    ProductA currentLightboxProduct;
+    ListItem currentLightboxItem;
 
     ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
@@ -287,6 +287,17 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    public void favorite() {
+        boolean isFavorite = model.isFavorite(currentLightboxItem.product);
+        if (isFavorite) {
+            currentLightboxItem.unFavorite();
+        } else {
+            currentLightboxItem.favorite();
+        }
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
+    }
+
+    @FXML
     public void lightBoxToFront() {
         anchorPaneMainLightbox.toFront();
     }
@@ -296,15 +307,23 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         anchorPaneMainPage.toFront();
     }
 
-    public void openLightBox(ProductA product) {
-        currentLightboxProduct = product;
-        imageViewMainLightboxImage.setImage(model.getImage(product));
-        labelMainLightboxVara.setText(product.getName());
-        labelMainLightboxPrisPaket.setText(product.getPrice() + " " + product.getUnit());
-        labelMainLightboxPrice.setText(String.valueOf(product.getPrice()));
+    public void openLightBox(ListItem item) {
+        currentLightboxItem = item;
+        imageViewMainLightboxImage.setImage(model.getImage(item.product));
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
+        labelMainLightboxVara.setText(item.product.getName());
+        labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
+        labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()));
         labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
         lightBoxToFront();
+    }
+
+    public Image getFavoriteImage(boolean isFavorite) {
+        if (!isFavorite) {
+            return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
+        }
+        return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
     }
 
     //När man hoovrar över menyn

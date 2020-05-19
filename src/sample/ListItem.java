@@ -144,6 +144,6 @@ public class ListItem extends AnchorPane {
 
     @FXML
     void openDetailedView() {
-        parentController.openLightBox(product);
+        parentController.openLightBox(this);
     }
 }
