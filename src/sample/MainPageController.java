@@ -79,6 +79,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
 
     @FXML
+    Label labelVarusida;
+    @FXML
+    Label labelPreviousPage;
+    @FXML
+    Label labenNextPage;
+
+    @FXML
     TextField searchField;
 
     //AnchorPane som ligger som grund till allt i MainPage
@@ -103,16 +110,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     BackButton backButton=BackButton.getBackButton();
 
-    private List<ListItem> listItems = new ArrayList<>();
+    private List<ListItem> currentListWithItems = new ArrayList<>();
+    private List<ListItem> list8Items = new ArrayList<>();
+    int currentPage;
+    int lastPage;
 
-
-    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
         this.konto = konto;
         this.kundservice = kundservice;
-        this.tidigarekop = tidigarekop;
-        this.listor = listor;
 
 
     }
@@ -237,6 +244,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
         //updateProductList(searchList);
 
+        /*
         //TODO: VISAR ENDAST DE FÖRSTA 8 VARORNA NU ANNARS LAGGAR DET
         List<ProductA> first8ItemsInList;
         if (searchList.size() > 8) {
@@ -245,7 +253,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             first8ItemsInList = searchList;
         }
 
-        displayListItemFromList(first8ItemsInList);
+         */
+
+        displayListItemFromList(searchList);
     }
 
 
@@ -264,7 +274,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar, bilder på pilar och hela nya undermenyvyn
                 }
             }
-
         }
             System.out.println(b.getStyleClass());
             if (b.getStyleClass().toString().equals("menuButtonClicked")) {
@@ -332,9 +341,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         displayListItems();
-
-
-
         updateShoppingCartPriceAndQuantity();
     }
 
@@ -351,49 +357,78 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     private void displayListItemByCategory(String category){
-        listItems.clear();
+        list8Items.clear();
+        currentListWithItems.clear();
+        currentPage = 0;
 
         List<ProductA> productList = model.getProducts(category);
 
         for (ProductA p : productList){
             ListItem item = new ListItem(p, model, this);
-            listItems.add(item);
+            currentListWithItems.add(item);
         }
 
-        displayListItems();
-    }
-
-    private void displayListItemFavorites(){
-        listItems.clear();
-
-        List<ProductA> productList = model.getFavorites();
-        for (ProductA p : productList){
-            ListItem item = new ListItem(p, model, this);
-            listItems.add(item);
+        lastPage = currentListWithItems.size() / 8;
+        if (currentListWithItems.size() % 8 != 0 ) {
+            lastPage++;
         }
 
         displayListItems();
     }
 
     private void displayListItemFromList(List<ProductA> productList){
-        listItems.clear();
+        list8Items.clear();
+        currentListWithItems.clear();
+        currentPage = 0;
 
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model,this);
-            listItems.add(item);
+            ListItem item = new ListItem(p, model, this);
+            currentListWithItems.add(item);
+        }
+
+        lastPage = currentListWithItems.size() / 8;
+        if (currentListWithItems.size() % 8 != 0 ) {
+            lastPage++;
         }
 
         displayListItems();
     }
 
-
-
     private void displayListItems() {
         flowPaneMainPage.getChildren().clear();
-        for (ListItem item : listItems){
+        updateListWith8ItemsFromCurrent();
+        labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+
+        for (ListItem item : list8Items){
             flowPaneMainPage.getChildren().add(item);
             item.switchButtons();
             item.updateTextfieldWithAmountOfProduct();
         }
     }
+
+    private void updateListWith8ItemsFromCurrent(){
+        list8Items.clear();
+        for (int i = currentPage * 8; i < currentPage * 8 + 8; i++ ){
+            if (i < currentListWithItems.size() ){
+                list8Items.add(currentListWithItems.get(i));
+            }
+        }
+    }
+
+    @FXML
+    public void nextPageButton(){
+        if (lastPage > currentPage + 1) {
+            currentPage++;
+            displayListItems();
+        }
+    }
+
+    @FXML
+    public void previousPageButton(){
+        if (currentPage > 0) {
+            currentPage--;
+            displayListItems();
+        }
+    }
+
 }

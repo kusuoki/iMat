@@ -23,11 +23,9 @@ public class KundserviceController implements Initializable {
 
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent listPage, Parent earlierPurchases, Parent accountPage,Parent paymentPage) {
+    public void setStage(Stage stage, Parent mainPage,  Parent accountPage,Parent paymentPage) {
         this.stage = stage;
         this.mainPage=mainPage;
-        this.listPage=listPage;
-        this.earlierPurchases=earlierPurchases;
         this.accountPage=accountPage;
         this.paymentPage=paymentPage;
     }

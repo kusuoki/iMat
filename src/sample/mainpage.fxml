@@ -121,12 +121,12 @@
                 </Pane>
                 <Pane prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="139.0">
                     <children>
-                        <Label layoutX="156.0" layoutY="509.0" styleClass="links" text="Föregående sida" textFill="WHITE">
+                        <Label fx:id="labelPreviousPage" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Label layoutX="383.0" layoutY="509.0" styleClass="links" text="Nästa sida" textFill="WHITE">
+                        <Label fx:id="labelNextpage" layoutX="383.0" layoutY="509.0" onMouseClicked="#nextPageButton" styleClass="links" text="Nästa sida" textFill="WHITE">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -172,12 +172,12 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+                <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
                     <font>
                         <Font size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonListor" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" onAction="#onListsClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Listor" textFill="WHITE" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="40.0">
+                <Button fx:id="buttonListor" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Listor" textFill="WHITE" AnchorPane.leftAnchor="480.0" AnchorPane.topAnchor="40.0">
                     <font>
                         <Font size="15.0" />
                     </font>
