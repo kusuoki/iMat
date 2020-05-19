@@ -71,6 +71,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML ImageView imageViewMainLightboxClose;
     @FXML ImageView imageViewMainLightboxFavourite;
     @FXML Label labelMainLightboxPrice;
+    @FXML TextField lightboxQuantityTextField;
+    @FXML Pane lightboxPlusMinusPane;
+    @FXML Pane lightboxAddPane;
 
     ListItem currentLightboxItem;
 
@@ -283,13 +286,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 b.getStyleClass().clear();
                 b.getStyleClass().add("menuButtonClicked");
             }
-
     }
 
     @FXML
     public void favorite() {
-        boolean isFavorite = model.isFavorite(currentLightboxItem.product);
-        if (isFavorite) {
+        if (model.isFavorite(currentLightboxItem.product)) {
             currentLightboxItem.unFavorite();
         } else {
             currentLightboxItem.favorite();
@@ -316,7 +317,40 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()));
         labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
 
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount > 0) {
+            lightboxPlusMinusPane.toFront();
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        } else {
+            lightboxAddPane.toFront();
+        }
+
         lightBoxToFront();
+    }
+
+    @FXML
+    public void lightBoxAddFirstItem() {
+        currentLightboxItem.addFirstProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+        lightboxPlusMinusPane.toFront();
+    }
+
+    @FXML
+    public void lightBoxRemoveOneItem() {
+        currentLightboxItem.removeOneOfProduct();
+
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount < 1) {
+            lightboxAddPane.toFront();
+        } else {
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        }
+    }
+
+    @FXML
+    public void lightBoxAddOneItem() {
+        currentLightboxItem.addOneOfProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
     }
 
     public Image getFavoriteImage(boolean isFavorite) {

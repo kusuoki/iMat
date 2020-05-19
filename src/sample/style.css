@@ -143,3 +143,14 @@
 .backToStoreButton {
     -fx-background-radius: 20;
 }
+
+.add-button {
+    -fx-background-color: #00441C;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.6, 1, 1);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+}
+
