@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Pane?>
@@ -116,7 +118,7 @@
             <font>
                 <Font size="14.0" />
             </font></Button>
-        <Button fx:id="buttonBetala" layoutX="1052.0" layoutY="666.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="227.0" style="-fx-background-color: #FFB422;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="630.0">
+        <Button fx:id="buttonBetala" layoutX="1052.0" layoutY="666.0" mnemonicParsing="false" onAction="#onPaymentPageClick" prefHeight="45.0" prefWidth="227.0" style="-fx-background-color: #FFB422;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="630.0">
             <font>
                 <Font size="18.0" />
             </font></Button>
@@ -124,17 +126,22 @@
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Button fx:id="buttonListor" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Listor" textFill="WHITE" AnchorPane.leftAnchor="479.0">
+        <Button fx:id="buttonListor" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" onAction="#onListPageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Listor" textFill="WHITE" AnchorPane.leftAnchor="479.0">
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Button fx:id="buttonKundservice" layoutX="639.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kundservice &amp; Hjälp" textFill="WHITE">
+        <Button fx:id="buttonKundservice" layoutX="639.0" layoutY="40.0" mnemonicParsing="false" onAction="#onCustomerServicePageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kundservice &amp; Hjälp" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Button fx:id="buttonKonto" layoutX="798.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kontoinställningar" textFill="WHITE">
+        <Button fx:id="buttonKonto" layoutX="798.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAccountPageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kontoinställningar" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font></Button>
+      <ImageView fitHeight="127.0" fitWidth="120.0" layoutX="37.0" layoutY="4.0" onMouseClicked="#onBack" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@resources/Icons/ic_check_circle_black_48dp.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

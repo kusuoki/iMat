@@ -11,7 +11,7 @@
          <children>
             <AnchorPane layoutX="341.0" layoutY="130.0" prefHeight="491.0" prefWidth="596.0" style="-fx-background-color: white;">
                <children>
-                  <Button layoutX="173.0" layoutY="384.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="251.0" style="-fx-background-color: pink;" text="Tillbaka till butiken" textFill="#7b4ddd">
+                  <Button layoutX="173.0" layoutY="384.0" mnemonicParsing="false" onAction="#onHomeClick" prefHeight="74.0" prefWidth="251.0" style="-fx-background-color: pink;" text="Tillbaka till butiken" textFill="#7b4ddd">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -313,15 +313,16 @@
             </Button>
          </children>
       </AnchorPane>
-      <Pane fx:id="buttonTidigareKop" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-         <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tillbaka till butiken" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
+       <Button fx:id="buttonTidigareKöp1" layoutX="38.0" layoutY="40.0" mnemonicParsing="false" onAction="#onHomeClick" prefHeight="36.0" prefWidth="208.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+          <font>
+             <Font size="15.0" />
+          </font>
+       </Button>
+       <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="72.0" layoutY="46.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
+          <image>
+             <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
+          </image>
+       </ImageView>
       <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
     </children>
 </AnchorPane>

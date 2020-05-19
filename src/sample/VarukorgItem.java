@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.CartEvent;
 import se.chalmers.cse.dat216.project.ShoppingCart;
@@ -24,10 +26,7 @@ public class VarukorgItem extends AnchorPane {
     @FXML
     Label labelVarukorgPris;
 
-
     public VarukorgItem(ShoppingItem shoppingItem, Model model){
-
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -41,23 +40,37 @@ public class VarukorgItem extends AnchorPane {
         this.model = model;
         this.shoppingItem = shoppingItem;
         updateThisItem();
-
-        /*
-        labelVarukorgAntal.setText(Integer.toString( (int) shoppingItem.getAmount() ));
-        labelVarukorgVara.setText(shoppingItem.getProduct().getName());
-        labelVarukorgPris.setText(Integer.toString( (int) shoppingItem.getTotal() ));
-
-         */
-
-
-
     }
-
-
 
     public void updateThisItem(){
         labelVarukorgAntal.setText(Integer.toString( (int) shoppingItem.getAmount() ));
         labelVarukorgVara.setText(shoppingItem.getProduct().getName());
-        labelVarukorgPris.setText(Integer.toString( (int) shoppingItem.getTotal() ));
+        double roundedTotal = Math.round(shoppingItem.getTotal()*100.0)/100.0;
+        labelVarukorgPris.setText(roundedTotal + "kr");
     }
+
+    @FXML
+    public void trashObjectButton(){
+        model.removeFromShoppingCart(shoppingItem.getProduct());
+
+    }
+
+    @FXML
+    public void plusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), 1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, true);
+    }
+
+    @FXML
+    public void minusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), -1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, false);
+        if ((int) shoppingItem.getAmount() == 0){
+            trashObjectButton();
+        }
+
+    }
+
+
+
 }

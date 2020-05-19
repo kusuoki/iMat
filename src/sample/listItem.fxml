@@ -40,5 +40,23 @@
             <Button fx:id="listItemFirstAddButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addFirstProduct" prefHeight="30.0" prefWidth="125.0" styleClass="add-button" text="LÄGG TILL" />
          </children>
       </Pane>
+      <Pane fx:id="fullHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="fullHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#unFavorite" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/ic_favorite_red_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="emptyHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="emptyHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/ic_favorite_border_red_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
    </children>
 </fx:root>

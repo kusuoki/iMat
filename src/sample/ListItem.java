@@ -29,6 +29,15 @@ public class ListItem extends AnchorPane {
     @FXML
     protected Button listItemFirstAddButton;
 
+    @FXML
+    protected ImageView fullHeartButton;
+    @FXML
+    protected ImageView emptyHeartButton;
+    @FXML
+    protected Pane fullHeartPane;
+    @FXML
+    protected Pane emptyHeartPane;
+
 
     @FXML
     protected Pane listItemPlusMinusPane;
@@ -67,6 +76,13 @@ public class ListItem extends AnchorPane {
             listItemPlusMinusPane.toFront();
             updateTextfieldWithAmountOfProduct();
         }
+
+        if (model.getFavorites().contains(product)){        //Kolla om produkten ligger i favoriter
+            fullHeartPane.toFront();      // JA: Visa det fulla hjärtat.
+        } else {
+            emptyHeartPane.toFront();     //NEJ: Visa det tomma hjärtat.
+        }
+
     }
 
     @FXML
@@ -97,10 +113,29 @@ public class ListItem extends AnchorPane {
         }
     }
 
-    private void updateTextfieldWithAmountOfProduct() {
+    public void switchButtons(){
+        if (model.getAmountOfThisProductInShoppinCart(product) == 0){
+            listItemAddPane.toFront();
+        } else {
+            listItemPlusMinusPane.toFront();
+        }
+    }
+
+    public void updateTextfieldWithAmountOfProduct() {
         int amount = model.getAmountOfThisProductInShoppinCart(product);       //Hämtar hur mycket av varan som finns i varukorgen
         listItemQuantityTextField.setText(Integer.toString(amount));        //Uppdaterar textfältet på kortet med antalet som finns i varukorgen
     }
 
+    @FXML
+    public void favorite() {    //Klicka på tomma hjärtat
+        model.addFavorite(product);
+        fullHeartPane.toFront();
+    }
+
+    @FXML
+    public void unFavorite() {      //Klicka på ifyllda hjärtat
+        model.removeFavorite(product);
+        emptyHeartPane.toFront();
+    }
 
 }
