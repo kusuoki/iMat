@@ -13,7 +13,7 @@
    <children>
       <Label fx:id="listItemPrice" layoutX="96.0" layoutY="15.0" styleClass="price-tag-text" text="999kr" />
       <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="75.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
-      <ImageView fx:id="listItemImage" fitHeight="132.0" fitWidth="152.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="listItemImage" fitHeight="132.0" fitWidth="152.0" layoutX="3.0" layoutY="4.0" onMouseClicked="#openDetailedView" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/Images/product_6.jpg" />
          </image>
