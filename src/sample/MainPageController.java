@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -306,6 +307,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void mainPageToFront() {
         anchorPaneMainPage.toFront();
+    }
+
+    @FXML
+    public void mouseTrap(Event event) {
+        event.consume();
     }
 
     public void openLightBox(ListItem item) {

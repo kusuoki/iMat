@@ -154,3 +154,6 @@
     -fx-background-radius: 10;
 }
 
+.add-button:hover{
+    -fx-cursor: hand;
+}
