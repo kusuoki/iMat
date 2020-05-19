@@ -15,34 +15,42 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
-        <AnchorPane fx:id="anchorPaneMainLightbox" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+        <AnchorPane fx:id="anchorPaneMainLightbox" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
             <children>
                 <AnchorPane layoutX="314.0" layoutY="168.0" prefHeight="414.0" prefWidth="650.0" style="-fx-background-color: white;">
                     <children>
-                        <ImageView fitHeight="199.0" fitWidth="176.0" layoutX="237.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageViewMainLightboxImage" fitHeight="151.0" fitWidth="650.0" layoutY="40.0" pickOnBounds="true">
                             <image>
                                 <Image url="@resources/Images/product_6.jpg" />
                             </image>
                         </ImageView>
-                        <Label fx:id="labelMainLightboxVara" layoutX="311.0" layoutY="14.0" text="Label" />
-                        <Label fx:id="labelMainLightboxPrisPaket" layoutX="32.0" layoutY="207.0" text="Label" />
-                        <Label fx:id="labelMainLightboxPrisKilo" layoutX="32.0" layoutY="224.0" text="Label" />
-                        <Label layoutX="32.0" layoutY="256.0" text="Beskrivning" />
-                        <Label fx:id="labelMainLightboxBeskrivning" layoutX="32.0" layoutY="273.0" text="Label" />
-                        <ImageView fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                        <Label fx:id="labelMainLightboxVara" alignment="CENTER" layoutX="128.0" layoutY="6.0" prefHeight="17.0" prefWidth="394.0" text="Label" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font></Label>
+                        <Label fx:id="labelMainLightboxPrisPaket" layoutX="32.0" layoutY="207.0" text="Label">
+                     <font>
+                        <Font size="20.0" />
+                     </font></Label>
+                        <Label layoutX="32.0" layoutY="256.0" text="Beskrivning">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font></Label>
+                        <Label fx:id="labelMainLightboxBeskrivning" alignment="TOP_LEFT" layoutX="32.0" layoutY="286.0" prefHeight="124.0" prefWidth="597.0" text="Label" wrapText="true" />
+                        <ImageView fx:id="imageViewMainLightboxClose" fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" onMouseClicked="#mainPageToFront" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@resources/Icons/ic_close_black_24dp.png" />
                             </image>
                         </ImageView>
-                        <Circle fill="#ffb422" layoutX="62.0" layoutY="80.0" radius="49.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
-                        <ImageView fitHeight="38.0" fitWidth="35.0" layoutX="583.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                        <Circle fill="#ffb422" layoutX="72.0" layoutY="76.0" radius="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
+                        <ImageView fx:id="imageViewMainLightboxFavourite" fitHeight="45.0" fitWidth="39.0" layoutX="594.0" layoutY="203.0" pickOnBounds="true" preserveRatio="true">
                             <image>
-                                <Image url="@resources/Icons/ic_favorite_border_black_36dp.png" />
+                                <Image url="@resources/Icons/ic_favorite_border_red_48d.png" />
                             </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="26.0" layoutY="49.0" prefHeight="62.0" prefWidth="73.0" text="00kr" textAlignment="CENTER" textFill="WHITE">
+                        <Label fx:id="labelMainLightboxPrice" alignment="CENTER" layoutX="11.0" layoutY="19.0" prefHeight="116.0" prefWidth="122.0" text="00kr" textAlignment="CENTER" textFill="WHITE">
                             <font>
-                                <Font size="36.0" />
+                                <Font name="System Bold" size="36.0" />
                             </font>
                         </Label>
                     </children>

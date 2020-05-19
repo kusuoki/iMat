@@ -1,9 +1,13 @@
 package sample;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -56,6 +60,20 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML ImageView imageViewArrowMejeri;
     @FXML ImageView imageViewArrowSkafferi;
 
+    @FXML AnchorPane anchorPaneMainPage;
+    @FXML AnchorPane anchorPaneMainLightbox;
+
+    // detailed view @FXML
+    @FXML ImageView imageViewMainLightboxImage;
+    @FXML Label labelMainLightboxVara;
+    @FXML Label labelMainLightboxPrisPaket;
+    @FXML Label labelMainLightboxBeskrivning;
+    @FXML ImageView imageViewMainLightboxClose;
+    @FXML ImageView imageViewMainLightboxFavourite;
+    @FXML Label labelMainLightboxPrice;
+
+    ProductA currentLightboxProduct;
+
     ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
     ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
@@ -107,6 +125,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
 
         displayListItemByCategory("Frukt & Grönt");
+        model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
+        model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
 
         /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
@@ -175,7 +195,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));*/
 
     }
-
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
@@ -258,8 +277,26 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
+    @FXML
+    public void lightBoxToFront() {
+        anchorPaneMainLightbox.toFront();
+    }
 
+    @FXML
+    public void mainPageToFront() {
+        anchorPaneMainPage.toFront();
+    }
 
+    public void openLightBox(ProductA product) {
+        currentLightboxProduct = product;
+        imageViewMainLightboxImage.setImage(model.getImage(product));
+        labelMainLightboxVara.setText(product.getName());
+        labelMainLightboxPrisPaket.setText(product.getPrice() + " " + product.getUnit());
+        labelMainLightboxPrice.setText(String.valueOf(product.getPrice()));
+        labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+
+        lightBoxToFront();
+    }
 
     //När man hoovrar över menyn
     @FXML
@@ -319,7 +356,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         List<ProductA> productList = model.getProducts(category);
 
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
+            ListItem item = new ListItem(p, model, this);
             listItems.add(item);
         }
 
@@ -331,7 +368,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         List<ProductA> productList = model.getFavorites();
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
+            ListItem item = new ListItem(p, model, this);
             listItems.add(item);
         }
 
@@ -342,7 +379,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         listItems.clear();
 
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
+            ListItem item = new ListItem(p, model,this);
             listItems.add(item);
         }
 

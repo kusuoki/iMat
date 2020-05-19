@@ -1,6 +1,10 @@
 package sample;
 
+import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import se.chalmers.cse.dat216.project.*;
 
 import java.util.HashMap;
@@ -161,4 +165,28 @@ public class Model {
     public List<ProductA> getFavorites() {
         return productHandler.getProductAList(iMatDataHandler.favorites());
     }
+
+    // changes the cursor when hovered on the given imageview,
+    // set afterHover null if don't want to change the image
+    public void setImageViewOnHoverEvent(ImageView iv, Image afterHover) {
+        Image beforeHover = iv.getImage();
+        iv.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                iv.setCursor(Cursor.HAND);
+                if (afterHover != null) {
+                    iv.setImage(afterHover);
+                }
+            }
+        });
+
+        iv.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                iv.setCursor(Cursor.DEFAULT);
+                iv.setImage(beforeHover);
+            }
+        });
+    }
+
 }

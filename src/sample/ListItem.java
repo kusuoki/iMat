@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -48,11 +49,11 @@ public class ListItem extends AnchorPane {
     @FXML
     protected ImageView listItemPlusButton;
 
-
+    MainPageController parentController;
     ProductA product;
     Model model;
 
-    public ListItem(ProductA product, Model model) {
+    public ListItem(ProductA product, Model model, MainPageController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -65,11 +66,14 @@ public class ListItem extends AnchorPane {
 
         this.product = product;
         this.model = model;
+        this.parentController = parentController;
 
         listItemName.setText(product.getName());
         listItemUnit.setText(product.getPrice() + product.getUnit());
         //listItemPrice.setText(Double.toString(product.getPrice()) + "kr");
         listItemImage.setImage(model.getImage(product));
+
+        model.setImageViewOnHoverEvent(listItemImage,null);
 
         //TODO KOMMER GE PROBLEM (KANSKE FIXAD??)
         if (model.getShoppingCart().getItems().contains(model.getShoppingItemMap().get(product.getProductId()))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
@@ -138,4 +142,8 @@ public class ListItem extends AnchorPane {
         emptyHeartPane.toFront();
     }
 
+    @FXML
+    void openDetailedView() {
+        parentController.openLightBox(product);
+    }
 }
