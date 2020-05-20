@@ -38,6 +38,10 @@ public class Model {
 
         iMatDataHandler = IMatDataHandler.getInstance();
         productHandler = ProductHandler.getInstance();
+
+        for (ShoppingItem item : iMatDataHandler.getShoppingCart().getItems()) {
+            shoppingItemMap.put(item.getProduct().getProductId(), item);
+        }
     }
     //Alla dessa under är i princip setters och getters
     public List<ProductA> getProducts() {

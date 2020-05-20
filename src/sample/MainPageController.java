@@ -136,6 +136,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
 
 
+        // force update the shopping cart to render out the products
+        if (model.getShoppingCart().getItems().size() > 0) {
+            model.updateShoppingCart(model.getShoppingCart().getItems().get(0).getProduct(), 0);
+        }
         displayListItemByCategory("Frukt & Grönt");
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
