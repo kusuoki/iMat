@@ -5,7 +5,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -70,8 +69,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private TextField textfieldCVC;
         @FXML private CheckBox spara;
         @FXML private Label labelErrorMessage;
+        @FXML private Label labelTotalPrice;
+        @FXML private Label labelAmountOfProduct;
         private ShoppingCart shoppingCart = model.getShoppingCart();
-        private Map<String, BetalsidaItem> betalsidaItemMap = new HashMap<String, BetalsidaItem>();
+        private Map<Integer, BetalsidaItem> betalsidaItemMap = new HashMap<>();
         private Parent mainPage;
         private Stage stage;
         private TextField nextTextfield = textfieldFirstname;
@@ -89,7 +90,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void initialize(URL url, ResourceBundle resourceBundle) {
                 card = handler.getCreditCard();
                 customer = handler.getCustomer();
-
+                //<editor-fold desc="???? region, ignore pls">
                 comboHem.getItems().removeAll(comboHem.getItems());
                 comboHem.getItems().addAll("Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag", "Lördag", "Söndag");
                 comboHem.getSelectionModel().select("Måndag");
@@ -455,12 +456,13 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 labelErrorMessage.toBack();
                         }
                 });
-                
+                //</editor-fold>
+
                 anchorPaneBekraftaKundvagn.toFront();
                 progressBar.setProgress(0);
                 buttonTidigareKop.toFront();
                 progressBar.toFront();
-                getShoppingCart();
+                updateShoppingCart();
                 updateInformation();
         }
         //setter för stage och mainpage root
@@ -548,30 +550,38 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
         }
 
-        public void getShoppingCart()
+        public void updateShoppingCart()
         {
-                for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
-                        BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
-                        betalsidaItemMap.put(shoppingItem.getProduct().getName(), betalsidaItem);
-                }
+                int amountOfProduct = 0;
+
                 flowPaneBekrafta.getChildren().clear();
-                List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
-                for (ShoppingItem shoppingItem : shoppingItems)
-                {
-                        flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
+                BetalsidaItem betalsidaItem;
+                for (ShoppingItem shoppingItem : shoppingCart.getItems()) {
+                        betalsidaItem = betalsidaItemMap.get(shoppingItem.getProduct().getProductId());
+                        if (betalsidaItem == null) {
+                                betalsidaItem = new BetalsidaItem(shoppingItem, this);
+                                betalsidaItemMap.put(shoppingItem.getProduct().getProductId(), betalsidaItem);
+                        }
+                        flowPaneBekrafta.getChildren().add(betalsidaItem);
+                        amountOfProduct += betalsidaItem.getAmount();
                 }
+
+                labelAmountOfProduct.setText(amountOfProduct + " st");
+                labelTotalPrice.setText(model.getShoppingCart().getTotal() + " kr");
         }
 
-        public Map<String, BetalsidaItem> getHashMap()
-        {
-                return betalsidaItemMap;
+
+        public void removeFromList(BetalsidaItem item) {
+                betalsidaItemMap.remove(item);
         }
 
         @Override
         public void shoppingCartChanged(CartEvent cartEvent) {
-                getShoppingCart();
+                updateShoppingCart();
         }
 
+
+        //<editor-fold desc="textfield stuff">
         public void setData() {
                 labelEmail.setText(textfieldEmail.getText());
                 labelTelefonnummer.setText(textfieldTelefonnummer.getText());
@@ -975,5 +985,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         default: return false;
                 }
         }
+        //</editor-fold>
 }
 
