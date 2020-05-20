@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BetalsidaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BetalsidaController">
     <children>
       <AnchorPane fx:id="anchorPaneTack" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
          <children>
@@ -311,18 +320,22 @@
                   <Font size="15.0" />
                </font>
             </Button>
+            <Pane fx:id="buttonTidigareKop" layoutX="60.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                   <Button fx:id="buttonTidigareKöp1" mnemonicParsing="false" onAction="#onHomeButtonClickIcon" prefHeight="36.0" prefWidth="208.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE">
+                      <font>
+                         <Font size="15.0" />
+                      </font>
+                   </Button>
+                   <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="2.0" layoutY="6.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                         <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
+                      </image>
+                   </ImageView>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
-       <Button fx:id="buttonTidigareKöp1" layoutX="38.0" layoutY="40.0" mnemonicParsing="false" onAction="#onHomeClick" prefHeight="36.0" prefWidth="208.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-          <font>
-             <Font size="15.0" />
-          </font>
-       </Button>
-       <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="72.0" layoutY="46.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
-          <image>
-             <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
-          </image>
-       </ImageView>
       <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
     </children>
 </AnchorPane>

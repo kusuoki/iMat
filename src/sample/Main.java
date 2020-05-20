@@ -1,10 +1,13 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 public class Main extends Application {
@@ -24,21 +27,21 @@ public class Main extends Application {
         betalLoader.setLocation(getClass().getResource("betalsida.fxml"));
         Parent betal=betalLoader.load(); //ader.load();
         BetalsidaController betalC = betalLoader.getController();
-
+/*
         FXMLLoader tidigareKopLoader = new FXMLLoader();
         tidigareKopLoader.setLocation(getClass().getResource("tidigarekop.fxml"));
         Parent tidigareKop  =tidigareKopLoader.load();
         TidigareKopController tidigareKopC = tidigareKopLoader.getController();
-
+*/
         FXMLLoader kundServiceLoader = new FXMLLoader();
         kundServiceLoader.setLocation(getClass().getResource("kundservice.fxml"));
         Parent kundservice = kundServiceLoader.load();
          KundserviceController kundC = kundServiceLoader.getController();
-
+/*
         FXMLLoader listorLoader = new FXMLLoader();
         listorLoader.setLocation(getClass().getResource("listor.fxml"));
         Parent listor  =listorLoader.load();
-        ListorController listorC = listorLoader.getController();
+        ListorController listorC = listorLoader.getController();*/
 
         FXMLLoader kontoLoader = new FXMLLoader();
         kontoLoader.setLocation(getClass().getResource("kontoinstallning.fxml"));
@@ -50,30 +53,30 @@ public class Main extends Application {
 
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1377, 750));
+        primaryStage.getIcons().add(new Image("sample/resources/Icons/burger.png"));
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+                Model.getInstance().shutDown();
+            }
+        });
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();
         BackButton.getBackButton().setStage(primaryStage);
-        mainPagec.setStage(primaryStage,betal,konto,kundservice,tidigareKop,listor);
+        mainPagec.setStage(primaryStage,betal,konto,kundservice);
         betalC.setStage(primaryStage,root);
-        tidigareKopC.setStage(primaryStage,root,listor,konto,kundservice,betal);
-        kontoC.setStage(primaryStage,root,listor,tidigareKop,kundservice,betal);
-        listorC.setStage(primaryStage,root,kundservice,tidigareKop,konto,betal);
-        kundC.setStage(primaryStage,root,listor,tidigareKop,konto,betal);
+
+        kontoC.setStage(primaryStage,root,kundservice,betal);
+
+        kundC.setStage(primaryStage,root,konto,betal);
 
     }
 
 
     public static void main(String[] args) {
         launch(args);
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Model.getInstance().shutDown();
-            }
-        }));
     }
-
 
 
 }

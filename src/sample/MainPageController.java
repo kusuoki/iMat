@@ -1,9 +1,14 @@
 package sample;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -56,9 +61,33 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML ImageView imageViewArrowMejeri;
     @FXML ImageView imageViewArrowSkafferi;
 
+    @FXML AnchorPane anchorPaneMainPage;
+    @FXML AnchorPane anchorPaneMainLightbox;
+
+    // detailed view @FXML
+    @FXML ImageView imageViewMainLightboxImage;
+    @FXML Label labelMainLightboxVara;
+    @FXML Label labelMainLightboxPrisPaket;
+    @FXML Label labelMainLightboxBeskrivning;
+    @FXML ImageView imageViewMainLightboxClose;
+    @FXML ImageView imageViewMainLightboxFavourite;
+    @FXML Label labelMainLightboxPrice;
+    @FXML TextField lightboxQuantityTextField;
+    @FXML Pane lightboxPlusMinusPane;
+    @FXML Pane lightboxAddPane;
+
+    ListItem currentLightboxItem;
+
     ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
     ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
+
+    @FXML
+    Label labelVarusida;
+    @FXML
+    Label labelPreviousPage;
+    @FXML
+    Label labenNextPage;
 
     @FXML
     TextField searchField;
@@ -85,16 +114,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     BackButton backButton=BackButton.getBackButton();
 
-    private List<ListItem> listItems = new ArrayList<>();
+    private List<ListItem> currentListWithItems = new ArrayList<>();
+    private List<ListItem> list8Items = new ArrayList<>();
+    int currentPage;
+    int lastPage;
 
-
-    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice, Parent tidigarekop, Parent listor) {
+    public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
         this.konto = konto;
         this.kundservice = kundservice;
-        this.tidigarekop = tidigarekop;
-        this.listor = listor;
 
 
     }
@@ -106,7 +135,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuItems();
 
 
+
         displayListItemByCategory("Frukt & Grönt");
+        model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
+        model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
 
         /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
@@ -175,7 +207,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));*/
 
     }
-
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
@@ -218,6 +249,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
         //updateProductList(searchList);
 
+        /*
         //TODO: VISAR ENDAST DE FÖRSTA 8 VARORNA NU ANNARS LAGGAR DET
         List<ProductA> first8ItemsInList;
         if (searchList.size() > 8) {
@@ -226,7 +258,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             first8ItemsInList = searchList;
         }
 
-        displayListItemFromList(first8ItemsInList);
+         */
+
+        displayListItemFromList(searchList);
     }
 
 
@@ -245,7 +279,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar, bilder på pilar och hela nya undermenyvyn
                 }
             }
-
         }
             System.out.println(b.getStyleClass());
             if (b.getStyleClass().toString().equals("menuButtonClicked")) {
@@ -255,11 +288,84 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 b.getStyleClass().clear();
                 b.getStyleClass().add("menuButtonClicked");
             }
-
     }
 
+    @FXML
+    public void favorite() {
+        if (model.isFavorite(currentLightboxItem.product)) {
+            currentLightboxItem.unFavorite();
+        } else {
+            currentLightboxItem.favorite();
+        }
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
+    }
 
+    @FXML
+    public void lightBoxToFront() {
+        anchorPaneMainLightbox.toFront();
+    }
 
+    @FXML
+    public void mainPageToFront() {
+        anchorPaneMainPage.toFront();
+    }
+
+    @FXML
+    public void mouseTrap(Event event) {
+        event.consume();
+    }
+
+    public void openLightBox(ListItem item) {
+        currentLightboxItem = item;
+        imageViewMainLightboxImage.setImage(model.getImage(item.product));
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
+        labelMainLightboxVara.setText(item.product.getName());
+        labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
+        labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()));
+        labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount > 0) {
+            lightboxPlusMinusPane.toFront();
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        } else {
+            lightboxAddPane.toFront();
+        }
+
+        lightBoxToFront();
+    }
+
+    @FXML
+    public void lightBoxAddFirstItem() {
+        currentLightboxItem.addFirstProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+        lightboxPlusMinusPane.toFront();
+    }
+
+    @FXML
+    public void lightBoxRemoveOneItem() {
+        currentLightboxItem.removeOneOfProduct();
+
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount < 1) {
+            lightboxAddPane.toFront();
+        } else {
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        }
+    }
+
+    @FXML
+    public void lightBoxAddOneItem() {
+        currentLightboxItem.addOneOfProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+    }
+
+    public Image getFavoriteImage(boolean isFavorite) {
+        if (!isFavorite) {
+            return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
+        }
+        return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
+    }
 
     //När man hoovrar över menyn
     @FXML
@@ -295,9 +401,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         displayListItems();
-
-
-
         updateShoppingCartPriceAndQuantity();
     }
 
@@ -314,49 +417,78 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     private void displayListItemByCategory(String category){
-        listItems.clear();
+        list8Items.clear();
+        currentListWithItems.clear();
+        currentPage = 0;
 
         List<ProductA> productList = model.getProducts(category);
 
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
-            listItems.add(item);
+            ListItem item = new ListItem(p, model, this);
+            currentListWithItems.add(item);
         }
 
-        displayListItems();
-    }
-
-    private void displayListItemFavorites(){
-        listItems.clear();
-
-        List<ProductA> productList = model.getFavorites();
-        for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
-            listItems.add(item);
+        lastPage = currentListWithItems.size() / 8;
+        if (currentListWithItems.size() % 8 != 0 ) {
+            lastPage++;
         }
 
         displayListItems();
     }
 
     private void displayListItemFromList(List<ProductA> productList){
-        listItems.clear();
+        list8Items.clear();
+        currentListWithItems.clear();
+        currentPage = 0;
 
         for (ProductA p : productList){
-            ListItem item = new ListItem(p, model);
-            listItems.add(item);
+            ListItem item = new ListItem(p, model, this);
+            currentListWithItems.add(item);
+        }
+
+        lastPage = currentListWithItems.size() / 8;
+        if (currentListWithItems.size() % 8 != 0 ) {
+            lastPage++;
         }
 
         displayListItems();
     }
 
-
-
     private void displayListItems() {
         flowPaneMainPage.getChildren().clear();
-        for (ListItem item : listItems){
+        updateListWith8ItemsFromCurrent();
+        labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+
+        for (ListItem item : list8Items){
             flowPaneMainPage.getChildren().add(item);
             item.switchButtons();
             item.updateTextfieldWithAmountOfProduct();
         }
     }
+
+    private void updateListWith8ItemsFromCurrent(){
+        list8Items.clear();
+        for (int i = currentPage * 8; i < currentPage * 8 + 8; i++ ){
+            if (i < currentListWithItems.size() ){
+                list8Items.add(currentListWithItems.get(i));
+            }
+        }
+    }
+
+    @FXML
+    public void nextPageButton(){
+        if (lastPage > currentPage + 1) {
+            currentPage++;
+            displayListItems();
+        }
+    }
+
+    @FXML
+    public void previousPageButton(){
+        if (currentPage > 0) {
+            currentPage--;
+            displayListItems();
+        }
+    }
+
 }

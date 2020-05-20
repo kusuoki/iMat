@@ -196,9 +196,9 @@ public class KontoinstallningController implements Initializable {
             String cardType = checkCardType(newValue);
             cardTypeImageView.setImage(getCardTypeImage(cardType));
 
-            if (getCardNumber().length() == 0) {
+            if (getCurrentCardNumber().length() == 0) {
                 removeCardNumberError();
-            } else if (getCardNumber().length() == 16 && isValidValue(newValue, "CardType")) {
+            } else if (getCurrentCardNumber().length() == 16 && isValidValue(newValue, "CardType")) {
                 removeCardNumberError();
             }
 
@@ -210,7 +210,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_2.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_2, oldValue, newValue, 4);
 
-            if (getCardNumber().length() == 0){
+            if (getCurrentCardNumber().length() == 0){
                 removeCardNumberError();
             }
 
@@ -222,7 +222,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_3.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_3, oldValue, newValue, 4);
 
-            if (getCardNumber().length() == 0){
+            if (getCurrentCardNumber().length() == 0){
                 removeCardNumberError();
             }
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
@@ -233,7 +233,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_4.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_4, oldValue, newValue, 4);
 
-            if (getCardNumber().length() == 0){
+            if (getCurrentCardNumber().length() == 0){
                 removeCardNumberError();
             }
 
@@ -295,7 +295,7 @@ public class KontoinstallningController implements Initializable {
             customer.setEmail(eMailTextField.getText());
             customer.setPostAddress(cityTextField.getText());
             customer.setPostCode(postNumberTextField.getText());
-            card.setCardNumber(getCardNumber());
+            card.setCardNumber(getCurrentCardNumber());
             card.setValidMonth((cardExpiryMonthTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryMonthTextField.getText()));
             card.setValidYear((cardExpiryYearTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
@@ -303,11 +303,9 @@ public class KontoinstallningController implements Initializable {
         }
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent listPage, Parent earlierPurchases, Parent customerServicePage, Parent paymentPage){
+    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
         this.stage=stage;
         this.mainPage=mainPage;
-        this.listPage=listPage;
-        this.earlierPurchases=earlierPurchases;
         this.customerServicePage=customerServicePage;
         this.paymentPage=paymentPage;
     }
@@ -375,6 +373,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_2.setText(getCardNumberBySection(2));
         cardNumberTextField_3.setText(getCardNumberBySection(3));
         cardNumberTextField_4.setText(getCardNumberBySection(4));
+        cardTypeImageView.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
         cardExpiryYearTextField.setText(getYear(card.getValidYear()));
         cardExpiryMonthTextField.setText(getMonth(card.getValidMonth()));
         CVVTextField.setText(getCVV(card.getVerificationCode()));
@@ -388,7 +387,7 @@ public class KontoinstallningController implements Initializable {
      */
     private boolean isReadyToSave() {
         boolean isReady = true;
-        int cardNumberLength = getCardNumber().length();
+        int cardNumberLength = getCurrentCardNumber().length();
         if ((cardNumberLength != 0 && !isValidValue(cardNumberTextField_1.getText(), "CardType")) ||
                 (cardNumberLength != 0 && cardNumberLength != 16)) {
             removeCardNumberError();
@@ -485,7 +484,7 @@ public class KontoinstallningController implements Initializable {
         cardNumberTextField_4.getStyleClass().add("error");
     }
 
-    private String getCardNumber() {
+    private String getCurrentCardNumber() {
         return cardNumberTextField_1.getText()+cardNumberTextField_2.getText()
                 +cardNumberTextField_3.getText()+cardNumberTextField_4.getText();
     }
@@ -495,7 +494,7 @@ public class KontoinstallningController implements Initializable {
      *   returns a string with length 4
      */
     private String getCardNumberBySection(int section) {
-        String fullLengthCardNumber = getCardNumber();
+        String fullLengthCardNumber = card.getCardNumber();
         if (fullLengthCardNumber.length() != 16) {
             section = 0;
         }
