@@ -45,12 +45,29 @@ public class VarukorgItem extends AnchorPane {
     public void updateThisItem(){
         labelVarukorgAntal.setText(Integer.toString( (int) shoppingItem.getAmount() ));
         labelVarukorgVara.setText(shoppingItem.getProduct().getName());
-        labelVarukorgPris.setText(Double.toString(shoppingItem.getTotal() ) + "kr");
+        double roundedTotal = Math.round(shoppingItem.getTotal()*100.0)/100.0;
+        labelVarukorgPris.setText(roundedTotal + "kr");
     }
 
     @FXML
     public void trashObjectButton(){
         model.removeFromShoppingCart(shoppingItem.getProduct());
+
+    }
+
+    @FXML
+    public void plusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), 1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, true);
+    }
+
+    @FXML
+    public void minusButton(){
+        model.updateShoppingCart(shoppingItem.getProduct(), -1);
+        model.getShoppingCart().fireShoppingCartChanged(shoppingItem, false);
+        if ((int) shoppingItem.getAmount() == 0){
+            trashObjectButton();
+        }
 
     }
 

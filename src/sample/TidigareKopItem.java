@@ -16,9 +16,9 @@ public class TidigareKopItem extends AnchorPane {
     @FXML private Label labelTidigareAntal;
 
     private Order prevOrder;
-    private TidigareKopController parentController;
+    private MainPageController parentController;
 
-    public TidigareKopItem(Order prevOrder, TidigareKopController parentController) {
+    public TidigareKopItem(Order prevOrder, MainPageController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tidigarekopitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -33,17 +33,26 @@ public class TidigareKopItem extends AnchorPane {
         this.parentController = parentController;
 
         labelTidigareDatum.setText(prevOrder.getDate().toString());
-        labelTidigarePris.setText(String.valueOf(getOrderTotalCost(prevOrder)));
-        labelTidigareAntal.setText(String.valueOf(prevOrder.getItems().size()));
+        labelTidigarePris.setText(getOrderTotalCost(prevOrder) + "kr");
+        labelTidigareAntal.setText(prevOrder.getItems().size() + " varor");
     }
 
-    private int getOrderTotalCost(Order order) {
+    public int getOrderTotalCost(Order order) {
         List<ShoppingItem> items = order.getItems();
         int totalCost = 0;
         for (ShoppingItem item : items) {
             totalCost += item.getTotal();
         }
         return totalCost;
+    }
+
+    public Order getOrder() {
+        return prevOrder;
+    }
+
+    @FXML
+    void openDetailedView() {
+        parentController.enterOrderLightbox(this);
     }
 
 }

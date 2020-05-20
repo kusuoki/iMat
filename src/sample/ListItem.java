@@ -2,6 +2,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -29,6 +30,15 @@ public class ListItem extends AnchorPane {
     @FXML
     protected Button listItemFirstAddButton;
 
+    @FXML
+    protected ImageView fullHeartButton;
+    @FXML
+    protected ImageView emptyHeartButton;
+    @FXML
+    protected Pane fullHeartPane;
+    @FXML
+    protected Pane emptyHeartPane;
+
 
     @FXML
     protected Pane listItemPlusMinusPane;
@@ -39,11 +49,11 @@ public class ListItem extends AnchorPane {
     @FXML
     protected ImageView listItemPlusButton;
 
-
+    MainPageController parentController;
     ProductA product;
     Model model;
 
-    public ListItem(ProductA product, Model model) {
+    public ListItem(ProductA product, Model model, MainPageController parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("listItem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -56,17 +66,30 @@ public class ListItem extends AnchorPane {
 
         this.product = product;
         this.model = model;
+        this.parentController = parentController;
 
         listItemName.setText(product.getName());
         listItemUnit.setText(product.getPrice() + product.getUnit());
         //listItemPrice.setText(Double.toString(product.getPrice()) + "kr");
         listItemImage.setImage(model.getImage(product));
 
+        model.setImageViewOnHoverEvent(listItemImage,null);
+
         //TODO KOMMER GE PROBLEM (KANSKE FIXAD??)
-        if (model.getShoppingCart().getItems().contains(model.getShoppingItemMap().get(product.getProductId()))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
-            listItemPlusMinusPane.toFront();
-            updateTextfieldWithAmountOfProduct();
+        for (ShoppingItem item : model.getShoppingCart().getItems()) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
+            if (item.getProduct().equals(product)) {
+                listItemPlusMinusPane.toFront();
+                updateTextfieldWithAmountOfProduct();
+                break;
+            }
         }
+
+        if (model.getFavorites().contains(product)){        //Kolla om produkten ligger i favoriter
+            fullHeartPane.toFront();      // JA: Visa det fulla hjärtat.
+        } else {
+            emptyHeartPane.toFront();     //NEJ: Visa det tomma hjärtat.
+        }
+
     }
 
     @FXML
@@ -105,10 +128,25 @@ public class ListItem extends AnchorPane {
         }
     }
 
-    private void updateTextfieldWithAmountOfProduct() {
+    public void updateTextfieldWithAmountOfProduct() {
         int amount = model.getAmountOfThisProductInShoppinCart(product);       //Hämtar hur mycket av varan som finns i varukorgen
         listItemQuantityTextField.setText(Integer.toString(amount));        //Uppdaterar textfältet på kortet med antalet som finns i varukorgen
     }
 
+    @FXML
+    public void favorite() {    //Klicka på tomma hjärtat
+        model.addFavorite(product);
+        fullHeartPane.toFront();
+    }
 
+    @FXML
+    public void unFavorite() {      //Klicka på ifyllda hjärtat
+        model.removeFavorite(product);
+        emptyHeartPane.toFront();
+    }
+
+    @FXML
+    void openDetailedView() {
+        parentController.openLightBox(this);
+    }
 }

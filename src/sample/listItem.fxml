@@ -13,7 +13,7 @@
    <children>
       <Label fx:id="listItemPrice" layoutX="96.0" layoutY="15.0" styleClass="price-tag-text" text="999kr" />
       <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="75.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
-      <ImageView fx:id="listItemImage" fitHeight="132.0" fitWidth="152.0" layoutX="3.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="listItemImage" fitHeight="132.0" fitWidth="152.0" layoutX="3.0" layoutY="4.0" onMouseClicked="#openDetailedView" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@resources/Images/product_6.jpg" />
          </image>
@@ -38,6 +38,24 @@
       <Pane fx:id="listItemAddPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Button fx:id="listItemFirstAddButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addFirstProduct" prefHeight="30.0" prefWidth="125.0" styleClass="add-button" text="LÄGG TILL" />
+         </children>
+      </Pane>
+      <Pane fx:id="fullHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="fullHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#unFavorite" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/ic_favorite_red_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="emptyHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fx:id="emptyHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/ic_favorite_border_red_24dp.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

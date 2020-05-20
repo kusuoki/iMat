@@ -1,30 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="637.0" stylesheets="@ListItem.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" type="javafx.scene.layout.AnchorPane">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="637.0" styleClass="order-card" stylesheets="@TidigareKopItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="labelTidigareDatum" layoutX="50.0" layoutY="17.0" text="Label" />
-      <Label fx:id="labelTidigarePris" layoutX="147.0" layoutY="17.0" text="Label" />
-      <Label fx:id="labelTidigareAntal" layoutX="218.0" layoutY="17.0" text="Label" />
-      <Label layoutX="543.0" layoutY="17.0" text="VISA DETALJER" />
-      <ImageView fitHeight="35.0" fitWidth="80.0" layoutX="319.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/Images/product_6.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="80.0" layoutX="374.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/Images/product_6.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="35.0" fitWidth="80.0" layoutX="429.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/Images/product_6.jpg" />
-         </image>
-      </ImageView>
+      <Label fx:id="labelTidigareDatum" layoutX="14.0" layoutY="15.0" styleClass="order-price-date-quantity" text="VARUNAMN" />
+      <Label fx:id="labelTidigarePris" layoutX="286.0" layoutY="17.0" styleClass="order-price-date-quantity" text="PRIS" />
+      <Label fx:id="labelTidigareAntal" layoutX="389.0" layoutY="17.0" styleClass="order-price-date-quantity" text="ANTAL VAROR" />
+      <Label layoutX="514.0" layoutY="15.0" onMouseClicked="#openDetailedView" styleClass="order-show-details" text="VISA DETALJER" />
    </children>
 </fx:root>

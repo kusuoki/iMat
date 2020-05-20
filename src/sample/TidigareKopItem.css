@@ -1,20 +1,21 @@
 
-.varu-text {
-    -fx-font-family: Lato;
-    -fx-font-size: 15px;
-    -fx-text-fill: #000000;
-}
-
-.varu-kort {
+.order-card {
     -fx-border-style: solid;
     -fx-border-color: #DFDFDF;
     -fx-background-color: white;
 }
 
-.varu-pris {
+.order-price-date-quantity {
     -fx-font-family: Lato;
     -fx-font-size: 15px;
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
 }
 
+.order-show-details {
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: #144F2C;
+    -fx-underline: true;
+}

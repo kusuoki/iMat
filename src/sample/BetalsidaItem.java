@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -14,11 +15,12 @@ public class BetalsidaItem extends AnchorPane {
     @FXML private Label betalItemVara;
     @FXML private Label betalItemMangd;
     @FXML private Label betalItemPris;
+
     Model model;
 
-    private BetalsidaController parentController;
+    private BetalsidaController betalsidaController;
 
-    public BetalsidaItem(ProductA product, Model parentController) {
+    public BetalsidaItem(ShoppingItem shoppingItem, Model parentController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("betlasidaitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -32,9 +34,10 @@ public class BetalsidaItem extends AnchorPane {
         this.model = parentController;
 
 
-        betalItemVara.setText(product.getName());
-        betalItemMangd.setText(product.getUnit());
-        betalItemPris.setText(product.getPrice() + "");
+        betalItemVara.setText(shoppingItem.getProduct().getName() + "   " + shoppingItem.getProduct().getPrice() + " "
+                + shoppingItem.getProduct().getUnit());
+        betalItemMangd.setText(shoppingItem.getAmount() + "");
+        betalItemPris.setText(shoppingItem.getProduct().getPrice() + "");
     }
 
     private int getOrderTotalCost(Order order) {
