@@ -69,6 +69,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private TextField textfieldExpiring2;
         @FXML private TextField textfieldCVC;
         @FXML private CheckBox spara;
+        @FXML private Label labelErrorMessage;
         private ShoppingCart shoppingCart = model.getShoppingCart();
         private Map<String, BetalsidaItem> betalsidaItemMap = new HashMap<String, BetalsidaItem>();
         private Parent mainPage;
@@ -278,20 +279,61 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }
                 });
                 //---------------------------------------------------------------------------------------------
+                textfieldFirstname.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (textfieldFirstname.getText().length() > 0) {
+                                textfieldFirstname.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                               labelErrorMessage.toBack();
+                        }
+                });
+                textfieldLastname.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (textfieldLastname.getText().length() > 0) {
+                                textfieldLastname.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
+                });
+                textfieldAdress.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (textfieldAdress.getText().length() > 0) {
+                                textfieldAdress.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
+                });
+                textfieldStad.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (textfieldStad.getText().length() > 0) {
+                                textfieldStad.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
+                });
                 textfieldPostnummer.textProperty().addListener((observable, oldValue, newValue) -> {
                         numberOnlyTextField(textfieldPostnummer, oldValue, newValue, 5);
                         if (isValidValue(newValue, "PostNumber") || newValue.length() == 0) {
                                 textfieldPostnummer.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
                         }
                 });
                 textfieldEmail.textProperty().addListener((observable, oldValue, newValue) -> {
                         if (isValidValue(newValue, "Email") || newValue.length() == 0) {
                                 textfieldEmail.getStyleClass().remove("error");
                         }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
                 });
                 textfieldTelefonnummer.textProperty().addListener((observable, oldValue, newValue) -> {
                         if (isValidValue(newValue, "Phone") || newValue.length() == 0) {
                                 textfieldTelefonnummer.getStyleClass().remove("error");
+                        }
+                        if (isContactInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
                         }
                 });
                 textfieldKortnummer1.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -310,6 +352,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldKortnummer2.requestFocus();
                                 textfieldKortnummer2.positionCaret(4);
                         }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
                 });
                 textfieldKortnummer2.textProperty().addListener((observable, oldValue, newValue) -> {
                         numberOnlyTextField(textfieldKortnummer2, oldValue, newValue, 4);
@@ -322,6 +368,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldKortnummer3.requestFocus();
                                 textfieldKortnummer3.positionCaret(4);
                         }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
                 });
                 textfieldKortnummer3.textProperty().addListener((observable, oldValue, newValue) -> {
                         numberOnlyTextField(textfieldKortnummer3, oldValue, newValue, 4);
@@ -332,6 +382,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                                 textfieldKortnummer4.requestFocus();
                                 textfieldKortnummer4.positionCaret(4);
+                        }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
                         }
                 });
                 textfieldKortnummer4.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -344,6 +398,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                                 textfieldExpiring1.requestFocus();
                                 textfieldExpiring1.positionCaret(2);
+                        }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
                         }
                 });
                 textfieldExpiring1.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -359,6 +417,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldExpiring2.requestFocus();
                                         textfieldExpiring2.positionCaret(2);
                                 }
+                        }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
                         }
                 });
                 textfieldExpiring2.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -377,6 +439,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldCVC.positionCaret(3);
                                 }
                         }
+
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
                 });
                 textfieldCVC.textProperty().addListener((observable, oldValue, newValue) -> {
                         numberOnlyTextField(textfieldCVC, oldValue, newValue, 3);
@@ -385,6 +451,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldCVC.getStyleClass().remove("error");
                         }
 
+                        if (isPaymentInfoCorrect(false)) {
+                                labelErrorMessage.toBack();
+                        }
                 });
                 
                 anchorPaneBekraftaKundvagn.toFront();
@@ -420,10 +489,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man klickar på andra nästa
         @FXML
         public void onNextClick2() {
-                anchorPaneBetalningsuppgifter.toFront();
-                progressBar.setProgress(0.5);
-                progressBar.toFront();
-                buttonTidigareKop.toFront();
+                if (isContactInfoCorrect(true)) {
+                        anchorPaneBetalningsuppgifter.toFront();
+                        progressBar.setProgress(0.5);
+                        progressBar.toFront();
+                        buttonTidigareKop.toFront();
+                }
         }
 
         //När man klickar på andra tillbaka
@@ -438,11 +509,13 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man klickar på tredje nästa
         @FXML
         public void onNextClick3() {
-                anchorPaneSlutfor.toFront();
-                progressBar.setProgress(0.75);
-                progressBar.toFront();
-                buttonTidigareKop.toFront();
-                setData();
+                if (isPaymentInfoCorrect(true)) {
+                        anchorPaneSlutfor.toFront();
+                        progressBar.setProgress(0.75);
+                        progressBar.toFront();
+                        buttonTidigareKop.toFront();
+                        setData();
+                }
         }
 
         //När man klickar på tredje tillbaka
@@ -549,6 +622,104 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 card.setVerificationCode((textfieldCVC.getText().length() == 0) ? 0 : Integer.parseInt(textfieldCVC.getText()));
         }
 
+        public boolean isPaymentInfoCorrect(boolean callErrors) {
+                boolean isReady = true;
+                if (getCurrentCardNumber().length() != 16 || !isValidValue(getCurrentCardNumber(), "CardType")) {
+                        if (callErrors) {
+                                setCardNumberError();
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldExpiring1.getText(), "Month")) {
+                        if (callErrors) {
+                                textfieldExpiring1.getStyleClass().remove("error");
+                                textfieldExpiring1.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldExpiring2.getText(), "Year")) {
+                        if (callErrors) {
+                                textfieldExpiring2.getStyleClass().remove("error");
+                                textfieldExpiring2.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldCVC.getText(), "CVV")) {
+                        if (callErrors) {
+                                textfieldCVC.getStyleClass().remove("error");
+                                textfieldCVC.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+
+                if (callErrors && !isReady) {
+                        labelErrorMessage.toFront();
+                } else if (isReady){
+                        labelErrorMessage.toBack();
+                }
+                return isReady;
+        }
+
+        public boolean isContactInfoCorrect(boolean callErrors) {
+                boolean isReady = true;
+                if (textfieldFirstname.getText().length() == 0) {
+                        if (callErrors) {
+                                textfieldFirstname.getStyleClass().remove("error");
+                                textfieldFirstname.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (textfieldLastname.getText().length() == 0) {
+                        if (callErrors) {
+                                textfieldLastname.getStyleClass().remove("error");
+                                textfieldLastname.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (textfieldAdress.getText().length() == 0) {
+                        if (callErrors) {
+                                textfieldAdress.getStyleClass().remove("error");
+                                textfieldAdress.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (textfieldStad.getText().length() == 0) {
+                        if (callErrors) {
+                                textfieldStad.getStyleClass().remove("error");
+                                textfieldStad.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldTelefonnummer.getText(), "Phone")) {
+                        if (callErrors) {
+                                textfieldTelefonnummer.getStyleClass().remove("error");
+                                textfieldTelefonnummer.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldEmail.getText(), "Email")) {
+                        if (callErrors) {
+                                textfieldEmail.getStyleClass().remove("error");
+                                textfieldEmail.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+                if (!isValidValue(textfieldPostnummer.getText(), "PostNumber")) {
+                        if (callErrors) {
+                                textfieldPostnummer.getStyleClass().remove("error");
+                                textfieldPostnummer.getStyleClass().add("error");
+                        }
+                        isReady = false;
+                }
+
+                if (callErrors && !isReady) {
+                        labelErrorMessage.toFront();
+                } else if (isReady){
+                        labelErrorMessage.toBack();
+                }
+                return isReady;
+        }
+
         public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
                 this.stage=stage;
                 this.mainPage=mainPage;
@@ -589,54 +760,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 textfieldCVC.setText(getCVV(card.getVerificationCode()));
         }
 
-        /*
-                 * validate all input, ignores empty text field,
-                 * and returns true if all text field are ready
-                 *
-                 * please don't look at this method
-        */
-        private boolean isReadyToSave() {
-                boolean isReady = true;
-                int cardNumberLength = getCurrentCardNumber().length();
-                if ((cardNumberLength != 0 && !isValidValue(textfieldKortnummer1.getText(), "CardType")) ||
-                        (cardNumberLength != 0 && cardNumberLength != 16)) {
-                        removeCardNumberError();
-                        setCardNumberError();
-                        isReady = false;
-                }
-
-                if (textfieldExpiring1.getText().length() != 0 && !isValidValue(textfieldExpiring1.getText(), "Month")) {
-                        textfieldExpiring1.getStyleClass().remove("error");
-                        textfieldExpiring1.getStyleClass().add("error");
-                        isReady = false;
-                }
-                if (textfieldExpiring2.getText().length() != 0 && !isValidValue(textfieldExpiring2.getText(), "Year")) {
-                        textfieldExpiring2.getStyleClass().remove("error");
-                        textfieldExpiring2.getStyleClass().add("error");
-                        isReady = false;
-                }
-                if (textfieldCVC.getText().length() != 0 && !isValidValue(textfieldCVC.getText(), "CVV")) {
-                        textfieldCVC.getStyleClass().remove("error");
-                        textfieldCVC.getStyleClass().add("error");
-                        isReady = false;
-                }
-                if (textfieldTelefonnummer.getText().length() != 0 && !isValidValue(textfieldTelefonnummer.getText(), "Phone")) {
-                        textfieldTelefonnummer.getStyleClass().remove("error");
-                        textfieldTelefonnummer.getStyleClass().add("error");
-                        isReady = false;
-                }
-                if (textfieldEmail.getText().length() != 0 && !isValidValue(textfieldEmail.getText(), "Email")) {
-                        textfieldEmail.getStyleClass().remove("error");
-                        textfieldEmail.getStyleClass().add("error");
-                        isReady = false;
-                }
-                if (textfieldPostnummer.getText().length() != 0 && !isValidValue(textfieldPostnummer.getText(), "PostNumber")) {
-                        textfieldPostnummer.getStyleClass().remove("error");
-                        textfieldPostnummer.getStyleClass().add("error");
-                        isReady = false;
-                }
-                return isReady;
-        }
 
                 /*
                  * checks if the given cardNumber is a Visa or Mastercard,

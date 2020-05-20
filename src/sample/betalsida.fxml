@@ -16,8 +16,13 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BetalsidaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.BetalsidaController">
     <children>
+      <Label fx:id="labelErrorMessage" layoutX="550.0" layoutY="220.0" text="Du har felaktiga informationer, fixa de för att försätta." textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
       <AnchorPane fx:id="anchorPaneTack" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
          <children>
             <AnchorPane layoutX="341.0" layoutY="130.0" prefHeight="491.0" prefWidth="596.0" style="-fx-background-color: white;">
@@ -51,63 +56,18 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneBetalningsuppgifter" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
-            <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
-               <children>
-                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="160.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="130.0" prefHeight="17.0" prefWidth="138.0" text="Utgångsdatum:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="70.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="49.0" prefHeight="17.0" prefWidth="138.0" text="Betalningsinformation" textAlignment="RIGHT">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="100.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
-                        <ImageView fitHeight="24.0" fitWidth="32.0" layoutX="231.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="cardTypeImageView" fitHeight="25.0" fitWidth="45.0" layoutX="230.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/Icons/unknown_card.png" />
-                           </image>
-                        </ImageView>
-                        <TextField fx:id="textfieldKortnummer1" alignment="CENTER" layoutX="229.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
-                        <TextField fx:id="textfieldKortnummer2" alignment="CENTER" layoutX="284.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
-                        <TextField fx:id="textfieldKortnummer3" alignment="CENTER" layoutX="339.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
-                        <TextField fx:id="textfieldKortnummer4" alignment="CENTER" layoutX="394.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
-                        <Label alignment="CENTER" layoutX="272.0" layoutY="92.0" prefHeight="35.0" prefWidth="14.0" text="-">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="323.0" layoutY="92.0" prefHeight="35.0" prefWidth="21.0" text="-">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER" layoutX="374.0" layoutY="92.0" prefHeight="35.0" prefWidth="30.0" text="-">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="textfieldExpiring1" alignment="CENTER" layoutX="229.0" layoutY="126.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
-                        <TextField fx:id="textfieldExpiring2" alignment="CENTER" layoutX="266.0" layoutY="126.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
-                        <Label layoutX="259.0" layoutY="125.0" text="/">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="textfieldCVC" alignment="CENTER" layoutX="231.0" layoutY="155.0" prefHeight="25.0" prefWidth="36.0" promptText="123" />
-                     </children>
-                  </Pane>
-                  <Label layoutX="214.0" layoutY="5.0" text="Betalningsuppgifter" textFill="WHITE">
+              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
+                  <children>
+                  <Label layoutX="220.0" layoutY="5.0" text="Bekräfta kundvagn" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
+                  <FlowPane fx:id="flowPaneBekrafta" layoutY="40.0" prefHeight="497.0" prefWidth="637.0" style="-fx-background-color: #dfdfdf;" />
+                  </children>
+              </Pane>
             <Label layoutX="320.0" layoutY="96.0" text="Bekräfta kundvagn">
                <font>
                   <Font size="14.0" />
@@ -128,12 +88,27 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick3" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
+            <Button layoutX="997.0" layoutY="284.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick3" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Tillbaka" textFill="WHITE">
+            <Button layoutX="997.0" layoutY="234.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Lägg till en annan inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Spara inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: dfdfdf;" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -232,18 +207,63 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
+      <AnchorPane fx:id="anchorPaneBetalningsuppgifter" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
-              <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
-                  <children>
-                  <Label layoutX="220.0" layoutY="5.0" text="Bekräfta kundvagn" textFill="WHITE">
+            <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
+               <children>
+                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: dfdfdf;">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="160.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="130.0" prefHeight="17.0" prefWidth="138.0" text="Utgångsdatum:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="70.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="49.0" prefHeight="17.0" prefWidth="138.0" text="Betalningsinformation" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="100.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
+                        <ImageView fitHeight="24.0" fitWidth="32.0" layoutX="231.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="cardTypeImageView" fitHeight="25.0" fitWidth="45.0" layoutX="230.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/Icons/unknown_card.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="textfieldKortnummer1" alignment="CENTER" layoutX="229.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                        <TextField fx:id="textfieldKortnummer2" alignment="CENTER" layoutX="284.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                        <TextField fx:id="textfieldKortnummer3" alignment="CENTER" layoutX="339.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                        <TextField fx:id="textfieldKortnummer4" alignment="CENTER" layoutX="394.0" layoutY="97.0" prefHeight="25.0" prefWidth="45.0" promptText="1234" />
+                        <Label alignment="CENTER" layoutX="272.0" layoutY="92.0" prefHeight="35.0" prefWidth="14.0" text="-">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="323.0" layoutY="92.0" prefHeight="35.0" prefWidth="21.0" text="-">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" layoutX="374.0" layoutY="92.0" prefHeight="35.0" prefWidth="30.0" text="-">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textfieldExpiring1" alignment="CENTER" layoutX="229.0" layoutY="126.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                        <TextField fx:id="textfieldExpiring2" alignment="CENTER" layoutX="266.0" layoutY="126.0" prefHeight="25.0" prefWidth="30.0" promptText="00" />
+                        <Label layoutX="259.0" layoutY="125.0" text="/">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textfieldCVC" alignment="CENTER" layoutX="231.0" layoutY="155.0" prefHeight="25.0" prefWidth="36.0" promptText="123" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="214.0" layoutY="5.0" text="Betalningsuppgifter" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <FlowPane fx:id="flowPaneBekrafta" layoutY="40.0" prefHeight="497.0" prefWidth="637.0" style="-fx-background-color: #dfdfdf;" />
-                  </children>
-              </Pane>
+               </children>
+            </Pane>
             <Label layoutX="320.0" layoutY="96.0" text="Bekräfta kundvagn">
                <font>
                   <Font size="14.0" />
@@ -264,27 +284,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="997.0" layoutY="284.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick3" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="997.0" layoutY="234.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Lägg till en annan inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Spara inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: dfdfdf;" text="Tillbaka" textFill="WHITE">
+            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick3" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -349,7 +354,7 @@
                         <CheckBox fx:id="spara" layoutX="236.0" layoutY="428.0" mnemonicParsing="false" />
                      </children>
                   </Pane>
-                  <Label layoutX="314.0" layoutY="5.0" text="Betalningsuppgifter" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="360.0" prefHeight="47.0" prefWidth="117.0" text="Slutför köp" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
