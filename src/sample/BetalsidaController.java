@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
@@ -16,9 +18,6 @@ import se.chalmers.cse.dat216.project.ShoppingCart;
 import se.chalmers.cse.dat216.project.ShoppingCartListener;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.TextField;
 import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.HashMap;
@@ -46,6 +45,28 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private ComboBox comboHem;
         @FXML private ComboBox comboAffar;
         @FXML private FlowPane flowPaneBekrafta;
+        @FXML private Label labelEmail;
+        @FXML private Label labelTelefonnummer;
+        @FXML private Label labelFirstname;
+        @FXML private Label labelLastname;
+        @FXML private Label labelAdress;
+        @FXML private Label labelStad;
+        @FXML private Label labelPostnummer;
+        @FXML private Label labelLeverans;
+        @FXML private Label labelKorttyp;
+        @FXML private Label labelKortnummer;
+        @FXML private Label labelExpiring;
+        @FXML private Label labelCVC;
+        @FXML private TextField textfieldFirstname;
+        @FXML private TextField textfieldLastname;
+        @FXML private TextField textfieldAdress;
+        @FXML private TextField textfieldStad;
+        @FXML private TextField textfieldPostnummer;
+        @FXML private TextField textfieldEmail;
+        @FXML private TextField textfieldTelefonnummer;
+        @FXML private TextField textfieldKortnummer;
+        @FXML private TextField textfieldExpiring;
+        @FXML private TextField textfieldCVC;
         private ShoppingCart shoppingCart = model.getShoppingCart();
         private Map<String, BetalsidaItem> betalsidaItemMap = new HashMap<String, BetalsidaItem>();
         private Parent mainPage;
@@ -128,7 +149,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 }
                         }
                 });
-
+                
+                anchorPaneBekraftaKundvagn.toFront();
+                progressBar.setProgress(0);
+                buttonTidigareKop.toFront();
+                progressBar.toFront();
                 getShoppingCart();
         }
         //setter för stage och mainpage root
@@ -238,7 +263,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @Override
         public void shoppingCartChanged(CartEvent cartEvent) {
                 getShoppingCart();
-                System.out.println("hej");
         }
+
+
+        //public void setData {
+
+        //}
+
+        //public void getData {
+
+        //}
 }
 
