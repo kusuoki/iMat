@@ -50,6 +50,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private Label labelPostnummer;
         @FXML private Label labelLeverans;
         @FXML private ImageView cardTypeImageView;
+        @FXML private ImageView cardTypeImageViewAgain;
         @FXML private Label labelKortnummer;
         @FXML private Label labelExpiring;
         @FXML private Label labelCVC;
@@ -67,6 +68,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private TextField textfieldExpiring1;
         @FXML private TextField textfieldExpiring2;
         @FXML private TextField textfieldCVC;
+        @FXML private CheckBox spara;
         private ShoppingCart shoppingCart = model.getShoppingCart();
         private Map<String, BetalsidaItem> betalsidaItemMap = new HashMap<String, BetalsidaItem>();
         private Parent mainPage;
@@ -468,25 +470,24 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 progressBar.setProgress(1);
                 progressBar.toFront();
                 anchorPaneTack.toFront();
+                if(spara.isSelected())
+                {
+                        save();
+                }
         }
 
         public void getShoppingCart()
         {
-
-
-
-                        for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
-                                BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
-                                betalsidaItemMap.put(shoppingItem.getProduct().getName(), betalsidaItem);
-                        }
-                        flowPaneBekrafta.getChildren().clear();
-                        List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
-                        for (ShoppingItem shoppingItem : shoppingItems)
-                        {
-                                flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
-                        }
-
-
+                for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
+                        BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
+                        betalsidaItemMap.put(shoppingItem.getProduct().getName(), betalsidaItem);
+                }
+                flowPaneBekrafta.getChildren().clear();
+                List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
+                for (ShoppingItem shoppingItem : shoppingItems)
+                {
+                        flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
+                }
         }
 
         public Map<String, BetalsidaItem> getHashMap()
@@ -499,7 +500,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 getShoppingCart();
         }
 
-
         public void setData() {
                 labelEmail.setText(textfieldEmail.getText());
                 labelTelefonnummer.setText(textfieldTelefonnummer.getText());
@@ -508,35 +508,46 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 labelAdress.setText(textfieldAdress.getText());
                 labelStad.setText(textfieldStad.getText());
                 labelPostnummer.setText(textfieldPostnummer.getText());
-                //labelLeverans.setText(tex);
-
+                if(radioHemLeverans.isSelected())
+                {
+                        if(radioTid10.isSelected())
+                        {
+                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 10");
+                        }
+                        else if(radioTid12.isSelected())
+                        {
+                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 12");
+                        }
+                        else if(radioTid20.isSelected())
+                        {
+                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 20");
+                        }
+                }
+                else if(radioAffarLeverans.isSelected())
+                {
+                        labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
+                }
                 cardTypeImageView.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
+                cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
                 labelKortnummer.setText(textfieldKortnummer1.getText() + "-" + textfieldKortnummer2.getText() +
                         "-" + textfieldKortnummer3.getText() + "-" + textfieldKortnummer4.getText());
                 labelExpiring.setText(textfieldExpiring1.getText() + "/" + textfieldExpiring2.getText());
                 labelCVC.setText(textfieldCVC.getText());
         }
 
-        //public void getData {
-
-        //}
-
         @FXML
         public void save() {
-                if (isReadyToSave()) {
-                        customer.setFirstName(textfieldFirstname.getText());
-                        customer.setLastName(textfieldLastname.getText());
-                        customer.setAddress(textfieldAdress.getText());
-                        customer.setPhoneNumber(getStrippedPhoneNumber(textfieldTelefonnummer.getText()));
-                        customer.setEmail(textfieldEmail.getText());
-                        customer.setPostAddress(textfieldStad.getText());
-                        customer.setPostCode(textfieldPostnummer.getText());
-                        card.setCardNumber(getCurrentCardNumber());
-                        card.setValidMonth((textfieldExpiring1.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring1.getText()));
-                        card.setValidYear((textfieldExpiring2.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring2.getText()));
-                        card.setVerificationCode((textfieldCVC.getText().length() == 0) ? 0 : Integer.parseInt(textfieldCVC.getText()));
-                        System.out.println("Account settings saved! Probably.");
-                }
+                customer.setFirstName(textfieldFirstname.getText());
+                customer.setLastName(textfieldLastname.getText());
+                customer.setAddress(textfieldAdress.getText());
+                customer.setPhoneNumber(getStrippedPhoneNumber(textfieldTelefonnummer.getText()));
+                customer.setEmail(textfieldEmail.getText());
+                customer.setPostAddress(textfieldStad.getText());
+                customer.setPostCode(textfieldPostnummer.getText());
+                card.setCardNumber(getCurrentCardNumber());
+                card.setValidMonth((textfieldExpiring1.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring1.getText()));
+                card.setValidYear((textfieldExpiring2.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring2.getText()));
+                card.setVerificationCode((textfieldCVC.getText().length() == 0) ? 0 : Integer.parseInt(textfieldCVC.getText()));
         }
 
         public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
@@ -546,39 +557,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 this.paymentPage=paymentPage;
         }
 
-        @FXML
-        public void onHomeButtonClick(ActionEvent actionEvent){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(mainPage);
-        }
         @FXML void onHomeButtonClickIcon(){
                 backButton.addToBackList(stage.getScene().getRoot());
                 stage.getScene().setRoot(mainPage);
         }
-        @FXML
-        public void onListPageClick(ActionEvent actionEvent){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(listPage);
-        }
-        @FXML
-        public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(earlierPurchases);
-        }@FXML
-        public void onCustomerServicePageClick(ActionEvent actionEvent){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(customerServicePage);
-        }
-        @FXML
-        public void onPaymentPageClick(ActionEvent actionEvent){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(paymentPage);
-        }
-        @FXML
-        public void onBackButtonClick(ActionEvent actionEvent){
-                        backButton.goBack();
-                }
-        @FXML
+
         public void goToNextTextField() {
                         nextTextfield.requestFocus();
                 }
