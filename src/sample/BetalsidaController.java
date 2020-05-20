@@ -173,8 +173,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man trycker på ikonen på hemknappen... enklare att lösa så här eftersom metoden ovanför kräver ett event och klickar man på ikonen fås inget event...
         @FXML void onHomeButtonClickIcon(){
                 stage.getScene().setRoot(mainPage);
-                buttonTidigareKop.toFront();
                 anchorPaneBekraftaKundvagn.toFront();
+                buttonTidigareKop.toFront();
 
         }
 
@@ -243,8 +243,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
         public void getShoppingCart()
         {
-                if (shoppingCart.getItems().size() != 0)
-                {
+
+
 
                         for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
                                 BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
@@ -256,7 +256,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         {
                                 flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
                         }
-                }
+
 
         }
 
