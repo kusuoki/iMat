@@ -406,7 +406,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 stage.getScene().setRoot(mainPage);
                 model.clearShoppingCart();
                 anchorPaneBekraftaKundvagn.toFront();
-
         }
 
         //När man klickar på första nästa
@@ -528,7 +527,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
                 }
                 cardTypeImageView.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
-                cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
+                cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 labelKortnummer.setText(textfieldKortnummer1.getText() + "-" + textfieldKortnummer2.getText() +
                         "-" + textfieldKortnummer3.getText() + "-" + textfieldKortnummer4.getText());
                 labelExpiring.setText(textfieldExpiring1.getText() + "/" + textfieldExpiring2.getText());
