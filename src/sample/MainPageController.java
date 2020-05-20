@@ -164,15 +164,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         if (model.getShoppingCart().getItems().size() > 0) {
             model.updateShoppingCart(model.getShoppingCart().getItems().get(0).getProduct(), 0);
         }
-        displayListItemByCategory("Frukt & Grönt");
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
-
         model.getOrders().clear();
         for(int i = 1; i < 20; i++){
             Order o = generateTestOrder(new Date(), i, i);
             model.getOrders().add(o);
         }
+        onSearch();
 
     }
 
