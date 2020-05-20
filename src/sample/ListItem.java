@@ -76,9 +76,12 @@ public class ListItem extends AnchorPane {
         model.setImageViewOnHoverEvent(listItemImage,null);
 
         //TODO KOMMER GE PROBLEM (KANSKE FIXAD??)
-        if (model.getShoppingCart().getItems().contains(model.getShoppingItemMap().get(product.getProductId()))) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
-            listItemPlusMinusPane.toFront();
-            updateTextfieldWithAmountOfProduct();
+        for (ShoppingItem item : model.getShoppingCart().getItems()) { //Kolla om produkten redan finns med i shoppingcarten, i så fall ska plus/minusknapparna visas
+            if (item.getProduct().equals(product)) {
+                listItemPlusMinusPane.toFront();
+                updateTextfieldWithAmountOfProduct();
+                break;
+            }
         }
 
         if (model.getFavorites().contains(product)){        //Kolla om produkten ligger i favoriter

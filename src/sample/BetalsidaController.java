@@ -402,7 +402,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onHomeClick(ActionEvent event){
                 stage.getScene().setRoot(mainPage);
-                model.getShoppingCart().clear();
+                model.clearShoppingCart();
                 anchorPaneBekraftaKundvagn.toFront();
 
         }
@@ -472,8 +472,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
         public void getShoppingCart()
         {
-                if (shoppingCart.getItems().size() != 0)
-                {
+
+
 
                         for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
                                 BetalsidaItem betalsidaItem = new BetalsidaItem(shoppingItem, model);
@@ -485,7 +485,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         {
                                 flowPaneBekrafta.getChildren().add(betalsidaItemMap.get(shoppingItem.getProduct().getName()));
                         }
-                }
+
 
         }
 
