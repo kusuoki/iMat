@@ -17,17 +17,19 @@ public class KundserviceController implements Initializable {
     private Parent earlierPurchases;
     private Parent accountPage;
     private Parent paymentPage;
+    private MainPageController mainPageController;
     private BackButton backButton = BackButton.getBackButton();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
 
-    public void setStage(Stage stage, Parent mainPage,  Parent accountPage,Parent paymentPage) {
+    public void setStage(Stage stage, Parent mainPage,  Parent accountPage,Parent paymentPage, MainPageController mainPageController) {
         this.stage = stage;
         this.mainPage=mainPage;
         this.accountPage=accountPage;
         this.paymentPage=paymentPage;
+        this.mainPageController=mainPageController;
     }
 
     @FXML
@@ -49,7 +51,8 @@ public class KundserviceController implements Initializable {
     }
     @FXML
     public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
-        backButton.addToBackList(stage.getScene().getRoot());
+        //backButton.addToBackList(stage.getScene().getRoot());
+        mainPageController.onEarlierPurchases(actionEvent);
         stage.getScene().setRoot(mainPage);
     }
     @FXML

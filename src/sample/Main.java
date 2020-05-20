@@ -67,9 +67,9 @@ public class Main extends Application {
         mainPagec.setStage(primaryStage,betal,konto,kundservice);
         betalC.setStage(primaryStage,root);
 
-        kontoC.setStage(primaryStage,root,kundservice,betal);
+        kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec);
 
-        kundC.setStage(primaryStage,root,konto,betal);
+        kundC.setStage(primaryStage,root,konto,betal,mainPagec);
 
     }
 
