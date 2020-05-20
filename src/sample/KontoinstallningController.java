@@ -303,11 +303,12 @@ public class KontoinstallningController implements Initializable {
         }
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
+    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController){
         this.stage=stage;
         this.mainPage=mainPage;
         this.customerServicePage=customerServicePage;
         this.paymentPage=paymentPage;
+        this.mainPageController=mainPageController;
     }
 
     @FXML
@@ -326,7 +327,8 @@ public class KontoinstallningController implements Initializable {
     }
     @FXML
     public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
-        backButton.addToBackList(stage.getScene().getRoot());
+        //backButton.addToBackList(stage.getScene().getRoot());
+        mainPageController.onEarlierPurchases(actionEvent);
         stage.getScene().setRoot(mainPage);
 
     }
