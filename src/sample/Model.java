@@ -9,6 +9,7 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 public class Model {
@@ -129,9 +130,16 @@ public class Model {
     }
 
     public void clearShoppingCart() {
+        List<ShoppingItem> items = getShoppingCart().getItems();
 
-        iMatDataHandler.getShoppingCart().clear();
+        while (items.size() > 0) {
+            ShoppingItem item = items.get(items.size()-1);
+            items.remove(item);
+            removeFromShoppingCart(item.getProduct());
+        }
 
+        shoppingItemMap.clear();
+        getShoppingCart().clear();
     }
 
     public void placeOrder() {
