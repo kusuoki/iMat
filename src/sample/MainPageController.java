@@ -118,6 +118,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private List<ListItem> list8Items = new ArrayList<>();
     int currentPage;
     int lastPage;
+    String category;
+    boolean cat=false;
+    boolean search =false;
+    private  List<ProductA> tempSearch= new ArrayList<>();
 
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
@@ -249,6 +253,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onSearch() {
         List<ProductA> searchList = model.findProducts(searchField.getText());
+        this.tempSearch=searchList;
         
         //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
         //updateProductList(searchList);
@@ -421,18 +426,27 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     private void displayListItemByCategory(String category){
+        this.category=category;
+        if(!cat){
+            currentPage=0;
+        }
+        cat=true;
+        search=false;
         list8Items.clear();
         currentListWithItems.clear();
-        currentPage = 0;
+
 
         List<ProductA> productList = model.getProducts(category);
 
-        for (ProductA p : productList){
-            ListItem item = new ListItem(p, model, this);
+        for (int i =currentPage*8;i<currentPage*8+8;i++) {
+            ListItem item = new ListItem(productList.get(i), model, this);
             currentListWithItems.add(item);
+
         }
 
-        lastPage = currentListWithItems.size() / 8;
+
+        lastPage = productList.size() / 8;
+
         if (currentListWithItems.size() % 8 != 0 ) {
             lastPage++;
         }
@@ -441,17 +455,30 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     private void displayListItemFromList(List<ProductA> productList){
+        if (!search){
+            currentPage = 0;
+        }
+        search=true;
+        cat=false;
         list8Items.clear();
         currentListWithItems.clear();
-        currentPage = 0;
 
-        for (ProductA p : productList){
-            ListItem item = new ListItem(p, model, this);
+
+
+        for (int i =currentPage*8;i<currentPage*8+8;i++) {
+            if (i>productList.size()-1){
+                break;
+            }
+            ListItem item = new ListItem(productList.get(i), model, this);
             currentListWithItems.add(item);
+
         }
 
-        lastPage = currentListWithItems.size() / 8;
-        if (currentListWithItems.size() % 8 != 0 ) {
+        lastPage = productList.size()/8;
+        if (productList.size()%8>0){
+            lastPage++;
+        }
+        else if (currentListWithItems.size() % 8 != 0 ) {
             lastPage++;
         }
 
@@ -461,7 +488,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private void displayListItems() {
         flowPaneMainPage.getChildren().clear();
         updateListWith8ItemsFromCurrent();
-        labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+
+            labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
 
         for (ListItem item : list8Items){
             flowPaneMainPage.getChildren().add(item);
@@ -472,7 +500,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     private void updateListWith8ItemsFromCurrent(){
         list8Items.clear();
-        for (int i = currentPage * 8; i < currentPage * 8 + 8; i++ ){
+        for (int i = 0; i <  8; i++ ){
             if (i < currentListWithItems.size() ){
                 list8Items.add(currentListWithItems.get(i));
             }
@@ -483,6 +511,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void nextPageButton(){
         if (lastPage > currentPage + 1) {
             currentPage++;
+            if(cat){
+                displayListItemByCategory(category);
+            }
+            if (search){
+                displayListItemFromList(tempSearch);
+            }
             displayListItems();
         }
     }
@@ -491,6 +525,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void previousPageButton(){
         if (currentPage > 0) {
             currentPage--;
+            if(cat){
+                displayListItemByCategory(category);
+            }
+            if (search){
+                displayListItemFromList(tempSearch);
+            }
             displayListItems();
         }
     }
