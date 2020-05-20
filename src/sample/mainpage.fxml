@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
-      <AnchorPane fx:id="anchorPaneMainLightbox" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+      <AnchorPane fx:id="anchorPaneMainLightbox" prefHeight="750.0" prefWidth="1327.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
          <children>
             <AnchorPane layoutX="314.0" layoutY="168.0" prefHeight="414.0" prefWidth="650.0" style="-fx-background-color: white;">
                <children>
@@ -42,98 +49,183 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenySotsaker" prefHeight="750.0" prefWidth="1277.0">
+      <AnchorPane fx:id="anchorUndermenyMejeri" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
          <children>
-            <Pane layoutX="276.0" layoutY="430.0" prefHeight="246.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+            <Pane layoutX="277.0" layoutY="432.0" onMouseClicked="#mouseTrap" prefHeight="269.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
                <children>
-                  <Button fx:id="buttonAllaDrycker11" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla sötsaker" />
-                  <Button fx:id="buttonFarskLax1" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bakverk &amp; Kakor" />
-                  <Button fx:id="buttonSill1" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Glass" />
-                  <Button fx:id="buttonSkaldjur1" layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Godis" />
-                  <Button fx:id="buttonOvrigFisk1" layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Snacks" />
-               </children>
-            </Pane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenyDrycker" prefHeight="750.0" prefWidth="1277.0">
-         <children>
-            <Pane layoutX="276.0" layoutY="332.0" prefHeight="148.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
-               <children>
-                  <Button fx:id="buttonAllaDrycker" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla drycker" />
-                  <Button fx:id="buttonKallaDrycker" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Kalla drycker" />
-                  <Button fx:id="buttonVarmaDrycker" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Varma drycker" />
-               </children>
-            </Pane>
-            <AnchorPane fx:id="anchorUndermenyKott" prefHeight="750.0" prefWidth="1277.0">
-               <children>
-                  <Pane layoutX="276.0" layoutY="528.0" prefHeight="148.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+                  <Button fx:id="buttonAllaMejeri" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Mejeriprodukter &amp; Ägg" />
+                  <Button fx:id="buttonMjolk" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Mjölk" />
+                  <Button fx:id="buttonOst" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Ost" />
+                  <Button fx:id="buttonYoghurt" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Yoghurt &amp; Filmjölk" />
+                  <Button fx:id="buttonAgg" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" styleClass="menuButton" text="Ägg" />
+                  <Pane layoutX="1.0" layoutY="247.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
                      <children>
-                        <Button fx:id="buttonAllaKott" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Kött &amp; Fågel" />
-                        <Button fx:id="buttonKyckling" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Kyckling" />
-                        <Button fx:id="buttonNotkott" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Nötkött" />
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                </children>
-            </AnchorPane>
+            </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenyFisk" prefHeight="750.0" prefWidth="1277.0">
+      <AnchorPane fx:id="anchorUndermenyKott" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1277.0">
          <children>
-            <Pane layoutX="276.0" layoutY="381.0" prefHeight="246.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+            <Pane layoutX="277.0" layoutY="481.0" onMouseClicked="#mouseTrap" prefHeight="171.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
                <children>
-                  <Button fx:id="buttonAllaDrycker1" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla Fisk &amp; Skaldjur" />
-                  <Button fx:id="buttonFarskLax" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Färsk lax" />
-                  <Button fx:id="buttonSill" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Sill" />
-                  <Button fx:id="buttonSkaldjur" layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Skaldjur" />
-                  <Button fx:id="buttonOvrigFisk" layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Övrig fisk" />
+                  <Button fx:id="buttonAllaKott" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Kött &amp; Fågel" />
+                  <Button fx:id="buttonKyckling" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Kyckling" />
+                  <Button fx:id="buttonNotkott" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Nötkött" />
+               </children>
+            </Pane>
+            <Pane layoutX="278.0" layoutY="630.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+               <children>
+                  <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenyFrukt" prefHeight="750.0" prefWidth="1277.0">
+      <AnchorPane fx:id="anchorUndermenyFisk" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
          <children>
-            <Pane layoutX="276.0" layoutY="185.0" prefHeight="491.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+            <Pane layoutX="277.0" layoutY="383.0" onMouseClicked="#mouseTrap" prefHeight="269.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
                <children>
-                  <Button fx:id="buttonAllaFrukt" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Frukt &amp; Grönt" />
-                  <Button fx:id="buttonBar" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bär" />
-                  <Button fx:id="buttonCitrusfrukter" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Citrusfrukter" />
-                  <Button fx:id="buttonExotiskaFrukter" layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Exotiska frukter" />
-                  <Button fx:id="buttonFarskaOrtkryddor" layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Färska örtkryddor" />
-                  <Button fx:id="buttonGronsaker" layoutX="1.0" layoutY="246.0" mnemonicParsing="false" styleClass="menuButton" text="Grönsaker" />
-                  <Button fx:id="buttonKal" layoutX="1.0" layoutY="295.0" mnemonicParsing="false" styleClass="menuButton" text="Kål" />
-                  <Button fx:id="buttonMelon" layoutX="1.0" layoutY="344.0" mnemonicParsing="false" styleClass="menuButton" text="Melon" />
-                  <Button fx:id="buttonPotatisOchRotfrukter" layoutX="1.0" layoutY="393.0" mnemonicParsing="false" styleClass="menuButton" text="Potatis &amp; Rotfrukter" />
-                  <Button fx:id="buttonSotaStenfrukter" layoutX="1.0" layoutY="442.0" mnemonicParsing="false" styleClass="menuButton" text="Söta stenfrukter" />
+                  <Button fx:id="buttonAllaFisk" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Fisk &amp; Skaldjur" />
+                  <Button fx:id="buttonFarskLax" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Färsk lax" />
+                  <Button fx:id="buttonSill" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Sill" />
+                  <Button fx:id="buttonSkaldjur" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Skaldjur" />
+                  <Button fx:id="buttonOvrigFisk" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" styleClass="menuButton" text="Övrig fisk" />
+                  <Pane layoutX="1.0" layoutY="247.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenySkafferi" prefHeight="750.0" prefWidth="1277.0">
+      <AnchorPane fx:id="anchorUndermenyFrukt" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
          <children>
-            <Pane layoutX="276.0" layoutY="185.0" prefHeight="491.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+            <Pane layoutX="277.0" layoutY="187.0" onMouseClicked="#mouseTrap" prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
                <children>
-                  <Button fx:id="buttonAllaSkafferi" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Skafferi" />
-                  <Button fx:id="buttonBrod" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bröd" />
-                  <Button fx:id="buttonFron" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Frön" />
-                  <Button fx:id="buttonKakao" layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Kakao" />
-                  <Button fx:id="buttonKnackebrod" layoutX="1.0" layoutY="197.0" mnemonicParsing="false" styleClass="menuButton" text="Knäckebröd" />
-                  <Button fx:id="buttonMjol" layoutX="1.0" layoutY="246.0" mnemonicParsing="false" styleClass="menuButton" text="Mjöl" />
-                  <Button fx:id="buttonNotter" layoutX="1.0" layoutY="295.0" mnemonicParsing="false" styleClass="menuButton" text="Nötter" />
-                  <Button fx:id="buttonPasta" layoutX="1.0" layoutY="344.0" mnemonicParsing="false" styleClass="menuButton" text="Pasta" />
-                  <Button fx:id="buttonRis" layoutX="1.0" layoutY="393.0" mnemonicParsing="false" styleClass="menuButton" text="Ris" />
-                  <Button fx:id="buttonSockerOchSalt" layoutX="1.0" layoutY="442.0" mnemonicParsing="false" styleClass="menuButton" text="Socker &amp; Salt" />
+                  <Button fx:id="buttonAllaFrukt" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Frukt &amp; Grönt" />
+                  <Button fx:id="buttonBar" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Bär" />
+                  <Button fx:id="buttonCitrusfrukter" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Citrusfrukter" />
+                  <Button fx:id="buttonExotiskaFrukter" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Exotiska frukter" />
+                  <Button fx:id="buttonFarskaOrtkryddor" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" styleClass="menuButton" text="Färska örtkryddor" />
+                  <Button fx:id="buttonGronsaker" layoutX="1.0" layoutY="247.0" mnemonicParsing="false" styleClass="menuButton" text="Grönsaker" />
+                  <Button fx:id="buttonKal" layoutX="1.0" layoutY="296.0" mnemonicParsing="false" styleClass="menuButton" text="Kål" />
+                  <Button fx:id="buttonMelon" layoutX="1.0" layoutY="345.0" mnemonicParsing="false" styleClass="menuButton" text="Melon" />
+                  <Button fx:id="buttonPotatisOchRotfrukter" layoutX="1.0" layoutY="394.0" mnemonicParsing="false" styleClass="menuButton" text="Potatis &amp; Rotfrukter" />
+                  <Button fx:id="buttonSotaStenfrukter" layoutX="1.0" layoutY="443.0" mnemonicParsing="false" styleClass="menuButton" text="Söta stenfrukter" />
+                  <Pane layoutX="1.0" layoutY="492.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorUndermenyBaljvaxter" prefHeight="750.0" prefWidth="1277.0">
+      <AnchorPane fx:id="anchorUndermenyDrycker" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
          <children>
-            <Pane layoutX="276.0" layoutY="283.0" prefHeight="197.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+            <Pane layoutX="277.0" layoutY="334.0" onMouseClicked="#mouseTrap" prefHeight="171.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
                <children>
-                  <Button fx:id="buttonAllaBaljvaxter" layoutX="1.0" layoutY="1.0" mnemonicParsing="false" styleClass="menuButton" text="Alla baljväxter" />
-                  <Button fx:id="buttonBonor" layoutX="1.0" layoutY="50.0" mnemonicParsing="false" styleClass="menuButton" text="Bönor" />
-                  <Button fx:id="buttonLinser" layoutX="1.0" layoutY="99.0" mnemonicParsing="false" styleClass="menuButton" text="Linser" />
-                  <Button fx:id="buttonArtor" layoutX="1.0" layoutY="148.0" mnemonicParsing="false" styleClass="menuButton" text="Ärtor" />
+                  <Button fx:id="buttonAllaDrycker" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Alla drycker" />
+                  <Button fx:id="buttonKallaDrycker" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Kalla drycker" />
+                  <Button fx:id="buttonVarmaDrycker" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Varma drycker" />
+                  <Pane layoutX="1.0" layoutY="149.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorUndermenyBaljvaxter" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
+         <children>
+            <Pane layoutX="277.0" layoutY="285.0" onMouseClicked="#mouseTrap" prefHeight="219.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+               <children>
+                  <Button fx:id="buttonAllaBaljvaxter" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Alla baljväxter" />
+                  <Button fx:id="buttonBonor" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Bönor" />
+                  <Button fx:id="buttonLinser" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Linser" />
+                  <Button fx:id="buttonArtor" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Ärtor" />
+                  <Pane layoutX="1.0" layoutY="198.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorUndermenySkafferi" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1327.0">
+         <children>
+            <Pane layoutX="277.0" layoutY="187.0" onMouseClicked="#mouseTrap" prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+               <children>
+                  <Button fx:id="buttonAllaSkafferi" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Allt i Skafferi" />
+                  <Button fx:id="buttonBrod" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Bröd" />
+                  <Button fx:id="buttonFron" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Frön" />
+                  <Button fx:id="buttonKakao" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Kakao" />
+                  <Button fx:id="buttonKnackebrod" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" styleClass="menuButton" text="Knäckebröd" />
+                  <Button fx:id="buttonMjol" layoutX="1.0" layoutY="247.0" mnemonicParsing="false" styleClass="menuButton" text="Mjöl" />
+                  <Button fx:id="buttonNotter" layoutX="1.0" layoutY="296.0" mnemonicParsing="false" styleClass="menuButton" text="Nötter" />
+                  <Button fx:id="buttonPasta" layoutX="1.0" layoutY="345.0" mnemonicParsing="false" styleClass="menuButton" text="Pasta" />
+                  <Button fx:id="buttonRis" layoutX="1.0" layoutY="394.0" mnemonicParsing="false" styleClass="menuButton" text="Ris" />
+                  <Button fx:id="buttonSockerOchSalt" layoutX="1.0" layoutY="443.0" mnemonicParsing="false" styleClass="menuButton" text="Socker &amp; Salt" />
+                  <Pane layoutX="1.0" layoutY="492.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorUndermenySotsaker" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1327.0">
+         <children>
+            <Pane layoutX="277.0" layoutY="432.0" onMouseClicked="#mouseTrap" prefHeight="269.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
+               <children>
+                  <Button fx:id="buttonAllaSotsaker" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" styleClass="menuButton" text="Alla sötsaker" />
+                  <Button fx:id="buttonBakverk" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" styleClass="menuButton" text="Bakverk &amp; Kakor" />
+                  <Button fx:id="buttonGlass" layoutX="1.0" layoutY="100.0" mnemonicParsing="false" styleClass="menuButton" text="Glass" />
+                  <Button fx:id="buttonGodis" layoutX="1.0" layoutY="149.0" mnemonicParsing="false" styleClass="menuButton" text="Godis" />
+                  <Button fx:id="buttonSnacks" layoutX="1.0" layoutY="198.0" mnemonicParsing="false" styleClass="menuButton" text="Snacks" />
+                  <Pane layoutX="1.0" layoutY="247.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;">
+                     <children>
+                        <Label alignment="CENTER" layoutX="1.0" layoutY="-1.0" prefHeight="20.0" prefWidth="225.0" text="Få bort rutan genom att klicka utanför" textAlignment="CENTER">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
             </Pane>
          </children>
@@ -142,7 +234,7 @@
          <children>
               <Pane prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: #00692a;" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="50.0">
                   <children>
-                      <Pane layoutY="45.0" prefHeight="492.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
+                      <Pane layoutY="45.0" prefHeight="514.0" prefWidth="227.0" style="-fx-background-color: dfdfdf;">
                      <children>
                         <Button fx:id="buttonErbjudanden" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="225.0" styleClass="menuButton" text="Erbjudanden" />
                         <Button fx:id="buttonFavoriter" layoutX="1.0" layoutY="51.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="225.0" styleClass="menuButton" text="Favoriter" />
@@ -157,27 +249,73 @@
                      </children>
                           <Pane fx:id="paneIndicatorErbjudanden" layoutX="1.0" layoutY="2.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorFavoriter" layoutX="1.0" layoutY="51.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                          <Pane fx:id="paneIndicatorBaljvaxter" layoutX="1.0" layoutY="100.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorDrycker" layoutX="1.0" layoutY="149.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorFisk" layoutX="1.0" layoutY="198.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorFrukt" layoutX="1.0" layoutY="247.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorKott" layoutX="1.0" layoutY="296.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorMejeri" layoutX="1.0" layoutY="345.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
                           <Pane fx:id="paneIndicatorSkafferi" layoutX="1.0" layoutY="394.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                          <Pane fx:id="paneIndicatorBaljvaxter" layoutX="1.0" layoutY="100.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
-                          <Pane fx:id="paneIndicatorSotsaker" layoutX="1.0" layoutY="443.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
+                                                   <Pane fx:id="paneIndicatorSotsaker" layoutX="1.0" layoutY="443.0" prefHeight="47.0" prefWidth="23.0" style="-fx-background-color: #51B479;" />
 
-                          <ImageView fx:id="imageViewArrowErbjudanden" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowFavoriter" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowBaljvaxter" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowSotsaker" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowDrycker" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowFisk" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowFrukt" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowKott" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowMejeri" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true" />
-                     <ImageView fx:id="imageViewArrowSkafferi" fitHeight="48.0" fitWidth="36.0" layoutX="190.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true" />
+                                <ImageView fx:id="imageViewArrowErbjudanden" fitHeight="55.0" fitWidth="46.0" layoutX="180.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowFavoriter" fitHeight="47.0" fitWidth="46.0" layoutX="180.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowBaljvaxter" fitHeight="48.0" fitWidth="46.0" layoutX="180.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowDrycker" fitHeight="48.0" fitWidth="46.0" layoutX="180.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowFisk" fitHeight="46.0" fitWidth="46.0" layoutX="180.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowFrukt" fitHeight="62.0" fitWidth="46.0" layoutX="180.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowKott" fitHeight="48.0" fitWidth="46.0" layoutX="180.0" layoutY="296.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowMejeri" fitHeight="48.0" fitWidth="46.0" layoutX="180.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                     <ImageView fx:id="imageViewArrowSkafferi" fitHeight="47.0" fitWidth="46.0" layoutX="180.0" layoutY="394.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                           <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                        </image>
+                     </ImageView>
+                          <ImageView fx:id="imageViewArrowSotsaker" fitHeight="48.0" fitWidth="46.0" layoutX="180.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@resources/Icons/ic_arrow_darkgreen_64dp.png" />
+                              </image>
+                     </ImageView>
+                     <Pane layoutX="1.0" layoutY="492.0" prefHeight="20.0" prefWidth="225.0" style="-fx-background-color: #d4d4d4;" />
+                     <Label alignment="CENTER" layoutX="1.0" layoutY="491.0" prefHeight="20.0" prefWidth="225.0" text="Tips! Klicka ovan för att välja kategori" textAlignment="CENTER">
+                        <font>
+                           <Font size="13.0" />
+                        </font>
+                     </Label>
 
-                                    </Pane>
+                                          </Pane>
                       <Label layoutX="17.0" prefHeight="45.0" prefWidth="194.0" text="Hitta din vara" textFill="WHITE">
                           <font>
                               <Font size="24.0" />

@@ -1,9 +1,11 @@
 package sample;
 
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
@@ -63,9 +65,67 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML ImageView imageViewArrowMejeri;
     @FXML ImageView imageViewArrowSkafferi;
 
-    ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
+    @FXML AnchorPane anchorUndermenyBaljvaxter;
+    @FXML AnchorPane anchorUndermenyDrycker;
+    @FXML AnchorPane anchorUndermenyFisk;
+    @FXML AnchorPane anchorUndermenyFrukt;
+    @FXML AnchorPane anchorUndermenyKott;
+    @FXML AnchorPane anchorUndermenyMejeri;
+    @FXML AnchorPane anchorUndermenySkafferi;
+    @FXML AnchorPane anchorUndermenySotsaker;
+
+    @FXML javafx.scene.control.Button buttonAllaBaljvaxter;
+    @FXML javafx.scene.control.Button buttonBonor;
+    @FXML javafx.scene.control.Button buttonLinser;
+    @FXML javafx.scene.control.Button buttonArtor;
+    @FXML javafx.scene.control.Button buttonAllaDrycker;
+    @FXML javafx.scene.control.Button buttonKallaDrycker;
+    @FXML javafx.scene.control.Button buttonVarmaDrycker;
+    @FXML javafx.scene.control.Button buttonAllaFrukt;
+    @FXML javafx.scene.control.Button buttonBar;
+    @FXML javafx.scene.control.Button buttonCitrusfrukter;
+    @FXML javafx.scene.control.Button buttonExotiskaFrukter;
+    @FXML javafx.scene.control.Button buttonFarskaOrtkryddor;
+    @FXML javafx.scene.control.Button buttonGronsaker;
+    @FXML javafx.scene.control.Button buttonKal;
+    @FXML javafx.scene.control.Button buttonMelon;
+    @FXML javafx.scene.control.Button buttonPotatisOchRotfrukter;
+    @FXML javafx.scene.control.Button buttonSotaStenfrukter;
+    @FXML javafx.scene.control.Button buttonAllaFisk;
+    @FXML javafx.scene.control.Button buttonFarskLax;
+    @FXML javafx.scene.control.Button buttonSill;
+    @FXML javafx.scene.control.Button buttonSkaldjur;
+    @FXML javafx.scene.control.Button buttonOvrigFisk;
+    @FXML javafx.scene.control.Button buttonAllaKott;
+    @FXML javafx.scene.control.Button buttonKyckling;
+    @FXML javafx.scene.control.Button buttonNotkott;
+    @FXML javafx.scene.control.Button buttonAllaMejeri;
+    @FXML javafx.scene.control.Button buttonMjolk;
+    @FXML javafx.scene.control.Button buttonOst;
+    @FXML javafx.scene.control.Button buttonYoghurt;
+    @FXML javafx.scene.control.Button buttonAgg;
+    @FXML javafx.scene.control.Button buttonAllaSkafferi;
+    @FXML javafx.scene.control.Button buttonBrod;
+    @FXML javafx.scene.control.Button buttonFron;
+    @FXML javafx.scene.control.Button buttonKakao;
+    @FXML javafx.scene.control.Button buttonKnackebrod;
+    @FXML javafx.scene.control.Button buttonMjol;
+    @FXML javafx.scene.control.Button buttonNotter;
+    @FXML javafx.scene.control.Button buttonPasta;
+    @FXML javafx.scene.control.Button buttonRis;
+    @FXML javafx.scene.control.Button buttonSockerOchSalt;
+    @FXML javafx.scene.control.Button buttonAllaSotsaker;
+    @FXML javafx.scene.control.Button buttonBakverk;
+    @FXML javafx.scene.control.Button buttonGlass;
+    @FXML javafx.scene.control.Button buttonGodis;
+    @FXML javafx.scene.control.Button buttonSnacks;
+
+    @FXML AnchorPane anchorPaneMainPage;
+
+    /*ArrayList<Pane> menuIndicators = new ArrayList<Pane>();
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
-    ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
+    ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();*/
+    ArrayList<menuItem> menuItems = new ArrayList<menuItem>();
 
     @FXML TextField searchField;
 
@@ -114,7 +174,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         saveListItemByCategory("Varma drycker");
 
-        /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
@@ -128,52 +188,51 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
         flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
+        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));
 
     }
 
     void initMenuItems(){
-        menuIndicators.add(paneIndicatorErbjudanden);
-        menuIndicators.add(paneIndicatorFavoriter);
-        menuIndicators.add(paneIndicatorBaljvaxter);
-        menuIndicators.add(paneIndicatorSotsaker);
-        menuIndicators.add(paneIndicatorDrycker);
-        menuIndicators.add(paneIndicatorFisk);
-        menuIndicators.add(paneIndicatorFrukt);
-        menuIndicators.add(paneIndicatorKott);
-        menuIndicators.add(paneIndicatorMejeri);
-        menuIndicators.add(paneIndicatorSkafferi);
 
-        menuButtons.add(buttonErbjudanden);
-        menuButtons.add(buttonFavoriter);
-        menuButtons.add(buttonBaljvaxter);
-        menuButtons.add(buttonSotsaker);
-        menuButtons.add(buttonDrycker);
-        menuButtons.add(buttonFisk);
-        menuButtons.add(buttonFrukt);
-        menuButtons.add(buttonKott);
-        menuButtons.add(buttonMejeri);
-        menuButtons.add(buttonSkafferi);
-
-        menuArrows.add(imageViewArrowErbjudanden);
-        menuArrows.add(imageViewArrowFavoriter);
-        menuArrows.add(imageViewArrowBaljvaxter);
-        menuArrows.add(imageViewArrowSotsaker);
-        menuArrows.add(imageViewArrowErbjudanden);
+        menuItems.add(new menuItem(buttonErbjudanden, paneIndicatorErbjudanden, imageViewArrowErbjudanden, null, null));
+        menuItems.add(new menuItem(buttonFavoriter, paneIndicatorFavoriter, imageViewArrowFavoriter, null, null));
+        menuItems.add(new menuItem(buttonBaljvaxter, paneIndicatorBaljvaxter, imageViewArrowBaljvaxter, anchorUndermenyBaljvaxter, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaBaljvaxter, buttonBonor, buttonLinser, buttonArtor))));
+        menuItems.add(new menuItem(buttonDrycker, paneIndicatorDrycker, imageViewArrowDrycker, anchorUndermenyDrycker, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaDrycker, buttonKallaDrycker, buttonVarmaDrycker))));
+        menuItems.add(new menuItem(buttonFisk, paneIndicatorFisk, imageViewArrowFisk, anchorUndermenyFisk, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaFisk, buttonFarskLax, buttonSill, buttonSkaldjur, buttonOvrigFisk))));
+        menuItems.add(new menuItem(buttonFrukt, paneIndicatorFrukt, imageViewArrowFrukt, anchorUndermenyFrukt, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaFrukt, buttonBar, buttonCitrusfrukter, buttonExotiskaFrukter, buttonFarskaOrtkryddor, buttonGronsaker, buttonKal, buttonMelon, buttonPotatisOchRotfrukter, buttonSotaStenfrukter))));
+        menuItems.add(new menuItem(buttonKott, paneIndicatorKott, imageViewArrowKott, anchorUndermenyKott, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaKott, buttonKyckling, buttonNotkott))));
+        menuItems.add(new menuItem(buttonMejeri, paneIndicatorMejeri, imageViewArrowMejeri, anchorUndermenyMejeri, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaMejeri, buttonMjolk, buttonOst, buttonYoghurt, buttonAgg))));
+        menuItems.add(new menuItem(buttonSkafferi, paneIndicatorSkafferi, imageViewArrowSkafferi, anchorUndermenySkafferi, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaSkafferi, buttonBrod, buttonFron, buttonKakao, buttonKnackebrod, buttonMjol, buttonNotter, buttonPasta, buttonRis, buttonSockerOchSalt))));
+        menuItems.add(new menuItem(buttonSotsaker, paneIndicatorSotsaker, imageViewArrowSotsaker, anchorUndermenySotsaker, new ArrayList<javafx.scene.control.Button>(Arrays.asList(buttonAllaSotsaker, buttonBakverk, buttonGlass, buttonGodis, buttonSnacks))));
 
 
-
-        for (Pane p : menuIndicators) {
-            p.toBack();
-        }
-
-        System.out.println(menuButtons);
-
-        for(javafx.scene.control.Button b : menuButtons){
-            b.setOnAction((event)->{
-                onMenuClick(b);
+        for (menuItem m : menuItems) {
+            m.pane.toBack();
+            m.button.setOnAction((event)->{
+                menuOnClick(m);
             });
+
+            //Sätter en listener på imageview med pilen så att den byter bild och gör en kant på knappen om man hoverar över den
+            m.arrow.hoverProperty().addListener((event) -> {
+
+                menuOnHover(m);
+
+            });
+
+            m.arrow.setOnMouseClicked((event) -> menuOnClick(m));
+            m.button.hoverProperty().addListener((event) -> menuOnHover(m));
+
+            if (m.sMenu != null){
+                for (javafx.scene.control.Button btn : m.sMenu){
+                    btn.hoverProperty().addListener((event) -> subMenuOnHover(m.sMenu, btn));
+                    btn.setOnMouseClicked(((event) -> subMenuOnClick(m.sMenu, btn)));
+                }
+            }
+
+
         }
+
+
 
         model.getShoppingCart().addShoppingCartListener(this);
 
@@ -223,42 +282,141 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         updateProductList(searchList);
     }
 
+    @FXML
+    public void mainPageToFront(){
+        anchorPaneMainPage.toFront();
+    }
+
+    @FXML
+    public void mouseTrap(Event event){
+        event.consume();
+    }
 
 
     //När man klickar på menyn
+   @FXML
+    public void menuOnClick(menuItem m) {
 
+       javafx.scene.control.Button b = m.button;
 
-    @FXML
-    public void onMenuClick(javafx.scene.control.Button b) {
-        for(javafx.scene.control.Button button : menuButtons) //Clears any button that may've been clicked before
+        for(menuItem mItem : menuItems) //Clears any button that may've been clicked before
         {
-            if(button != b) {
-                if (button.getStyleClass().toString().equals("menuButtonClicked")) {
-                    button.getStyleClass().clear();
-                    button.getStyleClass().add("menuButton");
-                    //Här ska man också ta bort den gamla undermenyn. Kolla på att göra en ihopsättning av indicators, knappar, bilder på pilar och hela nya undermenyvyn
+            if( mItem.button != b) {
+                if (mItem.button.getStyleClass().toString().equals("menuButtonClicked")) {
+                    resetButtonStyle(mItem);
                 }
+                if(m.anchorPane != null)
+                    m.anchorPane.toBack();
             }
 
         }
-            System.out.println(b.getStyleClass());
+            //Sets the new styleclass for the clicked button
             if (b.getStyleClass().toString().equals("menuButtonClicked")) {
-                b.getStyleClass().clear();
-                b.getStyleClass().add("menuButton");
+                resetButtonStyle(m);
             } else {
                 b.getStyleClass().clear();
-                b.getStyleClass().add("menuButtonClicked");
+                b.getStyleClass().add("menuButtonClicked"); //Här ska den lägga till den nya undermenyn
+                setLightgreenArrow(m.arrow);
+                m.pane.toFront();
+                if (m.anchorPane != null){
+                    m.anchorPane.toFront();
+                }
             }
 
+
     }
-
-
-
 
     //När man hoovrar över menyn
-    @FXML
-    public void onMenyHoover() {
+    public void menuOnHover(menuItem m) {
+
+        for (menuItem item : menuItems)
+        {
+            if ((item != m) && !(item.button.getStyleClass().toString().equals("menuButtonClicked"))){
+                resetButtonStyle(item);
+            }
+        }
+
+        if (m.button.getStyleClass().toString().equals("menuButtonClicked"))
+        {}
+        else {
+            m.button.getStyleClass().add("menuButtonHover");
+            setLightgreenArrow(m.arrow);
+        }
+        //byter färg på arrow
+        //ändrar styleclass på knappen
     }
+
+
+    public void subMenuOnHover(ArrayList<javafx.scene.control.Button> sMenu, javafx.scene.control.Button btn){
+
+        for (javafx.scene.control.Button b : sMenu)
+             {
+            if ((b != btn) && !(b.getStyleClass().toString().equals("menuButtonClicked"))){
+                b.getStyleClass().clear();
+                b.getStyleClass().add("menuButton");
+            }
+        }
+
+        if (btn.getStyleClass().toString().equals("menuButtonClicked"))
+        {}
+        else {
+            btn.getStyleClass().add("menuButtonHover");
+        }
+    }
+
+    public void subMenuOnClick(ArrayList<javafx.scene.control.Button> sMenu, javafx.scene.control.Button btn){
+        for(javafx.scene.control.Button b : sMenu) //Clears any button that may've been clicked before
+        {
+            if((b != btn) && b.getStyleClass().toString().equals("menuButtonClicked")) {
+                    b.getStyleClass().clear();
+                    b.getStyleClass().add("menuButton");
+                    System.out.println("LEOELEL");
+            }
+
+        }
+        //Sets the new styleclass for the clicked button
+        if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
+            System.out.println("HELLOOO");
+            //lägg in att man kommer tillbaka till alla varor inom den kategorin eller liknande.
+            btn.getStyleClass().clear();
+            btn.getStyleClass().add("menuButton");
+        }else {
+            System.out.println("HJELLO");
+            btn.getStyleClass().clear();
+            btn.getStyleClass().add("menuButtonClicked");
+        }
+    }
+
+    public void resetButtonStyle(menuItem m){
+        //Återställer stilen på menyknappar
+            m.button.getStyleClass().clear();
+            m.button.getStyleClass().add("menuButton");
+            setDarkgreenArrow(m.arrow);
+            m.button.toFront();
+            m.arrow.toFront();
+
+            //Återställer stilen på undermenyknappar (under den knappen)
+        if(m.sMenu != null){
+        for (javafx.scene.control.Button btn : m.sMenu)
+        {
+            btn.getStyleClass().clear();
+            btn.getStyleClass().add("menuButton");
+        }
+        }
+
+    }
+
+    public void setLightgreenArrow(ImageView arrow){ //Sets the arrow in a menuItem to lightgreen
+        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_lightgreen_64dpcentered.png"));
+    }
+
+    public void setDarkgreenArrow (ImageView arrow){ //Sets the arrow in a menuItem to darkgreen
+        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_darkgreen_64dp.png"));
+    }
+
+
+
+
 
     //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
     private void updateProductList(List<ProductA> searchList) {
