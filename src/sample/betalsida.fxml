@@ -320,22 +320,22 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Pane fx:id="buttonTidigareKop" layoutX="60.0" layoutY="39.0" prefHeight="200.0" prefWidth="200.0">
-               <children>
-                   <Button fx:id="buttonTidigareKöp1" mnemonicParsing="false" onAction="#onHomeButtonClickIcon" prefHeight="36.0" prefWidth="208.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE">
-                      <font>
-                         <Font size="15.0" />
-                      </font>
-                   </Button>
-                   <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="2.0" layoutY="6.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                         <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
-                      </image>
-                   </ImageView>
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
       <ProgressBar fx:id="progressBar" prefHeight="40.0" prefWidth="637.0" progress="0.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="40.0" />
+      <Pane fx:id="buttonTidigareKop" prefHeight="40.0" prefWidth="208.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+         <children>
+             <Button fx:id="buttonTidigareKöp1" mnemonicParsing="false" onAction="#onHomeButtonClickIcon" prefHeight="36.0" prefWidth="208.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE">
+                <font>
+                   <Font size="15.0" />
+                </font>
+             </Button>
+             <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="2.0" layoutY="6.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
+                <image>
+                   <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
+                </image>
+             </ImageView>
+         </children>
+      </Pane>
     </children>
 </AnchorPane>
