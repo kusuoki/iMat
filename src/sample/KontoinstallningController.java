@@ -59,7 +59,6 @@ public class KontoinstallningController implements Initializable {
 
         updateInformation();
 
-
         //--------------------------------no error handling on these-----------------------------------
         firstNameTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
