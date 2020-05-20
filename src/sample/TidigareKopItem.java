@@ -37,13 +37,22 @@ public class TidigareKopItem extends AnchorPane {
         labelTidigareAntal.setText(prevOrder.getItems().size() + " varor");
     }
 
-    private int getOrderTotalCost(Order order) {
+    public int getOrderTotalCost(Order order) {
         List<ShoppingItem> items = order.getItems();
         int totalCost = 0;
         for (ShoppingItem item : items) {
             totalCost += item.getTotal();
         }
         return totalCost;
+    }
+
+    public Order getOrder() {
+        return prevOrder;
+    }
+
+    @FXML
+    void openDetailedView() {
+        parentController.enterOrderLightbox(this);
     }
 
 }

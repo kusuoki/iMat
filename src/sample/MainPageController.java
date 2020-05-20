@@ -110,7 +110,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     FlowPane flowPaneVarukorg;
 
 
-    //TODO Grejer till tidigare köp m.m.
+    //Grejer till tidigare köp m.m.
     @FXML
     Pane paneVaruDisplay;
     @FXML
@@ -118,6 +118,17 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     FlowPane flowPaneTidigareKop;
 
+    //Grejer till tidigare köp LIGHTBOX
+    @FXML
+    Label orderLightboxDate;
+    @FXML
+    Label orderLightboxPrice;
+    @FXML
+    Label orderLightboxQuantity;
+    @FXML
+    Label orderLightboxOrdernumber;
+    @FXML
+    AnchorPane orderLightbox;
 
     @FXML
     Label totalQuantityLabel;
@@ -175,6 +186,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
+    //TODO TEMP METHOD FOR TESTING
     private Order generateTestOrder(Date date, int productID, int orderID) {
         Order order = new Order();
         order.setDate(date);
@@ -199,6 +211,20 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             currentOrderPage--;
             displayOrdersOnPage();
         }
+    }
+
+    //Lightboxfunktionalitet
+    @FXML
+    public void exitOrderLightbox(){
+        orderLightbox.toBack();
+    }
+
+    @FXML
+    public void enterOrderLightbox(TidigareKopItem item){
+        orderLightboxDate.setText(item.getOrder().getDate().toString());
+        orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + "kr");
+        orderLightboxQuantity.setText(item.getOrder().getItems().size() + "varor");
+        orderLightbox.toFront();
     }
 
     void initMenuItems(){
