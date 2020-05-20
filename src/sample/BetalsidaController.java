@@ -166,7 +166,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onHomeClick(ActionEvent event){
                 stage.getScene().setRoot(mainPage);
-                model.getShoppingCart().clear();
+                model.clearShoppingCart();
                 anchorPaneBekraftaKundvagn.toFront();
 
         }
