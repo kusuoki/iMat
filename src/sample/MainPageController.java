@@ -496,15 +496,20 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         List<ProductA> productList = model.getProducts(category);
 
         for (int i =currentPage*8;i<currentPage*8+8;i++) {
+            if (i>productList.size()-1){
+                break;
+            }
             ListItem item = new ListItem(productList.get(i), model, this);
             currentListWithItems.add(item);
 
         }
 
 
-        lastPage = productList.size() / 8;
-
-        if (currentListWithItems.size() % 8 != 0 ) {
+        lastPage = productList.size()/8;
+        if (productList.size()%8>0){
+            lastPage++;
+        }
+        else if (currentListWithItems.size() % 8 != 0 ) {
             lastPage++;
         }
 
