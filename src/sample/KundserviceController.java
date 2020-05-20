@@ -36,7 +36,7 @@ public class KundserviceController implements Initializable {
         stage.getScene().setRoot(mainPage);
     }
 
-    @FXML void onHomeButtonClickIcon(){
+    @FXML void onHomeButtonClickIcon(){                         //Ikonen behöver en egen metod, samma funktionalitet som ovan
         backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(mainPage);
     }
@@ -50,8 +50,9 @@ public class KundserviceController implements Initializable {
     @FXML
     public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
-        stage.getScene().setRoot(earlierPurchases);
-    }@FXML
+        stage.getScene().setRoot(mainPage);
+    }
+    @FXML
     public void onAccountPageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(accountPage);

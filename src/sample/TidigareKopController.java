@@ -33,10 +33,12 @@ public class TidigareKopController implements Initializable {
         handler = IMatDataHandler.getInstance();
         prevOrders = new ArrayList<>();
         List<Order> prevOrderList = handler.getOrders();
-        for (Order order : prevOrderList) {
+        /*for (Order order : prevOrderList) {
             TidigareKopItem item = new TidigareKopItem(order, this);
             prevOrders.add(item);
         }
+
+         */
 
         updateOrderList();
 

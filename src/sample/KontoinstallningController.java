@@ -50,6 +50,7 @@ public class KontoinstallningController implements Initializable {
     private Parent customerServicePage;
     private Parent paymentPage;
     private BackButton backButton = BackButton.getBackButton();
+    private MainPageController mainPageController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -327,8 +328,10 @@ public class KontoinstallningController implements Initializable {
     @FXML
     public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
-        stage.getScene().setRoot(earlierPurchases);
-    }@FXML
+        stage.getScene().setRoot(mainPage);
+
+    }
+    @FXML
     public void onCustomerServicePageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
         stage.getScene().setRoot(customerServicePage);

@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1377.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
         <AnchorPane fx:id="anchorPaneMainLightbox" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
             <children>
@@ -142,49 +142,78 @@
                         </Pane>
                     </children>
                 </Pane>
-                <Pane prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="74.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="139.0">
-                    <children>
-                        <Label fx:id="labelPreviousPage" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+            <AnchorPane layoutX="320.0" layoutY="139.0" prefHeight="540.0" prefWidth="637.0">
+               <children>
+                      <Pane fx:id="paneVaruDisplay" prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder">
+                          <children>
+                              <Label fx:id="labelPreviousPage" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                              <Label fx:id="labelNextPage" layoutX="383.0" layoutY="509.0" onMouseClicked="#nextPageButton" styleClass="links" text="Nästa sida" textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                              <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
+                              <Label layoutX="14.0" layoutY="23.0" styleClass="links" text="Crumb 1 " textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                              <Label layoutX="88.0" layoutY="23.0" styleClass="links" text="Crumb 2 " textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                              <Label layoutX="164.0" layoutY="23.0" styleClass="links" text="Crumb 3" textFill="WHITE" />
+                              <Button fx:id="buttonFiltrera" layoutX="557.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #00441C;" text="Filtrera" textFill="WHITE" />
+                              <Label fx:id="labelVarusida" layoutX="303.0" layoutY="509.0" text="Label" textFill="WHITE">
+                                  <font>
+                                      <Font size="13.0" />
+                                  </font>
+                              </Label>
+                              <Label layoutX="71.0" layoutY="23.0" text=" &gt; " textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                              <Label layoutX="147.0" layoutY="23.0" text=" &gt; " textFill="WHITE">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Label>
+                          </children>
+                      </Pane>
+                  <Pane fx:id="paneTidigareKop" prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
+                     <children>
+                        <FlowPane fx:id="flowPaneTidigareKop" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: DFDFDF;" />
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="Tidigare köp" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
                         </Label>
-                        <Label fx:id="labelNextpage" layoutX="383.0" layoutY="509.0" onMouseClicked="#nextPageButton" styleClass="links" text="Nästa sida" textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <Label fx:id="labelPreviousOrderPage" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousOrderPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </Label>
-                        <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
-                        <Label layoutX="14.0" layoutY="23.0" styleClass="links" text="Crumb 1 " textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <Label fx:id="labelNextpage1" layoutX="383.0" layoutY="509.0" onMouseClicked="#nextOrderPageButton" styleClass="links" text="Nästa sida" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </Label>
-                        <Label layoutX="88.0" layoutY="23.0" styleClass="links" text="Crumb 2 " textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <Label fx:id="labelOrder" layoutX="303.0" layoutY="509.0" text="Label" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font>
                         </Label>
-                        <Label layoutX="164.0" layoutY="23.0" styleClass="links" text="Crumb 3" textFill="WHITE" />
-                        <Button fx:id="buttonFiltrera" layoutX="557.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #00441C;" text="Filtrera" textFill="WHITE" />
-                        <Label fx:id="labelVarusida" layoutX="303.0" layoutY="510.0" text="Label" textFill="WHITE">
-                            <font>
-                                <Font size="13.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="71.0" layoutY="23.0" text=" &gt; " textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                        <Label layoutX="147.0" layoutY="23.0" text=" &gt; " textFill="WHITE">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </Pane>
-                <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+                <TextField fx:id="searchField" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
                 <Button fx:id="buttonSok" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
                     <font>
                         <Font size="14.0" />
@@ -195,7 +224,7 @@
                         <Font size="18.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+                <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
                     <font>
                         <Font size="15.0" />
                     </font>

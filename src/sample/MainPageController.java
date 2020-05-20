@@ -82,12 +82,21 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     ArrayList<javafx.scene.control.Button> menuButtons= new ArrayList<javafx.scene.control.Button>();
     ArrayList<ImageView> menuArrows = new ArrayList<ImageView>();
 
+    //Labels för nästa sida, förra sidan och nuvarande sidan för Affärsfönstret
     @FXML
     Label labelVarusida;
     @FXML
     Label labelPreviousPage;
     @FXML
-    Label labenNextPage;
+    Label labelNextPage;
+
+    //Labels för nästa sida, förra sidan och nuvarande sidan för Tidigare köp
+    @FXML
+    Label labelOrder;
+    @FXML
+    Label labelPreviousOrderPage;
+    @FXML
+    Label labelNextOrderPage;
 
     @FXML
     TextField searchField;
@@ -99,6 +108,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     FlowPane flowPaneMainPage;
     @FXML
     FlowPane flowPaneVarukorg;
+
+
+    //TODO Grejer till tidigare köp m.m.
+    @FXML
+    Pane paneVaruDisplay;
+    @FXML
+    Pane paneTidigareKop;
+    @FXML
+    FlowPane flowPaneTidigareKop;
+
 
     @FXML
     Label totalQuantityLabel;
@@ -119,13 +138,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     int currentPage;
     int lastPage;
 
+    private List<TidigareKopItem> allOrders = new ArrayList<>();
+    private List<TidigareKopItem> ordersCurrentlyDisplayed = new ArrayList<>();
+    int currentOrderPage;
+    int lastOrderPage;
+
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
         this.konto = konto;
         this.kundservice = kundservice;
-
-
     }
 
 
@@ -135,27 +157,42 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuItems();
 
 
-
         displayListItemByCategory("Frukt & Grönt");
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
 
-        /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(14), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(15), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(16), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(20), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
-        flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
+        model.getOrders().clear();
+        for(int i = 1; i < 20; i++){
+            Order o = generateTestOrder(new Date(), i, i);
+            model.getOrders().add(o);
+        }
 
+    }
+
+    private Order generateTestOrder(Date date, int productID, int orderID) {
+        Order order = new Order();
+        order.setDate(date);
+        List<ShoppingItem> testList = new ArrayList<>();
+        testList.add(new ShoppingItem(model.getProducts().get(productID)));
+        order.setItems(testList);
+        order.setOrderNumber(orderID);
+        return order;
+    }
+
+    //Fram och tillbaka knappar för TidigareKöp
+    @FXML
+    private void nextOrderPageButton(){
+        if (lastOrderPage > currentOrderPage + 1) {
+            currentOrderPage++;
+            displayOrdersOnPage();
+        }
+    }
+    @FXML
+    private void previousOrderPageButton(){
+        if (currentOrderPage > 0) {
+            currentOrderPage--;
+            displayOrdersOnPage();
+        }
     }
 
     void initMenuItems(){
@@ -210,8 +247,42 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
-        backButton.addToBackList(stage.getScene().getRoot());
-        stage.getScene().setRoot(tidigarekop);
+        flowPaneTidigareKop.getChildren().clear();
+        ordersCurrentlyDisplayed.clear();
+        allOrders.clear();
+        currentOrderPage = 0;
+        paneTidigareKop.toFront();
+
+        for (Order orders : model.getOrders()){
+            TidigareKopItem item = new TidigareKopItem(orders, this);
+            allOrders.add(item);
+        }
+
+        lastOrderPage = allOrders.size() / 9;
+        if (allOrders.size() % 9 != 0 ) {
+            lastOrderPage++;
+        }
+
+        displayOrdersOnPage();
+    }
+
+    public void displayOrdersOnPage(){
+        flowPaneTidigareKop.getChildren().clear();
+        updateOrdersBeingDisplayedWith9orders();
+        labelOrder.setText("Sida " + (currentOrderPage + 1) + " av " + lastOrderPage);
+
+        for (TidigareKopItem item : ordersCurrentlyDisplayed){
+            flowPaneTidigareKop.getChildren().add(item);
+        }
+    }
+
+    private void updateOrdersBeingDisplayedWith9orders() {
+        ordersCurrentlyDisplayed.clear();
+        for (int i = currentOrderPage * 9; i < currentOrderPage * 9 + 9; i++ ){
+            if (i < allOrders.size() ){
+                ordersCurrentlyDisplayed.add(allOrders.get(i));
+            }
+        }
     }
 
     //När man klickar på listor
@@ -249,21 +320,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
         //updateProductList(searchList);
 
-        /*
-        //TODO: VISAR ENDAST DE FÖRSTA 8 VARORNA NU ANNARS LAGGAR DET
-        List<ProductA> first8ItemsInList;
-        if (searchList.size() > 8) {
-            first8ItemsInList = searchList.subList(0, 8);
-        } else {
-            first8ItemsInList = searchList;
-        }
-
-         */
-
+        paneVaruDisplay.toFront();
         displayListItemFromList(searchList);
     }
-
-
 
     //När man klickar på menyn
 
