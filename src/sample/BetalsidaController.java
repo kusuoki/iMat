@@ -471,12 +471,23 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
              this.mainPage=mainPage;
 
         }
+
+        @FXML
+        public void onHomeButtonClickIcon(){
+                backButton.addToBackList(stage.getScene().getRoot());
+                stage.getScene().setRoot(mainPage);
+        }
+
         //När man trycker på hemknappen
         @FXML
-        public void onHomeClick(ActionEvent event){
-                stage.getScene().setRoot(mainPage);
+        public void onHomeClick(){
                 model.clearShoppingCart();
+                betalsidaItemMap.clear();
+                progressBar.setProgress(0);
                 anchorPaneBekraftaKundvagn.toFront();
+                progressBar.toFront();
+                buttonTidigareKop.toFront();
+                stage.getScene().setRoot(mainPage);
         }
 
         //När man klickar på första nästa
@@ -735,11 +746,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 this.mainPage=mainPage;
                 this.customerServicePage=customerServicePage;
                 this.paymentPage=paymentPage;
-        }
-
-        @FXML void onHomeButtonClickIcon(){
-                backButton.addToBackList(stage.getScene().getRoot());
-                stage.getScene().setRoot(mainPage);
         }
 
         public void goToNextTextField() {
