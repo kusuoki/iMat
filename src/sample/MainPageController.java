@@ -522,7 +522,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
 
-        stage.getScene().setRoot(betalsida);
+
 
         if (model.getShoppingCart().getItems().size() > 0) {
             stage.getScene().setRoot(betalsida);
