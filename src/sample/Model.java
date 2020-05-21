@@ -115,7 +115,10 @@ public class Model {
         return shoppingItemMap;
     }
 
-
+    public String doubleToString(double d) {
+        d = Math.round(d * 100) / 100.0;
+        return String.valueOf(d);
+    }
 
     public CreditCard getCreditCard() {
         return iMatDataHandler.getCreditCard();
@@ -143,9 +146,11 @@ public class Model {
     }
 
     public void placeOrder() {
-
         iMatDataHandler.placeOrder();
+    }
 
+    public void placeOrder(boolean clearShoppingCart) {
+        iMatDataHandler.placeOrder(clearShoppingCart);
     }
 
 

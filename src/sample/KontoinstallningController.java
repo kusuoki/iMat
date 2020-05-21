@@ -1,8 +1,11 @@
 package sample;
 
 
+import javafx.animation.PauseTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -11,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
@@ -20,6 +24,7 @@ import java.util.ResourceBundle;
 
 public class KontoinstallningController implements Initializable {
 
+    @FXML Label messageLabel;
     @FXML Label labelSparadeUppgifter;
     @FXML TextField firstNameTextField;
     @FXML TextField lastNameTextField;
@@ -51,6 +56,7 @@ public class KontoinstallningController implements Initializable {
     private Parent paymentPage;
     private BackButton backButton = BackButton.getBackButton();
     private MainPageController mainPageController;
+    private BetalsidaController betalsidaController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -59,6 +65,8 @@ public class KontoinstallningController implements Initializable {
 
         updateInformation();
 
+        messageLabel.toBack();
+        //<editor-fold desc="this is a mess">
         //--------------------------------no error handling on these-----------------------------------
         firstNameTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
@@ -143,6 +151,8 @@ public class KontoinstallningController implements Initializable {
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_4.getText().length() != 4) {
                     setCardNumberError();
                 }
+            } else if (isFocus) {
+                nextTextfield = cardExpiryMonthTextField;
             }
         });
         cardExpiryMonthTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -153,6 +163,8 @@ public class KontoinstallningController implements Initializable {
                 } else {
                     cardExpiryMonthTextField.getStyleClass().add("error");
                 }
+            } else if (isFocus) {
+                nextTextfield = cardExpiryYearTextField;
             }
         });
         cardExpiryYearTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -161,6 +173,8 @@ public class KontoinstallningController implements Initializable {
                 if (!isValidValue(cardExpiryYearTextField.getText(), "Year")) {
                     cardExpiryYearTextField.getStyleClass().add("error");
                 }
+            } else if (isFocus) {
+                nextTextfield = CVVTextField;
             }
         });
         CVVTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -237,10 +251,11 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
             }
 
+            /*
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardExpiryMonthTextField.requestFocus();
                 cardExpiryMonthTextField.positionCaret(2);
-            }
+            }*/
         });
         cardExpiryMonthTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryMonthTextField, oldValue, newValue, 2);
@@ -249,13 +264,14 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryMonthTextField.getStyleClass().remove("error");
             }
 
+            /*
             if (isInteger(newValue)) {
                 int month = Integer.parseInt(newValue);
                 if (month <= 12 && newValue.length() == 2 && oldValue.length() != 3) {
                     cardExpiryYearTextField.requestFocus();
                     cardExpiryYearTextField.positionCaret(2);
                 }
-            }
+            }*/
         });
         cardExpiryYearTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryYearTextField, oldValue, newValue, 2);
@@ -264,6 +280,7 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryYearTextField.getStyleClass().remove("error");
             }
 
+            /*
             if (isInteger(newValue)) {
                 int year = Integer.parseInt(newValue);
 
@@ -272,7 +289,7 @@ public class KontoinstallningController implements Initializable {
                     CVVTextField.requestFocus();
                     CVVTextField.positionCaret(3);
                 }
-            }
+            }*/
         });
         CVVTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(CVVTextField, oldValue, newValue, 3);
@@ -283,11 +300,20 @@ public class KontoinstallningController implements Initializable {
 
         });
         //---------------------------------------------------------------------------------------------
+        //</editor-fold>
+        initMenuButtons();
     }
 
     @FXML
     public void save() {
+        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        messageLabel.toFront();
+
         if (isReadyToSave()) {
+            messageLabel.setStyle("-fx-text-fill: #00692A");
+            messageLabel.setText("Kontoinställning sparade!");
+            delay.setOnFinished(actionEvent -> messageLabel.toBack());
+
             customer.setFirstName(firstNameTextField.getText());
             customer.setLastName(lastNameTextField.getText());
             customer.setAddress(adressTextField.getText());
@@ -300,15 +326,44 @@ public class KontoinstallningController implements Initializable {
             card.setValidYear((cardExpiryYearTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
             System.out.println("Account settings saved! Probably.");
+            betalsidaController.updateInformation();
+        } else {
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Felaktig inmatning! Ta bort eller fixa de för att spara.");
+            delay.setOnFinished(actionEvent -> messageLabel.toBack());
         }
+        delay.play();
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController){
+    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController,BetalsidaController betalsidaController){
         this.stage=stage;
         this.mainPage=mainPage;
         this.customerServicePage=customerServicePage;
         this.paymentPage=paymentPage;
         this.mainPageController=mainPageController;
+        this.betalsidaController=betalsidaController;
+    }
+
+    //Menyknapparna längst upp
+    @FXML
+    Button buttonTidigareKop;
+    @FXML
+    Button buttonKundservice;
+    @FXML
+    Button buttonKonto;
+
+    private void initMenuButtons(){
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_receipt_white_24dp.png"));
+        buttonTidigareKop.setGraphic(new ImageView(image));
+        buttonTidigareKop.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_call_white_24dp.png"));
+        buttonKundservice.setGraphic(new ImageView(image));
+        buttonKundservice.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_account_circle_white_24dp.png"));
+        buttonKonto.setGraphic(new ImageView(image));
+        buttonKonto.setGraphicTextGap(5);
     }
 
     @FXML

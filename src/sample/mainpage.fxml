@@ -422,7 +422,7 @@
                  <children>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="324.0">
                          <children>
-                             <ScrollPane layoutY="49.0" prefHeight="496.0" prefWidth="327.0">
+                             <ScrollPane layoutY="49.0" prefHeight="496.0" prefWidth="327.0" style="-fx-background-color: #DFDFDF;">
                                  <content>
                                      <FlowPane fx:id="flowPaneVarukorg" prefHeight="499.0" prefWidth="312.0" style="-fx-background-color: #DFDFDF;" />
                                  </content>
@@ -472,6 +472,7 @@
                  </Pane>
                  <Pane fx:id="paneVaruDisplay" prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder">
                      <children>
+                        <Pane layoutY="1.0" prefHeight="45.0" prefWidth="531.0" style="-fx-background-color: #00692a;" />
                          <Label fx:id="labelPreviousPage" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
                              <font>
                                  <Font size="14.0" />
@@ -483,12 +484,7 @@
                              </font>
                          </Label>
                          <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
-                         <Label layoutX="14.0" layoutY="13.0" onMouseClicked="#onFirstBreadcrumb" styleClass="links" text="Crumb 1 " textFill="WHITE">
-                             <font>
-                                 <Font size="14.0" />
-                             </font>
-                         </Label>
-                         <Label layoutX="88.0" layoutY="13.0" onMouseClicked="#onSecondBreadcrumb" styleClass="links" text="Crumb 2 " textFill="WHITE">
+                         <Label fx:id="labelCrumbSecond" layoutX="120.0" layoutY="14.0" onMouseClicked="#onSecondBreadcrumb" styleClass="links" text="Crumb 2 " textFill="WHITE">
                              <font>
                                  <Font size="14.0" />
                              </font>
@@ -499,7 +495,12 @@
                                  <Font size="13.0" />
                              </font>
                          </Label>
-                         <Label layoutX="71.0" layoutY="13.0" text=" &gt; " textFill="WHITE">
+                         <Label fx:id="labelCrumbSecondPointer" layoutX="91.0" layoutY="13.0" text=" &gt; " textFill="WHITE">
+                             <font>
+                                 <Font size="14.0" />
+                             </font>
+                         </Label>
+                         <Label fx:id="labelCrumbFirst" layoutX="14.0" layoutY="13.0" onMouseClicked="#onFirstBreadcrumb" styleClass="links" text="Crumb 1 " textFill="WHITE">
                              <font>
                                  <Font size="14.0" />
                              </font>
@@ -510,17 +511,17 @@
              </AnchorPane>
 
                    <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
-             <Button fx:id="buttonSok" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
+             <Button fx:id="buttonSok" layoutX="881.0" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="881.0" AnchorPane.topAnchor="97.0">
                  <font>
                      <Font size="14.0" />
                  </font>
              </Button>
-             <Button fx:id="buttonBetala" mnemonicParsing="false" onAction="#onPaymentButton" prefHeight="45.0" prefWidth="327.0" style="-fx-background-color: #FFB422;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="630.0">
+             <Button fx:id="buttonBetala" mnemonicParsing="false" onAction="#onPaymentButton" prefHeight="45.0" prefWidth="327.0" style="-fx-background-color: #FFB422; -fx-font-weight: bold;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="630.0">
                  <font>
                      <Font size="18.0" />
                  </font>
              </Button>
-             <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+             <Button fx:id="buttonTidigareKop" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
                  <font>
                      <Font size="15.0" />
                  </font>

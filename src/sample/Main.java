@@ -54,20 +54,14 @@ public class Main extends Application {
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1377, 750));
         primaryStage.getIcons().add(new Image("sample/resources/Icons/burger.png"));
-        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent windowEvent) {
-                Model.getInstance().shutDown();
-            }
-        });
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
         primaryStage.show();
         BackButton.getBackButton().setStage(primaryStage);
         mainPagec.setStage(primaryStage,betal,konto,kundservice);
-        betalC.setStage(primaryStage,root);
+        betalC.setStage(primaryStage,root,kontoC);
 
-        kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec);
+        kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec,betalC);
 
         kundC.setStage(primaryStage,root,konto,betal,mainPagec);
 
@@ -76,6 +70,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Model.getInstance().shutDown();
+            }
+        }));
     }
 
 
