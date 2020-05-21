@@ -284,6 +284,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label totalPriceLabel;
 
+    @FXML
+    javafx.scene.control.Button buttonBetala;
+
     Parent betalsida;
     Parent konto;
     Parent kundservice;
@@ -334,6 +337,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         onSearch();
 
+        if (model.getShoppingCart().getItems().size() == 0) {
+            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+        } else {
+            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+        }
     }
 
     /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
@@ -468,6 +476,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         updateOrdersBeingDisplayedWith9orders();
         labelOrder.setText("Sida " + (currentOrderPage + 1) + " av " + lastOrderPage);
 
+        if (lastOrderPage == 0){
+            labelOrder.setText("Sida 0 av 0");
+        }
+
         for (TidigareKopItem item : ordersCurrentlyDisplayed) {
             flowPaneTidigareKop.getChildren().add(item);
         }
@@ -509,7 +521,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
+
         stage.getScene().setRoot(betalsida);
+
+        if (model.getShoppingCart().getItems().size() > 0) {
+            stage.getScene().setRoot(betalsida);
+        }
 
     }
     //När man trycker på sökknappen
@@ -760,6 +777,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 flowPaneVarukorg.getChildren().add(item);
             }
 
+            if (model.getShoppingCart().getItems().size() == 0) {
+                buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            } else {
+                buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+            }
+
             displayListItems();
             updateShoppingCartPriceAndQuantity();
         }
@@ -849,6 +872,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             updateListWith8ItemsFromCurrent();
 
             labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+            if (lastPage == 0){
+                labelVarusida.setText("Sida 0 av 0");
+            }
 
             for (ListItem item : list8Items) {
                 flowPaneMainPage.getChildren().add(item);
@@ -902,9 +928,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         @FXML
         public void onFirstBreadcrumb(){
 
+
         }
 
     private void initCategoryMenu() {
+        buttonFavoriter.setOnAction(e -> displayListItemFromList(model.getFavorites()));
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
         buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
@@ -946,7 +974,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         buttonRis.setOnAction(e -> displayListItemByCategory("Ris"));
         //TODO: SOCKER OCH SALT ÄR OLIKA KATEGORIER, Kanske har fixat?
         buttonSockerOchSalt.setOnAction(e -> displayListItemByCategory("Socker & Salt"));
-        buttonAllaSotsaker.setOnAction(e -> displayListItemByCategory("Bakverk, glass, godis & snacks"));
+        buttonAllaSotsaker.setOnAction(e -> displayListItemByCategory("Sötsaker"));
         buttonBakverk.setOnAction(e -> displayListItemByCategory("Bakverk & Kakor"));
         buttonGlass.setOnAction(e -> displayListItemByCategory("Glass"));
         buttonGodis.setOnAction(e -> displayListItemByCategory("Godis"));
