@@ -485,9 +485,9 @@
                         <Line endX="399.0" layoutY="241.0" startX="20.0" stroke="#c4c4c4" />
                         <Line endX="399.0" layoutY="379.0" startX="20.0" stroke="#c4c4c4" />
                         <Line endX="399.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
-                        <ScrollPane hbarPolicy="NEVER" layoutX="449.0" layoutY="1.0" prefHeight="418.0" prefWidth="359.0" vbarPolicy="ALWAYS">
+                        <ScrollPane hbarPolicy="NEVER" layoutX="439.0" layoutY="1.0" prefHeight="418.0" prefWidth="369.0" vbarPolicy="ALWAYS">
                            <content>
-                              <FlowPane fx:id="SlutforKopFlowPane" prefHeight="418.0" prefWidth="342.0" />
+                              <FlowPane fx:id="slutforFlowPane" prefHeight="418.0" prefWidth="352.0" style="-fx-background-color: efefef;" />
                            </content>
                         </ScrollPane>
                         <Line endX="389.0" layoutX="419.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />

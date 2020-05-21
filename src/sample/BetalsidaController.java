@@ -38,6 +38,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private ComboBox comboHem;
         @FXML private ComboBox comboAffar;
         @FXML private FlowPane flowPaneBekrafta;
+        @FXML private FlowPane slutforFlowPane;
         @FXML private Label labelEmail;
         @FXML private Label labelTelefonnummer;
         @FXML private Label labelFirstname;
@@ -46,6 +47,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private Label labelStad;
         @FXML private Label labelPostnummer;
         @FXML private Label labelLeverans;
+        @FXML private Label labelSlutforSlutpris;
         @FXML private ImageView cardTypeImageView;
         @FXML private ImageView cardTypeImageViewAgain;
         @FXML private Label labelKortnummer;
@@ -484,6 +486,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onHomeButtonClickIcon(){
                 backButton.addToBackList(stage.getScene().getRoot());
                 stage.getScene().setRoot(mainPage);
+                onBackClick2();
         }
 
         //När man trycker på hemknappen
@@ -526,6 +529,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         anchorPaneSlutfor.toFront();
                         buttonTidigareKop.toFront();
                         setData();
+                        updateSlutFor();
                 }
         }
 
@@ -554,7 +558,14 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         }
 
         public void updateSlutFor() {
+                List<SlutforItem> items = new ArrayList<>();
 
+                slutforFlowPane.getChildren().clear();
+                for (ShoppingItem item : shoppingCart.getItems()) {
+                        slutforFlowPane.getChildren().add(new SlutforItem(item));
+                }
+
+                labelSlutforSlutpris.setText(model.doubleToString(shoppingCart.getTotal()) + " kr");
         }
 
         public void updateShoppingCart() {
@@ -573,7 +584,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         betalsidaItem.updateTextFields();
                 }
                 labelAmountOfProduct.setText(amountOfProduct + " st");
-                labelTotalPrice.setText(model.getShoppingCart().getTotal() + " kr");
+                labelTotalPrice.setText(model.doubleToString(model.getShoppingCart().getTotal()) + " kr");
         }
 
 
