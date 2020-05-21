@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
@@ -266,6 +267,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Pane paneTidigareKop;
     @FXML
     FlowPane flowPaneTidigareKop;
+    @FXML FlowPane flowPaneTidigareKopDetalj;
 
     //Grejer till tidigare köp LIGHTBOX
     @FXML
@@ -331,6 +333,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
         model.getOrders().clear();
+
         for (int i = 1; i < 20; i++) {
             Order o = generateTestOrder(new Date(), i, i);
             model.getOrders().add(o);
@@ -365,7 +368,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         Order order = new Order();
         order.setDate(date);
         List<ShoppingItem> testList = new ArrayList<>();
-        testList.add(new ShoppingItem(model.getProducts().get(productID)));
+        for (int i = 0; i < 12; i++) {
+            testList.add(new ShoppingItem(model.getProducts().get(productID + i)));
+        }
         order.setItems(testList);
         order.setOrderNumber(orderID);
         return order;
@@ -396,10 +401,28 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void enterOrderLightbox(TidigareKopItem item) {
         orderLightboxDate.setText(item.getOrder().getDate().toString());
-        orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + "kr");
-        orderLightboxQuantity.setText(item.getOrder().getItems().size() + "varor");
+        orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + " kr");
+        orderLightboxQuantity.setText(item.getOrder().getItems().size() + " st");
+        orderLightboxOrdernumber.setText(item.getOrder().getOrderNumber() + "");
         orderLightbox.toFront();
+        populateOrderLightbox(item);
+
     }
+
+    //Fyller lightboxen med varorna från tidigare köp, och fixar även sidorna i lightboxen
+    @FXML public void populateOrderLightbox(TidigareKopItem item){
+
+                /*-------------------------------------EJ FÄRDIG -------------------------------*/
+
+        flowPaneTidigareKopDetalj.getChildren().clear();
+        for (int i = 0 ; i < item.getOrder().getItems().size(); i++) {
+            flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
+        }
+
+
+    }
+
+    //Menyfunktionalitet
 
     void initMenuItems() {
 
@@ -417,21 +440,44 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         for (menuItem m : menuItems) {
             m.pane.toBack();
-            m.button.setOnAction((event) -> {
-                menuOnClick(m);
-            });
 
-            //Sätter en listener på imageview med pilen så att den byter bild och gör en kant på knappen om man hoverar över den
-            m.arrow.hoverProperty().addListener((event) -> {
 
-                menuOnHover(m);
 
-            });
 
-            m.arrow.setOnMouseClicked((event) -> menuOnClick(m));
-            m.button.hoverProperty().addListener((event) -> menuOnHover(m));
+            if (m.arrow.getId().equals("imageViewArrowFavoriter") || m.arrow.getId().equals("imageViewArrowErbjudanden")) {
+                if (m.arrow.getId().equals("imageViewArrowFavoriter")) {
 
-            if (m.sMenu != null) {
+                    imageViewArrowFavoriter.setOnMouseClicked(e -> {
+                        displayListItemFromList(model.getFavorites());
+                        menuOnClick(m);
+                    });
+                    imageViewArrowFavoriter.hoverProperty().addListener((event) -> {
+                        menuOnHover(m);
+                    });
+
+                    buttonFavoriter.setOnAction(e ->
+                    {
+                        displayListItemFromList(model.getFavorites());
+                        menuOnClick(m);
+                    });
+
+                } else if (m.arrow.getId().equals("imageViewArrowErbjudanden")) {
+                    /*
+                    Vad som ska hända när man klickar på erbjudanden (måste sättas actionlistener för både bildvyn och knappen
+                    * */
+                }
+            }else
+            {
+                //Sätter en listener på knapp så att styleclassen ändras när man klickat på den
+                m.button.setOnAction((event) -> {
+                    menuOnClick(m);
+                });
+                //Sätter en listener på imageview med pilen så att den byter bild och gör en kant på knappen om man hoverar över den
+                m.arrow.hoverProperty().addListener((event) -> {
+                    menuOnHover(m);
+                });
+                m.arrow.setOnMouseClicked((event) -> menuOnClick(m));
+                m.button.hoverProperty().addListener((event) -> menuOnHover(m));
                 for (javafx.scene.control.Button btn : m.sMenu) {
                     btn.hoverProperty().addListener((event) -> subMenuOnHover(m.sMenu, btn));
                     btn.setOnMouseClicked(((event) -> subMenuOnClick(m.sMenu, btn)));
@@ -494,7 +540,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
     }
 
-    //När man klickar på listor
+    //När man klickar på listor. Används ej
 
     @FXML
     public void onListsClick(ActionEvent event) throws IOException {
@@ -570,7 +616,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             resetButtonStyle(m);
         } else {
             b.getStyleClass().clear();
-            b.getStyleClass().add("menuButtonClicked"); //Här ska den lägga till den nya undermenyn
+            b.getStyleClass().add("menuButtonClicked");
             setLightgreenArrow(m.arrow);
             m.pane.toFront();
             if (m.anchorPane != null) {
@@ -697,18 +743,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 if ((b != btn) && b.getStyleClass().toString().equals("menuButtonClicked")) {
                     b.getStyleClass().clear();
                     b.getStyleClass().add("menuButton");
-                    System.out.println("LEOELEL");
                 }
 
             }
             //Sets the new styleclass for the clicked button
             if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
-                System.out.println("HELLOOO");
                 //lägg in att man kommer tillbaka till alla varor inom den kategorin eller liknande.
                 btn.getStyleClass().clear();
                 btn.getStyleClass().add("menuButton");
             } else {
-                System.out.println("HJELLO");
                 btn.getStyleClass().clear();
                 btn.getStyleClass().add("menuButtonClicked");
             }
@@ -925,7 +968,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
     private void initCategoryMenu() {
-        buttonFavoriter.setOnAction(e -> displayListItemFromList(model.getFavorites()));
+
+
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
         buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
