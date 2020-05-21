@@ -462,17 +462,17 @@
              </AnchorPane>
 
                    <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
-             <Button fx:id="buttonSok" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="27.0" prefWidth="66.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="891.0" AnchorPane.topAnchor="97.0">
+             <Button fx:id="buttonSok" layoutX="881.0" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="881.0" AnchorPane.topAnchor="97.0">
                  <font>
                      <Font size="14.0" />
                  </font>
              </Button>
-             <Button fx:id="buttonBetala" mnemonicParsing="false" onAction="#onPaymentButton" prefHeight="45.0" prefWidth="327.0" style="-fx-background-color: #FFB422;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="630.0">
+             <Button fx:id="buttonBetala" mnemonicParsing="false" onAction="#onPaymentButton" prefHeight="45.0" prefWidth="327.0" style="-fx-background-color: #FFB422; -fx-font-weight: bold;" text="Betala" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="1000.0" AnchorPane.topAnchor="630.0">
                  <font>
                      <Font size="18.0" />
                  </font>
              </Button>
-             <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+             <Button fx:id="buttonTidigareKop" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
                  <font>
                      <Font size="15.0" />
                  </font>

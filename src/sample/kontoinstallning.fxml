@@ -116,7 +116,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-        <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchasesPageClick" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+        <Button fx:id="buttonTidigareKop" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchasesPageClick" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
             <font>
                 <Font size="15.0" />
             </font></Button>
