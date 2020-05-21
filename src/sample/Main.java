@@ -65,7 +65,7 @@ public class Main extends Application {
         primaryStage.show();
         BackButton.getBackButton().setStage(primaryStage);
         mainPagec.setStage(primaryStage,betal,konto,kundservice);
-        betalC.setStage(primaryStage,root);
+        betalC.setStage(primaryStage,root,kontoC);
 
         kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec,betalC);
 
