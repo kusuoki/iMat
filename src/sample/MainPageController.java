@@ -519,6 +519,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(kundservice);
+        paneTidigareKop.toBack();
 
     }
     //När man trycker på kontoinställningar
@@ -526,14 +527,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void onAccountSettingsClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(konto);
+        paneTidigareKop.toBack();
     }
     //När man trycker på betala
 
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
+
+
+
         if (model.getShoppingCart().getItems().size() > 0) {
             stage.getScene().setRoot(betalsida);
         }
+
     }
     //När man trycker på sökknappen
 
@@ -808,6 +814,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         private void displayListItemByCategory (String category){
             this.category = category;
+            searchField.clear();
             if (!cat) {
                 currentPage = 0;
             }

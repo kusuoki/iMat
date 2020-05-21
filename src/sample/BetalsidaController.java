@@ -27,7 +27,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private AnchorPane anchorPaneBetalningsuppgifter;
         @FXML private AnchorPane anchorPaneSlutfor;
         @FXML private AnchorPane anchorPaneTack;
-        @FXML private ProgressBar progressBar;
         @FXML private Pane buttonTidigareKop;
         @FXML private RadioButton radioHemLeverans;
         @FXML private RadioButton radioAffarLeverans;
@@ -83,6 +82,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         private Parent customerServicePage;
         private Parent paymentPage;
         private BackButton backButton = BackButton.getBackButton();
+        private KontoinstallningController kontoinstallningController;
+
 
         //Används för att sätta denna till kontroller för mainpage.fxml
         @Override
@@ -248,6 +249,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer4.getText().length() != 4) {
                                         setCardNumberError();
                                 }
+                        } else if (isFocus) {
+                                nextTextfield = textfieldExpiring1;
                         }
                 });
                 textfieldExpiring1.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -258,6 +261,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 } else {
                                         textfieldExpiring1.getStyleClass().add("error");
                                 }
+                        } else if (isFocus) {
+                                nextTextfield = textfieldExpiring2;
                         }
                 });
                 textfieldExpiring2.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -266,6 +271,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 if (!isValidValue(textfieldExpiring2.getText(), "Year")) {
                                         textfieldExpiring2.getStyleClass().add("error");
                                 }
+                        }  else if (isFocus) {
+                                nextTextfield = textfieldCVC;
                         }
                 });
                 textfieldCVC.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -395,10 +402,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                         }
 
+                        /*
                         if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                                 textfieldExpiring1.requestFocus();
                                 textfieldExpiring1.positionCaret(2);
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -411,13 +419,14 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring1.getStyleClass().remove("error");
                         }
 
+                        /*
                         if (isInteger(newValue)) {
                                 int month = Integer.parseInt(newValue);
                                 if (month <= 12 && newValue.length() == 2 && oldValue.length() != 3) {
                                         textfieldExpiring2.requestFocus();
                                         textfieldExpiring2.positionCaret(2);
                                 }
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -430,6 +439,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring2.getStyleClass().remove("error");
                         }
 
+                        /*
                         if (isInteger(newValue)) {
                                 int year = Integer.parseInt(newValue);
 
@@ -438,7 +448,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldCVC.requestFocus();
                                         textfieldCVC.positionCaret(3);
                                 }
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -458,16 +468,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 //</editor-fold>
 
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.setProgress(0);
                 buttonTidigareKop.toFront();
-                progressBar.toFront();
                 updateShoppingCart();
                 updateInformation();
         }
         //setter för stage och mainpage root
-        public void setStage(Stage stage,Parent mainPage){
+        public void setStage(Stage stage,Parent mainPage, KontoinstallningController kontoinstallningController){
              this.stage=stage;
              this.mainPage=mainPage;
+             this.kontoinstallningController=kontoinstallningController;
 
         }
 
@@ -482,9 +491,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onHomeClick(){
                 model.clearShoppingCart();
                 betalsidaItemMap.clear();
-                progressBar.setProgress(0);
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
                 stage.getScene().setRoot(mainPage);
         }
@@ -493,9 +500,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onNextClick1() {
             anchorPaneKontakt.toFront();
-            progressBar.setProgress(0.25);
             buttonTidigareKop.toFront();
-            progressBar.toFront();
         }
 
         //När man klickar på andra nästa
@@ -503,8 +508,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onNextClick2() {
                 if (isContactInfoCorrect(true)) {
                         anchorPaneBetalningsuppgifter.toFront();
-                        progressBar.setProgress(0.5);
-                        progressBar.toFront();
                         buttonTidigareKop.toFront();
                 }
         }
@@ -513,8 +516,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick2() {
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.setProgress(0);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
@@ -523,8 +524,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onNextClick3() {
                 if (isPaymentInfoCorrect(true)) {
                         anchorPaneSlutfor.toFront();
-                        progressBar.setProgress(0.75);
-                        progressBar.toFront();
                         buttonTidigareKop.toFront();
                         setData();
                 }
@@ -534,8 +533,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick3() {
                 anchorPaneKontakt.toFront();
-                progressBar.setProgress(0.25);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
@@ -543,16 +540,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick4() {
                 anchorPaneBetalningsuppgifter.toFront();
-                progressBar.setProgress(0.5);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
         //När man klickar på köp
         @FXML
         public void onBuyClick() {
-                progressBar.setProgress(1);
-                progressBar.toFront();
                 anchorPaneTack.toFront();
                 if(spara.isSelected())
                 {
@@ -585,8 +578,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 betalsidaItemMap.remove(item.getProduct().getProductId());
         }
 
+        public void removeFromMap(int id) {
+                betalsidaItemMap.remove(id);
+        }
+
         @Override
         public void shoppingCartChanged(CartEvent cartEvent) {
+                if (!cartEvent.isAddEvent()) {
+                        removeFromMap(cartEvent.getShoppingItem().getProduct().getProductId());
+                }
                 updateShoppingCart();
         }
 
@@ -619,7 +619,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
                 }
-                cardTypeImageView.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
+                cardTypeImageView.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 labelKortnummer.setText(textfieldKortnummer1.getText() + "-" + textfieldKortnummer2.getText() +
                         "-" + textfieldKortnummer3.getText() + "-" + textfieldKortnummer4.getText());
@@ -640,6 +640,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 card.setValidMonth((textfieldExpiring1.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring1.getText()));
                 card.setValidYear((textfieldExpiring2.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring2.getText()));
                 card.setVerificationCode((textfieldCVC.getText().length() == 0) ? 0 : Integer.parseInt(textfieldCVC.getText()));
+                kontoinstallningController.updateInformation();
         }
 
         public boolean isPaymentInfoCorrect(boolean callErrors) {
