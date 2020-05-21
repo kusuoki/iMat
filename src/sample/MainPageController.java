@@ -827,6 +827,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
             for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
                 if (i > productList.size() - 1) {
+                    cat=false;
                     break;
                 }
                 ListItem item = new ListItem(productList.get(i), model, this);
@@ -870,6 +871,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
             for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
                 if (i > productList.size() - 1) {
+                    search=false;
                     break;
                 }
                 ListItem item = new ListItem(productList.get(i), model, this);
@@ -920,9 +922,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 currentPage++;
                 if (cat) {
                     displayListItemByCategory(category);
+
                 }
-                if (search) {
+                else if (search) {
                     displayListItemFromList(tempSearch);
+
                 }
                 displayListItems();
             }
@@ -934,6 +938,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 currentPage--;
                 if (cat) {
                     displayListItemByCategory(category);
+
                 }
                 if (search) {
                     displayListItemFromList(tempSearch);
@@ -942,11 +947,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             }
         }
 
-        @FXML
+
         public void updateBreadCrumb(String main, String second){
-        labelCrumbFirst.setText(main);
+            labelCrumbFirst.setText(main);
+            labelCrumbFirst.autosize();
+
         if (second != null){
-            labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth() + 5);
+
+            labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth()+5);
             labelCrumbSecond.setLayoutX(labelCrumbSecondPointer.getLayoutX() + labelCrumbSecondPointer.getWidth() + 5);
             labelCrumbSecond.setText(second);
             labelCrumbSecondPointer.toFront();
@@ -955,6 +963,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             labelCrumbSecondPointer.toBack();
             labelCrumbSecond.toBack();
         }
+
         }
 
         @FXML
