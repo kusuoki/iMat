@@ -61,7 +61,7 @@ public class Main extends Application {
         mainPagec.setStage(primaryStage,betal,konto,kundservice);
         betalC.setStage(primaryStage,root);
 
-        kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec);
+        kontoC.setStage(primaryStage,root,kundservice,betal,mainPagec,betalC);
 
         kundC.setStage(primaryStage,root,konto,betal,mainPagec);
 
@@ -70,6 +70,12 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Model.getInstance().shutDown();
+            }
+        }));
     }
 
 

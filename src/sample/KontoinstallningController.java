@@ -51,6 +51,7 @@ public class KontoinstallningController implements Initializable {
     private Parent paymentPage;
     private BackButton backButton = BackButton.getBackButton();
     private MainPageController mainPageController;
+    private BetalsidaController betalsidaController;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -309,15 +310,17 @@ public class KontoinstallningController implements Initializable {
             card.setValidYear((cardExpiryYearTextField.getText().length() == 0) ? 0 : Integer.parseInt(cardExpiryYearTextField.getText()));
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
             System.out.println("Account settings saved! Probably.");
+            betalsidaController.updateInformation();
         }
     }
 
-    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController){
+    public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController,BetalsidaController betalsidaController){
         this.stage=stage;
         this.mainPage=mainPage;
         this.customerServicePage=customerServicePage;
         this.paymentPage=paymentPage;
         this.mainPageController=mainPageController;
+        this.betalsidaController=betalsidaController;
     }
 
     @FXML
