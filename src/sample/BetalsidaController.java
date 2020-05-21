@@ -82,6 +82,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         private Parent customerServicePage;
         private Parent paymentPage;
         private BackButton backButton = BackButton.getBackButton();
+        private KontoinstallningController kontoinstallningController;
+
 
         //Används för att sätta denna till kontroller för mainpage.fxml
         @Override
@@ -471,9 +473,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 updateInformation();
         }
         //setter för stage och mainpage root
-        public void setStage(Stage stage,Parent mainPage){
+        public void setStage(Stage stage,Parent mainPage, KontoinstallningController kontoinstallningController){
              this.stage=stage;
              this.mainPage=mainPage;
+             this.kontoinstallningController=kontoinstallningController;
 
         }
 
@@ -637,6 +640,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 card.setValidMonth((textfieldExpiring1.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring1.getText()));
                 card.setValidYear((textfieldExpiring2.getText().length() == 0) ? 0 : Integer.parseInt(textfieldExpiring2.getText()));
                 card.setVerificationCode((textfieldCVC.getText().length() == 0) ? 0 : Integer.parseInt(textfieldCVC.getText()));
+                kontoinstallningController.updateInformation();
         }
 
         public boolean isPaymentInfoCorrect(boolean callErrors) {
