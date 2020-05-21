@@ -468,6 +468,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         updateOrdersBeingDisplayedWith9orders();
         labelOrder.setText("Sida " + (currentOrderPage + 1) + " av " + lastOrderPage);
 
+        if (lastOrderPage == 0){
+            labelOrder.setText("Sida 0 av 0");
+        }
+
         for (TidigareKopItem item : ordersCurrentlyDisplayed) {
             flowPaneTidigareKop.getChildren().add(item);
         }
@@ -845,6 +849,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             updateListWith8ItemsFromCurrent();
 
             labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+            if (lastPage == 0){
+                labelVarusida.setText("Sida 0 av 0");
+            }
 
             for (ListItem item : list8Items) {
                 flowPaneMainPage.getChildren().add(item);
@@ -898,9 +905,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         @FXML
         public void onFirstBreadcrumb(){
 
+
         }
 
     private void initCategoryMenu() {
+        buttonFavoriter.setOnAction(e -> displayListItemFromList(model.getFavorites()));
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
         buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
