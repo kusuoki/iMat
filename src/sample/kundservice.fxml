@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.KundserviceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.KundserviceController">
     <children>
         <Pane layoutX="538.0" layoutY="139.0" prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="139.0">
             <children>
@@ -64,19 +61,15 @@
                 </Label>
             </children>
         </Pane>
-        <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchasesPageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Tidigare köp" textFill="WHITE" AnchorPane.bottomAnchor="674.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
+        <Button fx:id="buttonTidigareKöp" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchasesPageClick" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.bottomAnchor="674.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Button fx:id="buttonListor" layoutX="479.0" layoutY="40.0" mnemonicParsing="false" onAction="#onListPageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Listor" textFill="WHITE" AnchorPane.leftAnchor="479.0">
+        <Button fx:id="buttonKundservice" layoutX="533.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="212.0" styleClass="topMenuButton" text="Kundservice &amp; Hjälp" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Button fx:id="buttonKundservice" layoutX="639.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kundservice &amp; Hjälp" textFill="WHITE">
-            <font>
-                <Font size="15.0" />
-            </font></Button>
-        <Button fx:id="buttonKonto" layoutX="798.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAccountPageClick" prefHeight="36.0" prefWidth="160.0" style="-fx-background-color: #144f2c;" text="Kontoinställningar" textFill="WHITE">
+        <Button fx:id="buttonKonto" layoutX="745.0" layoutY="40.0" mnemonicParsing="false" onAction="#onAccountPageClick" prefHeight="36.0" prefWidth="212.0" styleClass="topMenuButton" text="Kontoinställningar" textFill="WHITE">
             <font>
                 <Font size="15.0" />
             </font></Button>

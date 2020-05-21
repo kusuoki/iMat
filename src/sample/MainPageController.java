@@ -322,6 +322,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initMenuItems();
+        initCategoryMenu();
 
         // force update the shopping cart to render out the products
         if (model.getShoppingCart().getItems().size() > 0) {
@@ -359,6 +360,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
     flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
     //TODO TEMP METHOD FOR TESTING
+
     private Order generateTestOrder(Date date, int productID, int orderID) {
         Order order = new Order();
         order.setDate(date);
@@ -368,8 +370,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         order.setOrderNumber(orderID);
         return order;
     }
-
     //Fram och tillbaka knappar för TidigareKöp
+
     @FXML
     private void nextOrderPageButton() {
         if (lastOrderPage > currentOrderPage + 1) {
@@ -377,7 +379,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayOrdersOnPage();
         }
     }
-
     @FXML
     private void previousOrderPageButton() {
         if (currentOrderPage > 0) {
@@ -387,11 +388,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //Lightboxfunktionalitet
+
     @FXML
     public void exitOrderLightbox() {
         orderLightbox.toBack();
     }
-
     @FXML
     public void enterOrderLightbox(TidigareKopItem item) {
         orderLightboxDate.setText(item.getOrder().getDate().toString());
@@ -449,6 +450,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //När man klickar på tidigare köp
+
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
         flowPaneTidigareKop.getChildren().clear();
@@ -469,7 +471,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         displayOrdersOnPage();
     }
-
     public void displayOrdersOnPage() {
         flowPaneTidigareKop.getChildren().clear();
         updateOrdersBeingDisplayedWith9orders();
@@ -490,35 +491,36 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //När man klickar på listor
+
     @FXML
     public void onListsClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(listor);
 
 
     }
-
     //När man klickar på kundservice och hjälp
+
     @FXML
     public void onCustomerServiceAndHelpClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(kundservice);
 
     }
-
     //När man trycker på kontoinställningar
+
     @FXML
     public void onAccountSettingsClick(ActionEvent event) throws IOException {
         stage.getScene().setRoot(konto);
     }
-
     //När man trycker på betala
+
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
         if (model.getShoppingCart().getItems().size() > 0) {
             stage.getScene().setRoot(betalsida);
         }
     }
-
     //När man trycker på sökknappen
+
     @FXML
     public void onSearch() {
         List<ProductA> searchList = model.findProducts(searchField.getText());
@@ -542,8 +544,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         paneVaruDisplay.toFront();
         displayListItemFromList(searchList);
     }
-
     //När man klickar på menyn
+
     @FXML
     public void menuOnClick(menuItem m) {
 
@@ -574,8 +576,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
 
-
     //När man hoovrar över menyn
+
     public void menuOnHover(menuItem m) {
 
         for (menuItem item : menuItems) {
@@ -593,7 +595,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //ändrar styleclass på knappen
 
     }
-        @FXML
+    @FXML
         public void favorite () {
             if (model.isFavorite(currentLightboxItem.product)) {
                 currentLightboxItem.unFavorite();
@@ -602,7 +604,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             }
             imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
         }
-
         @FXML
         public void lightBoxToFront () {
             anchorPaneMainLightbox.toFront();
@@ -736,10 +737,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
 
-        //TODO: ANVÄNDS INTE LÄNGRE, använder istället displayListItemFromList(searchList)
 
+    //TODO: ANVÄNDS INTE LÄNGRE, använder istället displayListItemFromList(searchList)
         //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
-        private void updateProductList (List < ProductA > searchList) {
+
+    private void updateProductList (List < ProductA > searchList) {
 /*productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
@@ -747,9 +749,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             productsFlowPane.getChildren().add(new ProductPanel(product)); */
 
         }
-
         //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
-        @Override
+
+    @Override
         public void shoppingCartChanged (CartEvent cartEvent){
             List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
             List<VarukorgItem> varukorgItems = new ArrayList<>();
@@ -774,7 +776,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayListItems();
             updateShoppingCartPriceAndQuantity();
         }
-
         private void updateShoppingCartPriceAndQuantity () {
             double total = model.getShoppingCart().getTotal();
             double roundedTotal = Math.round(total * 100.0) / 100.0;
@@ -784,6 +785,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             for (ShoppingItem item : model.getShoppingCart().getItems()) {
                 quantity += item.getAmount();
             }
+
+
             totalQuantityLabel.setText(quantity + " varor");
         }
 
@@ -817,6 +820,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 lastPage++;
             }
 
+            paneVaruDisplay.toFront();
+
             displayListItems();
         }
 
@@ -845,6 +850,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             } else if (currentListWithItems.size() % 8 != 0) {
                 lastPage++;
             }
+
+            paneVaruDisplay.toFront();
 
             displayListItems();
         }
@@ -899,6 +906,67 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             }
         }
 
+        @FXML
+        public void onSecondBreadcrumb(){
+
+        }
+
+        @FXML
+        public void onFirstBreadcrumb(){
+
+        }
+
+    private void initCategoryMenu() {
+        buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
+        buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
+        buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
+        buttonArtor.setOnAction(e -> displayListItemByCategory("Ärtor"));
+        buttonAllaDrycker.setOnAction(e -> displayListItemByCategory("Drycker"));
+        buttonKallaDrycker.setOnAction(e -> displayListItemByCategory("Kalla drycker"));
+        buttonVarmaDrycker.setOnAction(e -> displayListItemByCategory("Varma drycker"));
+        buttonAllaFrukt.setOnAction(e -> displayListItemByCategory("Frukt & Grönt"));
+        buttonBar.setOnAction(e -> displayListItemByCategory("Bär"));
+        buttonCitrusfrukter.setOnAction(e -> displayListItemByCategory("Citrusfrukter"));
+        buttonExotiskaFrukter.setOnAction(e -> displayListItemByCategory("Exotiska frukter"));
+        buttonFarskaOrtkryddor.setOnAction(e -> displayListItemByCategory("Färska örtkryddor"));
+        buttonGronsaker.setOnAction(e -> displayListItemByCategory("Grönsaker"));
+        buttonKal.setOnAction(e -> displayListItemByCategory("Kål"));
+        buttonMelon.setOnAction(e -> displayListItemByCategory("Melon"));
+        buttonPotatisOchRotfrukter.setOnAction(e -> displayListItemByCategory("Potatis & Rotfrukt"));
+        buttonSotaStenfrukter.setOnAction(e -> displayListItemByCategory("Söta stenfrukter"));
+        buttonAllaFisk.setOnAction(e -> displayListItemByCategory("Fisk & Skaldjur"));
+        buttonFarskLax.setOnAction(e -> displayListItemByCategory("Färsk fisk"));
+        buttonSill.setOnAction(e -> displayListItemByCategory("Sill"));
+        buttonSkaldjur.setOnAction(e -> displayListItemByCategory("Skaldjur"));
+        buttonOvrigFisk.setOnAction(e -> displayListItemByCategory("Övrig fisk"));
+        buttonAllaKott.setOnAction(e -> displayListItemByCategory("Kött & Fågel"));
+        buttonKyckling.setOnAction(e -> displayListItemByCategory("Kyckling"));
+        buttonNotkott.setOnAction(e -> displayListItemByCategory("Nötkött"));
+        buttonAllaMejeri.setOnAction(e -> displayListItemByCategory("Mejeriprodukter & Ägg"));
+        buttonMjolk.setOnAction(e -> displayListItemByCategory("Mjölk"));
+        buttonOst.setOnAction(e -> displayListItemByCategory("Ost"));
+        buttonYoghurt.setOnAction(e -> displayListItemByCategory("Yoghurt & Filmjölk"));
+        buttonAgg.setOnAction(e -> displayListItemByCategory("Ägg"));
+        buttonAllaSkafferi.setOnAction(e -> displayListItemByCategory("Skafferi"));
+        buttonBrod.setOnAction(e -> displayListItemByCategory("Bröd"));
+        buttonFron.setOnAction(e -> displayListItemByCategory("Frön"));
+        buttonKakao.setOnAction(e -> displayListItemByCategory("Kakao"));
+        buttonKnackebrod.setOnAction(e -> displayListItemByCategory("KnäckeBröd"));
+        buttonMjol.setOnAction(e -> displayListItemByCategory("Mjöl"));
+        buttonNotter.setOnAction(e -> displayListItemByCategory("Nötter"));
+        buttonPasta.setOnAction(e -> displayListItemByCategory("Pasta"));
+        buttonRis.setOnAction(e -> displayListItemByCategory("Ris"));
+        //TODO: SOCKER OCH SALT ÄR OLIKA KATEGORIER, Kanske har fixat?
+        buttonSockerOchSalt.setOnAction(e -> displayListItemByCategory("Socker & Salt"));
+        buttonAllaSotsaker.setOnAction(e -> displayListItemByCategory("Sötsaker"));
+        buttonBakverk.setOnAction(e -> displayListItemByCategory("Bakverk & Kakor"));
+        buttonGlass.setOnAction(e -> displayListItemByCategory("Glass"));
+        buttonGodis.setOnAction(e -> displayListItemByCategory("Godis"));
+        buttonSnacks.setOnAction(e -> displayListItemByCategory("Snacks"));
     }
+
+
+
+}
 
 

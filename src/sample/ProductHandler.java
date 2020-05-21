@@ -198,13 +198,9 @@ public class ProductHandler {
                 p.setMainCategory("Skafferi");
                 p.setSubCategory("Kakao");
             }
-            case 91, 95, 151 -> {
+            case 91, 94, 95, 151 -> {
                 p.setMainCategory("Skafferi");
-                p.setSubCategory("Socker");
-            }
-            case 94 -> {
-                p.setMainCategory("Skafferi");
-                p.setSubCategory("Salt");
+                p.setSubCategory("Socker & Salt");
             }
             case 97, 98, 99, 100, 101, 102, 103 -> {
                 p.setMainCategory("Skafferi");
@@ -223,19 +219,19 @@ public class ProductHandler {
                 p.setSubCategory("Ris");
             }
             case 136 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Glass");
             }
             case 135, 140 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Godis");
             }
             case 137, 138, 139 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Bakverk & Kakor");
             }
             case 134 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Snacks");
             }
         }
