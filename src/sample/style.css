@@ -167,7 +167,8 @@
     -fx-background-radius: 10;
 }
 
-.add-button:hover{
+/* add this class to objects that can be hovered on */
+.hoverable:hover{
     -fx-cursor: hand;
 }
 

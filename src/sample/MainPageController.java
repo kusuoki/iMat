@@ -335,6 +335,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     String firstBreadcrumb;
     String secondBreadcrumb;
 
+    ImageView blackBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png")));
+    ImageView whiteBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_white_24dp.png")));
+
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
@@ -360,13 +363,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             model.getOrders().add(o);
         }
         onSearch();
+        initMenuButtons();
 
         if (model.getShoppingCart().getItems().size() == 0) {
             buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            buttonBetala.setGraphic(whiteBetala);
         } else {
             buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+            buttonBetala.setGraphic(blackBetala);
         }
-        initMenuButtons();
+
     }
 
 
@@ -382,10 +388,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_account_circle_white_24dp.png"));
         buttonKonto.setGraphic(new ImageView(image));
         buttonKonto.setGraphicTextGap(5);
-
-        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png"));
-        buttonBetala.setGraphic(new ImageView(image));
-        buttonBetala.setGraphicTextGap(5);
 
         image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_search_white_24dp.png"));
         buttonSok.setGraphic(new ImageView(image));
@@ -799,8 +801,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
             if (model.getShoppingCart().getItems().size() == 0) {
                 buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+                buttonBetala.setGraphic(whiteBetala);
             } else {
                 buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+                buttonBetala.setGraphic(blackBetala);
             }
 
             displayListItems();
