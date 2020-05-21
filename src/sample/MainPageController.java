@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -231,6 +232,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     ArrayList<menuItem> menuItems = new ArrayList<menuItem>();
 
+    //Menyknapparna längst upp
+    @FXML
+    Button buttonTidigareKop;
+    @FXML
+    Button buttonKundservice;
+    @FXML
+    Button buttonKonto;
+
     //Labels för nästa sida, förra sidan och nuvarande sidan för Affärsfönstret
     @FXML
     Label labelVarusida;
@@ -286,6 +295,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     javafx.scene.control.Button buttonBetala;
+
+    @FXML
+    Button buttonSok;
 
 
     //Breadcrumb components
@@ -354,24 +366,31 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         } else {
             buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
         }
+        initMenuButtons();
     }
 
-    /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(11), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(12), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(13), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(14), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(15), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(16), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(17), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(18), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(19), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(20), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(21), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(22), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(23), model));
-    flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(9), model));*/
-    //TODO TEMP METHOD FOR TESTING
+
+    private void initMenuButtons(){
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_receipt_white_24dp.png"));
+        buttonTidigareKop.setGraphic(new ImageView(image));
+        buttonTidigareKop.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_call_white_24dp.png"));
+        buttonKundservice.setGraphic(new ImageView(image));
+        buttonKundservice.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_account_circle_white_24dp.png"));
+        buttonKonto.setGraphic(new ImageView(image));
+        buttonKonto.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png"));
+        buttonBetala.setGraphic(new ImageView(image));
+        buttonBetala.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_search_white_24dp.png"));
+        buttonSok.setGraphic(new ImageView(image));
+        buttonSok.setGraphicTextGap(2);
+    }
 
     private Order generateTestOrder(Date date, int productID, int orderID) {
         Order order = new Order();
@@ -506,14 +525,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
     }
 
-    //När man klickar på listor
-
-    @FXML
-    public void onListsClick(ActionEvent event) throws IOException {
-        stage.getScene().setRoot(listor);
-
-
-    }
     //När man klickar på kundservice och hjälp
 
     @FXML
@@ -533,9 +544,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
-
-
-
         if (model.getShoppingCart().getItems().size() > 0) {
             stage.getScene().setRoot(betalsida);
         }
@@ -842,6 +850,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 lastPage++;
             }
 
+            paneVaruDisplay.toFront();
+
             if(currentListWithItems.get(0).product.getSubCategory().equals(category)){
                 firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
                 secondBreadcrumb = category;
@@ -852,9 +862,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 updateBreadCrumb(category, null);
             }
 
-
-
-            paneVaruDisplay.toFront();
 
             displayListItems();
         }
@@ -952,9 +959,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             labelCrumbFirst.setText(main);
             labelCrumbFirst.autosize();
 
-        if (second != null){
+            if (second != null){
+            labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth() + 5);
 
-            labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth()+5);
             labelCrumbSecond.setLayoutX(labelCrumbSecondPointer.getLayoutX() + labelCrumbSecondPointer.getWidth() + 5);
             labelCrumbSecond.setText(second);
             labelCrumbSecondPointer.toFront();

@@ -3,6 +3,7 @@ package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.event.ActionEvent;
@@ -293,6 +294,7 @@ public class KontoinstallningController implements Initializable {
 
         });
         //---------------------------------------------------------------------------------------------
+        initMenuButtons();
     }
 
     @FXML
@@ -321,6 +323,28 @@ public class KontoinstallningController implements Initializable {
         this.paymentPage=paymentPage;
         this.mainPageController=mainPageController;
         this.betalsidaController=betalsidaController;
+    }
+
+    //Menyknapparna längst upp
+    @FXML
+    Button buttonTidigareKop;
+    @FXML
+    Button buttonKundservice;
+    @FXML
+    Button buttonKonto;
+
+    private void initMenuButtons(){
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_receipt_white_24dp.png"));
+        buttonTidigareKop.setGraphic(new ImageView(image));
+        buttonTidigareKop.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_call_white_24dp.png"));
+        buttonKundservice.setGraphic(new ImageView(image));
+        buttonKundservice.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_account_circle_white_24dp.png"));
+        buttonKonto.setGraphic(new ImageView(image));
+        buttonKonto.setGraphicTextGap(5);
     }
 
     @FXML
