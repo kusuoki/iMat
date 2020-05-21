@@ -247,6 +247,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer4.getText().length() != 4) {
                                         setCardNumberError();
                                 }
+                        } else if (isFocus) {
+                                nextTextfield = textfieldExpiring1;
                         }
                 });
                 textfieldExpiring1.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -257,6 +259,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 } else {
                                         textfieldExpiring1.getStyleClass().add("error");
                                 }
+                        } else if (isFocus) {
+                                nextTextfield = textfieldExpiring2;
                         }
                 });
                 textfieldExpiring2.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -265,6 +269,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 if (!isValidValue(textfieldExpiring2.getText(), "Year")) {
                                         textfieldExpiring2.getStyleClass().add("error");
                                 }
+                        }  else if (isFocus) {
+                                nextTextfield = textfieldCVC;
                         }
                 });
                 textfieldCVC.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -394,10 +400,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                         }
 
+                        /*
                         if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                                 textfieldExpiring1.requestFocus();
                                 textfieldExpiring1.positionCaret(2);
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -410,13 +417,14 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring1.getStyleClass().remove("error");
                         }
 
+                        /*
                         if (isInteger(newValue)) {
                                 int month = Integer.parseInt(newValue);
                                 if (month <= 12 && newValue.length() == 2 && oldValue.length() != 3) {
                                         textfieldExpiring2.requestFocus();
                                         textfieldExpiring2.positionCaret(2);
                                 }
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -429,6 +437,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring2.getStyleClass().remove("error");
                         }
 
+                        /*
                         if (isInteger(newValue)) {
                                 int year = Integer.parseInt(newValue);
 
@@ -437,7 +446,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldCVC.requestFocus();
                                         textfieldCVC.positionCaret(3);
                                 }
-                        }
+                        }*/
 
                         if (isPaymentInfoCorrect(false)) {
                                 labelErrorMessage.toBack();
@@ -566,8 +575,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 betalsidaItemMap.remove(item.getProduct().getProductId());
         }
 
+        public void removeFromMap(int id) {
+                betalsidaItemMap.remove(id);
+        }
+
         @Override
         public void shoppingCartChanged(CartEvent cartEvent) {
+                if (!cartEvent.isAddEvent()) {
+                        removeFromMap(cartEvent.getShoppingItem().getProduct().getProductId());
+                }
                 updateShoppingCart();
         }
 

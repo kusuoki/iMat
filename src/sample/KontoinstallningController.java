@@ -143,6 +143,8 @@ public class KontoinstallningController implements Initializable {
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_4.getText().length() != 4) {
                     setCardNumberError();
                 }
+            } else if (isFocus) {
+                nextTextfield = cardExpiryMonthTextField;
             }
         });
         cardExpiryMonthTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -153,6 +155,8 @@ public class KontoinstallningController implements Initializable {
                 } else {
                     cardExpiryMonthTextField.getStyleClass().add("error");
                 }
+            } else if (isFocus) {
+                nextTextfield = cardExpiryYearTextField;
             }
         });
         cardExpiryYearTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -161,6 +165,8 @@ public class KontoinstallningController implements Initializable {
                 if (!isValidValue(cardExpiryYearTextField.getText(), "Year")) {
                     cardExpiryYearTextField.getStyleClass().add("error");
                 }
+            } else if (isFocus) {
+                nextTextfield = CVVTextField;
             }
         });
         CVVTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -237,10 +243,11 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
             }
 
+            /*
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardExpiryMonthTextField.requestFocus();
                 cardExpiryMonthTextField.positionCaret(2);
-            }
+            }*/
         });
         cardExpiryMonthTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryMonthTextField, oldValue, newValue, 2);
@@ -249,13 +256,14 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryMonthTextField.getStyleClass().remove("error");
             }
 
+            /*
             if (isInteger(newValue)) {
                 int month = Integer.parseInt(newValue);
                 if (month <= 12 && newValue.length() == 2 && oldValue.length() != 3) {
                     cardExpiryYearTextField.requestFocus();
                     cardExpiryYearTextField.positionCaret(2);
                 }
-            }
+            }*/
         });
         cardExpiryYearTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardExpiryYearTextField, oldValue, newValue, 2);
@@ -264,6 +272,7 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryYearTextField.getStyleClass().remove("error");
             }
 
+            /*
             if (isInteger(newValue)) {
                 int year = Integer.parseInt(newValue);
 
@@ -272,7 +281,7 @@ public class KontoinstallningController implements Initializable {
                     CVVTextField.requestFocus();
                     CVVTextField.positionCaret(3);
                 }
-            }
+            }*/
         });
         CVVTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(CVVTextField, oldValue, newValue, 3);
