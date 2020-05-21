@@ -553,8 +553,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
         }
 
-        public void updateShoppingCart()
-        {
+        public void updateSlutFor() {
+
+        }
+
+        public void updateShoppingCart() {
                 int amountOfProduct = 0;
 
                 flowPaneBekrafta.getChildren().clear();
@@ -584,7 +587,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
         @Override
         public void shoppingCartChanged(CartEvent cartEvent) {
-                if (!cartEvent.isAddEvent()) {
+                if (!cartEvent.isAddEvent() && !betalsidaItemMap.isEmpty()) {
                         removeFromMap(cartEvent.getShoppingItem().getProduct().getProductId());
                 }
                 updateShoppingCart();

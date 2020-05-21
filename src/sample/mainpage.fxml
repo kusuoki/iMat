@@ -373,7 +373,7 @@
                  <children>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="496.0" prefWidth="324.0">
                          <children>
-                             <ScrollPane layoutY="49.0" prefHeight="496.0" prefWidth="327.0">
+                             <ScrollPane layoutY="49.0" prefHeight="496.0" prefWidth="327.0" style="-fx-background-color: #DFDFDF;">
                                  <content>
                                      <FlowPane fx:id="flowPaneVarukorg" prefHeight="499.0" prefWidth="312.0" style="-fx-background-color: #DFDFDF;" />
                                  </content>

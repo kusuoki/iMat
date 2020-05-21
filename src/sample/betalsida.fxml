@@ -442,41 +442,60 @@
                <children>
                   <Pane layoutY="45.0" prefHeight="491.0" prefWidth="837.0" style="-fx-background-color: white;">
                      <children>
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="63.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="199.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="33.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="169.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="109.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="139.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="229.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="259.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="395.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="365.0" prefHeight="18.0" prefWidth="171.0" text="Utgångsdatum (MM/ÅÅ):" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="335.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="305.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="432.0" prefHeight="17.0" prefWidth="138.0" text="Spara uppgifter:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="589.0" layoutY="436.0" prefHeight="17.0" prefWidth="138.0" text="Slutpris">
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="211.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="111.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="181.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="81.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="21.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="51.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="141.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="389.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="349.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="319.0" prefHeight="18.0" prefWidth="138.0" text="Utgångsdatum (MM/ÅÅ):" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="289.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="259.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="104.0" layoutY="438.0" prefHeight="17.0" prefWidth="138.0" text="Spara uppgifter:" textAlignment="RIGHT">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="16.0" />
+                           </font></Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="593.0" layoutY="437.0" prefHeight="27.0" prefWidth="71.0" text="Slutpris:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelTelefonnummer" layoutX="237.0" layoutY="63.0" text="Label" />
-                        <Label fx:id="labelFirstname" layoutX="237.0" layoutY="109.0" text="Label" />
-                        <Label fx:id="labelLastname" layoutX="237.0" layoutY="139.0" text="Label" />
-                        <Label fx:id="labelAdress" layoutX="237.0" layoutY="169.0" text="Label" />
-                        <Label fx:id="labelStad" layoutX="237.0" layoutY="199.0" text="Label" />
-                        <Label fx:id="labelPostnummer" layoutX="237.0" layoutY="229.0" text="Label" />
-                        <Label fx:id="labelLeverans" layoutX="237.0" layoutY="259.0" text="Label" />
-                        <Label fx:id="labelKortnummer" layoutX="237.0" layoutY="335.0" text="Label" />
-                        <Label fx:id="labelExpiring" layoutX="237.0" layoutY="365.0" text="Label" />
-                        <Label fx:id="labelCVC" layoutX="237.0" layoutY="395.0" text="Label" />
-                        <Label fx:id="labelEmail" layoutX="237.0" layoutY="34.0" text="Label" />
-                        <ImageView fx:id="cardTypeImageViewAgain" fitHeight="25.0" fitWidth="45.0" layoutX="236.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+                        <Label fx:id="labelTelefonnummer" layoutX="205.0" layoutY="211.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelFirstname" layoutX="205.0" layoutY="21.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelLastname" layoutX="205.0" layoutY="51.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelAdress" layoutX="205.0" layoutY="81.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelStad" layoutX="205.0" layoutY="111.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelPostnummer" layoutX="205.0" layoutY="141.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelLeverans" layoutX="205.0" layoutY="389.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelKortnummer" layoutX="205.0" layoutY="289.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelExpiring" layoutX="205.0" layoutY="319.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelCVC" layoutX="205.0" layoutY="349.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelEmail" layoutX="205.0" layoutY="181.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <ImageView fx:id="cardTypeImageViewAgain" fitHeight="25.0" fitWidth="45.0" layoutX="205.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@resources/Icons/unknown_card.png" />
                            </image>
                         </ImageView>
-                        <CheckBox fx:id="spara" layoutX="236.0" layoutY="428.0" mnemonicParsing="false" />
+                        <CheckBox fx:id="spara" layoutX="256.0" layoutY="442.0" mnemonicParsing="false" />
+                        <Line endY="481.0" layoutX="419.0" startY="10.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="171.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="241.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="379.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="449.0" layoutY="1.0" prefHeight="418.0" prefWidth="359.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <FlowPane fx:id="SlutforKopFlowPane" prefHeight="418.0" prefWidth="342.0" />
+                           </content>
+                        </ScrollPane>
+                        <Line endX="389.0" layoutX="419.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
+                        <Label fx:id="labelSlutforSlutpris" layoutX="670.0" layoutY="437.0" prefHeight="27.0" prefWidth="131.0" text="1800 kr">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
                      </children>
                   </Pane>
                   <Label alignment="CENTER" layoutX="360.0" prefHeight="47.0" prefWidth="117.0" text="Slutför köp" textFill="WHITE">
