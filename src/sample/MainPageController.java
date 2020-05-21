@@ -287,6 +287,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     javafx.scene.control.Button buttonBetala;
 
+
+    //Breadcrumb components
+    @FXML
+    Label labelCrumbSecond;
+    @FXML
+    Label labelCrumbSecondPointer;
+    @FXML
+    Label labelCrumbFirst;
+
+
     Parent betalsida;
     Parent konto;
     Parent kundservice;
@@ -310,13 +320,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     int currentOrderPage;
     int lastOrderPage;
 
+    String firstBreadcrumb;
+    String secondBreadcrumb;
+
     public void setStage(Stage stage, Parent betalsida, Parent konto, Parent kundservice) {
         this.stage = stage;
         this.betalsida = betalsida;
         this.konto = konto;
         this.kundservice = kundservice;
     }
-
 
     //Används för att sätta denna till kontroller för mainpage.fxml
     @Override
@@ -804,7 +816,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             list8Items.clear();
             currentListWithItems.clear();
 
-
             List<ProductA> productList = model.getProducts(category);
 
             for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
@@ -816,13 +827,24 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
             }
 
-
             lastPage = productList.size() / 8;
             if (productList.size() % 8 > 0) {
                 lastPage++;
             } else if (currentListWithItems.size() % 8 != 0) {
                 lastPage++;
             }
+
+            if(currentListWithItems.get(0).product.getSubCategory().equals(category)){
+                firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
+                secondBreadcrumb = category;
+                updateBreadCrumb(firstBreadcrumb, secondBreadcrumb);
+            } else {
+                firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
+                secondBreadcrumb = null;
+                updateBreadCrumb(category, null);
+            }
+
+
 
             paneVaruDisplay.toFront();
 
@@ -914,14 +936,34 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         @FXML
-        public void onSecondBreadcrumb(){
+        public void updateBreadCrumb(String main, String second){
+        labelCrumbFirst.setText(main);
+        if (second != null){
+            labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth() + 5);
+            labelCrumbSecond.setLayoutX(labelCrumbSecondPointer.getLayoutX() + labelCrumbSecondPointer.getWidth() + 5);
+            labelCrumbSecond.setText(second);
+            labelCrumbSecondPointer.toFront();
+            labelCrumbSecond.toFront();
+        } else {
+            labelCrumbSecondPointer.toBack();
+            labelCrumbSecond.toBack();
+        }
+        }
 
+        @FXML
+        public void onSecondBreadcrumb(){
+        if (labelCrumbSecond.getText() == null){
+            System.out.println("ERROR: second breadcrumb is null, this shouldn't be showing....");
+        } else {
+            displayListItemByCategory(labelCrumbSecond.getText());
+            //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
+        }
         }
 
         @FXML
         public void onFirstBreadcrumb(){
-
-
+            displayListItemByCategory(labelCrumbFirst.getText());
+            //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
         }
 
     private void initCategoryMenu() {
