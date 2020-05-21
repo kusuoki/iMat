@@ -492,8 +492,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man trycker på hemknappen
         @FXML
         public void onHomeClick(){
-                model.clearShoppingCart();
-                betalsidaItemMap.clear();
                 anchorPaneBekraftaKundvagn.toFront();
                 buttonTidigareKop.toFront();
                 stage.getScene().setRoot(mainPage);
@@ -551,6 +549,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBuyClick() {
                 anchorPaneTack.toFront();
+                betalsidaItemMap.clear();
+                model.placeOrder(false);
+                model.clearShoppingCart();
                 if(spara.isSelected())
                 {
                         save();

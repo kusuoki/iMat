@@ -1,6 +1,8 @@
 package sample;
 
 
+import javafx.animation.PauseTransition;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -11,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 
@@ -20,6 +23,7 @@ import java.util.ResourceBundle;
 
 public class KontoinstallningController implements Initializable {
 
+    @FXML Label messageLabel;
     @FXML Label labelSparadeUppgifter;
     @FXML TextField firstNameTextField;
     @FXML TextField lastNameTextField;
@@ -60,6 +64,8 @@ public class KontoinstallningController implements Initializable {
 
         updateInformation();
 
+        messageLabel.toBack();
+        //<editor-fold desc="this is a mess">
         //--------------------------------no error handling on these-----------------------------------
         firstNameTextField.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
             if (isFocus) {
@@ -293,11 +299,19 @@ public class KontoinstallningController implements Initializable {
 
         });
         //---------------------------------------------------------------------------------------------
+        //</editor-fold>
     }
 
     @FXML
     public void save() {
+        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        messageLabel.toFront();
+
         if (isReadyToSave()) {
+            messageLabel.setStyle("-fx-text-fill: #00692A");
+            messageLabel.setText("Kontoinställning sparade!");
+            delay.setOnFinished(actionEvent -> messageLabel.toBack());
+
             customer.setFirstName(firstNameTextField.getText());
             customer.setLastName(lastNameTextField.getText());
             customer.setAddress(adressTextField.getText());
@@ -311,7 +325,12 @@ public class KontoinstallningController implements Initializable {
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
             System.out.println("Account settings saved! Probably.");
             betalsidaController.updateInformation();
+        } else {
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Felaktig inmatning! Ta bort eller fixa de för att spara.");
+            delay.setOnFinished(actionEvent -> messageLabel.toBack());
         }
+        delay.play();
     }
 
     public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage,MainPageController mainPageController,BetalsidaController betalsidaController){

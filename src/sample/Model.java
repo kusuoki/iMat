@@ -146,9 +146,11 @@ public class Model {
     }
 
     public void placeOrder() {
-
         iMatDataHandler.placeOrder();
+    }
 
+    public void placeOrder(boolean clearShoppingCart) {
+        iMatDataHandler.placeOrder(clearShoppingCart);
     }
 
 
