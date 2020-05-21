@@ -942,7 +942,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         buttonRis.setOnAction(e -> displayListItemByCategory("Ris"));
         //TODO: SOCKER OCH SALT ÄR OLIKA KATEGORIER, Kanske har fixat?
         buttonSockerOchSalt.setOnAction(e -> displayListItemByCategory("Socker & Salt"));
-        buttonAllaSotsaker.setOnAction(e -> displayListItemByCategory("Bakverk, glass, godis & snacks"));
+        buttonAllaSotsaker.setOnAction(e -> displayListItemByCategory("Sötsaker"));
         buttonBakverk.setOnAction(e -> displayListItemByCategory("Bakverk & Kakor"));
         buttonGlass.setOnAction(e -> displayListItemByCategory("Glass"));
         buttonGodis.setOnAction(e -> displayListItemByCategory("Godis"));

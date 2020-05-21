@@ -198,13 +198,9 @@ public class ProductHandler {
                 p.setMainCategory("Skafferi");
                 p.setSubCategory("Kakao");
             }
-            case 91, 95, 151 -> {
+            case 91, 94, 95, 151 -> {
                 p.setMainCategory("Skafferi");
-                p.setSubCategory("Socker");
-            }
-            case 94 -> {
-                p.setMainCategory("Skafferi");
-                p.setSubCategory("Salt");
+                p.setSubCategory("Socker & Salt");
             }
             case 97, 98, 99, 100, 101, 102, 103 -> {
                 p.setMainCategory("Skafferi");
