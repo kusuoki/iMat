@@ -104,8 +104,17 @@
     -fx-font-size: 15px;
 }
 
-.topMenuButton:hover {
+.topMenuButton:hover{
     -fx-background-color: #00692a;
+
+}
+
+.topMenuButton:pressed{
+    -fx-background-radius: 0px;
+    -fx-background-color: #002D12;
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-background-insets: 1px, 1px, 1px, 1px;
 }
 
 .filterButton {
@@ -130,13 +139,6 @@
     -fx-background-color: #144f2c;
 }
 
-.topMenuButtonOnClick {
-    -fx-background-radius: 0px;
-    -fx-background-color: #002D12;
-    -fx-border-color: white;
-    -fx-border-width: 1px;
-    -fx-background-insets: 1px, 1px, 1px, 1px;
-}
 
 .nonRoundedButton {
     -fx-background-radius: 0px;

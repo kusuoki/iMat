@@ -733,12 +733,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
 
         public void updateInformation() {
-                StringBuilder sb = new StringBuilder();
-
-                sb.append(card.getCardNumber()).append(customer.getAddress()).append(customer.getPostAddress())
-                        .append(customer.getEmail()).append(customer.getFirstName()).append(customer.getLastName())
-                        .append(customer.getPhoneNumber()).append(customer.getPostCode());
-
                 textfieldFirstname.setText(customer.getFirstName());
                 textfieldLastname.setText(customer.getLastName());
                 textfieldAdress.setText(customer.getAddress());

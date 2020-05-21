@@ -55,7 +55,6 @@ public class BetalsidaItem extends AnchorPane {
     @FXML
     public void addOneOfProduct() {
         model.updateShoppingCart(item.getProduct(), 1);
-        updateTextFields();
         parentController.updateShoppingCart();
     }
 
@@ -63,7 +62,6 @@ public class BetalsidaItem extends AnchorPane {
     public void removeOneOfProduct() {
         if ((int)item.getAmount() > 1) {
             model.updateShoppingCart(item.getProduct(), -1);
-            updateTextFields();
         } else {
             model.removeFromShoppingCart(item.getProduct());
             parentController.removeFromMap(this);
