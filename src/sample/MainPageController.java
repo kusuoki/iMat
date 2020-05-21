@@ -284,6 +284,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label totalPriceLabel;
 
+    @FXML
+    javafx.scene.control.Button buttonBetala;
+
     Parent betalsida;
     Parent konto;
     Parent kundservice;
@@ -333,6 +336,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         onSearch();
 
+        if (model.getShoppingCart().getItems().size() == 0) {
+            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+        } else {
+            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+        }
     }
 
     /*flowPaneMainPage.getChildren().add(new ListItem(model.getInstance().getProduct(10), model));
@@ -505,7 +513,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     //När man trycker på betala
     @FXML
     public void onPaymentButton(ActionEvent event) throws IOException {
-        stage.getScene().setRoot(betalsida);
+        if (model.getShoppingCart().getItems().size() > 0) {
+            stage.getScene().setRoot(betalsida);
+        }
     }
 
     //När man trycker på sökknappen
@@ -753,6 +763,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             for (VarukorgItem item : varukorgItems) {
                 item.updateThisItem();
                 flowPaneVarukorg.getChildren().add(item);
+            }
+
+            if (model.getShoppingCart().getItems().size() == 0) {
+                buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            } else {
+                buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
             }
 
             displayListItems();
