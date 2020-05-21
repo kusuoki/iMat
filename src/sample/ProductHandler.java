@@ -223,19 +223,19 @@ public class ProductHandler {
                 p.setSubCategory("Ris");
             }
             case 136 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Glass");
             }
             case 135, 140 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Godis");
             }
             case 137, 138, 139 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Bakverk & Kakor");
             }
             case 134 -> {
-                p.setMainCategory("Bakverk, glass, godis & snacks");
+                p.setMainCategory("Sötsaker");
                 p.setSubCategory("Snacks");
             }
         }
