@@ -16,7 +16,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import se.chalmers.cse.dat216.project.*;
 
-import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.*;
 
@@ -575,15 +574,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }
                         flowPaneBekrafta.getChildren().add(betalsidaItem);
                         amountOfProduct += betalsidaItem.getAmount();
+                        betalsidaItem.updateTextFields();
                 }
-
                 labelAmountOfProduct.setText(amountOfProduct + " st");
                 labelTotalPrice.setText(model.getShoppingCart().getTotal() + " kr");
         }
 
 
-        public void removeFromList(BetalsidaItem item) {
-                betalsidaItemMap.remove(item);
+        public void removeFromMap(BetalsidaItem item) {
+                betalsidaItemMap.remove(item.getProduct().getProductId());
         }
 
         @Override

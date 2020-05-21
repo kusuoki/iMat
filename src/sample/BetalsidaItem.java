@@ -6,10 +6,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
-import java.util.List;
 
 public class BetalsidaItem extends AnchorPane {
     @FXML private Label betalItemName;
@@ -48,10 +48,14 @@ public class BetalsidaItem extends AnchorPane {
         return (int)item.getAmount();
     }
 
+    public Product getProduct() {
+        return item.getProduct();
+    }
+
     @FXML
     public void addOneOfProduct() {
         model.updateShoppingCart(item.getProduct(), 1);
-        update();
+        updateTextFields();
         parentController.updateShoppingCart();
     }
 
@@ -59,10 +63,10 @@ public class BetalsidaItem extends AnchorPane {
     public void removeOneOfProduct() {
         if ((int)item.getAmount() > 1) {
             model.updateShoppingCart(item.getProduct(), -1);
-            update();
+            updateTextFields();
         } else {
             model.removeFromShoppingCart(item.getProduct());
-            parentController.removeFromList(this);
+            parentController.removeFromMap(this);
         }
         parentController.updateShoppingCart();
     }
@@ -70,11 +74,11 @@ public class BetalsidaItem extends AnchorPane {
     @FXML
     public void removeProduct() {
         model.removeFromShoppingCart(item.getProduct());
-        parentController.removeFromList(this);
+        parentController.removeFromMap(this);
         parentController.updateShoppingCart();
     }
 
-    private void update() {
+    public void updateTextFields() {
         betalItemQuantityTextField.setText(String.valueOf((int)item.getAmount()));
         betalItemTotalPrice.setText(item.getTotal() + " kr");
     }
