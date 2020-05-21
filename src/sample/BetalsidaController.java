@@ -27,7 +27,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private AnchorPane anchorPaneBetalningsuppgifter;
         @FXML private AnchorPane anchorPaneSlutfor;
         @FXML private AnchorPane anchorPaneTack;
-        @FXML private ProgressBar progressBar;
         @FXML private Pane buttonTidigareKop;
         @FXML private RadioButton radioHemLeverans;
         @FXML private RadioButton radioAffarLeverans;
@@ -458,9 +457,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 //</editor-fold>
 
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.setProgress(0);
                 buttonTidigareKop.toFront();
-                progressBar.toFront();
                 updateShoppingCart();
                 updateInformation();
         }
@@ -482,9 +479,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onHomeClick(){
                 model.clearShoppingCart();
                 betalsidaItemMap.clear();
-                progressBar.setProgress(0);
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
                 stage.getScene().setRoot(mainPage);
         }
@@ -493,9 +488,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onNextClick1() {
             anchorPaneKontakt.toFront();
-            progressBar.setProgress(0.25);
             buttonTidigareKop.toFront();
-            progressBar.toFront();
         }
 
         //När man klickar på andra nästa
@@ -503,8 +496,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onNextClick2() {
                 if (isContactInfoCorrect(true)) {
                         anchorPaneBetalningsuppgifter.toFront();
-                        progressBar.setProgress(0.5);
-                        progressBar.toFront();
                         buttonTidigareKop.toFront();
                 }
         }
@@ -513,8 +504,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick2() {
                 anchorPaneBekraftaKundvagn.toFront();
-                progressBar.setProgress(0);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
@@ -523,8 +512,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onNextClick3() {
                 if (isPaymentInfoCorrect(true)) {
                         anchorPaneSlutfor.toFront();
-                        progressBar.setProgress(0.75);
-                        progressBar.toFront();
                         buttonTidigareKop.toFront();
                         setData();
                 }
@@ -534,8 +521,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick3() {
                 anchorPaneKontakt.toFront();
-                progressBar.setProgress(0.25);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
@@ -543,16 +528,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML
         public void onBackClick4() {
                 anchorPaneBetalningsuppgifter.toFront();
-                progressBar.setProgress(0.5);
-                progressBar.toFront();
                 buttonTidigareKop.toFront();
         }
 
         //När man klickar på köp
         @FXML
         public void onBuyClick() {
-                progressBar.setProgress(1);
-                progressBar.toFront();
                 anchorPaneTack.toFront();
                 if(spara.isSelected())
                 {
@@ -619,7 +600,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
                 }
-                cardTypeImageView.setImage(getCardTypeImage(checkCardType(getCardNumberBySection(1))));
+                cardTypeImageView.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 labelKortnummer.setText(textfieldKortnummer1.getText() + "-" + textfieldKortnummer2.getText() +
                         "-" + textfieldKortnummer3.getText() + "-" + textfieldKortnummer4.getText());
