@@ -890,6 +890,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             }
         }
 
+        @FXML
+        public void onSecondBreadcrumb(){
+
+        }
+
+        @FXML
+        public void onFirstBreadcrumb(){
+
+        }
+
     private void initCategoryMenu() {
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
