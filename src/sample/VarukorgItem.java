@@ -25,6 +25,9 @@ public class VarukorgItem extends AnchorPane {
     TextField labelVarukorgAntal;
     @FXML
     Label labelVarukorgPris;
+    @FXML ImageView varukorgItemPlusButton;
+    @FXML ImageView varukorgItemMinusButton;
+
 
     public VarukorgItem(ShoppingItem shoppingItem, Model model){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgitem.fxml"));
@@ -71,6 +74,40 @@ public class VarukorgItem extends AnchorPane {
 
     }
 
+    @FXML
+    public void plusButtonMouseEntered(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
 
+    @FXML
+    public void plusButtonMouseExited(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
+    }
 
 }
