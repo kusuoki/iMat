@@ -1039,7 +1039,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     private void initCategoryMenu() {
 
-
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
         buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
