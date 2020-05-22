@@ -1179,8 +1179,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-pressed.png")));
     }
-
-
+    
     @FXML
     public void homeButtonMouseEntered() {
         homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-hover.png")));
