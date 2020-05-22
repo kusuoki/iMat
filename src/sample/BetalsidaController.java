@@ -565,6 +565,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
         }
 
+        @FXML
+        public void emptyShoppingCart() {
+                model.clearShoppingCart();
+                betalsidaItemMap.clear();
+        }
+
         public void updateSlutFor() {
                 List<SlutforItem> items = new ArrayList<>();
 
@@ -595,8 +601,14 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 labelTotalPrice.setText(model.doubleToString(model.getShoppingCart().getTotal()) + " kr");
 
                 if (amountOfProduct != 0) {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("backToStoreButton");
                         paneEmptyCart.toBack();
                 } else {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("disabled-button");
                         paneEmptyCart.toFront();
                 }
         }
