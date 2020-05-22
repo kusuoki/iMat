@@ -6,6 +6,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -174,5 +175,41 @@ public class ListItem extends AnchorPane {
     @FXML
     void openDetailedView() {
         parentController.openLightBox(this);
+    }
+
+    @FXML
+    public void plusButtonMouseEntered(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseExited(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
     }
 }

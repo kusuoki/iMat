@@ -25,21 +25,6 @@
             <Button fx:id="listItemFirstAddButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#addFirstProduct" prefHeight="30.0" prefWidth="125.0" styleClass="add-button" text="LÄGG TILL" />
          </children>
       </Pane>
-      <Pane fx:id="listItemPlusMinusPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
-         <children>
-            <TextField fx:id="listItemQuantityTextField" layoutX="49.0" layoutY="13.0" prefHeight="25.0" prefWidth="54.0" />
-            <ImageView fx:id="listItemMinusButton" fitHeight="31.0" fitWidth="30.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#removeOneOfProduct" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
-               <image>
-                  <Image url="@resources/Buttons/Minus-knapp.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="listItemPlusButton" fitHeight="31.0" fitWidth="30.0" layoutX="108.0" layoutY="10.0" onMouseClicked="#addOneOfProduct" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
-               <image>
-                  <Image url="@resources/Buttons/Plus-knapp.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
       <Pane fx:id="fullHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
          <children>
             <ImageView fx:id="fullHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#unFavorite" pickOnBounds="true" preserveRatio="true">
@@ -54,6 +39,21 @@
             <ImageView fx:id="emptyHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@resources/Icons/ic_favorite_border_red_24dp.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane fx:id="listItemPlusMinusPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <TextField fx:id="listItemQuantityTextField" layoutX="49.0" layoutY="13.0" prefHeight="25.0" prefWidth="54.0" />
+            <ImageView fx:id="listItemMinusButton" fitHeight="31.0" fitWidth="30.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#removeOneOfProduct" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+               <image>
+                  <Image url="@resources/Buttons/Minus-knapp.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="listItemPlusButton" fitHeight="31.0" fitWidth="30.0" layoutX="108.0" layoutY="10.0" onMouseClicked="#addOneOfProduct" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+               <image>
+                  <Image url="@resources/Buttons/Plus-knapp.png" />
                </image>
             </ImageView>
          </children>
