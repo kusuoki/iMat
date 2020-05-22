@@ -93,6 +93,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     ImageView imageViewArrowSkafferi;
 
+    @FXML ImageView lightboxPlusButton;
+    @FXML ImageView lightboxMinusButton;
+
     @FXML
     AnchorPane anchorUndermenyBaljvaxter;
     @FXML
@@ -1123,7 +1126,42 @@ public void tidigareKopMouseTrap(Event event){
         buttonGodis.setOnAction(e -> displayListItemByCategory("Godis"));
         buttonSnacks.setOnAction(e -> displayListItemByCategory("Snacks"));
     }
-    
+
+    @FXML
+    public void plusButtonMouseEntered(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseExited(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
+    }
 }
 
 

@@ -15,6 +15,68 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
+      <AnchorPane fx:id="anchorPaneMainLightbox" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+         <children>
+             <AnchorPane layoutX="314.0" layoutY="168.0" onMouseClicked="#mouseTrap" prefHeight="414.0" prefWidth="650.0" style="-fx-background-color: white;">
+                 <children>
+                     <ImageView fx:id="imageViewMainLightboxImage" fitHeight="151.0" fitWidth="650.0" layoutY="40.0" pickOnBounds="true">
+                         <image>
+                             <Image url="@resources/Images/product_6.jpg" />
+                         </image>
+                     </ImageView>
+                     <Label fx:id="labelMainLightboxVara" alignment="CENTER" layoutX="128.0" layoutY="6.0" prefHeight="17.0" prefWidth="394.0" text="Label" textAlignment="CENTER" />
+                     <Label fx:id="labelMainLightboxPrisPaket" layoutX="32.0" layoutY="207.0" text="Label">
+                         <font>
+                             <Font size="20.0" />
+                         </font>
+                     </Label>
+                     <Label layoutX="32.0" layoutY="256.0" text="Beskrivning">
+                         <font>
+                             <Font name="System Bold" size="20.0" />
+                         </font>
+                     </Label>
+                  <Label fx:id="labelMainLightboxPrisKilo" layoutX="32.0" layoutY="224.0" text="Label" />
+                     <Label fx:id="labelMainLightboxBeskrivning" alignment="TOP_LEFT" layoutX="32.0" layoutY="286.0" prefHeight="124.0" prefWidth="597.0" text="Label" wrapText="true" />
+                     <ImageView fx:id="imageViewMainLightboxClose" fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" onMouseClicked="#mainPageToFront" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@resources/Icons/ic_close_black_24dp.png" />
+                         </image>
+                     </ImageView>
+                     <Circle fill="#ffb422" layoutX="72.0" layoutY="76.0" radius="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
+                     <ImageView fx:id="imageViewMainLightboxFavourite" fitHeight="45.0" fitWidth="39.0" layoutX="594.0" layoutY="203.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
+                         <image>
+                             <Image url="@resources/Icons/ic_favorite_border_red_48d.png" />
+                         </image>
+                     </ImageView>
+                     <Label fx:id="labelMainLightboxPrice" alignment="CENTER" layoutX="11.0" layoutY="19.0" prefHeight="116.0" prefWidth="122.0" text="00kr" textAlignment="CENTER" textFill="WHITE">
+                         <font>
+                             <Font name="System Bold" size="36.0" />
+                         </font>
+                     </Label>
+                     <Pane fx:id="lightboxPlusMinusPane" layoutX="140.0" layoutY="197.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
+                         <children>
+                             <TextField fx:id="lightboxQuantityTextField" layoutX="49.0" layoutY="13.0" prefHeight="25.0" prefWidth="54.0" />
+                             <ImageView fx:id="lightboxMinusButton" fitHeight="31.0" fitWidth="30.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#lightBoxRemoveOneItem" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+                                 <image>
+                                     <Image url="@resources/Buttons/Minus-knapp.png" />
+                                 </image>
+                             </ImageView>
+                             <ImageView fx:id="lightboxPlusButton" fitHeight="31.0" fitWidth="30.0" layoutX="108.0" layoutY="10.0" onMouseClicked="#lightBoxAddOneItem" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+                                 <image>
+                                     <Image url="@resources/Buttons/Plus-knapp.png" />
+                                 </image>
+                             </ImageView>
+                         </children>
+                     </Pane>
+                     <Pane fx:id="lightboxAddPane" layoutX="140.0" layoutY="197.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
+                         <children>
+                             <Button fx:id="lightboxFirstAddButton" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#lightBoxAddFirstItem" prefHeight="30.0" prefWidth="125.0" styleClass="add-button" text="LÄGG TILL" />
+                         </children>
+                     </Pane>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="anchorUndermenyBaljvaxter" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1377.0">
          <children>
             <Pane layoutX="277.0" layoutY="282.0" onMouseClicked="#mouseTrap" prefHeight="219.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">

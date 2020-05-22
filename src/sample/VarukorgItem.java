@@ -1,11 +1,16 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.CartEvent;
 import se.chalmers.cse.dat216.project.ShoppingCart;
@@ -25,6 +30,9 @@ public class VarukorgItem extends AnchorPane {
     TextField labelVarukorgAntal;
     @FXML
     Label labelVarukorgPris;
+    @FXML ImageView varukorgItemPlusButton;
+    @FXML ImageView varukorgItemMinusButton;
+
 
     public VarukorgItem(ShoppingItem shoppingItem, Model model){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("varukorgitem.fxml"));
@@ -40,6 +48,40 @@ public class VarukorgItem extends AnchorPane {
         this.model = model;
         this.shoppingItem = shoppingItem;
         updateThisItem();
+
+        //Listener for textfield to update if focus left
+        labelVarukorgAntal.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            {
+                if (newPropertyValue)
+                {
+                    System.out.println("Textfield on focus");
+                }
+                else
+                {
+                    System.out.println("Textfield out focus");
+                    manualNumberEnterOfProduct(labelVarukorgAntal.getText());
+                }
+            }
+        });
+
+
+        //Listener for textfield to update if enterkey is pressed
+        labelVarukorgAntal.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    manualNumberEnterOfProduct(labelVarukorgAntal.getText());
+                }
+            }
+        });
+
+
     }
 
     public void updateThisItem(){
@@ -71,6 +113,58 @@ public class VarukorgItem extends AnchorPane {
 
     }
 
+    @FXML
+    public void plusButtonMouseEntered(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
 
+    @FXML
+    public void plusButtonMouseExited(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        varukorgItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    public void manualNumberEnterOfProduct(String s){
+        try {
+            int i = Integer.parseInt(s);
+            if (i < 0){
+                updateThisItem();
+            } else if (i == 0) {
+                model.setShoppingCartItem(shoppingItem.getProduct(), 1);
+                minusButton();
+            } else {
+                model.setShoppingCartItem(shoppingItem.getProduct(), i);
+                updateThisItem();
+            }
+
+        } catch (NumberFormatException nfe) {
+            updateThisItem();
+        }
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        varukorgItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
+    }
 
 }
