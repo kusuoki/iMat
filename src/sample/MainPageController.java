@@ -93,8 +93,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     ImageView imageViewArrowSkafferi;
 
-    @FXML ImageView listItemMinusButton;
-    @FXML ImageView listItemPlusButton;
+    @FXML ImageView lightboxPlusButton;
+    @FXML ImageView lightboxMinusButton;
 
     @FXML
     AnchorPane anchorUndermenyBaljvaxter;
@@ -336,7 +336,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private List<TidigareKopItem> ordersCurrentlyDisplayed = new ArrayList<>();
     int currentOrderPage;
     int lastOrderPage;
-
+    int currentOrderLightboxPage;
+    int lastOrderLightBoxPage;
+    boolean firstOrderLightbox =true;
+    TidigareKopItem currentTidigareKopItem;
+    @FXML Label labelVarusida1;
     String firstBreadcrumb;
     String secondBreadcrumb;
 
@@ -427,6 +431,22 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayOrdersOnPage();
         }
     }
+    @FXML
+    private void nextOrderLightboxPageButton() {
+
+        if (lastOrderLightBoxPage > currentOrderLightboxPage + 1) {
+            currentOrderLightboxPage++;
+            populateOrderLightbox(currentTidigareKopItem);
+        }
+
+    }
+    @FXML
+    private void previousOrderLightboxPageButton() {
+        if (currentOrderLightboxPage > 0) {
+            currentOrderLightboxPage--;
+            populateOrderLightbox(currentTidigareKopItem);
+        }
+    }
 
     //Lightboxfunktionalitet
 
@@ -446,17 +466,35 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //Fyller lightboxen med varorna från tidigare köp, och fixar även sidorna i lightboxen
-    @FXML public void populateOrderLightbox(TidigareKopItem item){
-
-                /*-------------------------------------EJ FÄRDIG -------------------------------*/
+    @FXML public void populateOrderLightbox(TidigareKopItem item) {
+        //ändrade här så endast 8 items visas åt gången och så att den uppdateras varje gång man trycker på nästa eller föregående sida
+        //Detta görs med nextOrderLighboxPage och prevoius. Snälla kolla inte på det här jag fattar det inte heller
+        /*-------------------------------------EJ FÄRDIG -------------------------------*/
+        this.currentTidigareKopItem = item;
+        if (firstOrderLightbox){
+            currentOrderLightboxPage=0;
+        }
+        if (currentTidigareKopItem.getOrder().getItems().size()%8==0){
+            lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8;
+        }
+        else {lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8 + 1;}
+        firstOrderLightbox=false;
 
         flowPaneTidigareKopDetalj.getChildren().clear();
-        for (int i = 0 ; i < item.getOrder().getItems().size(); i++) {
+        for (int i = currentOrderLightboxPage * 8; i < currentOrderLightboxPage * 8 + 8; i++) {
+            if (i>item.getOrder().getItems().size()-1){
+                firstOrderLightbox=true;
+                break;
+            }
             flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
         }
-
-
+        labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage+1) + " " +"av" + " " + lastOrderLightBoxPage);
     }
+    @FXML
+public void tidigareKopMouseTrap(Event event){
+        event.consume();
+}
+
 
     //Menyfunktionalitet
 
@@ -707,9 +745,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
             labelMainLightboxVara.setText(item.product.getName());
             labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
-            labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()));
+            labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()) + "kr");
             labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-
             int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
             if (amount > 0) {
                 lightboxPlusMinusPane.toFront();
@@ -1090,7 +1127,41 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         buttonSnacks.setOnAction(e -> displayListItemByCategory("Snacks"));
     }
 
+    @FXML
+    public void plusButtonMouseEntered(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
 
+    @FXML
+    public void plusButtonMouseExited(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
+    }
 }
 
 
