@@ -149,4 +149,6 @@ public class ListItem extends AnchorPane {
     void openDetailedView() {
         parentController.openLightBox(this);
     }
+
+
 }

@@ -973,9 +973,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         buttonGodis.setOnAction(e -> displayListItemByCategory("Godis"));
         buttonSnacks.setOnAction(e -> displayListItemByCategory("Snacks"));
     }
-
-
-
+    
 }
 
 
