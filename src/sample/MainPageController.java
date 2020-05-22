@@ -388,10 +388,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         initMenuButtons();
 
         if (model.getShoppingCart().getItems().size() == 0) {
-            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
             buttonBetala.setGraphic(whiteBetala);
         } else {
-            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
             buttonBetala.setGraphic(blackBetala);
         }
 
@@ -895,11 +893,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             varukorgItems.add(item);
         }
 
+<<<<<<< HEAD
+            if (model.getShoppingCart().getItems().size() == 0) {
+                buttonBetala.setGraphic(whiteBetala);
+            } else {
+                buttonBetala.setGraphic(blackBetala);
+            }
+=======
         flowPaneVarukorg.getChildren().clear();
         for (VarukorgItem item : varukorgItems) {
             item.updateThisItem();
             flowPaneVarukorg.getChildren().add(item);
         }
+>>>>>>> c2f0a0d24242991bf294396e954bc2d9122b3935
 
         if (model.getShoppingCart().getItems().size() == 0) {
             buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");

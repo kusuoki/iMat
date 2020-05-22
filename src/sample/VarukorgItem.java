@@ -32,6 +32,7 @@ public class VarukorgItem extends AnchorPane {
     Label labelVarukorgPris;
     @FXML ImageView varukorgItemPlusButton;
     @FXML ImageView varukorgItemMinusButton;
+    @FXML ImageView trashObjectButton;
 
 
     public VarukorgItem(ShoppingItem shoppingItem, Model model){
@@ -167,4 +168,21 @@ public class VarukorgItem extends AnchorPane {
                 "Buttons/Minus-knapp-pressed.png")));
     }
 
+    @FXML
+    public void deleteButtonMouseEntered(){
+        trashObjectButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_hover.png")));
+    }
+
+    @FXML
+    public void deleteButtonMouseExited(){
+        trashObjectButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_black_48dp.png")));
+    }
+
+    @FXML
+    public void deleteButtonMouseClicked(){
+        trashObjectButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_black_48dp.png")));
+    }
 }
