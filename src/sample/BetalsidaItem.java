@@ -1,10 +1,15 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -42,6 +47,39 @@ public class BetalsidaItem extends AnchorPane {
         betalItemTotalPrice.setText(model.doubleToString(item.getTotal()) + " kr");
         betalItemQuantityTextField.setText(String.valueOf((int)item.getAmount()));
         betalItemImageView.setImage(model.getImage(item.getProduct()));
+
+        //Listener for textfield to update if focus left
+        betalItemQuantityTextField.focusedProperty().addListener(new ChangeListener<Boolean>()
+        {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue)
+            {
+                if (newPropertyValue)
+                {
+                    System.out.println("Textfield on focus");
+                }
+                else
+                {
+                    System.out.println("Textfield out focus");
+                    manualNumberEnterOfProduct(betalItemQuantityTextField.getText());
+                }
+            }
+        });
+
+
+        //Listener for textfield to update if enterkey is pressed
+        betalItemQuantityTextField.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    manualNumberEnterOfProduct(betalItemQuantityTextField.getText());
+                }
+            }
+        });
+
     }
 
     public int getAmount() {
@@ -50,6 +88,25 @@ public class BetalsidaItem extends AnchorPane {
 
     public Product getProduct() {
         return item.getProduct();
+    }
+
+    @FXML
+    public void manualNumberEnterOfProduct(String s){
+        try {
+            int i = Integer.parseInt(s);
+            if (i < 0){
+                updateTextFields();
+            } else if (i == 0) {
+                model.setShoppingCartItem(item.getProduct(), 1);
+                removeOneOfProduct();
+            } else {
+                model.setShoppingCartItem(item.getProduct(), i);
+                updateTextFields();
+            }
+
+        } catch (NumberFormatException nfe) {
+            updateTextFields();
+        }
     }
 
     @FXML
