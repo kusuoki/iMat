@@ -90,6 +90,8 @@ public class ListItem extends AnchorPane {
             emptyHeartPane.toFront();     //NEJ: Visa det tomma hjärtat.
         }
 
+        listItemQuantityTextField.setOnAction(e -> manualNumberEnterOfProduct(listItemQuantityTextField.getText()));
+
     }
 
     @FXML
@@ -103,6 +105,30 @@ public class ListItem extends AnchorPane {
     public void addOneOfProduct() {
         model.updateShoppingCart(product, 1);
         updateTextfieldWithAmountOfProduct();
+    }
+
+    @FXML
+    public void manualNumberEnterOfProduct(String s){
+        try {
+            int i = Integer.parseInt(s);
+            if (i < 0){
+
+            } else if (i == 0) {
+                model.setShoppingCartItem(product, 1);
+                updateTextfieldWithAmountOfProduct();
+                removeOneOfProduct();
+            } else {
+                model.setShoppingCartItem(product, i);
+                updateTextfieldWithAmountOfProduct();
+            }
+
+        } catch (NumberFormatException nfe) {
+
+        }
+
+
+
+
     }
 
     @FXML
