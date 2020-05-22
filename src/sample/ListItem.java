@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
@@ -8,6 +12,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.cse.dat216.project.*;
@@ -91,7 +97,28 @@ public class ListItem extends AnchorPane {
             emptyHeartPane.toFront();     //NEJ: Visa det tomma hjärtat.
         }
 
-        listItemQuantityTextField.setOnAction(e -> manualNumberEnterOfProduct(listItemQuantityTextField.getText()));
+        //Listener for textfield to update if focus left
+        listItemQuantityTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                manualNumberEnterOfProduct(listItemQuantityTextField.getText());
+            }
+        });
+
+        //Listener for textfield to update if enterkey is pressed
+        listItemQuantityTextField.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    manualNumberEnterOfProduct(listItemQuantityTextField.getText());
+                }
+            }
+        });
+
+
 
     }
 
@@ -113,10 +140,9 @@ public class ListItem extends AnchorPane {
         try {
             int i = Integer.parseInt(s);
             if (i < 0){
-
+                updateTextfieldWithAmountOfProduct();
             } else if (i == 0) {
                 model.setShoppingCartItem(product, 1);
-                updateTextfieldWithAmountOfProduct();
                 removeOneOfProduct();
             } else {
                 model.setShoppingCartItem(product, i);
@@ -124,12 +150,8 @@ public class ListItem extends AnchorPane {
             }
 
         } catch (NumberFormatException nfe) {
-
+            updateTextfieldWithAmountOfProduct();
         }
-
-
-
-
     }
 
     @FXML

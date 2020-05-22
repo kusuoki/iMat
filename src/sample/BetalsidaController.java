@@ -473,6 +473,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 buttonTidigareKop.toFront();
                 updateShoppingCart();
                 updateInformation();
+
+
+
         }
         //setter för stage och mainpage root
         public void setStage(Stage stage,Parent mainPage, KontoinstallningController kontoinstallningController){
