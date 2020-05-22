@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -22,6 +23,9 @@ public class BetalsidaItem extends AnchorPane {
     @FXML private Label betalItemPrice;
     @FXML private TextField betalItemQuantityTextField;
     @FXML private ImageView betalItemImageView;
+    @FXML private ImageView betalItemPlusButton;
+    @FXML private ImageView betalItemMinusButton;
+    @FXML private ImageView betalItemRemoveImageView;
 
     private final Model model;
     private ShoppingItem item;
@@ -136,5 +140,59 @@ public class BetalsidaItem extends AnchorPane {
     public void updateTextFields() {
         betalItemQuantityTextField.setText(String.valueOf((int)item.getAmount()));
         betalItemTotalPrice.setText(model.doubleToString(item.getTotal()) + " kr");
+    }
+
+    @FXML
+    public void plusButtonMouseEntered(){
+        betalItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseExited(){
+        betalItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        betalItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        betalItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        betalItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        betalItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void deleteButtonMouseEntered(){
+        betalItemRemoveImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_hover.png")));
+    }
+
+    @FXML
+    public void deleteButtonMouseExited(){
+        betalItemRemoveImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_black_48dp.png")));
+    }
+
+    @FXML
+    public void deleteButtonMouseClicked(){
+        betalItemRemoveImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_delete_forever_black_48dp.png")));
     }
 }

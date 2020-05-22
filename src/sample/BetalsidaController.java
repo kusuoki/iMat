@@ -596,10 +596,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
                 if (amountOfProduct != 0) {
                         paneEmptyCart.toBack();
-                        buttonNext1.setStyle("-fx-background-color: #144f2c");
                 } else {
                         paneEmptyCart.toFront();
-                        buttonNext1.setStyle("-fx-background-color: #dfdfdf");
                 }
         }
 
