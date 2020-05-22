@@ -23,7 +23,7 @@ public class BetalsidaItem extends AnchorPane {
     private BetalsidaController parentController;
 
     public BetalsidaItem(ShoppingItem shoppingItem, BetalsidaController parentController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("betlasidaitem.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("betalsidaitem.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -39,7 +39,7 @@ public class BetalsidaItem extends AnchorPane {
 
         betalItemName.setText(item.getProduct().getName());
         betalItemPrice.setText(item.getProduct().getPrice() + item.getProduct().getUnit());
-        betalItemTotalPrice.setText(item.getTotal() + " kr");
+        betalItemTotalPrice.setText(model.doubleToString(item.getTotal()) + " kr");
         betalItemQuantityTextField.setText(String.valueOf((int)item.getAmount()));
         betalItemImageView.setImage(model.getImage(item.getProduct()));
     }
@@ -78,6 +78,6 @@ public class BetalsidaItem extends AnchorPane {
 
     public void updateTextFields() {
         betalItemQuantityTextField.setText(String.valueOf((int)item.getAmount()));
-        betalItemTotalPrice.setText(item.getTotal() + " kr");
+        betalItemTotalPrice.setText(model.doubleToString(item.getTotal()) + " kr");
     }
 }

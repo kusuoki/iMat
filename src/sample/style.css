@@ -167,7 +167,8 @@
     -fx-background-radius: 10;
 }
 
-.add-button:hover{
+/* add this class to objects that can be hovered on */
+.hoverable:hover{
     -fx-cursor: hand;
 }
 
@@ -175,4 +176,31 @@
     -fx-border-color: red;
     -fx-border-radius: 3;
     -fx-focus-color: transparent;
+}
+
+.bigAndBoldText {
+    -fx-text-alignment: center;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+
+.bigAndBoldTextRightAlign {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-alignment: right;
+}
+
+.tooltip {
+    -fx-show-delay: 0s;
+    -fx-background-color: white;
+    -fx-text-fill: black;
+}
+
+.scroll-pane{
+    -fx-background-color:transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
 }
