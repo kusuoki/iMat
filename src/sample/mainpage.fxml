@@ -154,13 +154,13 @@
                              <Image url="@resources/Icons/ic_close_black_24dp.png" />
                          </image>
                      </ImageView>
-                     <Circle fill="#ffb422" layoutX="72.0" layoutY="76.0" radius="58.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
+                     <Circle fill="#ffb422" layoutX="82.0" layoutY="86.0" radius="68.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
                      <ImageView fx:id="imageViewMainLightboxFavourite" fitHeight="45.0" fitWidth="39.0" layoutX="594.0" layoutY="203.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
                          <image>
                              <Image url="@resources/Icons/ic_favorite_border_red_48d.png" />
                          </image>
                      </ImageView>
-                     <Label fx:id="labelMainLightboxPrice" alignment="CENTER" layoutX="11.0" layoutY="19.0" prefHeight="116.0" prefWidth="122.0" text="00kr" textAlignment="CENTER" textFill="WHITE">
+                     <Label fx:id="labelMainLightboxPrice" alignment="CENTER" layoutX="11.0" layoutY="19.0" prefHeight="132.0" prefWidth="148.0" text="00kr" textAlignment="CENTER" textFill="WHITE">
                          <font>
                              <Font name="System Bold" size="36.0" />
                          </font>
@@ -510,7 +510,7 @@
                  </children>
              </AnchorPane>
 
-                   <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
+                   <TextField fx:id="searchField" onKeyTyped="#onSearch" prefHeight="27.0" prefWidth="548.0" promptText="Sök bland varor (skriv t.ex. mjölk)" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="97.0" />
              <Button fx:id="buttonSok" layoutX="881.0" mnemonicParsing="false" onMouseClicked="#onSearch" prefHeight="30.0" prefWidth="76.0" style="-fx-background-color: #00692a;" text="SÖK" textFill="WHITE" AnchorPane.bottomAnchor="626.0" AnchorPane.leftAnchor="881.0" AnchorPane.topAnchor="97.0">
                  <font>
                      <Font size="14.0" />
