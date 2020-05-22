@@ -333,7 +333,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     private List<TidigareKopItem> ordersCurrentlyDisplayed = new ArrayList<>();
     int currentOrderPage;
     int lastOrderPage;
-
+    int currentOrderLightboxPage;
+    int lastOrderLightBoxPage;
+    boolean firstOrderLightbox =true;
+    TidigareKopItem currentTidigareKopItem;
+    @FXML Label labelVarusida1;
     String firstBreadcrumb;
     String secondBreadcrumb;
 
@@ -424,6 +428,22 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayOrdersOnPage();
         }
     }
+    @FXML
+    private void nextOrderLightboxPageButton() {
+
+        if (lastOrderLightBoxPage > currentOrderLightboxPage + 1) {
+            currentOrderLightboxPage++;
+            populateOrderLightbox(currentTidigareKopItem);
+        }
+
+    }
+    @FXML
+    private void previousOrderLightboxPageButton() {
+        if (currentOrderLightboxPage > 0) {
+            currentOrderLightboxPage--;
+            populateOrderLightbox(currentTidigareKopItem);
+        }
+    }
 
     //Lightboxfunktionalitet
 
@@ -443,17 +463,35 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //Fyller lightboxen med varorna från tidigare köp, och fixar även sidorna i lightboxen
-    @FXML public void populateOrderLightbox(TidigareKopItem item){
-
-                /*-------------------------------------EJ FÄRDIG -------------------------------*/
+    @FXML public void populateOrderLightbox(TidigareKopItem item) {
+        //ändrade här så endast 8 items visas åt gången och så att den uppdateras varje gång man trycker på nästa eller föregående sida
+        //Detta görs med nextOrderLighboxPage och prevoius. Snälla kolla inte på det här jag fattar det inte heller
+        /*-------------------------------------EJ FÄRDIG -------------------------------*/
+        this.currentTidigareKopItem = item;
+        if (firstOrderLightbox){
+            currentOrderLightboxPage=0;
+        }
+        if (currentTidigareKopItem.getOrder().getItems().size()%8==0){
+            lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8;
+        }
+        else {lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8 + 1;}
+        firstOrderLightbox=false;
 
         flowPaneTidigareKopDetalj.getChildren().clear();
-        for (int i = 0 ; i < item.getOrder().getItems().size(); i++) {
+        for (int i = currentOrderLightboxPage * 8; i < currentOrderLightboxPage * 8 + 8; i++) {
+            if (i>item.getOrder().getItems().size()-1){
+                firstOrderLightbox=true;
+                break;
+            }
             flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
         }
-
-
+        labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage+1) + " " +"av" + " " + lastOrderLightBoxPage);
     }
+    @FXML
+public void tidigareKopMouseTrap(Event event){
+        event.consume();
+}
+
 
     //Menyfunktionalitet
 

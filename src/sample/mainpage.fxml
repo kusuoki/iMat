@@ -258,7 +258,7 @@
             </Pane>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="orderLightbox" onMouseClicked="#exitOrderLightbox" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
             <children>
             <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;">
             <children>
@@ -285,12 +285,12 @@
                         <Image url="@resources/Icons/ic_close_black_48dp.png" />
                     </image>
                 </ImageView>
-                  <Label fx:id="labelPreviousPage1" layoutX="210.0" layoutY="591.0" onMouseClicked="#previousPageButton" styleClass="links" text="Föregående sida">
+                  <Label fx:id="labelPreviousPage1" layoutX="210.0" layoutY="591.0" onMouseClicked="#previousOrderLightboxPageButton" styleClass="links" text="Föregående sida">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelNextPage1" layoutX="437.0" layoutY="591.0" onMouseClicked="#nextPageButton" styleClass="links" text="Nästa sida">
+                  <Label fx:id="labelNextPage1" layoutX="437.0" layoutY="591.0" onMouseClicked="#nextOrderLightboxPageButton" styleClass="links" text="Nästa sida">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -490,7 +490,7 @@
                              </font>
                          </Label>
                          <Button fx:id="buttonFiltrera" layoutX="557.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="66.0" style="-fx-background-color: #00441C;" text="Filtrera" textFill="WHITE" />
-                         <Label fx:id="labelVarusida" alignment="CENTER" layoutX="283.0" layoutY="509.0" text="Sida 10 av 10" textAlignment="CENTER" textFill="WHITE">
+                         <Label fx:id="labelVarusida" alignment="CENTER" layoutX="283.0" layoutY="509.0" text="Sida 1 av 1" textAlignment="CENTER" textFill="WHITE">
                              <font>
                                  <Font size="13.0" />
                              </font>
