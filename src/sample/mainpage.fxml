@@ -538,6 +538,15 @@
                      <Font size="15.0" />
                  </font>
              </Button>
+            <Pane layoutX="115.0" layoutY="40.0" prefHeight="89.0" prefWidth="97.0">
+               <children>
+                  <Label fx:id="homeButtonLabel" alignment="CENTER" layoutX="14.0" layoutY="65.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" prefHeight="21.0" prefWidth="70.0" text="Startsida" textAlignment="CENTER" />
+                  <ImageView fx:id="homeButtonImageView" fitHeight="64.0" fitWidth="64.0" layoutX="17.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/Buttons/Hem-knapp.png" />
+                     </image></ImageView>
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
 

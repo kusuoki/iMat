@@ -93,8 +93,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     ImageView imageViewArrowSkafferi;
 
-    @FXML ImageView lightboxPlusButton;
-    @FXML ImageView lightboxMinusButton;
+    @FXML
+    ImageView lightboxPlusButton;
+    @FXML
+    ImageView lightboxMinusButton;
 
     @FXML
     AnchorPane anchorUndermenyBaljvaxter;
@@ -279,7 +281,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Pane paneTidigareKop;
     @FXML
     FlowPane flowPaneTidigareKop;
-    @FXML FlowPane flowPaneTidigareKopDetalj;
+    @FXML
+    FlowPane flowPaneTidigareKopDetalj;
 
     //Grejer till tidigare köp LIGHTBOX
     @FXML
@@ -298,8 +301,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label totalPriceLabel;
 
+    //Hemknapp grafik
+    @FXML
+    ImageView homeButtonImageView;
+    @FXML
+    Label homeButtonLabel;
+
+
     @FXML
     javafx.scene.control.Button buttonBetala;
+
 
     @FXML
     Button buttonSok;
@@ -338,9 +349,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     int lastOrderPage;
     int currentOrderLightboxPage;
     int lastOrderLightBoxPage;
-    boolean firstOrderLightbox =true;
+    boolean firstOrderLightbox = true;
     TidigareKopItem currentTidigareKopItem;
-    @FXML Label labelVarusida1;
+    @FXML
+    Label labelVarusida1;
     String firstBreadcrumb;
     String secondBreadcrumb;
 
@@ -384,7 +396,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
 
-    private void initMenuButtons(){
+    private void initMenuButtons() {
         Image image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_receipt_white_24dp.png"));
         buttonTidigareKop.setGraphic(new ImageView(image));
         buttonTidigareKop.setGraphicTextGap(5);
@@ -422,6 +434,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayOrdersOnPage();
         }
     }
+
     @FXML
     private void previousOrderPageButton() {
         if (currentOrderPage > 0) {
@@ -429,6 +442,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             displayOrdersOnPage();
         }
     }
+
     @FXML
     private void nextOrderLightboxPageButton() {
 
@@ -438,6 +452,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
     }
+
     @FXML
     private void previousOrderLightboxPageButton() {
         if (currentOrderLightboxPage > 0) {
@@ -452,6 +467,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void exitOrderLightbox() {
         orderLightbox.toBack();
     }
+
     @FXML
     public void enterOrderLightbox(TidigareKopItem item) {
         orderLightboxDate.setText(item.getOrder().getDate().toString());
@@ -464,34 +480,37 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     //Fyller lightboxen med varorna från tidigare köp, och fixar även sidorna i lightboxen
-    @FXML public void populateOrderLightbox(TidigareKopItem item) {
+    @FXML
+    public void populateOrderLightbox(TidigareKopItem item) {
         //ändrade här så endast 8 items visas åt gången och så att den uppdateras varje gång man trycker på nästa eller föregående sida
         //Detta görs med nextOrderLighboxPage och prevoius. Snälla kolla inte på det här jag fattar det inte heller
         /*-------------------------------------EJ FÄRDIG -------------------------------*/
         this.currentTidigareKopItem = item;
-        if (firstOrderLightbox){
-            currentOrderLightboxPage=0;
+        if (firstOrderLightbox) {
+            currentOrderLightboxPage = 0;
         }
-        if (currentTidigareKopItem.getOrder().getItems().size()%8==0){
-            lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8;
+        if (currentTidigareKopItem.getOrder().getItems().size() % 8 == 0) {
+            lastOrderLightBoxPage = currentTidigareKopItem.getOrder().getItems().size() / 8;
+        } else {
+            lastOrderLightBoxPage = currentTidigareKopItem.getOrder().getItems().size() / 8 + 1;
         }
-        else {lastOrderLightBoxPage=currentTidigareKopItem.getOrder().getItems().size()/8 + 1;}
-        firstOrderLightbox=false;
+        firstOrderLightbox = false;
 
         flowPaneTidigareKopDetalj.getChildren().clear();
         for (int i = currentOrderLightboxPage * 8; i < currentOrderLightboxPage * 8 + 8; i++) {
-            if (i>item.getOrder().getItems().size()-1){
-                firstOrderLightbox=true;
+            if (i > item.getOrder().getItems().size() - 1) {
+                firstOrderLightbox = true;
                 break;
             }
             flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
         }
-        labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage+1) + " " +"av" + " " + lastOrderLightBoxPage);
+        labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage + 1) + " " + "av" + " " + lastOrderLightBoxPage);
     }
+
     @FXML
-public void tidigareKopMouseTrap(Event event){
+    public void tidigareKopMouseTrap(Event event) {
         event.consume();
-}
+    }
 
 
     //Menyfunktionalitet
@@ -512,8 +531,6 @@ public void tidigareKopMouseTrap(Event event){
 
         for (menuItem m : menuItems) {
             m.pane.toBack();
-
-
 
 
             if (m.arrow.getId().equals("imageViewArrowFavoriter") || m.arrow.getId().equals("imageViewArrowErbjudanden")) {
@@ -538,8 +555,7 @@ public void tidigareKopMouseTrap(Event event){
                     Vad som ska hända när man klickar på erbjudanden (måste sättas actionlistener för både bildvyn och knappen
                     * */
                 }
-            }else
-            {
+            } else {
                 //Sätter en listener på knapp så att styleclassen ändras när man klickat på den
                 m.button.setOnAction((event) -> {
                     menuOnClick(m);
@@ -589,12 +605,13 @@ public void tidigareKopMouseTrap(Event event){
 
         displayOrdersOnPage();
     }
+
     public void displayOrdersOnPage() {
         flowPaneTidigareKop.getChildren().clear();
         updateOrdersBeingDisplayedWith9orders();
         labelOrder.setText("Sida " + (currentOrderPage + 1) + " av " + lastOrderPage);
 
-        if (lastOrderPage == 0){
+        if (lastOrderPage == 0) {
             labelOrder.setText("Sida 0 av 0");
         }
 
@@ -713,337 +730,348 @@ public void tidigareKopMouseTrap(Event event){
         //ändrar styleclass på knappen
 
     }
+
     @FXML
-        public void favorite () {
-            if (model.isFavorite(currentLightboxItem.product)) {
-                currentLightboxItem.unFavorite();
-            } else {
-                currentLightboxItem.favorite();
-            }
-            imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
+    public void favorite() {
+        if (model.isFavorite(currentLightboxItem.product)) {
+            currentLightboxItem.unFavorite();
+        } else {
+            currentLightboxItem.favorite();
         }
-        @FXML
-        public void lightBoxToFront () {
-            anchorPaneMainLightbox.toFront();
-        }
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
+    }
 
-        @FXML
-        public void mainPageToFront () {
-            anchorPaneMainPage.toFront();
-        }
+    @FXML
+    public void lightBoxToFront() {
+        anchorPaneMainLightbox.toFront();
+    }
 
-        @FXML
-        public void mouseTrap (Event event){
-            event.consume();
-        }
+    @FXML
+    public void mainPageToFront() {
+        anchorPaneMainPage.toFront();
+    }
 
-        public void openLightBox (ListItem item){
-            currentLightboxItem = item;
-            imageViewMainLightboxImage.setImage(model.getImage(item.product));
-            imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
-            labelMainLightboxVara.setText(item.product.getName());
-            labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
-            labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()) + "kr");
-            labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-            int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
-            if (amount > 0) {
-                lightboxPlusMinusPane.toFront();
-                lightboxQuantityTextField.setText(String.valueOf(amount));
-            } else {
-                lightboxAddPane.toFront();
-            }
+    @FXML
+    public void mouseTrap(Event event) {
+        event.consume();
+    }
 
-            lightBoxToFront();
-        }
-
-        @FXML
-        public void lightBoxAddFirstItem () {
-            currentLightboxItem.addFirstProduct();
-            lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+    public void openLightBox(ListItem item) {
+        currentLightboxItem = item;
+        imageViewMainLightboxImage.setImage(model.getImage(item.product));
+        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
+        labelMainLightboxVara.setText(item.product.getName());
+        labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
+        labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()) + "kr");
+        labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount > 0) {
             lightboxPlusMinusPane.toFront();
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        } else {
+            lightboxAddPane.toFront();
         }
 
-        @FXML
-        public void lightBoxRemoveOneItem () {
-            currentLightboxItem.removeOneOfProduct();
+        lightBoxToFront();
+    }
 
-            int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
-            if (amount < 1) {
-                lightboxAddPane.toFront();
-            } else {
-                lightboxQuantityTextField.setText(String.valueOf(amount));
+    @FXML
+    public void lightBoxAddFirstItem() {
+        currentLightboxItem.addFirstProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+        lightboxPlusMinusPane.toFront();
+    }
+
+    @FXML
+    public void lightBoxRemoveOneItem() {
+        currentLightboxItem.removeOneOfProduct();
+
+        int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
+        if (amount < 1) {
+            lightboxAddPane.toFront();
+        } else {
+            lightboxQuantityTextField.setText(String.valueOf(amount));
+        }
+    }
+
+    @FXML
+    public void lightBoxAddOneItem() {
+        currentLightboxItem.addOneOfProduct();
+        lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+    }
+
+    public Image getFavoriteImage(boolean isFavorite) {
+        if (!isFavorite) {
+            return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
+        }
+        return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
+    }
+
+
+    public void subMenuOnHover(ArrayList<javafx.scene.control.Button> sMenu, javafx.scene.control.Button btn) {
+
+        for (javafx.scene.control.Button b : sMenu) {
+            if ((b != btn) && !(b.getStyleClass().toString().equals("menuButtonClicked"))) {
+                b.getStyleClass().clear();
+                b.getStyleClass().add("menuButton");
             }
         }
 
-        @FXML
-        public void lightBoxAddOneItem () {
-            currentLightboxItem.addOneOfProduct();
-            lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
+        if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
+        } else {
+            btn.getStyleClass().add("menuButtonHover");
         }
+    }
 
-        public Image getFavoriteImage ( boolean isFavorite){
-            if (!isFavorite) {
-                return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
+    public void subMenuOnClick(ArrayList<javafx.scene.control.Button> sMenu, javafx.scene.control.Button btn) {
+        for (javafx.scene.control.Button b : sMenu) //Clears any button that may've been clicked before
+        {
+            if ((b != btn) && b.getStyleClass().toString().equals("menuButtonClicked")) {
+                b.getStyleClass().clear();
+                b.getStyleClass().add("menuButton");
             }
-            return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
+
         }
-
-
-        public void subMenuOnHover (ArrayList < javafx.scene.control.Button > sMenu, javafx.scene.control.Button btn){
-
-            for (javafx.scene.control.Button b : sMenu) {
-                if ((b != btn) && !(b.getStyleClass().toString().equals("menuButtonClicked"))) {
-                    b.getStyleClass().clear();
-                    b.getStyleClass().add("menuButton");
-                }
-            }
-
-            if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
-            } else {
-                btn.getStyleClass().add("menuButtonHover");
-            }
+        //Sets the new styleclass for the clicked button
+        if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
+            //lägg in att man kommer tillbaka till alla varor inom den kategorin eller liknande.
+            btn.getStyleClass().clear();
+            btn.getStyleClass().add("menuButton");
+        } else {
+            btn.getStyleClass().clear();
+            btn.getStyleClass().add("menuButtonClicked");
         }
+    }
 
-        public void subMenuOnClick (ArrayList < javafx.scene.control.Button > sMenu, javafx.scene.control.Button btn){
-            for (javafx.scene.control.Button b : sMenu) //Clears any button that may've been clicked before
-            {
-                if ((b != btn) && b.getStyleClass().toString().equals("menuButtonClicked")) {
-                    b.getStyleClass().clear();
-                    b.getStyleClass().add("menuButton");
-                }
+    public void resetButtonStyle(menuItem m) {
+        //Återställer stilen på menyknappar
+        m.button.getStyleClass().clear();
+        m.button.getStyleClass().add("menuButton");
+        setDarkgreenArrow(m.arrow);
+        m.button.toFront();
+        m.arrow.toFront();
 
-            }
-            //Sets the new styleclass for the clicked button
-            if (btn.getStyleClass().toString().equals("menuButtonClicked")) {
-                //lägg in att man kommer tillbaka till alla varor inom den kategorin eller liknande.
+        //Återställer stilen på undermenyknappar (under den knappen)
+        if (m.sMenu != null) {
+            for (javafx.scene.control.Button btn : m.sMenu) {
                 btn.getStyleClass().clear();
                 btn.getStyleClass().add("menuButton");
-            } else {
-                btn.getStyleClass().clear();
-                btn.getStyleClass().add("menuButtonClicked");
             }
         }
 
-        public void resetButtonStyle (menuItem m){
-            //Återställer stilen på menyknappar
-            m.button.getStyleClass().clear();
-            m.button.getStyleClass().add("menuButton");
-            setDarkgreenArrow(m.arrow);
-            m.button.toFront();
-            m.arrow.toFront();
+    }
 
-            //Återställer stilen på undermenyknappar (under den knappen)
-            if (m.sMenu != null) {
-                for (javafx.scene.control.Button btn : m.sMenu) {
-                    btn.getStyleClass().clear();
-                    btn.getStyleClass().add("menuButton");
-                }
-            }
+    public void setLightgreenArrow(ImageView arrow) { //Sets the arrow in a menuItem to lightgreen
+        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_lightgreen_64dpcentered.png"));
+    }
 
-        }
-
-        public void setLightgreenArrow (ImageView arrow){ //Sets the arrow in a menuItem to lightgreen
-            arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_lightgreen_64dpcentered.png"));
-        }
-
-        public void setDarkgreenArrow (ImageView arrow){ //Sets the arrow in a menuItem to darkgreen
-            arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_darkgreen_64dp.png"));
-        }
-
+    public void setDarkgreenArrow(ImageView arrow) { //Sets the arrow in a menuItem to darkgreen
+        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_darkgreen_64dp.png"));
+    }
 
 
     //TODO: ANVÄNDS INTE LÄNGRE, använder istället displayListItemFromList(searchList)
-        //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
+    //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
 
-    private void updateProductList (List < ProductA > searchList) {
+    private void updateProductList(List<ProductA> searchList) {
 /*productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
 
             productsFlowPane.getChildren().add(new ProductPanel(product)); */
 
-        }
-        //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
+    }
+    //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
 
     @Override
-        public void shoppingCartChanged (CartEvent cartEvent){
-            List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
-            List<VarukorgItem> varukorgItems = new ArrayList<>();
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
+        List<VarukorgItem> varukorgItems = new ArrayList<>();
 
-            for (ShoppingItem shoppingItem : shoppingItems) {
-                VarukorgItem item = new VarukorgItem(shoppingItem, model);
-                varukorgItems.add(item);
-            }
+        for (ShoppingItem shoppingItem : shoppingItems) {
+            VarukorgItem item = new VarukorgItem(shoppingItem, model);
+            varukorgItems.add(item);
+        }
 
-            flowPaneVarukorg.getChildren().clear();
-            for (VarukorgItem item : varukorgItems) {
-                item.updateThisItem();
-                flowPaneVarukorg.getChildren().add(item);
-            }
-
+<<<<<<< HEAD
             if (model.getShoppingCart().getItems().size() == 0) {
                 buttonBetala.setGraphic(whiteBetala);
             } else {
                 buttonBetala.setGraphic(blackBetala);
             }
+=======
+        flowPaneVarukorg.getChildren().clear();
+        for (VarukorgItem item : varukorgItems) {
+            item.updateThisItem();
+            flowPaneVarukorg.getChildren().add(item);
+        }
+>>>>>>> c2f0a0d24242991bf294396e954bc2d9122b3935
 
+        if (model.getShoppingCart().getItems().size() == 0) {
+            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            buttonBetala.setGraphic(whiteBetala);
+        } else {
+            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+            buttonBetala.setGraphic(blackBetala);
+        }
+
+        displayListItems();
+        updateShoppingCartPriceAndQuantity();
+    }
+
+    private void updateShoppingCartPriceAndQuantity() {
+        double total = model.getShoppingCart().getTotal();
+        double roundedTotal = Math.round(total * 100.0) / 100.0;
+        totalPriceLabel.setText(roundedTotal + "kr");
+
+        int quantity = 0;
+        for (ShoppingItem item : model.getShoppingCart().getItems()) {
+            quantity += item.getAmount();
+        }
+
+
+        totalQuantityLabel.setText(quantity + " varor");
+    }
+
+    private void displayListItemByCategory(String category) {
+        this.category = category;
+        searchField.clear();
+        if (!cat) {
+            currentPage = 0;
+        }
+        cat = true;
+        search = false;
+        list8Items.clear();
+        currentListWithItems.clear();
+
+        List<ProductA> productList = model.getProducts(category);
+
+        for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
+            if (i > productList.size() - 1) {
+                cat = false;
+                break;
+            }
+            ListItem item = new ListItem(productList.get(i), model, this);
+            currentListWithItems.add(item);
+
+        }
+
+        lastPage = productList.size() / 8;
+        if (productList.size() % 8 > 0) {
+            lastPage++;
+        } else if (currentListWithItems.size() % 8 != 0) {
+            lastPage++;
+        }
+
+        paneVaruDisplay.toFront();
+
+        if (currentListWithItems.get(0).product.getSubCategory().equals(category)) {
+            firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
+            secondBreadcrumb = category;
+            updateBreadCrumb(firstBreadcrumb, secondBreadcrumb);
+        } else {
+            firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
+            secondBreadcrumb = null;
+            updateBreadCrumb(category, null);
+        }
+
+
+        displayListItems();
+    }
+
+    private void displayListItemFromList(List<ProductA> productList) {
+        if (!search) {
+            currentPage = 0;
+        }
+        search = true;
+        cat = false;
+        list8Items.clear();
+        currentListWithItems.clear();
+
+
+        for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
+            if (i > productList.size() - 1) {
+                search = false;
+                break;
+            }
+            ListItem item = new ListItem(productList.get(i), model, this);
+            currentListWithItems.add(item);
+
+        }
+
+        lastPage = productList.size() / 8;
+        if (productList.size() % 8 > 0) {
+            lastPage++;
+        } else if (currentListWithItems.size() % 8 != 0) {
+            lastPage++;
+        }
+
+        paneVaruDisplay.toFront();
+
+        displayListItems();
+    }
+
+    private void displayListItems() {
+        flowPaneMainPage.getChildren().clear();
+        updateListWith8ItemsFromCurrent();
+
+        labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
+        if (lastPage == 0) {
+            labelVarusida.setText("Sida 0 av 0");
+        }
+
+        for (ListItem item : list8Items) {
+            flowPaneMainPage.getChildren().add(item);
+            item.switchButtons();
+            item.updateTextfieldWithAmountOfProduct();
+        }
+    }
+
+    private void updateListWith8ItemsFromCurrent() {
+        list8Items.clear();
+        for (int i = 0; i < 8; i++) {
+            if (i < currentListWithItems.size()) {
+                list8Items.add(currentListWithItems.get(i));
+            }
+        }
+    }
+
+    @FXML
+    public void nextPageButton() {
+        if (lastPage > currentPage + 1) {
+            currentPage++;
+            if (cat) {
+                displayListItemByCategory(category);
+
+            } else if (search) {
+                displayListItemFromList(tempSearch);
+
+            }
             displayListItems();
-            updateShoppingCartPriceAndQuantity();
         }
-        private void updateShoppingCartPriceAndQuantity () {
-            double total = model.getShoppingCart().getTotal();
-            double roundedTotal = Math.round(total * 100.0) / 100.0;
-            totalPriceLabel.setText(roundedTotal + "kr");
+    }
 
-            int quantity = 0;
-            for (ShoppingItem item : model.getShoppingCart().getItems()) {
-                quantity += item.getAmount();
-            }
-
-
-            totalQuantityLabel.setText(quantity + " varor");
-        }
-
-        private void displayListItemByCategory (String category){
-            this.category = category;
-            searchField.clear();
-            if (!cat) {
-                currentPage = 0;
-            }
-            cat = true;
-            search = false;
-            list8Items.clear();
-            currentListWithItems.clear();
-
-            List<ProductA> productList = model.getProducts(category);
-
-            for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
-                if (i > productList.size() - 1) {
-                    cat=false;
-                    break;
-                }
-                ListItem item = new ListItem(productList.get(i), model, this);
-                currentListWithItems.add(item);
+    @FXML
+    public void previousPageButton() {
+        if (currentPage > 0) {
+            currentPage--;
+            if (cat) {
+                displayListItemByCategory(category);
 
             }
-
-            lastPage = productList.size() / 8;
-            if (productList.size() % 8 > 0) {
-                lastPage++;
-            } else if (currentListWithItems.size() % 8 != 0) {
-                lastPage++;
+            if (search) {
+                displayListItemFromList(tempSearch);
             }
-
-            paneVaruDisplay.toFront();
-
-            if(currentListWithItems.get(0).product.getSubCategory().equals(category)){
-                firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
-                secondBreadcrumb = category;
-                updateBreadCrumb(firstBreadcrumb, secondBreadcrumb);
-            } else {
-                firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
-                secondBreadcrumb = null;
-                updateBreadCrumb(category, null);
-            }
-
-
             displayListItems();
         }
-
-        private void displayListItemFromList (List < ProductA > productList) {
-            if (!search) {
-                currentPage = 0;
-            }
-            search = true;
-            cat = false;
-            list8Items.clear();
-            currentListWithItems.clear();
+    }
 
 
-            for (int i = currentPage * 8; i < currentPage * 8 + 8; i++) {
-                if (i > productList.size() - 1) {
-                    search=false;
-                    break;
-                }
-                ListItem item = new ListItem(productList.get(i), model, this);
-                currentListWithItems.add(item);
+    public void updateBreadCrumb(String main, String second) {
+        labelCrumbFirst.setText(main);
+        labelCrumbFirst.autosize();
 
-            }
-
-            lastPage = productList.size() / 8;
-            if (productList.size() % 8 > 0) {
-                lastPage++;
-            } else if (currentListWithItems.size() % 8 != 0) {
-                lastPage++;
-            }
-
-            paneVaruDisplay.toFront();
-
-            displayListItems();
-        }
-
-        private void displayListItems () {
-            flowPaneMainPage.getChildren().clear();
-            updateListWith8ItemsFromCurrent();
-
-            labelVarusida.setText("Sida " + (currentPage + 1) + " av " + lastPage);
-            if (lastPage == 0){
-                labelVarusida.setText("Sida 0 av 0");
-            }
-
-            for (ListItem item : list8Items) {
-                flowPaneMainPage.getChildren().add(item);
-                item.switchButtons();
-                item.updateTextfieldWithAmountOfProduct();
-            }
-        }
-
-        private void updateListWith8ItemsFromCurrent () {
-            list8Items.clear();
-            for (int i = 0; i < 8; i++) {
-                if (i < currentListWithItems.size()) {
-                    list8Items.add(currentListWithItems.get(i));
-                }
-            }
-        }
-
-        @FXML
-        public void nextPageButton () {
-            if (lastPage > currentPage + 1) {
-                currentPage++;
-                if (cat) {
-                    displayListItemByCategory(category);
-
-                }
-                else if (search) {
-                    displayListItemFromList(tempSearch);
-
-                }
-                displayListItems();
-            }
-        }
-
-        @FXML
-        public void previousPageButton () {
-            if (currentPage > 0) {
-                currentPage--;
-                if (cat) {
-                    displayListItemByCategory(category);
-
-                }
-                if (search) {
-                    displayListItemFromList(tempSearch);
-                }
-                displayListItems();
-            }
-        }
-
-
-        public void updateBreadCrumb(String main, String second){
-            labelCrumbFirst.setText(main);
-            labelCrumbFirst.autosize();
-
-            if (second != null){
+        if (second != null) {
             labelCrumbSecondPointer.setLayoutX(labelCrumbFirst.getLayoutX() + labelCrumbFirst.getWidth() + 5);
 
             labelCrumbSecond.setLayoutX(labelCrumbSecondPointer.getLayoutX() + labelCrumbSecondPointer.getWidth() + 5);
@@ -1055,23 +1083,23 @@ public void tidigareKopMouseTrap(Event event){
             labelCrumbSecond.toBack();
         }
 
-        }
+    }
 
-        @FXML
-        public void onSecondBreadcrumb(){
-        if (labelCrumbSecond.getText() == null){
+    @FXML
+    public void onSecondBreadcrumb() {
+        if (labelCrumbSecond.getText() == null) {
             System.out.println("ERROR: second breadcrumb is null, this shouldn't be showing....");
         } else {
             displayListItemByCategory(labelCrumbSecond.getText());
             //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
         }
-        }
+    }
 
-        @FXML
-        public void onFirstBreadcrumb(){
-            displayListItemByCategory(labelCrumbFirst.getText());
-            //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
-        }
+    @FXML
+    public void onFirstBreadcrumb() {
+        displayListItemByCategory(labelCrumbFirst.getText());
+        //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
+    }
 
     private void initCategoryMenu() {
 
@@ -1124,40 +1152,60 @@ public void tidigareKopMouseTrap(Event event){
     }
 
     @FXML
-    public void plusButtonMouseEntered(){
-        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
-                "Buttons/Plus-knapp-hover.png")));
+    public void plusButtonMouseEntered() {
+        lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Plus-knapp-hover.png")));
     }
 
     @FXML
-    public void plusButtonMouseExited(){
+    public void plusButtonMouseExited() {
         lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Plus-knapp.png")));
     }
 
     @FXML
-    public void plusButtonMouseClicked(){
+    public void plusButtonMouseClicked() {
         lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Plus-knapp-pressed.png")));
     }
 
     @FXML
-    public void minusButtonMouseEntered(){
+    public void minusButtonMouseEntered() {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-hover.png")));
     }
 
     @FXML
-    public void minusButtonMouseExited(){
+    public void minusButtonMouseExited() {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp.png")));
     }
 
     @FXML
-    public void minusButtonMouseClicked(){
+    public void minusButtonMouseClicked() {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-pressed.png")));
     }
-}
 
+
+    @FXML
+    public void homeButtonMouseEntered() {
+        homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-hover.png")));
+        homeButtonLabel.setStyle("-fx-underline: true; -fx-font-weight: bolder;");
+    }
+
+    @FXML
+    public void homeButtonMouseExited() {
+        homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp.png")));
+        homeButtonLabel.setStyle("-fx-font-weight: normal; -fx-underline: false;");
+    }
+
+    @FXML
+    public void homeButtonMouseClicked() {
+        homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-pressed.png")));
+        List<ProductA> searchList = model.findProducts("");
+        this.tempSearch = searchList;
+        paneVaruDisplay.toFront();
+        displayListItemFromList(searchList);
+    }
+}
 
