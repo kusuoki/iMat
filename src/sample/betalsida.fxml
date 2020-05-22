@@ -359,6 +359,20 @@
                   </Pane>
                   </children>
               </Pane>
+            <Pane fx:id="paneEmptyCart" layoutX="321.0" layoutY="180.0" prefHeight="300.0" prefWidth="620.0">
+               <children>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="136.0" prefHeight="150.0" prefWidth="514.0" text="Tom varukorg? Gå tillbaka till butiken och handla lite innan du fortsätter!" textAlignment="CENTER" textFill="#5e5e5e" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="235.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/Images/cart.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
             <Label layoutX="368.0" layoutY="96.0" text="Bekräfta kundvagn">
                <font>
                   <Font size="14.0" />
@@ -394,7 +408,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
+            <Button fx:id="buttonNext1" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: #144f2c;" text="Nästa" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
