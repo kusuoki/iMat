@@ -1,15 +1,12 @@
 package sample;
 
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -21,7 +18,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.*;
 import java.util.List;
@@ -1135,57 +1131,60 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
     }
 
-    private void initCategoryMenu() {
-        buttonAllaBaljvaxter.setOnAction(e -> onMenuButtonsClick("Baljväxter"));
-        buttonBonor.setOnAction(e -> onMenuButtonsClick("Bönor"));
-        buttonLinser.setOnAction(e -> onMenuButtonsClick("Linser"));
-        buttonArtor.setOnAction(e -> onMenuButtonsClick("Ärtor"));
-        buttonAllaDrycker.setOnAction(e -> onMenuButtonsClick("Drycker"));
-        buttonKallaDrycker.setOnAction(e -> onMenuButtonsClick("Kalla drycker"));
-        buttonVarmaDrycker.setOnAction(e -> onMenuButtonsClick("Varma drycker"));
-        buttonAllaFrukt.setOnAction(e -> onMenuButtonsClick("Frukt & Grönt"));
-        buttonBar.setOnAction(e -> onMenuButtonsClick("Bär"));
-        buttonCitrusfrukter.setOnAction(e -> onMenuButtonsClick("Citrusfrukter"));
-        buttonExotiskaFrukter.setOnAction(e -> onMenuButtonsClick("Exotiska frukter"));
-        buttonFarskaOrtkryddor.setOnAction(e -> onMenuButtonsClick("Färska örtkryddor"));
-        buttonGronsaker.setOnAction(e -> onMenuButtonsClick("Grönsaker"));
-        buttonKal.setOnAction(e -> onMenuButtonsClick("Kål"));
-        buttonMelon.setOnAction(e -> onMenuButtonsClick("Melon"));
-        buttonPotatisOchRotfrukter.setOnAction(e -> onMenuButtonsClick("Potatis & Rotfrukt"));
-        buttonSotaStenfrukter.setOnAction(e -> onMenuButtonsClick("Söta stenfrukter"));
-        buttonAllaFisk.setOnAction(e -> onMenuButtonsClick("Fisk & Skaldjur"));
-        buttonFarskLax.setOnAction(e -> onMenuButtonsClick("Färsk fisk"));
-        buttonSill.setOnAction(e -> onMenuButtonsClick("Sill"));
-        buttonSkaldjur.setOnAction(e -> onMenuButtonsClick("Skaldjur"));
-        buttonOvrigFisk.setOnAction(e -> onMenuButtonsClick("Övrig fisk"));
-        buttonAllaKott.setOnAction(e -> onMenuButtonsClick("Kött & Fågel"));
-        buttonKyckling.setOnAction(e -> onMenuButtonsClick("Kyckling"));
-        buttonNotkott.setOnAction(e -> onMenuButtonsClick("Nötkött"));
-        buttonAllaMejeri.setOnAction(e -> onMenuButtonsClick("Mejeriprodukter & Ägg"));
-        buttonMjolk.setOnAction(e -> onMenuButtonsClick("Mjölk"));
-        buttonOst.setOnAction(e -> onMenuButtonsClick("Ost"));
-        buttonYoghurt.setOnAction(e -> onMenuButtonsClick("Yoghurt & Filmjölk"));
-        buttonAgg.setOnAction(e -> onMenuButtonsClick("Ägg"));
-        buttonAllaSkafferi.setOnAction(e -> onMenuButtonsClick("Skafferi"));
-        buttonBrod.setOnAction(e -> onMenuButtonsClick("Bröd"));
-        buttonFron.setOnAction(e -> onMenuButtonsClick("Frön"));
-        buttonKakao.setOnAction(e -> onMenuButtonsClick("Kakao"));
-        buttonKnackebrod.setOnAction(e -> onMenuButtonsClick("KnäckeBröd"));
-        buttonMjol.setOnAction(e -> onMenuButtonsClick("Mjöl"));
-        buttonNotter.setOnAction(e -> onMenuButtonsClick("Nötter"));
-        buttonPasta.setOnAction(e -> onMenuButtonsClick("Pasta"));
-        buttonRis.setOnAction(e -> onMenuButtonsClick("Ris"));
-        //TODO: SOCKER OCH SALT ÄR OLIKA KATEGORIER, Kanske har fixat?
-        buttonSockerOchSalt.setOnAction(e -> onMenuButtonsClick("Socker & Salt"));
-        buttonAllaSotsaker.setOnAction(e -> onMenuButtonsClick("Sötsaker"));
-        buttonBakverk.setOnAction(e -> onMenuButtonsClick("Bakverk & Kakor"));
-        buttonGlass.setOnAction(e -> onMenuButtonsClick("Glass"));
-        buttonGodis.setOnAction(e -> onMenuButtonsClick("Godis"));
-        buttonSnacks.setOnAction(e -> onMenuButtonsClick("Snacks"));
-    }
-    public void onMenuButtonsClick(String category){
+    private void subMenuSelected(AnchorPane subMenu, String category) {
         cat=false;
         displayListItemByCategory(category);
+        subMenu.toBack();
+    }
+
+    private void initCategoryMenu() {
+
+        buttonAllaBaljvaxter.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Baljväxter"));
+        buttonBonor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Bönor"));
+        buttonLinser.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Linser"));
+        buttonArtor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Ärtor"));
+        buttonAllaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Drycker"));
+        buttonKallaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Kalla drycker"));
+        buttonVarmaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Varma drycker"));
+        buttonAllaFrukt.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Frukt & Grönt"));
+        buttonBar.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Bär"));
+        buttonCitrusfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Citrusfrukter"));
+        buttonExotiskaFrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Exotiska frukter"));
+        buttonFarskaOrtkryddor.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Färska örtkryddor"));
+        buttonGronsaker.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Grönsaker"));
+        buttonKal.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Kål"));
+        buttonMelon.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Melon"));
+        buttonPotatisOchRotfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Potatis & Rotfrukt"));
+        buttonSotaStenfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Söta stenfrukter"));
+        buttonAllaFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Fisk & Skaldjur"));
+        buttonFarskLax.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Färsk fisk"));
+        buttonSill.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Sill"));
+        buttonSkaldjur.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Skaldjur"));
+        buttonOvrigFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Övrig fisk"));
+        buttonAllaKott.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Kött & Fågel"));
+        buttonKyckling.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Kyckling"));
+        buttonNotkott.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Nötkött"));
+        buttonAllaMejeri.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Mejeriprodukter & Ägg"));
+        buttonMjolk.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Mjölk"));
+        buttonOst.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Ost"));
+        buttonYoghurt.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Yoghurt & Filmjölk"));
+        buttonAgg.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Ägg"));
+        buttonAllaSkafferi.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Skafferi"));
+        buttonBrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Bröd"));
+        buttonFron.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Frön"));
+        buttonKakao.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Kakao"));
+        buttonKnackebrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"KnäckeBröd"));
+        buttonMjol.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Mjöl"));
+        buttonNotter.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Nötter"));
+        buttonPasta.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Pasta"));
+        buttonRis.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Ris"));
+        buttonSockerOchSalt.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Socker & Salt"));
+        buttonAllaSotsaker.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Sötsaker"));
+        buttonBakverk.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Bakverk & Kakor"));
+        buttonGlass.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Glass"));
+        buttonGodis.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Godis"));
+        buttonSnacks.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Snacks"));
+
     }
     @FXML
     public void plusButtonMouseEntered() {
