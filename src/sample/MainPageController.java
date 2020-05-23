@@ -378,23 +378,28 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
-        model.getOrders().clear();
+        //model.getOrders().clear();
 
-        for (int i = 1; i < 20; i++) {
+        /*for (int i = 1; i < 20; i++) {
             Order o = generateTestOrder(new Date(), i, i);
             model.getOrders().add(o);
-        }
+        }*/
+
+
         onSearch();
         initMenuButtons();
 
         if (model.getShoppingCart().getItems().size() == 0) {
-            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            buttonBetala.getStyleClass().remove("payButton");
+            buttonBetala.getStyleClass().remove("disabled-button");
+            buttonBetala.getStyleClass().add("disabled-button");
             buttonBetala.setGraphic(whiteBetala);
         } else {
-            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+            buttonBetala.getStyleClass().remove("payButton");
+            buttonBetala.getStyleClass().remove("disabled-button");
+            buttonBetala.getStyleClass().add("payButton");
             buttonBetala.setGraphic(blackBetala);
         }
-
     }
 
 
@@ -504,7 +509,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 firstOrderLightbox = true;
                 break;
             }
-            flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
+            flowPaneTidigareKopDetalj.getChildren().add(new ListItem(ProductHandler.getInstance().getProductA(item.getOrder().getItems().get(i).getProduct()), model, this));
         }
         labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage + 1) + " " + "av" + " " + lastOrderLightBoxPage);
     }
@@ -533,6 +538,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         for (menuItem m : menuItems) {
             m.pane.toBack();
+            m.arrow.toFront();
 
 
             if (m.arrow.getId().equals("imageViewArrowFavoriter") || m.arrow.getId().equals("imageViewArrowErbjudanden")) {
@@ -552,10 +558,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                         menuOnClick(m);
                     });
 
+                    buttonFavoriter.hoverProperty().addListener((event) -> menuOnHover(m));
+
                 } else if (m.arrow.getId().equals("imageViewArrowErbjudanden")) {
                     /*
                     Vad som ska hända när man klickar på erbjudanden (måste sättas actionlistener för både bildvyn och knappen
                     * */
+                    buttonErbjudanden.hoverProperty().addListener((event) -> menuOnHover(m));
                 }
             } else {
                 //Sätter en listener på knapp så att styleclassen ändras när man klickat på den
@@ -895,6 +904,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             varukorgItems.add(item);
         }
 
+        if (model.getShoppingCart().getItems().size() == 0) {
+            buttonBetala.setGraphic(whiteBetala);
+        } else {
+            buttonBetala.setGraphic(blackBetala);
+        }
+
         flowPaneVarukorg.getChildren().clear();
         for (VarukorgItem item : varukorgItems) {
             item.updateThisItem();
@@ -902,13 +917,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         if (model.getShoppingCart().getItems().size() == 0) {
-            buttonBetala.setStyle("-fx-background-color: #A0A0A0; -fx-text-fill:white;");
+            buttonBetala.getStyleClass().remove("payButton");
+            buttonBetala.getStyleClass().remove("disabled-button");
+            buttonBetala.getStyleClass().add("disabled-button");
             buttonBetala.setGraphic(whiteBetala);
         } else {
-            buttonBetala.setStyle("-fx-background-color: #FFB422; -fx-text-fill:black;");
+            buttonBetala.getStyleClass().remove("payButton");
+            buttonBetala.getStyleClass().remove("disabled-button");
+            buttonBetala.getStyleClass().add("payButton");
             buttonBetala.setGraphic(blackBetala);
         }
-
         displayListItems();
         updateShoppingCartPriceAndQuantity();
     }

@@ -8,7 +8,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="312.0" styleClass="varu-kort" stylesheets="@VarukorgItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fx:id="trashObjectButton" fitHeight="25.0" fitWidth="28.0" layoutX="5.0" layoutY="10.0" onMouseClicked="#trashObjectButton" pickOnBounds="true" preserveRatio="true">
+        <ImageView fx:id="trashObjectButton" fitHeight="25.0" fitWidth="28.0" layoutX="5.0" layoutY="10.0" onMouseClicked="#trashObjectButton" onMouseEntered="#deleteButtonMouseEntered" onMouseExited="#deleteButtonMouseExited" onMousePressed="#deleteButtonMouseClicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@resources/Icons/ic_delete_forever_black_18dp.png" />
             </image>

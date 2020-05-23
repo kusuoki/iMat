@@ -19,3 +19,11 @@
     -fx-text-fill: #144F2C;
     -fx-underline: true;
 }
+
+.order-show-details:hover {
+    -fx-text-fill: #00682B;
+}
+
+.order-show-details:pressed {
+    -fx-text-fill: #002F13;
+}

@@ -509,6 +509,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         anchorPaneKontakt.toFront();
                         buttonTidigareKop.toFront();
                 }
+                updateInformation();
         }
 
         //När man klickar på andra nästa
@@ -563,6 +564,13 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         save();
                 }
+
+        }
+
+        @FXML
+        public void emptyShoppingCart() {
+                model.clearShoppingCart();
+                betalsidaItemMap.clear();
         }
 
         public void updateSlutFor() {
@@ -595,11 +603,15 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 labelTotalPrice.setText(model.doubleToString(model.getShoppingCart().getTotal()) + " kr");
 
                 if (amountOfProduct != 0) {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("backToStoreButton");
                         paneEmptyCart.toBack();
-                        buttonNext1.setStyle("-fx-background-color: #144f2c");
                 } else {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("disabled-button");
                         paneEmptyCart.toFront();
-                        buttonNext1.setStyle("-fx-background-color: #dfdfdf");
                 }
         }
 
