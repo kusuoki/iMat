@@ -324,6 +324,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label labelCrumbFirst;
 
+    //Headline paneler
+    @FXML
+    Pane searchResultPane;
+    @FXML
+    Pane startPane;
+    @FXML
+    Pane favoritePane;
+
+
 
     Parent betalsida;
     Parent konto;
@@ -400,6 +409,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             buttonBetala.getStyleClass().add("payButton");
             buttonBetala.setGraphic(blackBetala);
         }
+        startPane.toFront();
     }
 
 
@@ -555,6 +565,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     imageViewArrowFavoriter.setOnMouseClicked(e -> {
                         displayListItemFromList(model.getFavorites());
                         menuOnClick(m);
+                        favoritePane.toFront();
                     });
                     imageViewArrowFavoriter.hoverProperty().addListener((event) -> {
                         menuOnHover(m);
@@ -564,6 +575,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     {
                         displayListItemFromList(model.getFavorites());
                         menuOnClick(m);
+                        favoritePane.toFront();
                     });
 
                     buttonFavoriter.hoverProperty().addListener((event) -> menuOnHover(m));
@@ -697,6 +709,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         paneVaruDisplay.toFront();
         displayListItemFromList(searchList);
+        searchResultPane.toFront();
     }
     //När man klickar på menyn
 
@@ -1070,6 +1083,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             }
             displayListItems();
         }
+
     }
 
     @FXML
@@ -1225,6 +1239,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         this.tempSearch = searchList;
         paneVaruDisplay.toFront();
         displayListItemFromList(searchList);
+        startPane.toFront();
     }
 }
 
