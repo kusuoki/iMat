@@ -351,6 +351,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Label labelVarusida1;
     String firstBreadcrumb;
     String secondBreadcrumb;
+    boolean ifLastSearchCat;
 
     ImageView blackBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png")));
     ImageView whiteBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_white_24dp.png")));
@@ -415,6 +416,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_search_white_24dp.png"));
         buttonSok.setGraphic(new ImageView(image));
         buttonSok.setGraphicTextGap(2);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_favorite_border_black_18dp.png"));
+        buttonFavoriter.setGraphic(new ImageView(image));
+        buttonFavoriter.setGraphicTextGap(4);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_loyalty_black_18dp.png"));
+        buttonErbjudanden.setGraphic(new ImageView(image));
+        buttonErbjudanden.setGraphicTextGap(4);
     }
 
     private Order generateTestOrder(Date date, int productID, int orderID) {
@@ -684,6 +693,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //updateProductList(searchList);
 
         paneVaruDisplay.toFront();
+        search=false;
         displayListItemFromList(searchList);
     }
     //När man klickar på menyn
@@ -912,6 +922,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             flowPaneVarukorg.getChildren().add(item);
         }
 
+
         if (model.getShoppingCart().getItems().size() == 0) {
             buttonBetala.getStyleClass().remove("payButton");
             buttonBetala.getStyleClass().remove("disabled-button");
@@ -949,6 +960,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         cat = true;
         search = false;
+        ifLastSearchCat=true;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -993,6 +1005,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         search = true;
         cat = false;
+        ifLastSearchCat=false;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -1055,6 +1068,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 displayListItemFromList(tempSearch);
 
             }
+
             displayListItems();
         }
     }
@@ -1063,11 +1077,18 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void previousPageButton() {
         if (currentPage > 0) {
             currentPage--;
-            if (cat) {
+            //Dessa är till för att se vilken metod som skall kallas.
+            //cat och search = true är för att undvika att sidorna nollställs
+            if (ifLastSearchCat) {
+                cat=true;
                 displayListItemByCategory(category);
 
             }
-            if (search) {
+            else if (!ifLastSearchCat) {
+                search=true;
+                displayListItemFromList(tempSearch);
+            }
+            else {
                 displayListItemFromList(tempSearch);
             }
             displayListItems();
@@ -1196,8 +1217,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-pressed.png")));
     }
-
-
+    
     @FXML
     public void homeButtonMouseEntered() {
         homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-hover.png")));

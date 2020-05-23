@@ -173,6 +173,7 @@
 .YellowButton {
     -fx-background-color: #FFB422;
     -fx-background-radius: 20;
+    -fx-font-weight: bold;
 }
 
 .YellowButton:hover {
