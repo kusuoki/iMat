@@ -876,11 +876,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     public void setLightgreenArrow(ImageView arrow) { //Sets the arrow in a menuItem to lightgreen
-        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_lightgreen_64dpcentered.png"));
+        arrow.setImage(new Image("Icons/ic_arrow_lightgreen_64dpcentered.png"));
     }
 
     public void setDarkgreenArrow(ImageView arrow) { //Sets the arrow in a menuItem to darkgreen
-        arrow.setImage(new Image("file:/C:/Users/hanna/Documents/Programmering/iMat/iMat/out/production/iMat/sample/resources/Icons/ic_arrow_darkgreen_64dp.png"));
+        arrow.setImage(new Image("Icons/ic_arrow_darkgreen_64dp.png"));
     }
 
 
