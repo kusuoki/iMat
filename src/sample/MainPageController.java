@@ -495,10 +495,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                         menuOnClick(m);
                     });
 
+                    buttonFavoriter.hoverProperty().addListener((event) -> menuOnHover(m));
+
                 } else if (m.arrow.getId().equals("imageViewArrowErbjudanden")) {
                     /*
                     Vad som ska hända när man klickar på erbjudanden (måste sättas actionlistener för både bildvyn och knappen
                     * */
+                    buttonErbjudanden.hoverProperty().addListener((event) -> menuOnHover(m));
                 }
             }else
             {
