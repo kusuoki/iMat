@@ -1,5 +1,6 @@
 package sample;
 
+import com.sun.javafx.scene.layout.region.BackgroundSizeConverter;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,13 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.*;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
@@ -210,7 +209,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     // detailed view @FXML
     @FXML
-    ImageView imageViewMainLightboxImage;
+    Pane imageViewMainLightboxImage;
     @FXML
     Label labelMainLightboxVara;
     @FXML
@@ -221,6 +220,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     ImageView imageViewMainLightboxClose;
     @FXML
     ImageView imageViewMainLightboxFavourite;
+    @FXML ImageView imageViewMainLightboxFavouriteFilled;
     @FXML
     Label labelMainLightboxPrice;
     @FXML
@@ -386,6 +386,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
+      //  resources/Icons/ic_favorite_border_red_48d.png"
+
         //model.getOrders().clear();
 
         /*for (int i = 1; i < 20; i++) {
@@ -835,7 +837,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         } else {
             currentLightboxItem.favorite();
         }
-        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(currentLightboxItem.product)));
+        setFavoriteImage(model.isFavorite(currentLightboxItem.product));
     }
 
     @FXML
@@ -862,12 +864,23 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     public void openLightBox(ListItem item) {
         currentLightboxItem = item;
-        imageViewMainLightboxImage.setImage(model.getImage(item.product));
-        imageViewMainLightboxFavourite.setImage(getFavoriteImage(model.isFavorite(item.product)));
+
+        Image image = model.getImage(item.product);
+        BackgroundImage bgImage = new BackgroundImage(
+                image,                                                 // image
+                BackgroundRepeat.NO_REPEAT,                            // repeatX
+                BackgroundRepeat.NO_REPEAT,                            // repeatY
+                BackgroundPosition.CENTER,                             // position
+                new BackgroundSize(-1, -1, false, false, true, false)  // size
+        );
+        imageViewMainLightboxImage.setBackground(new Background(bgImage));
+
+        //imageViewMainLightboxImage.setImage(model.getImage(item.product));
+        setFavoriteImage(model.isFavorite(item.product));
         labelMainLightboxVara.setText(item.product.getName());
         labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
         labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()) + "kr");
-        labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
+       // labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
         if (amount > 0) {
             lightboxPlusMinusPane.toFront();
@@ -904,11 +917,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
     }
 
-    public Image getFavoriteImage(boolean isFavorite) {
+   /* public Image getFavoriteImage(boolean isFavorite) {
         if (!isFavorite) {
             return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
         }
         return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
+    }*/
+    public void setFavoriteImage(boolean isFavorite){       //mindre elegant kod än den tidigare lösningen för favorit-knappen. men nu funkar den likadant som för list items
+        if(!isFavorite){
+            imageViewMainLightboxFavouriteFilled.toBack();
+
+        }else{
+            imageViewMainLightboxFavouriteFilled.toFront();
+        }
     }
 
 
@@ -1356,5 +1377,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             currentlySelectedPane = null;
         }
     }
-}
 
+
+    }

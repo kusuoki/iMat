@@ -257,3 +257,24 @@
     -fx-text-fill: white;
 }
 
+.favorite-button{
+    -fx-image: url("resources/Icons/ic_favorite_border_red_48d.png");
+
+}
+.favorite-button:hover{
+    -fx-image: url("resources/Icons/ic_favorite_border_red_48dp_hover.png");
+}
+
+.lightbox-price-tag-text {
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 36px;
+    -fx-text-fill: #000000;
+}
+
+.lightbox-price-per-unit {
+    -fx-font-family: Lato;
+    -fx-font-style: italic;
+    -fx-font-size: 20px;
+    -fx-text-fill: #000000;
+}
