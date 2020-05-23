@@ -244,8 +244,15 @@
     -fx-background-color:  #002F13;
 }
 
+<<<<<<< HEAD
 .tooltip {
     -fx-background-color: #404040;
     -fx-font-size: 12px;
     -fx-text-fill: white;
 }
+=======
+.disabled-button {
+    -fx-background-color: #A0A0A0;
+    -fx-text-fill: white;
+}
+>>>>>>> 8c6aff691d57f20d8ec3a59aea241c45b199fa21
