@@ -1,12 +1,19 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.cse.dat216.project.*;
@@ -90,6 +97,29 @@ public class ListItem extends AnchorPane {
             emptyHeartPane.toFront();     //NEJ: Visa det tomma hjärtat.
         }
 
+        //Listener for textfield to update if focus left
+        listItemQuantityTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                manualNumberEnterOfProduct(listItemQuantityTextField.getText());
+            }
+        });
+
+        //Listener for textfield to update if enterkey is pressed
+        listItemQuantityTextField.setOnKeyPressed(new EventHandler<KeyEvent>()
+        {
+            @Override
+            public void handle(KeyEvent ke)
+            {
+                if (ke.getCode().equals(KeyCode.ENTER))
+                {
+                    manualNumberEnterOfProduct(listItemQuantityTextField.getText());
+                }
+            }
+        });
+
+
+
     }
 
     @FXML
@@ -103,6 +133,25 @@ public class ListItem extends AnchorPane {
     public void addOneOfProduct() {
         model.updateShoppingCart(product, 1);
         updateTextfieldWithAmountOfProduct();
+    }
+
+    @FXML
+    public void manualNumberEnterOfProduct(String s){
+        try {
+            int i = Integer.parseInt(s);
+            if (i < 0){
+                updateTextfieldWithAmountOfProduct();
+            } else if (i == 0) {
+                model.setShoppingCartItem(product, 1);
+                removeOneOfProduct();
+            } else {
+                model.setShoppingCartItem(product, i);
+                updateTextfieldWithAmountOfProduct();
+            }
+
+        } catch (NumberFormatException nfe) {
+            updateTextfieldWithAmountOfProduct();
+        }
     }
 
     @FXML
@@ -148,5 +197,41 @@ public class ListItem extends AnchorPane {
     @FXML
     void openDetailedView() {
         parentController.openLightBox(this);
+    }
+
+    @FXML
+    public void plusButtonMouseEntered(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseExited(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp.png")));
+    }
+
+    @FXML
+    public void plusButtonMouseClicked(){
+        listItemPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Plus-knapp-pressed.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseEntered(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-hover.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseExited(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp.png")));
+    }
+
+    @FXML
+    public void minusButtonMouseClicked(){
+        listItemMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Buttons/Minus-knapp-pressed.png")));
     }
 }

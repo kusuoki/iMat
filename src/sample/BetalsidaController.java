@@ -71,6 +71,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private Label labelErrorMessage;
         @FXML private Label labelTotalPrice;
         @FXML private Label labelAmountOfProduct;
+        @FXML private Pane paneEmptyCart;
+        @FXML private Button buttonNext1;
         private ShoppingCart shoppingCart = model.getShoppingCart();
         private Map<Integer, BetalsidaItem> betalsidaItemMap = new HashMap<>();
         private Parent mainPage;
@@ -473,6 +475,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 buttonTidigareKop.toFront();
                 updateShoppingCart();
                 updateInformation();
+
+
+
         }
         //setter för stage och mainpage root
         public void setStage(Stage stage,Parent mainPage, KontoinstallningController kontoinstallningController){
@@ -500,8 +505,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man klickar på första nästa
         @FXML
         public void onNextClick1() {
-            anchorPaneKontakt.toFront();
-            buttonTidigareKop.toFront();
+                if (shoppingCart.getItems().size() != 0) {
+                        anchorPaneKontakt.toFront();
+                        buttonTidigareKop.toFront();
+                }
         }
 
         //När man klickar på andra nästa
@@ -558,6 +565,12 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
         }
 
+        @FXML
+        public void emptyShoppingCart() {
+                model.clearShoppingCart();
+                betalsidaItemMap.clear();
+        }
+
         public void updateSlutFor() {
                 List<SlutforItem> items = new ArrayList<>();
 
@@ -586,6 +599,18 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
                 labelAmountOfProduct.setText(amountOfProduct + " st");
                 labelTotalPrice.setText(model.doubleToString(model.getShoppingCart().getTotal()) + " kr");
+
+                if (amountOfProduct != 0) {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("backToStoreButton");
+                        paneEmptyCart.toBack();
+                } else {
+                        buttonNext1.getStyleClass().remove("backToStoreButton");
+                        buttonNext1.getStyleClass().remove("disabled-button");
+                        buttonNext1.getStyleClass().add("disabled-button");
+                        paneEmptyCart.toFront();
+                }
         }
 
 
