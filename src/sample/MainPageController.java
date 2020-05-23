@@ -355,6 +355,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Label labelVarusida1;
     String firstBreadcrumb;
     String secondBreadcrumb;
+    boolean ifLastSearchCat;
 
     ImageView blackBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png")));
     ImageView whiteBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_white_24dp.png")));
@@ -688,6 +689,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //updateProductList(searchList);
 
         paneVaruDisplay.toFront();
+        search=false;
         displayListItemFromList(searchList);
     }
     //När man klickar på menyn
@@ -953,6 +955,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         cat = true;
         search = false;
+        ifLastSearchCat=true;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -997,6 +1000,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         search = true;
         cat = false;
+        ifLastSearchCat=false;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -1059,6 +1063,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 displayListItemFromList(tempSearch);
 
             }
+
             displayListItems();
         }
     }
@@ -1067,11 +1072,18 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void previousPageButton() {
         if (currentPage > 0) {
             currentPage--;
-            if (cat) {
+            //Dessa är till för att se vilken metod som skall kallas.
+            //cat och search = true är för att undvika att sidorna nollställs
+            if (ifLastSearchCat) {
+                cat=true;
                 displayListItemByCategory(category);
 
             }
-            if (search) {
+            else if (!ifLastSearchCat) {
+                search=true;
+                displayListItemFromList(tempSearch);
+            }
+            else {
                 displayListItemFromList(tempSearch);
             }
             displayListItems();
