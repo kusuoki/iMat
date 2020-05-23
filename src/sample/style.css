@@ -218,12 +218,6 @@
     -fx-text-alignment: right;
 }
 
-.tooltip {
-    -fx-show-delay: 0s;
-    -fx-background-color: white;
-    -fx-text-fill: black;
-}
-
 .scroll-pane{
     -fx-background-color:transparent;
 }
