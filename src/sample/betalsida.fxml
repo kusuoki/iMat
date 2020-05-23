@@ -146,12 +146,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBuyClick" prefHeight="20.0" prefWidth="148.0" styleClass="YellowButton" text="Köp">
+            <Button fx:id="buttonBuy" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBuyClick" prefHeight="20.0" prefWidth="148.0" styleClass="YellowButton" text="Köp">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick4" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
+            <Button fx:id="buttonBack4" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick4" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -271,12 +271,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick3" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
+            <Button fx:id="buttonNext3" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick3" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick3" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
+            <Button fx:id="buttonBack3" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick3" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -404,12 +404,12 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
+            <Button fx:id="buttonNext2" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
+            <Button fx:id="buttonBack2" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
@@ -529,7 +529,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#emptyShoppingCart" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa kundvagn" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+            <Button fx:id="buttonClear" layoutX="997.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#emptyShoppingCart" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" styleClass="backToStoreButton" text="Rensa kundvagn" textFill="WHITE" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font size="15.0" />
                </font>
@@ -539,7 +539,7 @@
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-radius: 20px;" styleClass="disabled-button" text="Tillbaka" textFill="WHITE">
+            <Button fx:id="buttonBack1" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-radius: 20px;" styleClass="disabled-button" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
