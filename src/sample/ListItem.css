@@ -52,3 +52,11 @@
     -fx-font-size: 15px;
     -fx-text-fill: #000000;
 }
+
+.favorite-button{
+    -fx-image: url("resources/Icons/ic_favorite_border_red_24dp.png");
+
+}
+.favorite-button:hover{
+    -fx-image: url("resources/Icons/ic_favorite_border_red_24dp_hover.png");
+}

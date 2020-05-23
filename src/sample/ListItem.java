@@ -12,13 +12,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import se.chalmers.cse.dat216.project.*;
 
+import javax.swing.*;
 import java.io.IOException;
+import java.net.http.WebSocket;
+
+import static javafx.application.ConditionalFeature.SWT;
 
 public class ListItem extends AnchorPane {
 
@@ -117,7 +122,6 @@ public class ListItem extends AnchorPane {
                 }
             }
         });
-
 
 
     }

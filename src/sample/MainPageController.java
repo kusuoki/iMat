@@ -378,13 +378,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
-        model.getOrders().clear();
+      //  model.getOrders().clear();
 
+
+/*
         for (int i = 1; i < 20; i++) {
             Order o = generateTestOrder(new Date(), i, i);
             model.getOrders().add(o);
         }
-        onSearch();
+  */      onSearch();
         initMenuButtons();
 
         if (model.getShoppingCart().getItems().size() == 0) {
@@ -596,6 +598,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
+        for (menuItem m : menuItems){
+            resetButtonStyle(m);
+        }
         flowPaneTidigareKop.getChildren().clear();
         ordersCurrentlyDisplayed.clear();
         allOrders.clear();

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="158.0" style="-fx-background-color: #FFFFFF;" styleClass="card-effect" stylesheets="@ListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="223.0" prefWidth="158.0" style="-fx-background-color: #FFFFFF;" styleClass="card-effect" stylesheets="@ListItem.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="listItemPrice" layoutX="96.0" layoutY="15.0" styleClass="price-tag-text" text="999kr" />
       <Circle fill="DODGERBLUE" layoutX="80.0" layoutY="75.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="price-tag-circle" />
@@ -51,11 +47,7 @@
       </Pane>
       <Pane fx:id="emptyHeartPane" layoutX="123.0" layoutY="128.0" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="emptyHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/ic_favorite_border_red_24dp.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="emptyHeartButton" fitHeight="24.0" fitWidth="24.0" onMouseClicked="#favorite" pickOnBounds="true" preserveRatio="true" styleClass="favorite-button" />
          </children>
       </Pane>
       <Pane fx:id="listItemPlusMinusPane" layoutX="5.0" layoutY="169.0" prefHeight="50.0" prefWidth="148.0" style="-fx-background-color: #FFFFFF;">
