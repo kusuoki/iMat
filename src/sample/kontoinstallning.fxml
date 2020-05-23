@@ -17,7 +17,10 @@
             <children>
                 <Pane layoutY="45.0" prefHeight="495.0" prefWidth="637.0" style="-fx-background-color: white;">
                <children>
-                  <Button fx:id="sparaButton" layoutX="516.0" layoutY="452.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="107.0" styleClass="save-button" text="Spara" textFill="WHITE" />
+                  <Button fx:id="sparaButton" layoutX="516.0" layoutY="452.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="107.0" styleClass="save-button" text="Spara" textFill="WHITE">
+                     <tooltip>
+                        <Tooltip styleClass="tooltip-normal" text="Sparar dina uppgifter för att underlätta betalprocessen" />
+                     </tooltip></Button>
                   <Label fx:id="labelSparadeUppgifter" layoutX="29.0" layoutY="15.0" text="Tmp" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="325.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="194.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
@@ -73,7 +76,7 @@
                         </ImageView>
                      </graphic>
                      <tooltip>
-                        <Tooltip text="De tre sifforna som finns i baksidan på ditt kort.">
+                        <Tooltip styleClass="tooltip-normal" text="De tre sifforna som finns i baksidan på ditt kort.">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -119,19 +122,31 @@
         <Button fx:id="buttonTidigareKop" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchasesPageClick" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
             <font>
                 <Font size="15.0" />
-            </font></Button>
+            </font>
+         <tooltip>
+            <Tooltip styleClass="tooltip-normal" text="Tar dig till dina tidigare köp" />
+         </tooltip></Button>
         <Button fx:id="buttonKundservice" layoutX="533.0" layoutY="40.0" mnemonicParsing="false" onAction="#onCustomerServicePageClick" prefHeight="36.0" prefWidth="212.0" styleClass="topMenuButton" text="Kundservice &amp; Hjälp" textFill="WHITE">
             <font>
                 <Font size="15.0" />
-            </font></Button>
+            </font>
+         <tooltip>
+            <Tooltip styleClass="tooltip-normal" text="Om du behöver hjälp eller kontakta oss" />
+         </tooltip></Button>
         <Button fx:id="buttonKonto" layoutX="745.0" layoutY="40.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="212.0" styleClass="topMenuButton" text="Kontoinställningar" textFill="WHITE">
             <font>
                 <Font size="15.0" />
-            </font></Button>
+            </font>
+         <tooltip>
+            <Tooltip styleClass="tooltip-normal" text="Om du behöver ändra dina uppgifter eller se andra inställningar" />
+         </tooltip></Button>
       <Button fx:id="buttonTidigareKöp1" layoutX="38.0" layoutY="40.0" mnemonicParsing="false" onAction="#onHomeButtonClick" prefHeight="36.0" prefWidth="208.0" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
          <font>
             <Font size="15.0" />
          </font>
+         <tooltip>
+            <Tooltip styleClass="tooltip-normal" text="Tar dig tillbaka butiken" />
+         </tooltip>
       </Button>
       <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="72.0" layoutY="46.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
          <image>

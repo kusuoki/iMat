@@ -73,6 +73,8 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private Label labelAmountOfProduct;
         @FXML private Pane paneEmptyCart;
         @FXML private Button buttonNext1;
+        @FXML private Button buttonNext2;
+        @FXML private Button buttonNext3;
         private ShoppingCart shoppingCart = model.getShoppingCart();
         private Map<Integer, BetalsidaItem> betalsidaItemMap = new HashMap<>();
         private Parent mainPage;
@@ -87,6 +89,19 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         private Parent paymentPage;
         private BackButton backButton = BackButton.getBackButton();
         private KontoinstallningController kontoinstallningController;
+
+        @FXML
+        Button buttonBack1;
+        @FXML
+        Button buttonBack2;
+        @FXML
+        Button buttonBack3;
+        @FXML
+        Button buttonBack4;
+        @FXML
+        Button buttonClear;
+        @FXML
+        Button buttonBuy;
 
 
         //Används för att sätta denna till kontroller för mainpage.fxml
@@ -476,9 +491,43 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 updateShoppingCart();
                 updateInformation();
 
+                initButtons();
+        }
+
+        //Init för alla ikoner på knappar
+        private void initButtons() {
+        Image image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_remove_shopping_cart_white_24dp.png"));
+        buttonClear.setGraphic(new ImageView(image));
+        buttonClear.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_arrow_back_white_24dp.png"));
+        buttonBack1.setGraphic(new ImageView(image));
+        buttonBack1.setGraphicTextGap(5);
+        buttonBack2.setGraphic(new ImageView(image));
+        buttonBack2.setGraphicTextGap(5);
+        buttonBack3.setGraphic(new ImageView(image));
+        buttonBack3.setGraphicTextGap(5);
+        buttonBack4.setGraphic(new ImageView(image));
+        buttonBack4.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_arrow_forward_white_24dp.png"));
+        buttonNext1.setGraphic(new ImageView(image));
+        buttonNext1.setContentDisplay(ContentDisplay.RIGHT);
+        buttonNext1.setGraphicTextGap(5);
+        buttonNext2.setGraphic(new ImageView(image));
+        buttonNext2.setContentDisplay(ContentDisplay.RIGHT);
+        buttonNext2.setGraphicTextGap(5);
+        buttonNext3.setGraphic(new ImageView(image));
+        buttonNext3.setContentDisplay(ContentDisplay.RIGHT);
+        buttonNext3.setGraphicTextGap(5);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_check_circle_black_24dp.png"));
+        buttonBuy.setGraphic(new ImageView(image));
+        buttonBuy.setGraphicTextGap(5);
 
 
         }
+
         //setter för stage och mainpage root
         public void setStage(Stage stage,Parent mainPage, KontoinstallningController kontoinstallningController){
              this.stage=stage;
@@ -509,6 +558,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         anchorPaneKontakt.toFront();
                         buttonTidigareKop.toFront();
                 }
+                updateInformation();
         }
 
         //När man klickar på andra nästa
@@ -563,6 +613,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         save();
                 }
+
         }
 
         @FXML
