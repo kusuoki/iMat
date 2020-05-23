@@ -509,6 +509,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         anchorPaneKontakt.toFront();
                         buttonTidigareKop.toFront();
                 }
+                updateInformation();
         }
 
         //När man klickar på andra nästa
@@ -563,6 +564,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         save();
                 }
+
         }
 
         @FXML
