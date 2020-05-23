@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -520,6 +521,9 @@
                  <font>
                      <Font size="18.0" />
                  </font>
+               <tooltip>
+                  <Tooltip text="Betala och slutför ditt köp" />
+               </tooltip>
              </Button>
              <Button fx:id="buttonTidigareKop" layoutX="320.0" layoutY="40.0" mnemonicParsing="false" onAction="#onEarlierPurchases" prefHeight="36.0" prefWidth="213.0" styleClass="topMenuButton" text="Tidigare köp" textFill="WHITE" AnchorPane.leftAnchor="320.0" AnchorPane.topAnchor="40.0">
                  <font>
