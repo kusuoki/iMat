@@ -243,3 +243,9 @@
 .save-button:pressed {
     -fx-background-color:  #002F13;
 }
+
+.tooltip {
+    -fx-background-color: #404040;
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+}
