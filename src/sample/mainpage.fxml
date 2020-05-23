@@ -269,7 +269,7 @@
             <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;">
             <children>
                 <FlowPane fx:id="flowPaneTidigareKopDetalj" layoutX="41.0" layoutY="127.0" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" />
-                <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="314.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />
+                <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#addAllItemsInTidigareKop" prefHeight="30.0" prefWidth="314.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />
                 <Label layoutX="41.0" layoutY="23.0" text="Orderdatum:">
                      <font>
                         <Font size="16.0" />

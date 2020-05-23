@@ -586,7 +586,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         public void onBuyClick() {
                 anchorPaneTack.toFront();
                 betalsidaItemMap.clear();
-                model.placeOrder(false);
+                model.placeOrder();
                 model.clearShoppingCart();
                 if(spara.isSelected())
                 {

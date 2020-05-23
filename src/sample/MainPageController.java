@@ -496,7 +496,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void enterOrderLightbox(TidigareKopItem item) {
         orderLightboxDate.setText(item.getOrder().getDate().toString());
         orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + " kr");
-        orderLightboxQuantity.setText(item.getOrder().getItems().size() + " st");
+
+        int antal=0;
+        for (ShoppingItem shoppingItem:item.getOrder().getItems()) {
+            antal= antal+ (int) shoppingItem.getAmount();
+
+        }
+        orderLightboxQuantity.setText(antal + " st");
         orderLightboxOrdernumber.setText(item.getOrder().getOrderNumber() + "");
         orderLightbox.toFront();
         populateOrderLightbox(item);
@@ -536,6 +542,23 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         event.consume();
     }
 
+    @FXML
+    public void addAllItemsInTidigareKop(){
+        //Inte riktigt färdig än... uppdaterar inte kundvagnen mer än en gång. Om det beror på
+        //att shoppingcarten inte får reda på det eller om logiken nedan inte funkar som tänkt.
+
+        for (ShoppingItem s:currentTidigareKopItem.getOrder().getItems()) {
+            if (Model.getInstance().getShoppingItemMap().containsKey(s.getProduct().getProductId())){
+                s.setAmount(s.getAmount()+s.getAmount());
+            }
+            else{
+                Model.getInstance().addToShoppingCart(s.getProduct());
+            }
+
+        }
+
+
+    }
 
     //Menyfunktionalitet
 
@@ -660,6 +683,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         paneTidigareKop.toFront();
 
         for (Order orders : model.getOrders()) {
+
             TidigareKopItem item = new TidigareKopItem(orders, this);
             allOrders.add(item);
         }
