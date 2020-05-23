@@ -194,7 +194,13 @@
     -fx-background-radius: 10;
 }
 
+.add-button:hover {
+    -fx-background-color: #00682B;
+}
 
+.add-button:pressed {
+    -fx-background-color: #002F13;
+}
 /* add this class to objects that can be hovered on */
 .hoverable:hover{
     -fx-cursor: hand;
