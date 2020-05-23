@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.control.Tooltip?>
@@ -56,140 +57,6 @@
                   </ImageView>
                </children>
             </AnchorPane>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="anchorPaneKontakt" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
-         <children>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="587.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Grey%20Line.png" />
-               </image>
-            </ImageView>
-            <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
-               <children>
-                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="291.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="160.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="241.0" prefHeight="17.0" prefWidth="138.0" text="Kontakuppgifter">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="261.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="130.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="70.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="49.0" prefHeight="17.0" prefWidth="138.0" text="Leveransadress" textAlignment="RIGHT">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="100.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="190.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="341.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt" textAlignment="RIGHT">
-                           <font>
-                              <Font name="System Bold" size="12.0" />
-                           </font>
-                        </Label>
-                        <RadioButton fx:id="radioHemLeverans" layoutX="135.0" layoutY="368.0" mnemonicParsing="false" selected="true" text="Hemleverans">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="leveransToggleGroup" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radioTid10" layoutX="260.0" layoutY="396.0" mnemonicParsing="false" text="10.00">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="tidToggleGroup" />
-                           </toggleGroup>
-                        </RadioButton>
-                        <RadioButton fx:id="radioTid12" layoutX="380.0" layoutY="398.0" mnemonicParsing="false" text="12.00" toggleGroup="$tidToggleGroup" />
-                        <RadioButton fx:id="radioTid20" layoutX="500.0" layoutY="398.0" mnemonicParsing="false" text="20.00" toggleGroup="$tidToggleGroup" />
-                        <RadioButton fx:id="radioAffarLeverans" layoutX="135.0" layoutY="428.0" mnemonicParsing="false" text="Hämta i affär" toggleGroup="$leveransToggleGroup" />
-                        <ComboBox fx:id="comboHem" layoutX="234.0" layoutY="364.0" prefWidth="150.0" />
-                        <ComboBox fx:id="comboAffar" layoutX="234.0" layoutY="424.0" prefWidth="150.0" />
-                        <TextField fx:id="textfieldFirstname" layoutX="231.0" layoutY="66.0" onAction="#goToNextTextField" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Donald" />
-                        <TextField fx:id="textfieldLastname" layoutX="231.0" layoutY="96.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Trump" />
-                        <TextField fx:id="textfieldAdress" layoutX="231.0" layoutY="126.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Katerinesbergsgatan 11C" />
-                        <TextField fx:id="textfieldStad" layoutX="231.0" layoutY="156.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
-                        <TextField fx:id="textfieldPostnummer" layoutX="231.0" layoutY="186.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />
-                        <TextField fx:id="textfieldEmail" layoutX="231.0" layoutY="257.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="example@mail.com" />
-                        <TextField fx:id="textfieldTelefonnummer" layoutX="231.0" layoutY="287.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 73 522 12 34, 0735221234..." />
-                        <Line endX="389.0" layoutX="188.0" layoutY="228.0" startX="-148.0" stroke="#a4a4a4" />
-                        <Line endX="389.0" layoutX="198.0" layoutY="331.0" startX="-148.0" stroke="#a4a4a4" />
-                     </children>
-                  </Pane>
-                  <Label layoutX="166.0" layoutY="5.0" text="Kontaktuppgifter &amp; Leverans" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label layoutX="368.0" layoutY="96.0" text="Bekräfta kundvagn">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="508.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="817.0" layoutY="96.0" text="Slutför köp">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="648.0" layoutY="96.0" text="Betalningsuppgifter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <tooltip>
-                  <Tooltip styleClass="tooltip-normal" text="Nästa steg i betalprocessen" />
-               </tooltip>
-            </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <tooltip>
-                  <Tooltip styleClass="tooltip-normal" text="Tillbaka till föregående sidan i betalprocessen" />
-               </tooltip>
-            </Button>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="446.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Green%20Line.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="401.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="543.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="684.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined%20(1).png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="729.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Grey%20Line.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="826.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined%20(1).png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorPaneBetalningsuppgifter" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
@@ -621,5 +488,134 @@
              </ImageView>
          </children>
       </Pane>
+      <AnchorPane fx:id="anchorPaneKontakt" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="587.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Grey%20Line.png" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="536.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="320.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="139.0">
+               <children>
+                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="637.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="291.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="160.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="241.0" prefHeight="17.0" prefWidth="138.0" text="Kontakuppgifter">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="261.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="130.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="70.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="49.0" prefHeight="17.0" prefWidth="138.0" text="Leveransadress" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="84.0" layoutY="100.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="190.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="341.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="radioHemLeverans" layoutX="135.0" layoutY="368.0" mnemonicParsing="false" selected="true" text="Hemleverans">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="leveransToggleGroup" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioAffarLeverans" layoutX="135.0" layoutY="428.0" mnemonicParsing="false" text="Hämta i affär" toggleGroup="$leveransToggleGroup" />
+                        <ComboBox fx:id="comboHem" layoutX="234.0" layoutY="364.0" prefWidth="150.0" />
+                        <ComboBox fx:id="comboAffar" layoutX="234.0" layoutY="424.0" prefWidth="150.0" />
+                        <TextField fx:id="textfieldFirstname" layoutX="231.0" layoutY="66.0" onAction="#goToNextTextField" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Donald" />
+                        <TextField fx:id="textfieldLastname" layoutX="231.0" layoutY="96.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Trump" />
+                        <TextField fx:id="textfieldAdress" layoutX="231.0" layoutY="126.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Katerinesbergsgatan 11C" />
+                        <TextField fx:id="textfieldStad" layoutX="231.0" layoutY="156.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
+                        <TextField fx:id="textfieldPostnummer" layoutX="231.0" layoutY="186.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />
+                        <TextField fx:id="textfieldEmail" layoutX="231.0" layoutY="257.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="example@mail.com" />
+                        <TextField fx:id="textfieldTelefonnummer" layoutX="231.0" layoutY="287.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. +46 73 522 12 34, 0735221234..." />
+                        <Line endX="389.0" layoutX="188.0" layoutY="228.0" startX="-148.0" stroke="#a4a4a4" />
+                        <Line endX="389.0" layoutX="198.0" layoutY="331.0" startX="-148.0" stroke="#a4a4a4" />
+                        <Spinner fx:id="spinnerTid" editable="true" layoutX="480.0" layoutY="365.0" prefWidth="75.0" />
+                        <Label layoutX="418.0" layoutY="369.0" text="Klockan:" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="166.0" layoutY="5.0" text="Kontaktuppgifter &amp; Leverans" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="368.0" layoutY="96.0" text="Bekräfta kundvagn">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="508.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="817.0" layoutY="96.0" text="Slutför köp">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="648.0" layoutY="96.0" text="Betalningsuppgifter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <tooltip>
+                  <Tooltip styleClass="tooltip-normal" text="Nästa steg i betalprocessen" />
+               </tooltip>
+            </Button>
+            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick2" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <tooltip>
+                  <Tooltip styleClass="tooltip-normal" text="Tillbaka till föregående sidan i betalprocessen" />
+               </tooltip>
+            </Button>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="446.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Green%20Line.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="401.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="543.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="684.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined%20(1).png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="729.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Grey%20Line.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="826.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined%20(1).png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

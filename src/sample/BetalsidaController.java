@@ -31,10 +31,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         @FXML private RadioButton radioHemLeverans;
         @FXML private RadioButton radioAffarLeverans;
         @FXML private ToggleGroup leveransToggleGroup = new ToggleGroup();
-        @FXML private RadioButton radioTid10;
-        @FXML private RadioButton radioTid12;
-        @FXML private RadioButton radioTid20;
-        @FXML private ToggleGroup tidToggleGroup = new ToggleGroup();
+        @FXML private Spinner spinnerTid;
         @FXML private ComboBox comboHem;
         @FXML private ComboBox comboAffar;
         @FXML private FlowPane flowPaneBekrafta;
@@ -137,38 +134,20 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 {
                                         comboAffar.setDisable(true);
                                         comboHem.setDisable(false);
-                                        radioTid10.setDisable(false);
-                                        radioTid12.setDisable(false);
-                                        radioTid20.setDisable(false);
+                                        spinnerTid.setDisable(false);
                                 }
                                 else if (radioAffarLeverans.isSelected())
                                 {
                                         comboHem.setDisable(true);
                                         comboAffar.setDisable(false);
-                                        radioTid10.setDisable(true);
-                                        radioTid12.setDisable(true);
-                                        radioTid20.setDisable(true);
+                                        spinnerTid.setDisable(true);
                                 }
                         }
                 });
 
-
-                radioTid10.setSelected(true);
-                radioTid10.setToggleGroup(tidToggleGroup);
-                radioTid12.setToggleGroup(tidToggleGroup);
-                radioTid20.setToggleGroup(tidToggleGroup);
-                tidToggleGroup.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-
-                        @Override
-                        public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-
-                                if (tidToggleGroup.getSelectedToggle() != null) {
-                                        RadioButton selected = (RadioButton) tidToggleGroup.getSelectedToggle();
-
-                                        //model.setTime(selected.getText());
-                                }
-                        }
-                });
+            SpinnerValueFactory<Integer> maxPrices = new SpinnerValueFactory.IntegerSpinnerValueFactory(6, 22, 12, 1);
+            spinnerTid.setValueFactory(maxPrices);
+            spinnerTid.setEditable(true);
 
                 textfieldFirstname.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
                         if (isFocus) {
@@ -644,22 +623,13 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 labelPostnummer.setText(textfieldPostnummer.getText());
                 if(radioHemLeverans.isSelected())
                 {
-                        if(radioTid10.isSelected())
-                        {
-                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 10");
-                        }
-                        else if(radioTid12.isSelected())
-                        {
-                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 12");
-                        }
-                        else if(radioTid20.isSelected())
-                        {
-                                labelLeverans.setText("Levereras " + comboHem.getValue() + " kl. 20");
-                        }
+                    labelLeverans.setText("Levereras " + comboHem.getValue().toString().toLowerCase() +
+                            " vid kl. " + spinnerTid.getValue());
+
                 }
                 else if(radioAffarLeverans.isSelected())
                 {
-                        labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
+                    labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
                 }
                 cardTypeImageView.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
