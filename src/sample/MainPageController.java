@@ -420,6 +420,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_search_white_24dp.png"));
         buttonSok.setGraphic(new ImageView(image));
         buttonSok.setGraphicTextGap(2);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_favorite_border_black_18dp.png"));
+        buttonFavoriter.setGraphic(new ImageView(image));
+        buttonFavoriter.setGraphicTextGap(4);
+
+        image = new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_loyalty_black_18dp.png"));
+        buttonErbjudanden.setGraphic(new ImageView(image));
+        buttonErbjudanden.setGraphicTextGap(4);
     }
 
     private Order generateTestOrder(Date date, int productID, int orderID) {
@@ -918,6 +926,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             flowPaneVarukorg.getChildren().add(item);
         }
 
+
         if (model.getShoppingCart().getItems().size() == 0) {
             buttonBetala.getStyleClass().remove("payButton");
             buttonBetala.getStyleClass().remove("disabled-button");
@@ -1126,7 +1135,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     private void initCategoryMenu() {
-
         buttonAllaBaljvaxter.setOnAction(e -> displayListItemByCategory("Baljväxter"));
         buttonBonor.setOnAction(e -> displayListItemByCategory("Bönor"));
         buttonLinser.setOnAction(e -> displayListItemByCategory("Linser"));
@@ -1209,8 +1217,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-pressed.png")));
     }
-
-
+    
     @FXML
     public void homeButtonMouseEntered() {
         homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-hover.png")));
