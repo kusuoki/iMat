@@ -76,7 +76,7 @@
                         </ImageView>
                      </graphic>
                      <tooltip>
-                        <Tooltip text="De tre sifforna som finns i baksidan på ditt kort.">
+                        <Tooltip styleClass="tooltip-normal" text="De tre sifforna som finns i baksidan på ditt kort.">
                            <font>
                               <Font size="14.0" />
                            </font>
