@@ -473,6 +473,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         for (menuItem m : menuItems) {
             m.pane.toBack();
+            m.arrow.toFront();
 
 
 
