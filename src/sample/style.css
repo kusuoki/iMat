@@ -244,10 +244,11 @@
     -fx-background-color:  #002F13;
 }
 
-.tooltip {
+.tooltip-normal {
     -fx-background-color: #404040;
     -fx-font-size: 12px;
     -fx-text-fill: white;
+    -fx-show-delay: 0.2s;
 }
 
 .disabled-button {
