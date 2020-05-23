@@ -529,27 +529,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button layoutX="997.0" layoutY="284.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#emptyShoppingCart" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Rensa kundvagn" textFill="WHITE" AnchorPane.rightAnchor="50.0">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="997.0" layoutY="234.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Lägg till en annan inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
+            <Button fx:id="buttonNext1" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" style="-fx-background-radius: 20px;" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
             </Button>
-            <Button layoutX="997.0" layoutY="184.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="230.0" style="-fx-background-color: #144f2c;" text="Spara inköpslista" textFill="WHITE" AnchorPane.rightAnchor="50.0">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button fx:id="buttonNext1" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onNextClick1" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Nästa" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Button>
-            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-color: dfdfdf; -fx-background-radius: 20px;" text="Tillbaka" textFill="WHITE">
+            <Button layoutX="320.0" layoutY="686.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="148.0" style="-fx-background-radius: 20px;" styleClass="disabled-button" text="Tillbaka" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>

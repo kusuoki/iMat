@@ -243,3 +243,8 @@
 .save-button:pressed {
     -fx-background-color:  #002F13;
 }
+
+.disabled-button {
+    -fx-background-color: #A0A0A0;
+    -fx-text-fill: white;
+}
