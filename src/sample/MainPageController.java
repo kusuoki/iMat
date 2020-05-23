@@ -378,12 +378,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
-        model.getOrders().clear();
+        //model.getOrders().clear();
 
-        for (int i = 1; i < 20; i++) {
+        /*for (int i = 1; i < 20; i++) {
             Order o = generateTestOrder(new Date(), i, i);
             model.getOrders().add(o);
-        }
+        }*/
+
+
         onSearch();
         initMenuButtons();
 
@@ -507,7 +509,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 firstOrderLightbox = true;
                 break;
             }
-            flowPaneTidigareKopDetalj.getChildren().add(new ListItem((ProductA) item.getOrder().getItems().get(i).getProduct(), model, this));
+            flowPaneTidigareKopDetalj.getChildren().add(new ListItem(ProductHandler.getInstance().getProductA(item.getOrder().getItems().get(i).getProduct()), model, this));
         }
         labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage + 1) + " " + "av" + " " + lastOrderLightBoxPage);
     }
@@ -536,6 +538,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         for (menuItem m : menuItems) {
             m.pane.toBack();
+            m.arrow.toFront();
 
 
             if (m.arrow.getId().equals("imageViewArrowFavoriter") || m.arrow.getId().equals("imageViewArrowErbjudanden")) {
@@ -555,10 +558,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                         menuOnClick(m);
                     });
 
+                    buttonFavoriter.hoverProperty().addListener((event) -> menuOnHover(m));
+
                 } else if (m.arrow.getId().equals("imageViewArrowErbjudanden")) {
                     /*
                     Vad som ska hända när man klickar på erbjudanden (måste sättas actionlistener för både bildvyn och knappen
                     * */
+                    buttonErbjudanden.hoverProperty().addListener((event) -> menuOnHover(m));
                 }
             } else {
                 //Sätter en listener på knapp så att styleclassen ändras när man klickat på den
