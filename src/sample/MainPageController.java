@@ -799,14 +799,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         //Sets the new styleclass for the clicked button
-        if (!b.getStyleClass().toString().equals("menuButtonClicked")) {
-            b.getStyleClass().clear();
-            b.getStyleClass().add("menuButtonClicked");
-            setLightgreenArrow(m.arrow);
-            if (m.anchorPane != null) {
-                m.anchorPane.toFront();
-            }
+
+        b.getStyleClass().clear();
+        b.getStyleClass().add("menuButtonClicked");
+        setLightgreenArrow(m.arrow);
+        if (m.anchorPane != null) {
+            m.anchorPane.toFront();
         }
+
         for (menuItem item : menuItems) {
             resetButtonStyle(item);
         }
@@ -851,12 +851,23 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void mainPageToFront() {
         anchorPaneMainPage.toFront();
-        if (lastClickedButton != null && lastClickedArrow != null) {
-            setDarkgreenArrow(lastClickedArrow);
-            lastClickedButton.getStyleClass().clear();
-            lastClickedButton.getStyleClass().add("menuButton");
-            lastClickedButton = null;
+        if (currentlySelectedPane != null) {
             lastClickedArrow = null;
+            lastClickedButton = null;
+
+            for (menuItem item : menuItems) {
+                resetButtonStyle(item);
+            }
+        } else {
+            if (lastClickedArrow != null) {
+                setDarkgreenArrow(lastClickedArrow);
+                lastClickedArrow = null;
+            }
+            if (lastClickedButton != null) {
+                lastClickedButton.getStyleClass().clear();
+                lastClickedButton.getStyleClass().add("menuButton");
+                lastClickedButton = null;
+            }
         }
     }
 
