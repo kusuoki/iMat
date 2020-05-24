@@ -22,8 +22,10 @@
 
 .order-show-details:hover {
     -fx-text-fill: #00682B;
+    -fx-cursor: hand;
 }
 
 .order-show-details:pressed {
     -fx-text-fill: #002F13;
+    -fx-cursor: hand;
 }

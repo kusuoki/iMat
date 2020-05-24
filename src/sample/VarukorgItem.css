@@ -18,3 +18,22 @@
     -fx-font-weight: bold;
 }
 
+.add-button {
+    -fx-background-color: #144f2c;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.6, 1, 1);
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: Lato;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-background-radius: 10;
+}
+
+.add-button:hover {
+    -fx-background-color: #00682B;
+    -fx-cursor: hand;
+}
+
+.add-button:pressed {
+    -fx-background-color: #002F13;
+    -fx-cursor: hand;
+}

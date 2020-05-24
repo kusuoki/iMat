@@ -11,10 +11,12 @@
 
 .add-button:hover {
     -fx-background-color: #00682B;
+    -fx-cursor: hand;
 }
 
 .add-button:pressed {
     -fx-background-color: #002F13;
+    -fx-cursor: hand;
 }
 
 .card-effect{
@@ -59,4 +61,5 @@
 }
 .favorite-button:hover{
     -fx-image: url("resources/Icons/ic_favorite_border_red_24dp_hover.png");
+    -fx-cursor: hand;
 }

@@ -17,13 +17,13 @@
         <Label fx:id="labelVarukorgPris" layoutX="237.0" layoutY="10.0" styleClass="varu-pris" text="Pris" />
 
       <TextField fx:id="labelVarukorgAntal" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="31.0" text="10" />
-      <ImageView fx:id="varukorgItemMinusButton" fitHeight="15.0" fitWidth="15.0" layoutX="157.0" layoutY="14.0" onMouseClicked="#minusButton" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="varukorgItemMinusButton" fitHeight="15.0" fitWidth="15.0" layoutX="157.0" layoutY="14.0" onMouseClicked="#minusButton" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
 
          <image>
             <Image url="@resources/Buttons/Minus-knapp.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="varukorgItemPlusButton" fitHeight="15.0" fitWidth="15.0" layoutX="209.0" layoutY="14.0" onMouseClicked="#plusButton" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="varukorgItemPlusButton" fitHeight="15.0" fitWidth="15.0" layoutX="209.0" layoutY="14.0" onMouseClicked="#plusButton" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
          <image>
             <Image url="@resources/Buttons/Plus-knapp.png" />
          </image>

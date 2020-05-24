@@ -11,6 +11,7 @@
 
 .links:hover {
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
 
 .varukorgTotal {
@@ -59,6 +60,7 @@
     -fx-background-insets: 1px, 1px, 1px, 1px;
     -fx-font-size: 15px;
     -fx-alignment: center;
+    -fx-cursor: hand;
 }
 
 .menuButtonClicked {
@@ -71,6 +73,7 @@
     -fx-alignment: center;
     -fx-pref-width: 225px;
     -fx-pref-height: 47px;
+    -fx-cursor: hand;
 }
 
 .menuButtonIndicator {
@@ -90,10 +93,12 @@
 
 .payButton:hover {
     -fx-background-color: #FFCA63;
+    -fx-cursor: hand;
 }
 
 .payButton:pressed {
     -fx-background-color: #DB9B1E;
+    -fx-cursor: hand;
 }
 
 .topMenuButton {
@@ -107,7 +112,7 @@
 
 .topMenuButton:hover{
     -fx-background-color: #00692a;
-
+    -fx-cursor: hand;
 }
 
 .topMenuButton:pressed{
@@ -116,6 +121,7 @@
     -fx-border-color: white;
     -fx-border-width: 1px;
     -fx-background-insets: 1px, 1px, 1px, 1px;
+    -fx-cursor: hand;
 }
 
 .filterButton {
@@ -129,6 +135,7 @@
     -fx-border-style: solid;
     -fx-border-color: #144f2c;
     -fx-font-size: 18px;
+    -fx-cursor: hand;
 }
 
 .searchButton {
@@ -138,10 +145,12 @@
 
 .searchButton:hover {
     -fx-background-color: #00943D;
+    -fx-cursor: hand;
 }
 
 .searchButton:pressed {
     -fx-background-color: #002F13;
+    -fx-cursor: hand;
 }
 
 .nonRoundedButton {
@@ -164,10 +173,12 @@
 
 .backToStoreButton:hover {
     -fx-background-color:  #00682B;
+    -fx-cursor: hand;
 }
 
 .backToStoreButton:pressed {
     -fx-background-color:  #002F13;
+    -fx-cursor: hand;
 }
 
 .YellowButton {
@@ -178,10 +189,12 @@
 
 .YellowButton:hover {
     -fx-background-color: #FFCA63;
+    -fx-cursor: hand;
 }
 
 .YellowButton:pressed {
     -fx-background-color: #DB9B1E;
+    -fx-cursor: hand;
 }
 
 .add-button {
@@ -196,11 +209,14 @@
 
 .add-button:hover {
     -fx-background-color: #00682B;
+    -fx-cursor: hand;
 }
 
 .add-button:pressed {
     -fx-background-color: #002F13;
+    -fx-cursor: hand;
 }
+
 /* add this class to objects that can be hovered on */
 .hoverable:hover{
     -fx-cursor: hand;
@@ -239,10 +255,12 @@
 
 .save-button:hover {
     -fx-background-color:  #00682B;
+    -fx-cursor: hand;
 }
 
 .save-button:pressed {
     -fx-background-color:  #002F13;
+    -fx-cursor: hand;
 }
 
 .tooltip-normal {
@@ -263,6 +281,7 @@
 }
 .favorite-button:hover{
     -fx-image: url("resources/Icons/ic_favorite_border_red_48dp_hover.png");
+    -fx-cursor: hand;
 }
 
 .lightbox-price-tag-text {
@@ -291,8 +310,10 @@
 
 .done-button:hover {
     -fx-background-color: #00682B;
+    -fx-cursor: hand;
 }
 
 .done-button:pressed {
     -fx-background-color: #002F13;
+    -fx-cursor: hand;
 }
