@@ -386,7 +386,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
-      //  resources/Icons/ic_favorite_border_red_48d.png"
+        //  resources/Icons/ic_favorite_border_red_48d.png"
 
         //model.getOrders().clear();
 
@@ -880,16 +880,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         labelMainLightboxVara.setText(item.product.getName());
         labelMainLightboxPrisPaket.setText(item.product.getPrice() + " " + item.product.getUnit());
         labelMainLightboxPrice.setText(String.valueOf(item.product.getPrice()) + "kr");
-        labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod" +
-                " tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in " +
-                "voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-                "proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
-        // labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        // tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        // laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        // cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-        // deserunt mollit anim id est laborum.");
+        // labelMainLightboxBeskrivning.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
         int amount = model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product);
         if (amount > 0) {
             lightboxPlusMinusPane.toFront();
@@ -926,12 +917,12 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
     }
 
-   /* public Image getFavoriteImage(boolean isFavorite) {
-        if (!isFavorite) {
-            return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
-        }
-        return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
-    }*/
+    /* public Image getFavoriteImage(boolean isFavorite) {
+         if (!isFavorite) {
+             return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
+         }
+         return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
+     }*/
     public void setFavoriteImage(boolean isFavorite){       //mindre elegant kod än den tidigare lösningen för favorit-knappen. men nu funkar den likadant som för list items
         if(!isFavorite){
             imageViewMainLightboxFavouriteFilled.toBack();
@@ -1360,7 +1351,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxMinusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Buttons/Minus-knapp-pressed.png")));
     }
-    
+
     @FXML
     public void homeButtonMouseEntered() {
         homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-hover.png")));
@@ -1388,4 +1379,4 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
 
-    }
+}
