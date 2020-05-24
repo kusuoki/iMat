@@ -675,9 +675,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
-        for (menuItem m : menuItems){
-            resetButtonStyle(m);
-        }
         flowPaneTidigareKop.getChildren().clear();
         ordersCurrentlyDisplayed.clear();
         allOrders.clear();
@@ -700,6 +697,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         if (currentlySelectedPane != null) {
             currentlySelectedPane.toBack();
             currentlySelectedPane = null;
+        }
+
+        for (menuItem m : menuItems){
+            resetButtonStyle(m);
         }
     }
 
@@ -806,7 +807,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 m.anchorPane.toFront();
             }
         }
-        resetButtonStyle(m);
+        for (menuItem item : menuItems) {
+            resetButtonStyle(item);
+        }
     }
 
 
@@ -978,9 +981,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
 
         if (lastClickedButton != null && lastClickedArrow != null) {
-            setDarkgreenArrow(lastClickedArrow);
-            lastClickedButton.getStyleClass().clear();
-            lastClickedButton.getStyleClass().add("menuButton");
+            if (currentlySelectedPane != m.pane) {
+                setDarkgreenArrow(lastClickedArrow);
+                lastClickedButton.getStyleClass().clear();
+                lastClickedButton.getStyleClass().add("menuButton");
+            }
+
+            for (menuItem item : menuItems) {
+                resetButtonStyle(item);
+            }
+
             lastClickedButton = null;
             lastClickedArrow = null;
         }
@@ -988,7 +998,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     public void resetButtonStyle(menuItem m) {
         //Återställer stilen på menyknappar
-        if (lastClickedButton != m.button && lastClickedArrow != m.arrow) {
+        if (lastClickedButton != m.button && lastClickedArrow != m.arrow && currentlySelectedPane != m.pane) {
             m.button.getStyleClass().clear();
             m.button.getStyleClass().add("menuButton");
             setDarkgreenArrow(m.arrow);
@@ -1375,6 +1385,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         if (currentlySelectedPane != null) {
             currentlySelectedPane.toBack();
             currentlySelectedPane = null;
+        }
+
+        for (menuItem m : menuItems){
+            resetButtonStyle(m);
         }
     }
 
