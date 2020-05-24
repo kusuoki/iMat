@@ -11,9 +11,12 @@ import java.io.IOException;
 import java.util.List;
 
 public class TidigareKopItem extends AnchorPane {
-    @FXML private Label labelTidigareDatum;
-    @FXML private Label labelTidigarePris;
-    @FXML private Label labelTidigareAntal;
+    @FXML
+    private Label labelTidigareDatum;
+    @FXML
+    private Label labelTidigarePris;
+    @FXML
+    private Label labelTidigareAntal;
 
     private Order prevOrder;
     private MainPageController parentController;
@@ -34,7 +37,11 @@ public class TidigareKopItem extends AnchorPane {
 
         labelTidigareDatum.setText(prevOrder.getDate().toString());
         labelTidigarePris.setText(getOrderTotalCost(prevOrder) + "kr");
-        labelTidigareAntal.setText(prevOrder.getItems().size() + " varor");
+        int antal = 0;
+        for (ShoppingItem shoppingItem : prevOrder.getItems()) {
+            antal += (int) shoppingItem.getAmount();
+        }
+        labelTidigareAntal.setText(antal + " varor");
     }
 
     public int getOrderTotalCost(Order order) {
@@ -47,6 +54,7 @@ public class TidigareKopItem extends AnchorPane {
     }
 
     public Order getOrder() {
+
         return prevOrder;
     }
 
