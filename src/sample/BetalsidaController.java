@@ -592,7 +592,6 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 {
                         save();
                 }
-
         }
 
         @FXML

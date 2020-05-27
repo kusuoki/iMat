@@ -596,12 +596,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 if (m.arrow.getId().equals("imageViewArrowFavoriter")) {
 
                     imageViewArrowFavoriter.setOnMouseClicked(e -> {
+                        search = false;
                         displayListItemFromList(model.getFavorites());
                         menuOnClick(m);
                         favoritePane.toFront();
                     });
                     buttonFavoriter.setOnAction(e ->
                     {
+                        search = false;
                         displayListItemFromList(model.getFavorites());
                         menuOnClick(m);
                         favoritePane.toFront();

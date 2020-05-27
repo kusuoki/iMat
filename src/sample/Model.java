@@ -157,9 +157,8 @@ public class Model {
     public int getNumberOfOrders() {
 
         return iMatDataHandler.getOrders().size();
-
-
     }
+
     public List <Order> getOrders(){
         return iMatDataHandler.getOrders();
 
