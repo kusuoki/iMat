@@ -53,6 +53,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("iMat");
         primaryStage.setScene(new Scene(root, 1377, 750));
+        primaryStage.setResizable(false);
         primaryStage.getIcons().add(new Image("sample/resources/Icons/burger.png"));
         //Fundera på att fixa fullscreen
         //primaryStage.setMaximized(true);
