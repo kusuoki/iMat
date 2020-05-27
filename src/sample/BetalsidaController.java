@@ -86,6 +86,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         private Parent paymentPage;
         private BackButton backButton = BackButton.getBackButton();
         private KontoinstallningController kontoinstallningController;
+        private TextField currentErrorTextField;
 
         @FXML
         Button buttonBack1;
@@ -288,7 +289,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldFirstname.getText().length() > 0) {
                                 textfieldFirstname.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldFirstname && isTextFieldEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) {
                                labelErrorMessage.toBack();
                         }
                 });
@@ -296,7 +297,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldLastname.getText().length() > 0) {
                                 textfieldLastname.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldLastname && isTextFieldEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -304,7 +305,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldAdress.getText().length() > 0) {
                                 textfieldAdress.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldAdress && isTextFieldEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -312,7 +313,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldStad.getText().length() > 0) {
                                 textfieldStad.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldStad && isTextFieldEmpty(textfieldStad, "Stad kan inte vara tom!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -321,7 +322,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (isValidValue(newValue, "PostNumber") || newValue.length() == 0) {
                                 textfieldPostnummer.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldPostnummer && checkValidValue(textfieldPostnummer, "PostNumber", "Ogiltigt postnummer!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -329,7 +330,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (isValidValue(newValue, "Email") || newValue.length() == 0) {
                                 textfieldEmail.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldEmail && checkValidValue(textfieldEmail, "Email", "Ogiltigt e-mail adress!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -337,7 +338,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (isValidValue(newValue, "Phone") || newValue.length() == 0) {
                                 textfieldTelefonnummer.getStyleClass().remove("error");
                         }
-                        if (isContactInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldTelefonnummer && checkValidValue(textfieldTelefonnummer, "Phone", "Ogiltigt telefonnummer!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -358,7 +359,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldKortnummer2.positionCaret(4);
                         }
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -374,7 +375,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldKortnummer3.positionCaret(4);
                         }
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -389,7 +390,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldKortnummer4.positionCaret(4);
                         }
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -406,10 +407,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring1.positionCaret(2);
                         }*/
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
                                 labelErrorMessage.toBack();
                         }
                 });
+
                 textfieldExpiring1.textProperty().addListener((observable, oldValue, newValue) -> {
                         numberOnlyTextField(textfieldExpiring1, oldValue, newValue, 2);
 
@@ -426,7 +428,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 }
                         }*/
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldExpiring1 && checkValidValue(textfieldExpiring1, "Month", "Ogiltig månad!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -448,7 +450,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 }
                         }*/
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldExpiring2 && checkValidValue(textfieldExpiring2, "Year", "Ogiltigt årtal!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -459,7 +461,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldCVC.getStyleClass().remove("error");
                         }
 
-                        if (isPaymentInfoCorrect(false)) {
+                        if (currentErrorTextField == textfieldCVC && checkValidValue(textfieldCVC, "CVV", "CVV nummer kan inte vara tomt!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -543,7 +545,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man klickar på andra nästa
         @FXML
         public void onNextClick2() {
-                if (isContactInfoCorrect(true)) {
+                if (isContactInfoCorrect()) {
                         anchorPaneBetalningsuppgifter.toFront();
                         buttonTidigareKop.toFront();
                 }
@@ -559,7 +561,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         //När man klickar på tredje nästa
         @FXML
         public void onNextClick3() {
-                if (isPaymentInfoCorrect(true)) {
+                if (isPaymentInfoCorrect()) {
                         anchorPaneSlutfor.toFront();
                         buttonTidigareKop.toFront();
                         setData();
@@ -709,102 +711,77 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 kontoinstallningController.updateInformation();
         }
 
-        public boolean isPaymentInfoCorrect(boolean callErrors) {
-                boolean isReady = true;
-                if (getCurrentCardNumber().length() != 16 || !isValidValue(getCurrentCardNumber(), "CardType")) {
-                        if (callErrors) {
-                                setCardNumberError();
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldExpiring1.getText(), "Month")) {
-                        if (callErrors) {
-                                textfieldExpiring1.getStyleClass().remove("error");
-                                textfieldExpiring1.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldExpiring2.getText(), "Year")) {
-                        if (callErrors) {
-                                textfieldExpiring2.getStyleClass().remove("error");
-                                textfieldExpiring2.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldCVC.getText(), "CVV")) {
-                        if (callErrors) {
-                                textfieldCVC.getStyleClass().remove("error");
-                                textfieldCVC.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
+        public boolean isPaymentInfoCorrect() {
+                if (!isCardNumberValid()) return false;
+                if (!checkValidValue(textfieldExpiring1, "Month", "Ogiltig månad!")) return false;
+                if (!checkValidValue(textfieldExpiring2, "Year", "Ogiltigt årtal!")) return false;
+                if (!checkValidValue(textfieldCVC, "CVV", "CVV nummer kan inte vara tomt!")) return false;
 
-                if (callErrors && !isReady) {
-                        labelErrorMessage.toFront();
-                } else if (isReady){
-                        labelErrorMessage.toBack();
-                }
-                return isReady;
+                labelErrorMessage.toBack();
+                return true;
         }
 
-        public boolean isContactInfoCorrect(boolean callErrors) {
-                boolean isReady = true;
-                if (textfieldFirstname.getText().length() == 0) {
-                        if (callErrors) {
-                                textfieldFirstname.getStyleClass().remove("error");
-                                textfieldFirstname.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (textfieldLastname.getText().length() == 0) {
-                        if (callErrors) {
-                                textfieldLastname.getStyleClass().remove("error");
-                                textfieldLastname.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (textfieldAdress.getText().length() == 0) {
-                        if (callErrors) {
-                                textfieldAdress.getStyleClass().remove("error");
-                                textfieldAdress.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (textfieldStad.getText().length() == 0) {
-                        if (callErrors) {
-                                textfieldStad.getStyleClass().remove("error");
-                                textfieldStad.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldTelefonnummer.getText(), "Phone")) {
-                        if (callErrors) {
-                                textfieldTelefonnummer.getStyleClass().remove("error");
-                                textfieldTelefonnummer.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldEmail.getText(), "Email")) {
-                        if (callErrors) {
-                                textfieldEmail.getStyleClass().remove("error");
-                                textfieldEmail.getStyleClass().add("error");
-                        }
-                        isReady = false;
-                }
-                if (!isValidValue(textfieldPostnummer.getText(), "PostNumber")) {
-                        if (callErrors) {
-                                textfieldPostnummer.getStyleClass().remove("error");
-                                textfieldPostnummer.getStyleClass().add("error");
-                        }
-                        isReady = false;
+        public boolean isContactInfoCorrect() {
+                if (!isTextFieldEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) return false;
+                if (!isTextFieldEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) return false;
+                if (!isTextFieldEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) return false;
+                if (!isTextFieldEmpty(textfieldStad, "Stad kan inte vara tom!")) return false;
+
+                if (!checkValidValue(textfieldPostnummer, "PostNumber", "Ogiltigt postnummer!")) return false;
+                if (!checkValidValue(textfieldEmail, "Email", "Ogiltigt e-mail adress!")) return false;
+                if (!checkValidValue(textfieldTelefonnummer, "Phone", "Ogiltigt telefonnummer!")) return false;
+
+                labelErrorMessage.toBack();
+                return true;
+        }
+
+        public boolean isCardNumberValid() {
+                if (getCurrentCardNumber().length() != 16 || !isValidValue(getCurrentCardNumber(), "CardType")) {
+                        currentErrorTextField = textfieldKortnummer1;
+                        setCardNumberError();
+                        labelErrorMessage.setText("Felaktigt kortnummmer!");
+                        labelErrorMessage.toFront();
+                        return false;
                 }
 
-                if (callErrors && !isReady) {
-                        labelErrorMessage.toFront();
-                } else if (isReady){
-                        labelErrorMessage.toBack();
+                if (currentErrorTextField == textfieldKortnummer1) {
+                        currentErrorTextField = null;
                 }
-                return isReady;
+                return true;
+        }
+
+        public boolean checkValidValue(TextField tf, String type, String message) {
+                if (!isValidValue(tf.getText(), type)) {
+                        currentErrorTextField = tf;
+                        tf.getStyleClass().remove("error");
+                        tf.getStyleClass().add("error");
+                        labelErrorMessage.setText(message);
+                        labelErrorMessage.toFront();
+                        return false;
+                }
+
+                if (currentErrorTextField == tf) {
+                        currentErrorTextField = null;
+                }
+                labelErrorMessage.toBack();
+                return true;
+        }
+
+        public boolean isTextFieldEmpty(TextField tf, String message) {
+                if (tf.getText().length() == 0) {
+                        currentErrorTextField = tf;
+                        tf.getStyleClass().remove("error");
+                        tf.getStyleClass().add("error");
+                        labelErrorMessage.setText(message);
+                        labelErrorMessage.toFront();
+                        return false;
+                }
+
+                if (currentErrorTextField == tf) {
+                        currentErrorTextField = null;
+                }
+                labelErrorMessage.toBack();
+                return true;
         }
 
         public void setStage(Stage stage, Parent mainPage, Parent customerServicePage, Parent paymentPage){
