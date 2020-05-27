@@ -58,6 +58,8 @@ public class KontoinstallningController implements Initializable {
     private MainPageController mainPageController;
     private BetalsidaController betalsidaController;
 
+    private PauseTransition delay;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         card = handler.getCreditCard();
@@ -306,13 +308,16 @@ public class KontoinstallningController implements Initializable {
 
     @FXML
     public void save() {
-        PauseTransition delay = new PauseTransition(Duration.seconds(5));
+        if (delay != null) {
+            delay.stop();
+        }
+        delay = new PauseTransition(Duration.seconds(5));
         messageLabel.toFront();
 
         if (isReadyToSave()) {
             messageLabel.setStyle("-fx-text-fill: #00692A");
             messageLabel.setText("Kontoinställning sparade!");
-            delay.setOnFinished(actionEvent -> messageLabel.toBack());
+
 
             customer.setFirstName(firstNameTextField.getText());
             customer.setLastName(lastNameTextField.getText());
@@ -327,11 +332,8 @@ public class KontoinstallningController implements Initializable {
             card.setVerificationCode((CVVTextField.getText().length() == 0) ? 0 : Integer.parseInt(CVVTextField.getText()));
             System.out.println("Account settings saved! Probably.");
             betalsidaController.updateInformation();
-        } else {
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Felaktig inmatning! Ta bort eller fixa de för att spara.");
-            delay.setOnFinished(actionEvent -> messageLabel.toBack());
         }
+        delay.setOnFinished(actionEvent -> messageLabel.toBack());
         delay.play();
     }
 
@@ -445,46 +447,57 @@ public class KontoinstallningController implements Initializable {
      * please don't look at this method
      */
     private boolean isReadyToSave() {
-        boolean isReady = true;
+        if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostNumber")) {
+            postNumberTextField.getStyleClass().remove("error");
+            postNumberTextField.getStyleClass().add("error");
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Ogiltigt postnummer!");
+            return false;
+        }
+        if (eMailTextField.getText().length() != 0 && !isValidValue(eMailTextField.getText(), "Email")) {
+            eMailTextField.getStyleClass().remove("error");
+            eMailTextField.getStyleClass().add("error");
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Ogiltigt e-mail adress!");
+            return false;
+        }
+        if (phoneTextField.getText().length() != 0 && !isValidValue(phoneTextField.getText(), "Phone")) {
+            phoneTextField.getStyleClass().remove("error");
+            phoneTextField.getStyleClass().add("error");
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Ogiltigt telefonnummer!");
+            return false;
+        }
         int cardNumberLength = getCurrentCardNumber().length();
         if ((cardNumberLength != 0 && !isValidValue(cardNumberTextField_1.getText(), "CardType")) ||
                 (cardNumberLength != 0 && cardNumberLength != 16)) {
             removeCardNumberError();
             setCardNumberError();
-            isReady = false;
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Ogilitgt kortnummer!");
         }
-
         if (cardExpiryMonthTextField.getText().length() != 0 && !isValidValue(cardExpiryMonthTextField.getText(), "Month")) {
             cardExpiryMonthTextField.getStyleClass().remove("error");
             cardExpiryMonthTextField.getStyleClass().add("error");
-            isReady = false;
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Felaktig månad!");
+            return false;
         }
         if (cardExpiryYearTextField.getText().length() != 0 && !isValidValue(cardExpiryYearTextField.getText(), "Year")) {
             cardExpiryYearTextField.getStyleClass().remove("error");
             cardExpiryYearTextField.getStyleClass().add("error");
-            isReady = false;
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("Felaktigt årtal!");
+            return false;
         }
         if (CVVTextField.getText().length() != 0 && !isValidValue(CVVTextField.getText(), "CVV")) {
             CVVTextField.getStyleClass().remove("error");
             CVVTextField.getStyleClass().add("error");
-            isReady = false;
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+            messageLabel.setText("CVV nummer kan inte vara 0!");
+            return false;
         }
-        if (phoneTextField.getText().length() != 0 && !isValidValue(phoneTextField.getText(), "Phone")) {
-            phoneTextField.getStyleClass().remove("error");
-            phoneTextField.getStyleClass().add("error");
-            isReady = false;
-        }
-        if (eMailTextField.getText().length() != 0 && !isValidValue(eMailTextField.getText(), "Email")) {
-            eMailTextField.getStyleClass().remove("error");
-            eMailTextField.getStyleClass().add("error");
-            isReady = false;
-        }
-        if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostNumber")) {
-            postNumberTextField.getStyleClass().remove("error");
-            postNumberTextField.getStyleClass().add("error");
-            isReady = false;
-        }
-        return isReady;
+        return true;
     }
 
     /*
