@@ -624,6 +624,11 @@
                      </image></ImageView>
                </children>
             </Pane>
+            <ImageView fx:id="clearSearch" fitHeight="27.0" fitWidth="30.0" layoutX="836.0" layoutY="99.0" onMouseClicked="#onClearSearchboxClicked" onMouseEntered="#clearSearchMouseEntered" onMouseExited="#clearSearchboxMouseExited" onMousePressed="#clearSearchboxMouseClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/ic_close_black_64dp.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
 

@@ -208,6 +208,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     AnchorPane anchorPaneMainLightbox;
 
     @FXML ImageView lightboxOrderClose;
+    @FXML ImageView clearSearch;
 
     // detailed view @FXML
     @FXML
@@ -1438,5 +1439,29 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     public void closeLightboxMouseClicked() {
         lightboxMainClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
                 "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void clearSearchMouseEntered() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp_hover.png")));
+    }
+
+    @FXML
+    public void clearSearchboxMouseExited() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void clearSearchboxMouseClicked() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void onClearSearchboxClicked() {
+        searchField.clear();
+        onSearch();
     }
 }
