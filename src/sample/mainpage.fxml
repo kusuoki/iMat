@@ -196,9 +196,9 @@
             </Pane>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
             <children>
-            <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;">
+            <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;" stylesheets="@style.css">
             <children>
                 <FlowPane fx:id="flowPaneTidigareKopDetalj" layoutX="41.0" layoutY="127.0" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" />
                 <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#addAllItemsInTidigareKop" prefHeight="30.0" prefWidth="314.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />
@@ -218,7 +218,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                <ImageView fitHeight="39.0" fitWidth="36.0" layoutX="699.0" layoutY="10.0" onMouseClicked="#exitOrderLightbox" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="lightboxOrderClose" fitHeight="39.0" fitWidth="36.0" layoutX="699.0" layoutY="10.0" onMouseClicked="#exitOrderLightbox" onMouseEntered="#closeLightboxOrderMouseEntered" onMouseExited="#closeLightboxOrderMouseExited" onMousePressed="#closeLightboxOrderMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="hoverable">
                     <image>
                         <Image url="@resources/Icons/ic_close_black_48dp.png" />
                     </image>
@@ -264,7 +264,7 @@
             </Pane>
             </children>
         </AnchorPane>
-      <AnchorPane fx:id="anchorPaneMainLightbox" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+      <AnchorPane fx:id="anchorPaneMainLightbox" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
          <children>
              <AnchorPane layoutX="314.0" layoutY="168.0" onMouseClicked="#mouseTrap" prefHeight="414.0" prefWidth="650.0" style="-fx-background-color: white;">
                  <children>
@@ -273,9 +273,9 @@
                              <Font size="20.0" />
                          </font>
                      </Label>
-                     <ImageView fx:id="imageViewMainLightboxClose" fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" onMouseClicked="#mainPageToFront" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fx:id="lightboxMainClose" fitHeight="30.0" fitWidth="35.0" layoutX="613.0" layoutY="8.0" onMouseClicked="#mainPageToFront" onMouseEntered="#closeLightboxMouseEntered" onMouseExited="#closeLightboxMouseExited" onMousePressed="#closeLightboxMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="hoverable">
                          <image>
-                             <Image url="@resources/Icons/ic_close_black_24dp.png" />
+                             <Image url="@resources/Icons/ic_close_black_64dp.png" />
                          </image>
                      </ImageView>
                   <Pane layoutX="547.0" layoutY="73.0" prefHeight="48.0" prefWidth="48.0">
