@@ -27,12 +27,7 @@ public class Main extends Application {
         betalLoader.setLocation(getClass().getResource("betalsida.fxml"));
         Parent betal=betalLoader.load(); //ader.load();
         BetalsidaController betalC = betalLoader.getController();
-/*
-        FXMLLoader tidigareKopLoader = new FXMLLoader();
-        tidigareKopLoader.setLocation(getClass().getResource("tidigarekop.fxml"));
-        Parent tidigareKop  =tidigareKopLoader.load();
-        TidigareKopController tidigareKopC = tidigareKopLoader.getController();
-*/
+
         FXMLLoader kundServiceLoader = new FXMLLoader();
         kundServiceLoader.setLocation(getClass().getResource("kundservice.fxml"));
         Parent kundservice = kundServiceLoader.load();

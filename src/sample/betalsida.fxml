@@ -49,153 +49,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="anchorPaneSlutfor" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
-         <children>
-            <Pane prefHeight="536.0" prefWidth="534.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="139.0">
-               <children>
-                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="837.0" style="-fx-background-color: white;">
-                     <children>
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="211.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="111.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="181.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="81.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="21.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="51.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="141.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="389.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="349.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="319.0" prefHeight="18.0" prefWidth="138.0" text="Utgångsdatum (MM/ÅÅ):" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="289.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="259.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" textAlignment="RIGHT" />
-                        <Label alignment="CENTER_RIGHT" layoutX="104.0" layoutY="438.0" prefHeight="17.0" prefWidth="138.0" text="Spara uppgifter:" textAlignment="RIGHT">
-                           <font>
-                              <Font name="System Bold" size="16.0" />
-                           </font>
-                        </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="593.0" layoutY="437.0" prefHeight="27.0" prefWidth="71.0" text="Slutpris:">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="labelTelefonnummer" layoutX="205.0" layoutY="211.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelFirstname" layoutX="205.0" layoutY="21.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelLastname" layoutX="205.0" layoutY="51.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelAdress" layoutX="205.0" layoutY="81.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelStad" layoutX="205.0" layoutY="111.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelPostnummer" layoutX="205.0" layoutY="141.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelLeverans" layoutX="205.0" layoutY="389.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelKortnummer" layoutX="205.0" layoutY="289.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelExpiring" layoutX="205.0" layoutY="319.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelCVC" layoutX="205.0" layoutY="349.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <Label fx:id="labelEmail" layoutX="205.0" layoutY="181.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
-                        <ImageView fx:id="cardTypeImageViewAgain" fitHeight="25.0" fitWidth="45.0" layoutX="205.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@resources/Icons/unknown_card.png" />
-                           </image>
-                        </ImageView>
-                        <CheckBox fx:id="spara" layoutX="256.0" layoutY="442.0" mnemonicParsing="false" styleClass="hoverable">
-                           <tooltip>
-                              <Tooltip styleClass="tooltip-normal" text="Spara dina uppgifter till framtida köp" />
-                           </tooltip>
-                        </CheckBox>
-                        <Line endY="481.0" layoutX="419.0" startY="10.0" stroke="#c4c4c4" />
-                        <Line endX="399.0" layoutY="171.0" startX="20.0" stroke="#c4c4c4" />
-                        <Line endX="399.0" layoutY="241.0" startX="20.0" stroke="#c4c4c4" />
-                        <Line endX="399.0" layoutY="379.0" startX="20.0" stroke="#c4c4c4" />
-                        <Line endX="399.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
-                        <ScrollPane hbarPolicy="NEVER" layoutX="439.0" layoutY="1.0" prefHeight="418.0" prefWidth="369.0" vbarPolicy="ALWAYS">
-                           <content>
-                              <FlowPane fx:id="slutforFlowPane" prefHeight="418.0" prefWidth="352.0" style="-fx-background-color: efefef;" />
-                           </content>
-                        </ScrollPane>
-                        <Line endX="389.0" layoutX="419.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
-                        <Label fx:id="labelSlutforSlutpris" layoutX="670.0" layoutY="437.0" prefHeight="27.0" prefWidth="131.0" text="1800 kr">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Label alignment="CENTER" layoutX="360.0" prefHeight="47.0" prefWidth="117.0" text="Slutför köp" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Label layoutX="368.0" layoutY="96.0" text="Bekräfta kundvagn">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="507.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="814.0" layoutY="96.0" text="Slutför köp">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="647.0" layoutY="96.0" text="Betalningsuppgifter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="buttonBuy" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBuyClick" prefHeight="20.0" prefWidth="148.0" styleClass="YellowButton" text="Köp">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <tooltip>
-                  <Tooltip styleClass="tooltip-normal" text="Lägg din beställning så sköter vi resten" />
-               </tooltip>
-            </Button>
-            <Button fx:id="buttonBack4" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick4" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
-               <font>
-                  <Font size="15.0" />
-               </font>
-               <tooltip>
-                  <Tooltip styleClass="tooltip-normal" text="Tillbaka till föregående steg i betalprocessen" />
-               </tooltip>
-            </Button>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="446.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Green Line.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="401.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="542.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="683.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="728.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Green Line.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="823.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="586.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@resources/Icons/Green Line.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="anchorPaneBekraftaKundvagn" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="446.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
@@ -463,6 +316,170 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <Pane fx:id="buttonTidigareKop" prefHeight="47.0" prefWidth="208.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
+         <children>
+             <Button fx:id="buttonTidigareKöp1" mnemonicParsing="false" onAction="#onHomeButtonClickIcon" prefHeight="36.0" prefWidth="208.0" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE">
+                <font>
+                   <Font size="15.0" />
+                </font>
+               <tooltip>
+                  <Tooltip styleClass="tooltip-normal" text="Tar dig tillbaka till butiken" />
+               </tooltip>
+             </Button>
+             <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="16.0" layoutY="7.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
+                <image>
+                   <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
+                </image>
+             </ImageView>
+         </children>
+      </Pane>
+      <AnchorPane fx:id="anchorPaneSlutfor" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;">
+         <children>
+            <Pane prefHeight="536.0" prefWidth="534.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="220.0" AnchorPane.topAnchor="139.0">
+               <children>
+                  <Pane layoutY="45.0" prefHeight="491.0" prefWidth="837.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="211.0" prefHeight="17.0" prefWidth="138.0" text="Telefonnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="111.0" prefHeight="17.0" prefWidth="138.0" text="Stad:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="181.0" prefHeight="17.0" prefWidth="138.0" text="E-mail:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="81.0" prefHeight="17.0" prefWidth="138.0" text="Gatuadress:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="21.0" prefHeight="17.0" prefWidth="138.0" text="Förnamn:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="51.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="141.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="389.0" prefHeight="17.0" prefWidth="138.0" text="Leveranssätt:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="349.0" prefHeight="17.0" prefWidth="138.0" text="CVV/CVC-kod" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="319.0" prefHeight="18.0" prefWidth="138.0" text="Utgångsdatum (MM/ÅÅ):" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="289.0" prefHeight="17.0" prefWidth="138.0" text="Kortnummer:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="50.0" layoutY="259.0" prefHeight="17.0" prefWidth="138.0" text="Korttyp:" textAlignment="RIGHT" />
+                        <Label alignment="CENTER_RIGHT" layoutX="104.0" layoutY="438.0" prefHeight="17.0" prefWidth="138.0" text="Spara uppgifter:" textAlignment="RIGHT">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER_RIGHT" layoutX="593.0" layoutY="437.0" prefHeight="27.0" prefWidth="71.0" text="Slutpris:">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelTelefonnummer" layoutX="205.0" layoutY="211.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelFirstname" layoutX="205.0" layoutY="21.0" maxWidth="-Infinity" prefHeight="17.0" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelLastname" layoutX="205.0" layoutY="51.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelAdress" layoutX="205.0" layoutY="81.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelStad" layoutX="205.0" layoutY="111.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelPostnummer" layoutX="205.0" layoutY="141.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelLeverans" layoutX="205.0" layoutY="389.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelKortnummer" layoutX="205.0" layoutY="289.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelExpiring" layoutX="205.0" layoutY="319.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelCVC" layoutX="205.0" layoutY="349.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <Label fx:id="labelEmail" layoutX="205.0" layoutY="181.0" maxWidth="-Infinity" prefWidth="200.0" text="Label" />
+                        <ImageView fx:id="cardTypeImageViewAgain" fitHeight="25.0" fitWidth="45.0" layoutX="205.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@resources/Icons/unknown_card.png" />
+                           </image>
+                        </ImageView>
+                        <CheckBox fx:id="spara" layoutX="256.0" layoutY="442.0" mnemonicParsing="false" styleClass="hoverable">
+                           <tooltip>
+                              <Tooltip styleClass="tooltip-normal" text="Spara dina uppgifter till framtida köp" />
+                           </tooltip>
+                        </CheckBox>
+                        <Line endY="481.0" layoutX="419.0" startY="10.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="171.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="241.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="379.0" startX="20.0" stroke="#c4c4c4" />
+                        <Line endX="399.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
+                        <ScrollPane hbarPolicy="NEVER" layoutX="439.0" layoutY="1.0" prefHeight="418.0" prefWidth="369.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <FlowPane fx:id="slutforFlowPane" prefHeight="418.0" prefWidth="352.0" style="-fx-background-color: efefef;" />
+                           </content>
+                        </ScrollPane>
+                        <Line endX="389.0" layoutX="419.0" layoutY="419.0" startX="20.0" stroke="#c4c4c4" />
+                        <Label fx:id="labelSlutforSlutpris" layoutX="670.0" layoutY="437.0" prefHeight="27.0" prefWidth="131.0" text="1800 kr">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label alignment="CENTER" layoutX="360.0" prefHeight="47.0" prefWidth="117.0" text="Slutför köp" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label layoutX="368.0" layoutY="96.0" text="Bekräfta kundvagn">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="507.0" layoutY="86.0" text="Kontaktuppgifter &amp;&#10;Leverans" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="814.0" layoutY="96.0" text="Slutför köp">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="647.0" layoutY="96.0" text="Betalningsuppgifter">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonBuy" layoutX="809.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBuyClick" prefHeight="20.0" prefWidth="148.0" styleClass="YellowButton" text="Köp">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <tooltip>
+                  <Tooltip styleClass="tooltip-normal" text="Lägg din beställning så sköter vi resten" />
+               </tooltip>
+            </Button>
+            <Button fx:id="buttonBack4" layoutX="320.0" layoutY="686.0" mnemonicParsing="false" onAction="#onBackClick4" prefHeight="20.0" prefWidth="148.0" styleClass="backToStoreButton" text="Tillbaka" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+               <tooltip>
+                  <Tooltip styleClass="tooltip-normal" text="Tillbaka till föregående steg i betalprocessen" />
+               </tooltip>
+            </Button>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="446.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Green Line.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="74.0" fitWidth="50.0" layoutX="401.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="543.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="684.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="728.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Green Line.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="92.0" fitWidth="50.0" layoutX="826.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/check_circle_24px_outlined.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="586.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@resources/Icons/Green Line.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="anchorPaneKontakt" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css">
          <children>
             <ImageView fitHeight="9.0" fitWidth="102.0" layoutX="587.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
@@ -592,22 +609,5 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Pane fx:id="buttonTidigareKop" prefHeight="47.0" prefWidth="208.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="40.0">
-         <children>
-             <Button fx:id="buttonTidigareKöp1" mnemonicParsing="false" onAction="#onHomeButtonClickIcon" prefHeight="36.0" prefWidth="208.0" styleClass="backToStoreButton" text="     Tillbaka till butiken" textFill="WHITE">
-                <font>
-                   <Font size="15.0" />
-                </font>
-               <tooltip>
-                  <Tooltip styleClass="tooltip-normal" text="Tar dig tillbaka till butiken" />
-               </tooltip>
-             </Button>
-             <ImageView fitHeight="36.0" fitWidth="24.0" layoutX="16.0" layoutY="7.0" onMouseClicked="#onHomeButtonClickIcon" pickOnBounds="true" preserveRatio="true">
-                <image>
-                   <Image url="@resources/Icons/ic_shopping_cart_white_24dp.png" />
-                </image>
-             </ImageView>
-         </children>
-      </Pane>
     </children>
 </AnchorPane>
