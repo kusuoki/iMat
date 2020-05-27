@@ -207,6 +207,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     AnchorPane anchorPaneMainLightbox;
 
+    @FXML ImageView lightboxOrderClose;
+    @FXML ImageView clearSearch;
+
     // detailed view @FXML
     @FXML
     Pane imageViewMainLightboxImage;
@@ -217,7 +220,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label labelMainLightboxBeskrivning;
     @FXML
-    ImageView imageViewMainLightboxClose;
+    ImageView lightboxMainClose;
     @FXML
     ImageView imageViewMainLightboxFavourite;
     @FXML ImageView imageViewMainLightboxFavouriteFilled;
@@ -384,7 +387,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         if (model.getShoppingCart().getItems().size() > 0) {
             model.updateShoppingCart(model.getShoppingCart().getItems().get(0).getProduct(), 0);
         }
-        model.setImageViewOnHoverEvent(imageViewMainLightboxClose, null);
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
         //  resources/Icons/ic_favorite_border_red_48d.png"
 
@@ -1408,5 +1410,63 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
     }
 
+    @FXML
+    public void closeLightboxOrderMouseEntered() {
+        lightboxOrderClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp_hover.png")));
+    }
 
+    @FXML
+    public void closeLightboxOrderMouseExited() {
+        lightboxOrderClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void closeLightboxOrderMouseClicked() {
+        lightboxOrderClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void closeLightboxMouseEntered() {
+        lightboxMainClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp_hover.png")));
+    }
+
+    @FXML
+    public void closeLightboxMouseExited() {
+        lightboxMainClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void closeLightboxMouseClicked() {
+        lightboxMainClose.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void clearSearchMouseEntered() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp_hover.png")));
+    }
+
+    @FXML
+    public void clearSearchboxMouseExited() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void clearSearchboxMouseClicked() {
+        clearSearch.setImage(new Image(getClass().getClassLoader().getResourceAsStream(
+                "Icons/ic_close_black_64dp.png")));
+    }
+
+    @FXML
+    public void onClearSearchboxClicked() {
+        searchField.clear();
+        onSearch();
+    }
 }
