@@ -61,6 +61,13 @@ public class ListItem extends AnchorPane {
     @FXML
     protected ImageView listItemPlusButton;
 
+    @FXML
+    protected Pane panePreviousPurchase;
+    @FXML
+    protected Label labelPreviousPurchase;
+
+
+
     MainPageController parentController;
     ProductA product;
     Model model;
@@ -197,6 +204,12 @@ public class ListItem extends AnchorPane {
         model.removeFavorite(product);
         emptyHeartPane.toFront();
     }
+
+    public void setOrderPreviousOrderAmount(int amount){
+        labelPreviousPurchase.setText("Tidigare köptes: " + amount + "st");
+        panePreviousPurchase.toFront();
+    }
+
 
     @FXML
     void openDetailedView() {

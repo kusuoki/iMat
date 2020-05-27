@@ -8,6 +8,7 @@ import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class TidigareKopItem extends AnchorPane {
@@ -35,7 +36,9 @@ public class TidigareKopItem extends AnchorPane {
         this.prevOrder = prevOrder;
         this.parentController = parentController;
 
-        labelTidigareDatum.setText(prevOrder.getDate().toString());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(new StringBuilder("yyyy-MM-dd").toString());
+        labelTidigareDatum.setText(simpleDateFormat.format(prevOrder.getDate()));
+
         labelTidigarePris.setText(getOrderTotalCost(prevOrder) + "kr");
         int antal = 0;
         for (ShoppingItem shoppingItem : prevOrder.getItems()) {

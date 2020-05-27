@@ -597,8 +597,14 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
         @FXML
         public void emptyShoppingCart() {
-                model.clearShoppingCart();
-                betalsidaItemMap.clear();
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+                alert.setHeaderText("Är du säker på att du vill rensa varukorgen?");
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES) {
+                        model.clearShoppingCart();
+                        betalsidaItemMap.clear();
+                }
         }
 
         public void updateSlutFor() {

@@ -534,7 +534,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 firstOrderLightbox = true;
                 break;
             }
-            flowPaneTidigareKopDetalj.getChildren().add(new ListItem(ProductHandler.getInstance().getProductA(item.getOrder().getItems().get(i).getProduct()), model, this));
+
+            ListItem listItem = new ListItem(ProductHandler.getInstance().getProductA(item.getOrder().getItems().get(i).getProduct()), model, this);
+            listItem.setOrderPreviousOrderAmount((int) item.getOrder().getItems().get(i).getAmount());
+            flowPaneTidigareKopDetalj.getChildren().add(listItem);
+            listItem.switchButtons();
         }
         labelVarusida1.setText("Sida" + " " + (currentOrderLightboxPage + 1) + " " + "av" + " " + lastOrderLightBoxPage);
     }
@@ -549,16 +553,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         //Inte riktigt färdig än... uppdaterar inte kundvagnen mer än en gång. Om det beror på
         //att shoppingcarten inte får reda på det eller om logiken nedan inte funkar som tänkt.
 
-        for (ShoppingItem s:currentTidigareKopItem.getOrder().getItems()) {
+        for (ShoppingItem s : currentTidigareKopItem.getOrder().getItems()) {
             if (Model.getInstance().getShoppingItemMap().containsKey(s.getProduct().getProductId())){
-                s.setAmount(s.getAmount()+s.getAmount());
+
+                System.out.println(s.getAmount());
+                model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount());
+                //s.setAmount(s.getAmount() + s.getAmount());
             }
             else{
                 Model.getInstance().addToShoppingCart(s.getProduct());
+                model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount() - 1);
             }
-
         }
-
+        exitOrderLightbox();
 
     }
 
@@ -666,8 +673,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         model.getShoppingCart().addShoppingCartListener(this);
 
-       /* model.addToShoppingCart(model.getProduct(10));
-        flowPaneVarukorg.getChildren().add(new VarukorgItem(model.getShoppingItemMap().get(10), model));*/
 
     }
 
@@ -1071,7 +1076,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneVarukorg.getChildren().clear();
         for (VarukorgItem item : varukorgItems) {
             item.updateThisItem();
-            flowPaneVarukorg.getChildren().add(item);
+            flowPaneVarukorg.getChildren().add(0,item);
         }
 
 
