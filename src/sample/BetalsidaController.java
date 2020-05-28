@@ -613,7 +613,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
 
                 slutforFlowPane.getChildren().clear();
                 for (ShoppingItem item : shoppingCart.getItems()) {
-                        slutforFlowPane.getChildren().add(new SlutforItem(item));
+                        slutforFlowPane.getChildren().add(0, new SlutforItem(item));
                 }
 
                 labelSlutforSlutpris.setText(model.doubleToString(shoppingCart.getTotal()) + " kr");
@@ -630,7 +630,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 betalsidaItem = new BetalsidaItem(shoppingItem, this);
                                 betalsidaItemMap.put(shoppingItem.getProduct().getProductId(), betalsidaItem);
                         }
-                        flowPaneBekrafta.getChildren().add(betalsidaItem);
+                        flowPaneBekrafta.getChildren().add(0, betalsidaItem);
                         amountOfProduct += betalsidaItem.getAmount();
                         betalsidaItem.updateTextFields();
                 }

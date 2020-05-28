@@ -1513,7 +1513,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onClearSearchboxClicked() {
-        searchField.clear();
-        onSearch();
+        if (!searchField.getText().isEmpty()) {
+            searchField.clear();
+            onSearch();
+        }
     }
 }
