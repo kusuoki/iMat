@@ -739,7 +739,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 if (getCurrentCardNumber().length() != 16 || !isValidValue(getCurrentCardNumber(), "CardType")) {
                         currentErrorTextField = textfieldKortnummer1;
                         setCardNumberError();
-                        labelErrorMessage.setText("Felaktigt kortnummmer!");
+                        labelErrorMessage.setText("Ogiltigt kortnummmer! Vi accepterar bara Visa eller Mastercard.");
                         labelErrorMessage.toFront();
                         return false;
                 }
