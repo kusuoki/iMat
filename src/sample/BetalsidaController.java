@@ -685,7 +685,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 }
                 else if(radioAffarLeverans.isSelected())
                 {
-                    labelLeverans.setText("Finns redo att hämta imorgon i " + comboAffar.getValue());
+                    labelLeverans.setText("Finns redo att hämta imorgon i: " + comboAffar.getValue());
                 }
                 cardTypeImageView.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
                 cardTypeImageViewAgain.setImage(getCardTypeImage(checkCardType(textfieldKortnummer1.getText())));
