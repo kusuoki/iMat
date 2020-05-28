@@ -510,7 +510,14 @@
                               <Tooltip styleClass="tooltip-normal" text="Gå till nästa sida för att se fler varor" wrapText="true" />
                            </tooltip>
                          </Label>
-                         <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
+                         <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORITER" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children></FlowPane>
                          <Label fx:id="labelCrumbSecond" layoutX="120.0" layoutY="14.0" onMouseClicked="#onSecondBreadcrumb" styleClass="links" text="Crumb 2 " textFill="WHITE">
                              <font>
                                  <Font size="14.0" />
@@ -559,11 +566,39 @@
                   </Pane>
                   <Pane fx:id="favoritePane" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORITER" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORTIER" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Label>
+                     </children></Pane>
+                  <Label fx:id="labelNoResults" alignment="CENTER" prefHeight="540.0" prefWidth="637.0" text="Hittade inga varor :( pröva att söka på något annat" textAlignment="CENTER" textFill="#5e5e5e" wrapText="true">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Pane fx:id="paneErbjudande" prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
+                     <children>
+                        <FlowPane fx:id="flowPaneErbjudande" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="ERBJUDANDE" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelPreviousOrderPage1" layoutX="156.0" layoutY="509.0" onMouseClicked="#previousOrderPageButton" styleClass="links" text="Föregående sida" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelNextpage11" layoutX="383.0" layoutY="509.0" onMouseClicked="#nextOrderPageButton" styleClass="links" text="Nästa sida" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelOrder1" alignment="CENTER" layoutX="279.0" layoutY="509.0" prefHeight="17.0" prefWidth="70.0" text="Sida 0 av 0" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="13.0" />
+                           </font></Label>
                      </children>
                   </Pane>
                  </children>

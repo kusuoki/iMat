@@ -207,8 +207,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     AnchorPane anchorPaneMainLightbox;
 
-    @FXML ImageView lightboxOrderClose;
-    @FXML ImageView clearSearch;
+    @FXML
+    ImageView lightboxOrderClose;
+    @FXML
+    ImageView clearSearch;
 
     // detailed view @FXML
     @FXML
@@ -223,7 +225,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     ImageView lightboxMainClose;
     @FXML
     ImageView imageViewMainLightboxFavourite;
-    @FXML ImageView imageViewMainLightboxFavouriteFilled;
+    @FXML
+    ImageView imageViewMainLightboxFavouriteFilled;
     @FXML
     Label labelMainLightboxPrice;
     @FXML
@@ -306,10 +309,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Label homeButtonLabel;
 
+    //Erbjudande grejer
+    @FXML
+    FlowPane flowPaneErbjudande;
+    @FXML
+    Pane paneErbjudande;
 
     @FXML
     javafx.scene.control.Button buttonBetala;
-
 
     @FXML
     Button buttonSok;
@@ -330,6 +337,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Pane startPane;
     @FXML
     Pane favoritePane;
+    @FXML
+    Label labelNoResults;
 
     Pane currentlySelectedPane;
     Button lastClickedButton;
@@ -598,6 +607,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     imageViewArrowFavoriter.setOnMouseClicked(e -> {
                         search = false;
                         displayListItemFromList(model.getFavorites());
+                        labelNoResults.toFront();
+                        if (model.getFavorites().size() == 0){
+                            labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
+                        }
+                        else {
+                            labelNoResults.toBack();
+                        }
                         menuOnClick(m);
                         favoritePane.toFront();
                     });
@@ -605,6 +621,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     {
                         search = false;
                         displayListItemFromList(model.getFavorites());
+                        labelNoResults.toFront();
+                        if (model.getFavorites().size() == 0){
+                            labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
+                        }
+                        else {
+                            labelNoResults.toBack();
+                        }
                         menuOnClick(m);
                         favoritePane.toFront();
                     });
@@ -642,7 +665,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                             resetButtonStyle(m);
                         }
                     });
-                    buttonErbjudanden.setOnAction(e -> menuOnClick(m));
+                    buttonErbjudanden.setOnAction(e ->
+                            {
+                                paneErbjudande.toFront();
+                                labelNoResults.toFront();
+                                if (model.getCurrentOffers().size() == 0){
+                                    labelNoResults.setText("Det finns inga erbjudande just nu!");
+                                }
+                                else {
+                                    labelNoResults.toBack();
+                                }
+                                menuOnClick(m);
+                            });
+
                 }
             } else {
                 //Sätter en listener på knapp så att styleclassen ändras när man klickat på den
@@ -775,6 +810,14 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         search=false;
         displayListItemFromList(searchList);
         searchResultPane.toFront();
+
+        labelNoResults.toFront();
+        if (searchList.size() == 0){
+            labelNoResults.setText("Inga resultat hittades, pröva att söka på något annat!");
+        }
+        else {
+            labelNoResults.toBack();
+        }
     }
     //När man klickar på menyn
 

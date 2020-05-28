@@ -24,7 +24,10 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label fx:id="slutforItemAmount" layoutX="224.0" layoutY="15.0" prefHeight="20.0" prefWidth="42.0" text="20 st" />
+      <Label fx:id="slutforItemAmount" layoutX="224.0" layoutY="15.0" prefHeight="20.0" prefWidth="42.0" text="20 st">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
       <Line endX="50.0" endY="50.0" startX="51.0" stroke="#dfdfdf" />
    </children>
 </fx:root>

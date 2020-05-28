@@ -7,10 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import se.chalmers.cse.dat216.project.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.*;
 
 public class Model {
 
@@ -19,6 +16,7 @@ public class Model {
     //referens till DataHandlerns som lagrar all information om programmet
     private IMatDataHandler iMatDataHandler;
     private ProductHandler productHandler;
+    private List<ShoppingItem> currentOffers = new ArrayList<>();
 
     private Map<Integer, ShoppingItem> shoppingItemMap = new HashMap<>();
 
@@ -55,6 +53,10 @@ public class Model {
 
     public List<ProductA> getProducts(String category) {
         return productHandler.getProducts(category);
+    }
+
+    public List<ShoppingItem> getCurrentOffers() {
+        return currentOffers;
     }
 
     public List<ProductA> findProducts(String s) {
