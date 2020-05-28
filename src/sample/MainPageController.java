@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 
@@ -507,7 +508,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void enterOrderLightbox(TidigareKopItem item) {
-        orderLightboxDate.setText(item.getOrder().getDate().toString());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd, EEEEEEEEE 'vid' HH:mm", Locale.getDefault());
+        orderLightboxDate.setText(dateFormat.format(item.getOrder().getDate()));
         orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + " kr");
 
         int antal=0;
@@ -671,7 +673,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                                 paneErbjudande.toFront();
                                 labelNoResults.toFront();
                                 if (model.getCurrentOffers().size() == 0){
-                                    labelNoResults.setText("Det finns inga erbjudande just nu!");
+                                    labelNoResults.setText("Det finns inga erbjudanden just nu!");
                                 }
                                 else {
                                     labelNoResults.toBack();
@@ -727,7 +729,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         paneTidigareKop.toFront();
 
         for (Order orders : model.getOrders()) {
-
             TidigareKopItem item = new TidigareKopItem(orders, this);
             allOrders.add(item);
         }
@@ -767,7 +768,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         ordersCurrentlyDisplayed.clear();
         for (int i = currentOrderPage * 9; i < currentOrderPage * 9 + 9; i++) {
             if (i < allOrders.size()) {
-                ordersCurrentlyDisplayed.add(allOrders.get(i));
+                ordersCurrentlyDisplayed.add(0, allOrders.get(i));
             }
         }
     }

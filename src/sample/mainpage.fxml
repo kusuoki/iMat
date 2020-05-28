@@ -15,6 +15,74 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
+        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
+            <children>
+            <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;" stylesheets="@style.css">
+            <children>
+                <FlowPane fx:id="flowPaneTidigareKopDetalj" layoutX="41.0" layoutY="127.0" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" />
+                <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#addAllItemsInTidigareKop" prefHeight="31.0" prefWidth="327.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />
+                <Label layoutX="41.0" layoutY="23.0" text="Orderdatum:">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                <Label layoutX="297.0" layoutY="46.0" text="Pris:">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                <Label layoutX="412.0" layoutY="46.0" text="Antal varor:">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                <Label layoutX="41.0" layoutY="46.0" text="Ordernummer:">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Label>
+                <ImageView fx:id="lightboxOrderClose" fitHeight="39.0" fitWidth="36.0" layoutX="699.0" layoutY="10.0" onMouseClicked="#exitOrderLightbox" onMouseEntered="#closeLightboxOrderMouseEntered" onMouseExited="#closeLightboxOrderMouseExited" onMousePressed="#closeLightboxOrderMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="hoverable">
+                    <image>
+                        <Image url="@resources/Icons/ic_close_black_48dp.png" />
+                    </image>
+                </ImageView>
+                  <Label fx:id="labelPreviousPage1" layoutX="210.0" layoutY="591.0" onMouseClicked="#previousOrderLightboxPageButton" styleClass="links" text="Föregående sida">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelNextPage1" layoutX="437.0" layoutY="591.0" onMouseClicked="#nextOrderLightboxPageButton" styleClass="links" text="Nästa sida">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelVarusida1" alignment="CENTER" layoutX="337.0" layoutY="591.0" text="Sida 10 av 10" textAlignment="CENTER">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Line endX="402.0" layoutX="286.0" layoutY="584.0" startX="-229.0" stroke="#979797" style="-fx: #979797;" />
+                  <Line endX="402.0" layoutX="286.0" layoutY="120.0" startX="-229.0" stroke="#979797" style="-fx: #979797;" />
+                  <Label fx:id="orderLightboxDate" layoutX="140.0" layoutY="23.0" styleClass="bigAndBoldText" text="XXXX-XX-XX">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orderLightboxPrice" contentDisplay="RIGHT" layoutX="331.0" layoutY="46.0" prefHeight="25.0" prefWidth="76.0" styleClass="bigAndBoldTextRightAlign" text="XXXXX" textAlignment="RIGHT">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orderLightboxQuantity" contentDisplay="RIGHT" layoutX="499.0" layoutY="46.0" prefHeight="25.0" prefWidth="90.0" styleClass="bigAndBoldTextRightAlign" text="XXX" textAlignment="RIGHT" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="orderLightboxOrdernumber" layoutX="151.0" layoutY="46.0" styleClass="bigAndBoldText" text="XXXXXXXXXXXX">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+            </children>
+            </Pane>
+            </children>
+        </AnchorPane>
       <AnchorPane fx:id="anchorUndermenyBaljvaxter" onMouseClicked="#mainPageToFront" prefHeight="750.0" prefWidth="1377.0">
          <children>
             <Pane layoutX="277.0" layoutY="282.0" onMouseClicked="#mouseTrap" prefHeight="219.0" prefWidth="227.0" style="-fx-background-color: #DFDFDF;">
@@ -196,74 +264,6 @@
             </Pane>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
-            <children>
-            <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;" stylesheets="@style.css">
-            <children>
-                <FlowPane fx:id="flowPaneTidigareKopDetalj" layoutX="41.0" layoutY="127.0" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" />
-                <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#addAllItemsInTidigareKop" prefHeight="30.0" prefWidth="314.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />
-                <Label layoutX="41.0" layoutY="23.0" text="Orderdatum:">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                <Label layoutX="297.0" layoutY="46.0" text="Pris:">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                <Label layoutX="412.0" layoutY="46.0" text="Antal varor:">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                <Label layoutX="41.0" layoutY="46.0" text="Ordernummer:">
-                     <font>
-                        <Font size="16.0" />
-                     </font></Label>
-                <ImageView fx:id="lightboxOrderClose" fitHeight="39.0" fitWidth="36.0" layoutX="699.0" layoutY="10.0" onMouseClicked="#exitOrderLightbox" onMouseEntered="#closeLightboxOrderMouseEntered" onMouseExited="#closeLightboxOrderMouseExited" onMousePressed="#closeLightboxOrderMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="hoverable">
-                    <image>
-                        <Image url="@resources/Icons/ic_close_black_48dp.png" />
-                    </image>
-                </ImageView>
-                  <Label fx:id="labelPreviousPage1" layoutX="210.0" layoutY="591.0" onMouseClicked="#previousOrderLightboxPageButton" styleClass="links" text="Föregående sida">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelNextPage1" layoutX="437.0" layoutY="591.0" onMouseClicked="#nextOrderLightboxPageButton" styleClass="links" text="Nästa sida">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelVarusida1" alignment="CENTER" layoutX="337.0" layoutY="591.0" text="Sida 10 av 10" textAlignment="CENTER">
-                     <font>
-                        <Font size="13.0" />
-                     </font>
-                  </Label>
-                  <Line endX="402.0" layoutX="286.0" layoutY="584.0" startX="-229.0" stroke="#979797" style="-fx: #979797;" />
-                  <Line endX="402.0" layoutX="286.0" layoutY="120.0" startX="-229.0" stroke="#979797" style="-fx: #979797;" />
-                  <Label fx:id="orderLightboxDate" layoutX="140.0" layoutY="23.0" styleClass="bigAndBoldText" text="XXXX-XX-XX">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="orderLightboxPrice" contentDisplay="RIGHT" layoutX="331.0" layoutY="46.0" prefHeight="25.0" prefWidth="76.0" styleClass="bigAndBoldTextRightAlign" text="XXXXX" textAlignment="RIGHT">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="orderLightboxQuantity" contentDisplay="RIGHT" layoutX="499.0" layoutY="46.0" prefHeight="25.0" prefWidth="90.0" styleClass="bigAndBoldTextRightAlign" text="XXX" textAlignment="RIGHT" wrapText="true">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="orderLightboxOrdernumber" layoutX="151.0" layoutY="46.0" styleClass="bigAndBoldText" text="XXXXXXXXXXXX">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-            </children>
-            </Pane>
-            </children>
-        </AnchorPane>
       <AnchorPane fx:id="anchorPaneMainLightbox" onMouseClicked="#mainPageToFront" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
          <children>
              <AnchorPane layoutX="314.0" layoutY="168.0" onMouseClicked="#mouseTrap" prefHeight="414.0" prefWidth="650.0" style="-fx-background-color: white;">
@@ -461,7 +461,7 @@
                              <Line endX="200.0" layoutX="114.0" layoutY="41.0" startX="-100.0" stroke="#979797" style="-fx: #979797;" />
                              <Label layoutX="22.0" layoutY="12.0" styleClass="varukorgTotal" text="Totalpris:" />
                              <Label fx:id="totalPriceLabel" alignment="CENTER" layoutX="91.0" layoutY="10.0" prefHeight="27.0" prefWidth="136.0" styleClass="varukorgTotalPrice" text="0.0" textAlignment="CENTER" />
-                             <Label fx:id="totalQuantityLabel" alignment="CENTER" layoutX="242.0" layoutY="13.0" prefHeight="21.0" prefWidth="61.0" styleClass="varukorgTotal" text="0" />
+                             <Label fx:id="totalQuantityLabel" alignment="CENTER" layoutX="242.0" layoutY="13.0" prefHeight="21.0" prefWidth="76.0" styleClass="varukorgTotal" text="0" />
                          </children>
                      </Pane>
                  </children>
@@ -566,7 +566,7 @@
                   </Pane>
                   <Pane fx:id="favoritePane" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORTIER" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORITER" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>

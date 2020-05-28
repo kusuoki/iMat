@@ -13,17 +13,17 @@
                 <Image url="@resources/Icons/ic_delete_forever_black_18dp.png" />
             </image>
         </ImageView>
-        <Label fx:id="labelVarukorgVara" layoutX="34.0" layoutY="12.0" prefHeight="21.0" prefWidth="125.0" styleClass="varu-text" text="Varunamn" />
+        <Label fx:id="labelVarukorgVara" layoutX="34.0" layoutY="12.0" prefHeight="21.0" prefWidth="112.0" styleClass="varu-text" text="Varunamn" />
         <Label fx:id="labelVarukorgPris" layoutX="237.0" layoutY="10.0" styleClass="varu-pris" text="Pris" />
 
-      <TextField fx:id="labelVarukorgAntal" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="31.0" text="10" />
-      <ImageView fx:id="varukorgItemMinusButton" fitHeight="15.0" fitWidth="15.0" layoutX="157.0" layoutY="14.0" onMouseClicked="#minusButton" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+      <TextField fx:id="labelVarukorgAntal" layoutX="173.0" layoutY="10.0" prefHeight="25.0" prefWidth="35.0" text="999" />
+      <ImageView fx:id="varukorgItemMinusButton" fitHeight="20.0" fitWidth="20.0" layoutX="149.0" layoutY="12.0" onMouseClicked="#minusButton" onMouseEntered="#minusButtonMouseEntered" onMouseExited="#minusButtonMouseExited" onMousePressed="#minusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
 
          <image>
             <Image url="@resources/Buttons/Minus-knapp.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="varukorgItemPlusButton" fitHeight="15.0" fitWidth="15.0" layoutX="209.0" layoutY="14.0" onMouseClicked="#plusButton" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
+      <ImageView fx:id="varukorgItemPlusButton" fitHeight="20.0" fitWidth="20.0" layoutX="211.0" layoutY="12.0" onMouseClicked="#plusButton" onMouseEntered="#plusButtonMouseEntered" onMouseExited="#plusButtonMouseExited" onMousePressed="#plusButtonMouseClicked" pickOnBounds="true" preserveRatio="true" styleClass="add-button">
          <image>
             <Image url="@resources/Buttons/Plus-knapp.png" />
          </image>
