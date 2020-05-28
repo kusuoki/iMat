@@ -620,6 +620,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     buttonFavoriter.setOnAction(e ->
                     {
                         search = false;
+                        this.tempSearch=model.getFavorites();
                         displayListItemFromList(model.getFavorites());
                         labelNoResults.toFront();
                         if (model.getFavorites().size() == 0){
