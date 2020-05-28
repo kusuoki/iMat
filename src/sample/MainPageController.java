@@ -670,7 +670,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                                 paneErbjudande.toFront();
                                 labelNoResults.toFront();
                                 if (model.getCurrentOffers().size() == 0){
-                                    labelNoResults.setText("Det finns inga erbjudande just nu!");
+                                    labelNoResults.setText("Det finns inga erbjudanden just nu!");
                                 }
                                 else {
                                     labelNoResults.toBack();

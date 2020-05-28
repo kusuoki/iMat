@@ -566,7 +566,7 @@
                   </Pane>
                   <Pane fx:id="favoritePane" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
                      <children>
-                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORTIER" textFill="WHITE">
+                        <Label alignment="CENTER" prefHeight="45.0" prefWidth="637.0" text="FAVORITER" textFill="WHITE">
                            <font>
                               <Font size="24.0" />
                            </font>
