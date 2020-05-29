@@ -467,7 +467,7 @@
                  </children>
              </Pane>
 
-                         <AnchorPane layoutX="320.0" layoutY="139.0" prefHeight="540.0" prefWidth="637.0">
+                         <AnchorPane fx:id="centerStageAnchor" layoutX="320.0" layoutY="139.0" prefHeight="540.0" prefWidth="637.0">
                  <children>
                  <Pane fx:id="paneVaruDisplay" prefHeight="540.0" prefWidth="637.0" style="-fx-background-color: #00692a;" styleClass="mainpageBoxBorder">
                      <children>
@@ -494,27 +494,6 @@
                              </font>
                          </Label>
                          <FlowPane fx:id="flowPaneMainPage" layoutY="45.0" prefHeight="450.0" prefWidth="637.0" style="-fx-background-color: white;" />
-                         <Label fx:id="labelCrumbSecond" layoutX="120.0" layoutY="14.0" onMouseClicked="#onSecondBreadcrumb" styleClass="links" text="Crumb 2 " textFill="WHITE">
-                             <font>
-                                 <Font size="14.0" />
-                             </font>
-                           <tooltip>
-                              <Tooltip styleClass="tooltip-normal" text="Klicka för att komma till denna plats" />
-                           </tooltip>
-                         </Label>
-                         <Label fx:id="labelCrumbSecondPointer" layoutX="91.0" layoutY="13.0" text=" &gt; " textFill="WHITE">
-                             <font>
-                                 <Font size="14.0" />
-                             </font>
-                         </Label>
-                         <Label fx:id="labelCrumbFirst" layoutX="14.0" layoutY="13.0" onMouseClicked="#onFirstBreadcrumb" styleClass="links" text="Crumb 1 " textFill="WHITE">
-                             <font>
-                                 <Font size="14.0" />
-                             </font>
-                           <tooltip>
-                              <Tooltip styleClass="tooltip-normal" text="Klicka för att komma till denna plats" />
-                           </tooltip>
-                         </Label>
                      </children>
                  </Pane>
                   <Pane fx:id="searchResultPane" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
@@ -596,6 +575,32 @@
                            </font></Label>
                  </children>
                  </Pane>
+                  <Pane fx:id="breadcrumbPane" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;">
+                     <children>
+                        <Pane fx:id="startPane11" prefHeight="45.0" prefWidth="637.0" style="-fx-background-color: #00692a;" />
+                         <Label fx:id="labelCrumbFirst" layoutX="14.0" layoutY="7.0" onMouseClicked="#onFirstBreadcrumb" styleClass="links" text="Crumb 1 " textFill="WHITE">
+                             <font>
+                                 <Font size="14.0" />
+                             </font>
+                           <tooltip>
+                              <Tooltip styleClass="tooltip-normal" text="Klicka för att komma till denna plats" />
+                           </tooltip>
+                         </Label>
+                         <Label fx:id="labelCrumbSecond" layoutX="100.0" layoutY="7.0" onMouseClicked="#onSecondBreadcrumb" styleClass="links" text="Crumb 2 " textFill="WHITE">
+                             <font>
+                                 <Font size="14.0" />
+                             </font>
+                           <tooltip>
+                              <Tooltip styleClass="tooltip-normal" text="Klicka för att komma till denna plats" />
+                           </tooltip>
+                         </Label>
+                         <Label fx:id="labelCrumbSecondPointer" layoutX="83.0" layoutY="10.0" text=" &gt; " textFill="WHITE">
+                             <font>
+                                 <Font size="14.0" />
+                             </font>
+                         </Label>
+                     </children>
+                  </Pane>
                  </children>
              </AnchorPane>
 

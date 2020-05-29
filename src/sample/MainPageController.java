@@ -4,6 +4,7 @@ import com.sun.javafx.scene.layout.region.BackgroundSizeConverter;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -204,6 +205,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     AnchorPane anchorPaneMainPage;
+    @FXML
+    AnchorPane centerStageAnchor;
 
     @FXML
     AnchorPane anchorPaneMainLightbox;
@@ -330,6 +333,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     Label labelCrumbSecondPointer;
     @FXML
     Label labelCrumbFirst;
+    @FXML
+    Pane breadcrumbPane;
 
     //Headline paneler
     @FXML
@@ -1230,7 +1235,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         search = true;
         cat = false;
-        ifLastSearchCat=false;
+        ifLastSearchCat = false;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -1252,7 +1257,48 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             lastPage++;
         }
 
-        paneVaruDisplay.toFront();
+//TODO BREADCRUMB PROBLEM HERE
+
+        String showing = centerStageAnchor.getChildren().get(centerStageAnchor.getChildren().size() - 1).getId();
+        String secondShowing = centerStageAnchor.getChildren().get(centerStageAnchor.getChildren().size() - 2).getId();
+
+        if (showing.equals("startPane")){
+            paneVaruDisplay.toFront();
+            startPane.toFront();
+        } else if (secondShowing.equals("startPane") && showing.equals("labelNoResults")) {
+            paneVaruDisplay.toFront();
+            startPane.toFront();
+        } else if (showing.equals("favoritePane")) {
+            paneVaruDisplay.toFront();
+            favoritePane.toFront();
+        } else if (secondShowing.equals("favoritePane") && showing.equals("labelNoResults")) {
+            paneVaruDisplay.toFront();
+            favoritePane.toFront();
+        } else if (showing.equals("breadcrumbPane")) {
+            paneVaruDisplay.toFront();
+            breadcrumbPane.toFront();
+        } else if (secondShowing.equals("breadcrumbPane") && showing.equals("labelNoResults")) {
+            paneVaruDisplay.toFront();
+            breadcrumbPane.toFront();
+        } else if (showing.equals("searchResultPane")) {
+            paneVaruDisplay.toFront();
+            searchResultPane.toFront();
+        } else if (secondShowing.equals("searchResultPane") && showing.equals("labelNoResults")) {
+            paneVaruDisplay.toFront();
+            searchResultPane.toFront();
+        } else {
+            paneVaruDisplay.toFront();
+        }
+
+
+        System.out.println("---START---");
+        for(Node n : centerStageAnchor.getChildren()){
+            System.out.println(n.getId());
+        }
+        System.out.println("---STOP---");
+
+        //paneVaruDisplay.toFront();
+
 
         displayListItems();
     }
@@ -1337,6 +1383,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             labelCrumbSecondPointer.toBack();
             labelCrumbSecond.toBack();
         }
+        breadcrumbPane.toFront();
 
     }
 
@@ -1360,6 +1407,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         cat=false;
         lastVisitedPage = category;
         displayListItemByCategory(category);
+        breadcrumbPane.toFront();
         if (subMenu != null) {
             subMenu.toBack();
         }
