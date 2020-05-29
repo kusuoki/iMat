@@ -644,11 +644,11 @@
              </Button>
             <Pane layoutX="115.0" layoutY="40.0" prefHeight="89.0" prefWidth="97.0">
                <children>
-                  <Label fx:id="homeButtonLabel" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="-3.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" prefHeight="89.0" prefWidth="70.0" text="Startsida" textAlignment="CENTER">
+                  <Label fx:id="homeButtonLabel" alignment="BOTTOM_CENTER" layoutX="14.0" layoutY="-3.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" prefHeight="89.0" prefWidth="70.0" styleClass="hoverable" text="Startsida" textAlignment="CENTER">
                      <tooltip>
                         <Tooltip styleClass="tooltip-normal" text="Gå till startsidan" />
                      </tooltip></Label>
-                  <ImageView fx:id="homeButtonImageView" fitHeight="64.0" fitWidth="64.0" layoutX="17.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="homeButtonImageView" fitHeight="64.0" fitWidth="64.0" layoutX="17.0" onMouseClicked="#homeButtonMouseClicked" onMouseEntered="#homeButtonMouseEntered" onMouseExited="#homeButtonMouseExited" pickOnBounds="true" preserveRatio="true" styleClass="hoverable">
                      <image>
                         <Image url="@resources/Buttons/Hem-knapp.png" />
                      </image></ImageView>

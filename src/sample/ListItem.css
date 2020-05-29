@@ -63,3 +63,7 @@
     -fx-image: url("resources/Icons/ic_favorite_border_red_24dp_hover.png");
     -fx-cursor: hand;
 }
+
+.hoverable:hover{
+    -fx-cursor: hand;
+}

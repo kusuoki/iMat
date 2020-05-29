@@ -37,3 +37,7 @@
     -fx-background-color: #002F13;
     -fx-cursor: hand;
 }
+
+.hoverable:hover{
+    -fx-cursor: hand;
+}
