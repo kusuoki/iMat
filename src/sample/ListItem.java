@@ -67,7 +67,6 @@ public class ListItem extends AnchorPane {
     protected Label labelPreviousPurchase;
 
 
-
     MainPageController parentController;
     ProductA product;
     Model model;

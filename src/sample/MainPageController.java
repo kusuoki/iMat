@@ -1198,6 +1198,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         } else {
             firstBreadcrumb = currentListWithItems.get(0).product.getMainCategory();
             secondBreadcrumb = null;
+
             updateBreadCrumb(category, null);
         }
 
