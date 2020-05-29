@@ -406,14 +406,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         model.setImageViewOnHoverEvent(imageViewMainLightboxFavourite, null);
         //  resources/Icons/ic_favorite_border_red_48d.png"
 
-        //model.getOrders().clear();
-
-        /*for (int i = 1; i < 20; i++) {
-            Order o = generateTestOrder(new Date(), i, i);
-            model.getOrders().add(o);
-        }*/
-
-
         onSearch();
         initMenuButtons();
 
@@ -518,9 +510,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         orderLightboxDate.setText(dateFormat.format(item.getOrder().getDate()));
         orderLightboxPrice.setText(item.getOrderTotalCost(item.getOrder()) + " kr");
 
-        int antal=0;
-        for (ShoppingItem shoppingItem:item.getOrder().getItems()) {
-            antal= antal+ (int) shoppingItem.getAmount();
+        int antal = 0;
+        for (ShoppingItem shoppingItem : item.getOrder().getItems()) {
+            antal = antal + (int) shoppingItem.getAmount();
 
         }
         orderLightboxQuantity.setText(antal + " st");
@@ -568,18 +560,17 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    public void addAllItemsInTidigareKop(){
+    public void addAllItemsInTidigareKop() {
         //Inte riktigt färdig än... uppdaterar inte kundvagnen mer än en gång. Om det beror på
         //att shoppingcarten inte får reda på det eller om logiken nedan inte funkar som tänkt.
 
         for (ShoppingItem s : currentTidigareKopItem.getOrder().getItems()) {
-            if (Model.getInstance().getShoppingItemMap().containsKey(s.getProduct().getProductId())){
+            if (Model.getInstance().getShoppingItemMap().containsKey(s.getProduct().getProductId())) {
 
                 System.out.println(s.getAmount());
                 model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount());
                 //s.setAmount(s.getAmount() + s.getAmount());
-            }
-            else{
+            } else {
                 Model.getInstance().addToShoppingCart(s.getProduct());
                 model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount() - 1);
             }
@@ -620,7 +611,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     buttonFavoriter.setOnAction(e ->
                     {
                         search = false;
-                        this.tempSearch=model.getFavorites();
+                        this.tempSearch = model.getFavorites();
                         onFavoritClick();
                         menuOnClick(m);
                     });
@@ -659,10 +650,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                         }
                     });
                     buttonErbjudanden.setOnAction(e ->
-                            {
-                                onErbjudandenClick();
-                                menuOnClick(m);
-                            });
+                    {
+                        onErbjudandenClick();
+                        menuOnClick(m);
+                    });
 
                 }
             } else {
@@ -705,10 +696,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lastVisitedPage = "Favorit";
         displayListItemFromList(model.getFavorites());
         labelNoResults.toFront();
-        if (model.getFavorites().size() == 0){
+        if (model.getFavorites().size() == 0) {
             labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
-        }
-        else {
+        } else {
             labelNoResults.toBack();
         }
         favoritePane.toFront();
@@ -718,10 +708,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lastVisitedPage = "Erbjudanden";
         paneErbjudande.toFront();
         labelNoResults.toFront();
-        if (model.getCurrentOffers().size() == 0){
+        if (model.getCurrentOffers().size() == 0) {
             labelNoResults.setText("Det finns inga erbjudanden just nu!");
-        }
-        else {
+        } else {
             labelNoResults.toBack();
         }
     }
@@ -753,7 +742,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             currentlySelectedPane = null;
         }
 
-        for (menuItem m : menuItems){
+        for (menuItem m : menuItems) {
             resetButtonStyle(m);
         }
     }
@@ -816,7 +805,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             search = false;
             displayListItemFromList(searchList);
             searchResultPane.toFront();
-            
+
             if (searchList.size() == 0) {
                 labelNoResults.setText("Inga resultat hittades, pröva att söka på något annat!");
                 labelNoResults.toFront();
@@ -1008,17 +997,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         lightboxQuantityTextField.setText(String.valueOf(model.getAmountOfThisProductInShoppinCart(currentLightboxItem.product)));
     }
 
-    /* public Image getFavoriteImage(boolean isFavorite) {
-         if (!isFavorite) {
-             return new Image("sample/resources/Icons/ic_favorite_border_red_48d.png");
-         }
-         return new Image("sample/resources/Icons/ic_favorite_red_48dp.png");
-     }*/
-    public void setFavoriteImage(boolean isFavorite){       //mindre elegant kod än den tidigare lösningen för favorit-knappen. men nu funkar den likadant som för list items
-        if(!isFavorite){
+    public void setFavoriteImage(boolean isFavorite) {       //mindre elegant kod än den tidigare lösningen för favorit-knappen. men nu funkar den likadant som för list items
+        if (!isFavorite) {
             imageViewMainLightboxFavouriteFilled.toBack();
 
-        }else{
+        } else {
             imageViewMainLightboxFavouriteFilled.toFront();
         }
     }
@@ -1116,19 +1099,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     }
 
 
-    //TODO: ANVÄNDS INTE LÄNGRE, använder istället displayListItemFromList(searchList)
-    //Denna kallas när efter man söker/filtrerar (inte implementerat) efter varor för att sedan uppdatera flowplanen där de ligger
-
-    private void updateProductList(List<ProductA> searchList) {
-/*productsFlowPane.getChildren().clear();
-
-        for (Product product : products) {
-
-            productsFlowPane.getChildren().add(new ProductPanel(product)); */
-
-    }
-    //Lyssnar på om kundvagnen ändras och visar sedan upp de nya varorna
-
     @Override
     public void shoppingCartChanged(CartEvent cartEvent) {
         List<ShoppingItem> shoppingItems = model.getShoppingCart().getItems();
@@ -1148,7 +1118,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         flowPaneVarukorg.getChildren().clear();
         for (VarukorgItem item : varukorgItems) {
             item.updateThisItem();
-            flowPaneVarukorg.getChildren().add(0,item);
+            flowPaneVarukorg.getChildren().add(0, item);
         }
 
 
@@ -1189,7 +1159,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         }
         cat = true;
         search = false;
-        ifLastSearchCat=true;
+        ifLastSearchCat = true;
         list8Items.clear();
         currentListWithItems.clear();
 
@@ -1257,12 +1227,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             lastPage++;
         }
 
-//TODO BREADCRUMB PROBLEM HERE
-
+        //Det här stycket löser breadcrumb problemet...
         String showing = centerStageAnchor.getChildren().get(centerStageAnchor.getChildren().size() - 1).getId();
         String secondShowing = centerStageAnchor.getChildren().get(centerStageAnchor.getChildren().size() - 2).getId();
 
-        if (showing.equals("startPane")){
+        if (showing.equals("startPane")) {
             paneVaruDisplay.toFront();
             startPane.toFront();
         } else if (secondShowing.equals("startPane") && showing.equals("labelNoResults")) {
@@ -1289,16 +1258,6 @@ public class MainPageController implements Initializable, ShoppingCartListener {
         } else {
             paneVaruDisplay.toFront();
         }
-
-
-        System.out.println("---START---");
-        for(Node n : centerStageAnchor.getChildren()){
-            System.out.println(n.getId());
-        }
-        System.out.println("---STOP---");
-
-        //paneVaruDisplay.toFront();
-
 
         displayListItems();
     }
@@ -1352,15 +1311,13 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             //Dessa är till för att se vilken metod som skall kallas.
             //cat och search = true är för att undvika att sidorna nollställs
             if (ifLastSearchCat) {
-                cat=true;
+                cat = true;
                 displayListItemByCategory(category);
 
-            }
-            else if (!ifLastSearchCat) {
-                search=true;
+            } else if (!ifLastSearchCat) {
+                search = true;
                 displayListItemFromList(tempSearch);
-            }
-            else {
+            } else {
                 displayListItemFromList(tempSearch);
             }
             displayListItems();
@@ -1393,18 +1350,16 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             System.out.println("ERROR: second breadcrumb is null, this shouldn't be showing....");
         } else {
             displayListItemByCategory(labelCrumbSecond.getText());
-            //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
         }
     }
 
     @FXML
     public void onFirstBreadcrumb() {
         displayListItemByCategory(labelCrumbFirst.getText());
-        //updateBreadCrumb(labelCrumbFirst.getText(), labelCrumbSecond.getText());
     }
 
     private void subMenuSelected(AnchorPane subMenu, String category) {
-        cat=false;
+        cat = false;
         lastVisitedPage = category;
         displayListItemByCategory(category);
         breadcrumbPane.toFront();
@@ -1415,53 +1370,54 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     private void initCategoryMenu() {
 
-        buttonAllaBaljvaxter.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Baljväxter"));
-        buttonBonor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Bönor"));
-        buttonLinser.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Linser"));
-        buttonArtor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter,"Ärtor"));
-        buttonAllaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Drycker"));
-        buttonKallaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Kalla drycker"));
-        buttonVarmaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker,"Varma drycker"));
-        buttonAllaFrukt.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Frukt & Grönt"));
-        buttonBar.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Bär"));
-        buttonCitrusfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Citrusfrukter"));
-        buttonExotiskaFrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Exotiska frukter"));
-        buttonFarskaOrtkryddor.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Färska örtkryddor"));
-        buttonGronsaker.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Grönsaker"));
-        buttonKal.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Kål"));
-        buttonMelon.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Melon"));
-        buttonPotatisOchRotfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Potatis & Rotfrukt"));
-        buttonSotaStenfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt,"Söta stenfrukter"));
-        buttonAllaFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Fisk & Skaldjur"));
-        buttonFarskLax.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Färsk fisk"));
-        buttonSill.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Sill"));
-        buttonSkaldjur.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Skaldjur"));
-        buttonOvrigFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk,"Övrig fisk"));
-        buttonAllaKott.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Kött & Fågel"));
-        buttonKyckling.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Kyckling"));
-        buttonNotkott.setOnAction(e -> subMenuSelected(anchorUndermenyKott,"Nötkött"));
-        buttonAllaMejeri.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Mejeriprodukter & Ägg"));
-        buttonMjolk.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Mjölk"));
-        buttonOst.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Ost"));
-        buttonYoghurt.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Yoghurt & Filmjölk"));
-        buttonAgg.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri,"Ägg"));
-        buttonAllaSkafferi.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Skafferi"));
-        buttonBrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Bröd"));
-        buttonFron.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Frön"));
-        buttonKakao.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Kakao"));
-        buttonKnackebrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"KnäckeBröd"));
-        buttonMjol.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Mjöl"));
-        buttonNotter.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Nötter"));
-        buttonPasta.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Pasta"));
-        buttonRis.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Ris"));
-        buttonSockerOchSalt.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi,"Socker & Salt"));
-        buttonAllaSotsaker.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Sötsaker"));
-        buttonBakverk.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Bakverk & Kakor"));
-        buttonGlass.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Glass"));
-        buttonGodis.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Godis"));
-        buttonSnacks.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker,"Snacks"));
+        buttonAllaBaljvaxter.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter, "Baljväxter"));
+        buttonBonor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter, "Bönor"));
+        buttonLinser.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter, "Linser"));
+        buttonArtor.setOnAction(e -> subMenuSelected(anchorUndermenyBaljvaxter, "Ärtor"));
+        buttonAllaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker, "Drycker"));
+        buttonKallaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker, "Kalla drycker"));
+        buttonVarmaDrycker.setOnAction(e -> subMenuSelected(anchorUndermenyDrycker, "Varma drycker"));
+        buttonAllaFrukt.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Frukt & Grönt"));
+        buttonBar.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Bär"));
+        buttonCitrusfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Citrusfrukter"));
+        buttonExotiskaFrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Exotiska frukter"));
+        buttonFarskaOrtkryddor.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Färska örtkryddor"));
+        buttonGronsaker.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Grönsaker"));
+        buttonKal.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Kål"));
+        buttonMelon.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Melon"));
+        buttonPotatisOchRotfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Potatis & Rotfrukt"));
+        buttonSotaStenfrukter.setOnAction(e -> subMenuSelected(anchorUndermenyFrukt, "Söta stenfrukter"));
+        buttonAllaFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk, "Fisk & Skaldjur"));
+        buttonFarskLax.setOnAction(e -> subMenuSelected(anchorUndermenyFisk, "Färsk fisk"));
+        buttonSill.setOnAction(e -> subMenuSelected(anchorUndermenyFisk, "Sill"));
+        buttonSkaldjur.setOnAction(e -> subMenuSelected(anchorUndermenyFisk, "Skaldjur"));
+        buttonOvrigFisk.setOnAction(e -> subMenuSelected(anchorUndermenyFisk, "Övrig fisk"));
+        buttonAllaKott.setOnAction(e -> subMenuSelected(anchorUndermenyKott, "Kött & Fågel"));
+        buttonKyckling.setOnAction(e -> subMenuSelected(anchorUndermenyKott, "Kyckling"));
+        buttonNotkott.setOnAction(e -> subMenuSelected(anchorUndermenyKott, "Nötkött"));
+        buttonAllaMejeri.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri, "Mejeriprodukter & Ägg"));
+        buttonMjolk.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri, "Mjölk"));
+        buttonOst.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri, "Ost"));
+        buttonYoghurt.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri, "Yoghurt & Filmjölk"));
+        buttonAgg.setOnAction(e -> subMenuSelected(anchorUndermenyMejeri, "Ägg"));
+        buttonAllaSkafferi.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Skafferi"));
+        buttonBrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Bröd"));
+        buttonFron.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Frön"));
+        buttonKakao.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Kakao"));
+        buttonKnackebrod.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "KnäckeBröd"));
+        buttonMjol.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Mjöl"));
+        buttonNotter.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Nötter"));
+        buttonPasta.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Pasta"));
+        buttonRis.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Ris"));
+        buttonSockerOchSalt.setOnAction(e -> subMenuSelected(anchorUndermenySkafferi, "Socker & Salt"));
+        buttonAllaSotsaker.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker, "Sötsaker"));
+        buttonBakverk.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker, "Bakverk & Kakor"));
+        buttonGlass.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker, "Glass"));
+        buttonGodis.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker, "Godis"));
+        buttonSnacks.setOnAction(e -> subMenuSelected(anchorUndermenySotsaker, "Snacks"));
 
     }
+
     @FXML
     public void plusButtonMouseEntered() {
         lightboxPlusButton.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Plus-knapp-hover.png")));
@@ -1523,7 +1479,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
             currentlySelectedPane = null;
         }
 
-        for (menuItem m : menuItems){
+        for (menuItem m : menuItems) {
             resetButtonStyle(m);
         }
     }
