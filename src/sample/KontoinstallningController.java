@@ -2,7 +2,6 @@ package sample;
 
 
 import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -43,6 +42,7 @@ public class KontoinstallningController implements Initializable {
     @FXML ImageView cardTypeImageView;
 
     private TextField nextTextfield = firstNameTextField;
+    private TextField currentErrorTextField;
 
     private Model handler = Model.getInstance();
     private CreditCard card;
@@ -98,6 +98,8 @@ public class KontoinstallningController implements Initializable {
                 postNumberTextField.getStyleClass().remove("error");
                 if (!isValidValue(postNumberTextField.getText(), "PostNumber")) {
                     postNumberTextField.getStyleClass().add("error");
+                    playMessage("Ogiltigt postnummer!", 5, true);
+                    currentErrorTextField = postNumberTextField;
                 }
             }
         });
@@ -108,6 +110,8 @@ public class KontoinstallningController implements Initializable {
                 eMailTextField.getStyleClass().remove("error");
                 if (!isValidValue(eMailTextField.getText(), "Email")) {
                     eMailTextField.getStyleClass().add("error");
+                    playMessage("Ogiltig e-mail adress!", 5, true);
+                    currentErrorTextField = eMailTextField;
                 }
             }
         });
@@ -120,6 +124,8 @@ public class KontoinstallningController implements Initializable {
                     phoneTextField.setText(getFormattedPhoneNumber(phoneTextField.getText()));
                 } else {
                     phoneTextField.getStyleClass().add("error");
+                    playMessage("Ogiltigt telefonnummer!", 5, true);
+                    currentErrorTextField = phoneTextField;
                 }
             }
         });
@@ -128,6 +134,8 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_1.getText().length() != 4) {
                     setCardNumberError();
+                    playMessage("Ogiltigt kortnummer!", 5, true);
+                    currentErrorTextField = cardNumberTextField_1;
                 }
             }
         });
@@ -136,6 +144,8 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_2.getText().length() != 4) {
                     setCardNumberError();
+                    playMessage("Ogiltigt kortnummer!", 5, true);
+                    currentErrorTextField = cardNumberTextField_1;
                 }
             }
         });
@@ -144,6 +154,8 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_3.getText().length() != 4) {
                     setCardNumberError();
+                    playMessage("Ogiltigt kortnummer!", 5, true);
+                    currentErrorTextField = cardNumberTextField_1;
                 }
             }
         });
@@ -152,6 +164,8 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
                 if (!isValidValue(cardNumberTextField_1.getText(), "CardType") || cardNumberTextField_4.getText().length() != 4) {
                     setCardNumberError();
+                    playMessage("Ogiltigt kortnummer!", 5, true);
+                    currentErrorTextField = cardNumberTextField_1;
                 }
             } else if (isFocus) {
                 nextTextfield = cardExpiryMonthTextField;
@@ -164,6 +178,8 @@ public class KontoinstallningController implements Initializable {
                     cardExpiryMonthTextField.setText(getMonth(Integer.parseInt(cardExpiryMonthTextField.getText())));
                 } else {
                     cardExpiryMonthTextField.getStyleClass().add("error");
+                    playMessage("ogiltig månad", 5, true);
+                    currentErrorTextField = cardExpiryMonthTextField;
                 }
             } else if (isFocus) {
                 nextTextfield = cardExpiryYearTextField;
@@ -174,6 +190,8 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryYearTextField.getStyleClass().remove("error");
                 if (!isValidValue(cardExpiryYearTextField.getText(), "Year")) {
                     cardExpiryYearTextField.getStyleClass().add("error");
+                    playMessage("Ogiltigt årtal!", 5, true);
+                    currentErrorTextField = cardExpiryYearTextField;
                 }
             } else if (isFocus) {
                 nextTextfield = CVVTextField;
@@ -186,6 +204,8 @@ public class KontoinstallningController implements Initializable {
                     CVVTextField.setText(getCVV(Integer.parseInt(CVVTextField.getText())));
                 } else {
                     CVVTextField.getStyleClass().add("error");
+                    playMessage("CVV nummer kan inte vara 0!", 5, true);
+                    currentErrorTextField = CVVTextField;
                 }
             }
         });
@@ -195,15 +215,27 @@ public class KontoinstallningController implements Initializable {
             if (isValidValue(newValue, "PostNumber") || newValue.length() == 0) {
                 postNumberTextField.getStyleClass().remove("error");
             }
+
+            if (currentErrorTextField == postNumberTextField) {
+                messageLabel.toBack();
+            }
         });
         eMailTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (isValidValue(newValue, "Email") || newValue.length() == 0) {
                 eMailTextField.getStyleClass().remove("error");
             }
+
+            if (currentErrorTextField == eMailTextField) {
+                messageLabel.toBack();
+            }
         });
         phoneTextField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (isValidValue(newValue, "Phone") || newValue.length() == 0) {
                 phoneTextField.getStyleClass().remove("error");
+            }
+
+            if (currentErrorTextField == phoneTextField) {
+                messageLabel.toBack();
             }
         });
         cardNumberTextField_1.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -222,6 +254,10 @@ public class KontoinstallningController implements Initializable {
                 cardNumberTextField_2.requestFocus();
                 cardNumberTextField_2.positionCaret(4);
             }
+
+            if (currentErrorTextField == cardNumberTextField_1) {
+                messageLabel.toBack();
+            }
         });
         cardNumberTextField_2.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_2, oldValue, newValue, 4);
@@ -234,6 +270,10 @@ public class KontoinstallningController implements Initializable {
                 cardNumberTextField_3.requestFocus();
                 cardNumberTextField_3.positionCaret(4);
             }
+
+            if (currentErrorTextField == cardNumberTextField_1) {
+                messageLabel.toBack();
+            }
         });
         cardNumberTextField_3.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_3, oldValue, newValue, 4);
@@ -245,6 +285,11 @@ public class KontoinstallningController implements Initializable {
                 cardNumberTextField_4.requestFocus();
                 cardNumberTextField_4.positionCaret(4);
             }
+
+            if (currentErrorTextField == cardNumberTextField_1) {
+                messageLabel.toBack();
+            }
+
         });
         cardNumberTextField_4.textProperty().addListener((observable, oldValue, newValue) -> {
             numberOnlyTextField(cardNumberTextField_4, oldValue, newValue, 4);
@@ -253,6 +298,9 @@ public class KontoinstallningController implements Initializable {
                 removeCardNumberError();
             }
 
+            if (currentErrorTextField == cardNumberTextField_1) {
+                messageLabel.toBack();
+            }
             /*
             if (newValue.length() == 4 && oldValue.length() != 5 && isInteger(newValue)) {
                 cardExpiryMonthTextField.requestFocus();
@@ -266,6 +314,9 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryMonthTextField.getStyleClass().remove("error");
             }
 
+            if (currentErrorTextField == cardExpiryMonthTextField) {
+                messageLabel.toBack();
+            }
             /*
             if (isInteger(newValue)) {
                 int month = Integer.parseInt(newValue);
@@ -282,6 +333,9 @@ public class KontoinstallningController implements Initializable {
                 cardExpiryYearTextField.getStyleClass().remove("error");
             }
 
+            if (currentErrorTextField == cardExpiryYearTextField) {
+                messageLabel.toBack();
+            }
             /*
             if (isInteger(newValue)) {
                 int year = Integer.parseInt(newValue);
@@ -300,6 +354,10 @@ public class KontoinstallningController implements Initializable {
                 CVVTextField.getStyleClass().remove("error");
             }
 
+            if (currentErrorTextField == CVVTextField) {
+                messageLabel.toBack();
+            }
+
         });
         //---------------------------------------------------------------------------------------------
         //</editor-fold>
@@ -308,16 +366,8 @@ public class KontoinstallningController implements Initializable {
 
     @FXML
     public void save() {
-        if (delay != null) {
-            delay.stop();
-        }
-        delay = new PauseTransition(Duration.seconds(5));
-        messageLabel.toFront();
-
         if (isReadyToSave()) {
-            messageLabel.setStyle("-fx-text-fill: #00692A");
-            messageLabel.setText("Kontoinställning sparade!");
-
+            playMessage("Kontoinställning sparade!", 5, false);
 
             customer.setFirstName(firstNameTextField.getText());
             customer.setLastName(lastNameTextField.getText());
@@ -333,6 +383,22 @@ public class KontoinstallningController implements Initializable {
             System.out.println("Account settings saved! Probably.");
             betalsidaController.updateInformation();
         }
+
+    }
+
+    public void playMessage(String msg, double duration_sec, boolean isError) {
+        if (delay != null) {
+            delay.stop();
+        }
+        delay = new PauseTransition(Duration.seconds(duration_sec));
+
+        if (isError) {
+            messageLabel.setStyle("-fx-text-fill: #FF0000");
+        } else {
+            messageLabel.setStyle("-fx-text-fill: #00692A");
+        }
+        messageLabel.setText(msg);
+        messageLabel.toFront();
         delay.setOnFinished(actionEvent -> messageLabel.toBack());
         delay.play();
     }
@@ -450,22 +516,19 @@ public class KontoinstallningController implements Initializable {
         if (postNumberTextField.getText().length() != 0 && !isValidValue(postNumberTextField.getText(), "PostNumber")) {
             postNumberTextField.getStyleClass().remove("error");
             postNumberTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Ogiltigt postnummer!");
+            playMessage("Ogiltigt postnummer!", 5, true);
             return false;
         }
         if (eMailTextField.getText().length() != 0 && !isValidValue(eMailTextField.getText(), "Email")) {
             eMailTextField.getStyleClass().remove("error");
             eMailTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Ogiltigt e-mail adress!");
+            playMessage("Ogiltigt e-mail adress!", 5, true);
             return false;
         }
         if (phoneTextField.getText().length() != 0 && !isValidValue(phoneTextField.getText(), "Phone")) {
             phoneTextField.getStyleClass().remove("error");
             phoneTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Ogiltigt telefonnummer!");
+            playMessage("Ogiltigt telefonnummer!", 5, true);
             return false;
         }
         int cardNumberLength = getCurrentCardNumber().length();
@@ -473,28 +536,25 @@ public class KontoinstallningController implements Initializable {
                 (cardNumberLength != 0 && cardNumberLength != 16)) {
             removeCardNumberError();
             setCardNumberError();
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Ogilitgt kortnummer!");
+            playMessage("Ogiltigt kortnummer!", 5, true);
+            return false;
         }
         if (cardExpiryMonthTextField.getText().length() != 0 && !isValidValue(cardExpiryMonthTextField.getText(), "Month")) {
             cardExpiryMonthTextField.getStyleClass().remove("error");
             cardExpiryMonthTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Felaktig månad!");
+            playMessage("Ogiltig månad!", 5, true);
             return false;
         }
         if (cardExpiryYearTextField.getText().length() != 0 && !isValidValue(cardExpiryYearTextField.getText(), "Year")) {
             cardExpiryYearTextField.getStyleClass().remove("error");
             cardExpiryYearTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("Felaktigt årtal!");
+            playMessage("Ogiltigt årtal!", 5, true);
             return false;
         }
         if (CVVTextField.getText().length() != 0 && !isValidValue(CVVTextField.getText(), "CVV")) {
             CVVTextField.getStyleClass().remove("error");
             CVVTextField.getStyleClass().add("error");
-            messageLabel.setStyle("-fx-text-fill: #FF0000");
-            messageLabel.setText("CVV nummer kan inte vara 0!");
+            playMessage("CVV nummer kan inte vara 0!", 5, true);
             return false;
         }
         return true;

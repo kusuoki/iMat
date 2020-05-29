@@ -193,7 +193,11 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldPostnummer.getStyleClass().remove("error");
                                 if (!isValidValue(textfieldPostnummer.getText(), "PostNumber")) {
                                         textfieldPostnummer.getStyleClass().add("error");
+                                        labelErrorMessage.setText("Ogiltigt postnummer!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldPostnummer;
                                 }
+
                         }
                 });
                 textfieldEmail.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
@@ -203,6 +207,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldEmail.getStyleClass().remove("error");
                                 if (!isValidValue(textfieldEmail.getText(), "Email")) {
                                         textfieldEmail.getStyleClass().add("error");
+                                        labelErrorMessage.setText("Ogiltigt e-mail adress!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldEmail;
                                 }
                         }
                 });
@@ -215,6 +222,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldTelefonnummer.setText(getFormattedPhoneNumber(textfieldTelefonnummer.getText()));
                                 } else {
                                         textfieldTelefonnummer.getStyleClass().add("error");
+                                        labelErrorMessage.setText("Ogiltigt telefonnummer!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldTelefonnummer;
                                 }
                         }
                 });
@@ -223,6 +233,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer1.getText().length() != 4) {
                                         setCardNumberError();
+                                        labelErrorMessage.setText("Ogiltigt kortnummmer! Vi accepterar bara Visa eller Mastercard.");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldKortnummer1;
                                 }
                         }
                 });
@@ -231,6 +244,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer2.getText().length() != 4) {
                                         setCardNumberError();
+                                        labelErrorMessage.setText("Ogiltigt kortnummmer! Vi accepterar bara Visa eller Mastercard.");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldKortnummer1;
                                 }
                         }
                 });
@@ -239,6 +255,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer3.getText().length() != 4) {
                                         setCardNumberError();
+                                        labelErrorMessage.setText("Ogiltigt kortnummmer! Vi accepterar bara Visa eller Mastercard.");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldKortnummer1;
                                 }
                         }
                 });
@@ -247,6 +266,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 removeCardNumberError();
                                 if (!isValidValue(textfieldKortnummer1.getText(), "CardType") || textfieldKortnummer4.getText().length() != 4) {
                                         setCardNumberError();
+                                        labelErrorMessage.setText("Ogiltigt kortnummmer! Vi accepterar bara Visa eller Mastercard.");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldKortnummer1;
                                 }
                         } else if (isFocus) {
                                 nextTextfield = textfieldExpiring1;
@@ -259,6 +281,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldExpiring1.setText(getMonth(Integer.parseInt(textfieldExpiring1.getText())));
                                 } else {
                                         textfieldExpiring1.getStyleClass().add("error");
+                                        labelErrorMessage.setText("Ogiltig månad!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldExpiring1;
                                 }
                         } else if (isFocus) {
                                 nextTextfield = textfieldExpiring2;
@@ -269,6 +294,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 textfieldExpiring2.getStyleClass().remove("error");
                                 if (!isValidValue(textfieldExpiring2.getText(), "Year")) {
                                         textfieldExpiring2.getStyleClass().add("error");
+                                        labelErrorMessage.setText("Ogiltigt årtal!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldExpiring2;
                                 }
                         }  else if (isFocus) {
                                 nextTextfield = textfieldCVC;
@@ -281,6 +309,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                         textfieldCVC.setText(getCVV(Integer.parseInt(textfieldCVC.getText())));
                                 } else {
                                         textfieldCVC.getStyleClass().add("error");
+                                        labelErrorMessage.setText("CVV nummer kan inte vara tomt!");
+                                        labelErrorMessage.toFront();
+                                        currentErrorTextField = textfieldCVC;
                                 }
                         }
                 });
@@ -289,7 +320,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldFirstname.getText().length() > 0) {
                                 textfieldFirstname.getStyleClass().remove("error");
                         }
-                        if (currentErrorTextField == textfieldFirstname && isTextFieldEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) {
+                        if (currentErrorTextField == textfieldFirstname && isTextFieldNotEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) {
                                labelErrorMessage.toBack();
                         }
                 });
@@ -297,7 +328,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldLastname.getText().length() > 0) {
                                 textfieldLastname.getStyleClass().remove("error");
                         }
-                        if (currentErrorTextField == textfieldLastname && isTextFieldEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) {
+                        if (currentErrorTextField == textfieldLastname && isTextFieldNotEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -305,7 +336,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldAdress.getText().length() > 0) {
                                 textfieldAdress.getStyleClass().remove("error");
                         }
-                        if (currentErrorTextField == textfieldAdress && isTextFieldEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) {
+                        if (currentErrorTextField == textfieldAdress && isTextFieldNotEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -313,7 +344,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         if (textfieldStad.getText().length() > 0) {
                                 textfieldStad.getStyleClass().remove("error");
                         }
-                        if (currentErrorTextField == textfieldStad && isTextFieldEmpty(textfieldStad, "Stad kan inte vara tom!")) {
+                        if (currentErrorTextField == textfieldStad && isTextFieldNotEmpty(textfieldStad, "Stad kan inte vara tom!")) {
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -360,6 +391,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }
 
                         if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
+                                removeCardNumberError();
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -376,6 +408,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }
 
                         if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
+                                removeCardNumberError();
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -391,6 +424,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }
 
                         if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
+                                removeCardNumberError();
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -408,6 +442,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                         }*/
 
                         if (currentErrorTextField == textfieldKortnummer1 && isCardNumberValid()) {
+                                removeCardNumberError();
                                 labelErrorMessage.toBack();
                         }
                 });
@@ -722,10 +757,10 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
         }
 
         public boolean isContactInfoCorrect() {
-                if (!isTextFieldEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) return false;
-                if (!isTextFieldEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) return false;
-                if (!isTextFieldEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) return false;
-                if (!isTextFieldEmpty(textfieldStad, "Stad kan inte vara tom!")) return false;
+                if (!isTextFieldNotEmpty(textfieldFirstname, "Förnamn kan inte vara tomt!")) return false;
+                if (!isTextFieldNotEmpty(textfieldLastname, "Efternamn kan inte vara tomt!")) return false;
+                if (!isTextFieldNotEmpty(textfieldAdress, "Gatuadress kan inte vara tom!")) return false;
+                if (!isTextFieldNotEmpty(textfieldStad, "Stad kan inte vara tom!")) return false;
 
                 if (!checkValidValue(textfieldPostnummer, "PostNumber", "Ogiltigt postnummer!")) return false;
                 if (!checkValidValue(textfieldEmail, "Email", "Ogiltigt e-mail adress!")) return false;
@@ -767,7 +802,7 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                 return true;
         }
 
-        public boolean isTextFieldEmpty(TextField tf, String message) {
+        public boolean isTextFieldNotEmpty(TextField tf, String message) {
                 if (tf.getText().length() == 0) {
                         currentErrorTextField = tf;
                         tf.getStyleClass().remove("error");
