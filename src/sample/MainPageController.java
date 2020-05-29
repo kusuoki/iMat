@@ -376,6 +376,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     String firstBreadcrumb;
     String secondBreadcrumb;
     boolean ifLastSearchCat;
+    String lastVisitedPage = "Home";
 
     ImageView blackBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_black_24dp.png")));
     ImageView whiteBetala = new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("Icons/ic_shopping_cart_white_24dp.png")));
@@ -608,31 +609,15 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
                     imageViewArrowFavoriter.setOnMouseClicked(e -> {
                         search = false;
-                        displayListItemFromList(model.getFavorites());
-                        labelNoResults.toFront();
-                        if (model.getFavorites().size() == 0){
-                            labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
-                        }
-                        else {
-                            labelNoResults.toBack();
-                        }
+                        onFavoritClick();
                         menuOnClick(m);
-                        favoritePane.toFront();
                     });
                     buttonFavoriter.setOnAction(e ->
                     {
                         search = false;
                         this.tempSearch=model.getFavorites();
-                        displayListItemFromList(model.getFavorites());
-                        labelNoResults.toFront();
-                        if (model.getFavorites().size() == 0){
-                            labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
-                        }
-                        else {
-                            labelNoResults.toBack();
-                        }
+                        onFavoritClick();
                         menuOnClick(m);
-                        favoritePane.toFront();
                     });
 
                     buttonFavoriter.hoverProperty().addListener((observableValue, aBoolean, isFocus) -> {
@@ -670,14 +655,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                     });
                     buttonErbjudanden.setOnAction(e ->
                             {
-                                paneErbjudande.toFront();
-                                labelNoResults.toFront();
-                                if (model.getCurrentOffers().size() == 0){
-                                    labelNoResults.setText("Det finns inga erbjudanden just nu!");
-                                }
-                                else {
-                                    labelNoResults.toBack();
-                                }
+                                onErbjudandenClick();
                                 menuOnClick(m);
                             });
 
@@ -718,11 +696,36 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     }
 
-    //När man klickar på tidigare köp
+    public void onFavoritClick() {
+        lastVisitedPage = "Favorit";
+        displayListItemFromList(model.getFavorites());
+        labelNoResults.toFront();
+        if (model.getFavorites().size() == 0){
+            labelNoResults.setText("Du har inte lagt till några varor som favoriter! Klicka på hjärtat på en vara för att lägga till den som favorit.");
+        }
+        else {
+            labelNoResults.toBack();
+        }
+        favoritePane.toFront();
+    }
 
+    public void onErbjudandenClick() {
+        lastVisitedPage = "Erbjudanden";
+        paneErbjudande.toFront();
+        labelNoResults.toFront();
+        if (model.getCurrentOffers().size() == 0){
+            labelNoResults.setText("Det finns inga erbjudanden just nu!");
+        }
+        else {
+            labelNoResults.toBack();
+        }
+    }
+
+    //När man klickar på tidigare köp
     @FXML
     public void onEarlierPurchases(ActionEvent event) {
         flowPaneTidigareKop.getChildren().clear();
+        lastVisitedPage = "Tidigare";
         ordersCurrentlyDisplayed.clear();
         allOrders.clear();
         currentOrderPage = 0;
@@ -802,23 +805,38 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void onSearch() {
-        List<ProductA> searchList = model.findProducts(searchField.getText());
-        this.tempSearch = searchList;
-
-        //TODO: Används inte längre men vågar inte ta bort lol (updateProductList() det vill säga)
-        //updateProductList(searchList);
-
-        paneVaruDisplay.toFront();
-        search=false;
-        displayListItemFromList(searchList);
-        searchResultPane.toFront();
-
-        labelNoResults.toFront();
-        if (searchList.size() == 0){
-            labelNoResults.setText("Inga resultat hittades, pröva att söka på något annat!");
-        }
-        else {
-            labelNoResults.toBack();
+        if (!searchField.getText().isEmpty()) {
+            List<ProductA> searchList = model.findProducts(searchField.getText());
+            this.tempSearch = searchList;
+            search = false;
+            displayListItemFromList(searchList);
+            searchResultPane.toFront();
+            
+            if (searchList.size() == 0) {
+                labelNoResults.setText("Inga resultat hittades, pröva att söka på något annat!");
+                labelNoResults.toFront();
+            } else {
+                labelNoResults.toBack();
+            }
+        } else {
+            switch (lastVisitedPage) {
+                case "Home":
+                    homeButtonMouseClicked();
+                    break;
+                case "Tidigare":
+                    onEarlierPurchases(null);
+                    break;
+                case "Favorit":
+                    onFavoritClick();
+                    break;
+                case "Erbjudanden":
+                    onErbjudandenClick();
+                    break;
+                default:
+                    if (!lastVisitedPage.isEmpty()) {
+                        subMenuSelected(null, lastVisitedPage);
+                    }
+            }
         }
     }
     //När man klickar på menyn
@@ -1339,8 +1357,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     private void subMenuSelected(AnchorPane subMenu, String category) {
         cat=false;
+        lastVisitedPage = category;
         displayListItemByCategory(category);
-        subMenu.toBack();
+        if (subMenu != null) {
+            subMenu.toBack();
+        }
     }
 
     private void initCategoryMenu() {
@@ -1442,6 +1463,7 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     public void homeButtonMouseClicked() {
         homeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("Buttons/Hem-knapp-pressed.png")));
+        lastVisitedPage = "Home";
         List<ProductA> searchList = model.findProducts("");
         this.tempSearch = searchList;
         paneVaruDisplay.toFront();
