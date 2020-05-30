@@ -103,11 +103,14 @@ public class BetalsidaItem extends AnchorPane {
             } else if (i == 0) {
                 model.setShoppingCartItem(item.getProduct(), 1);
                 removeOneOfProduct();
-            } else {
+            } else if (i<1000){
                 model.setShoppingCartItem(item.getProduct(), i);
                 updateTextFields();
             }
-
+            else if (i>999){
+                model.setShoppingCartItem(item.getProduct(),999);
+                updateTextFields();
+            }
         } catch (NumberFormatException nfe) {
             updateTextFields();
         }
@@ -115,9 +118,10 @@ public class BetalsidaItem extends AnchorPane {
 
     @FXML
     public void addOneOfProduct() {
+        if (item.getAmount()<999){
         model.updateShoppingCart(item.getProduct(), 1);
         parentController.updateShoppingCart();
-    }
+    }}
 
     @FXML
     public void removeOneOfProduct() {

@@ -1,6 +1,7 @@
 package sample;
 
 import com.sun.javafx.scene.layout.region.BackgroundSizeConverter;
+import com.sun.webkit.Timer;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -566,10 +567,10 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
         for (ShoppingItem s : currentTidigareKopItem.getOrder().getItems()) {
             if (Model.getInstance().getShoppingItemMap().containsKey(s.getProduct().getProductId())) {
-
-                System.out.println(s.getAmount());
+                if (Model.getInstance().getShoppingItemMap().get(s.getProduct().getProductId()).getAmount()+s.getAmount()<1000){
                 model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount());
                 //s.setAmount(s.getAmount() + s.getAmount());
+                    }
             } else {
                 Model.getInstance().addToShoppingCart(s.getProduct());
                 model.setShoppingCartItem(s.getProduct(), (int) s.getAmount() + (int) model.getShoppingItemMap().get(s.getProduct().getProductId()).getAmount() - 1);
