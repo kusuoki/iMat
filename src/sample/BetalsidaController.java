@@ -213,10 +213,9 @@ public class BetalsidaController implements Initializable, ShoppingCartListener 
                                 }
                         }
                 });
+                textfieldTelefonnummer.setOnAction(null);
                 textfieldTelefonnummer.focusedProperty().addListener((arg0, oldPropertyValue, isFocus) -> {
-                        if (isFocus) {
-                                nextTextfield = textfieldKortnummer1;
-                        } else if (textfieldTelefonnummer.getText().length() != 0) {
+                        if (textfieldTelefonnummer.getText().length() != 0 && !isFocus) {
                                 textfieldTelefonnummer.getStyleClass().remove("error");
                                 if (isValidValue(textfieldTelefonnummer.getText(), "Phone")) {
                                         textfieldTelefonnummer.setText(getFormattedPhoneNumber(textfieldTelefonnummer.getText()));
