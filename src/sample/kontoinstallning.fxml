@@ -48,8 +48,8 @@
                   </Label>
                   <Label alignment="CENTER_RIGHT" layoutX="29.0" layoutY="134.0" prefHeight="17.0" prefWidth="138.0" text="Efternamn:" textAlignment="RIGHT" />
                   <Label alignment="CENTER_RIGHT" layoutX="28.0" layoutY="224.0" prefHeight="17.0" prefWidth="138.0" text="Postnummer:" />
-                  <TextField fx:id="firstNameTextField" layoutX="176.0" layoutY="100.0" onAction="#goToNextTextField" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Donald" />
-                  <TextField fx:id="lastNameTextField" layoutX="176.0" layoutY="130.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Trump" />
+                  <TextField fx:id="firstNameTextField" layoutX="176.0" layoutY="100.0" onAction="#goToNextTextField" prefHeight="0.0" prefWidth="324.0" promptText="Ex. Hjördis" />
+                  <TextField fx:id="lastNameTextField" layoutX="176.0" layoutY="130.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Svensson" />
                   <TextField fx:id="adressTextField" layoutX="176.0" layoutY="160.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Katerinesbergsgatan 11C" />
                   <TextField fx:id="cityTextField" layoutX="176.0" layoutY="190.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. Göteborg" />
                   <TextField fx:id="postNumberTextField" layoutX="176.0" layoutY="220.0" onAction="#goToNextTextField" prefHeight="25.0" prefWidth="324.0" promptText="Ex. 43233" />

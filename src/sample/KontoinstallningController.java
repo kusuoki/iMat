@@ -437,10 +437,12 @@ public class KontoinstallningController implements Initializable {
     @FXML
     public void onHomeButtonClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
+        updateInformation();
         stage.getScene().setRoot(mainPage);
     }
     @FXML void onHomeButtonClickIcon(){
         backButton.addToBackList(stage.getScene().getRoot());
+        updateInformation();
         stage.getScene().setRoot(mainPage);
     }
     @FXML
@@ -452,12 +454,14 @@ public class KontoinstallningController implements Initializable {
     public void onEarlierPurchasesPageClick(ActionEvent actionEvent){
         //backButton.addToBackList(stage.getScene().getRoot());
         mainPageController.onEarlierPurchases(actionEvent);
+        updateInformation();
         stage.getScene().setRoot(mainPage);
 
     }
     @FXML
     public void onCustomerServicePageClick(ActionEvent actionEvent){
         backButton.addToBackList(stage.getScene().getRoot());
+        updateInformation();
         stage.getScene().setRoot(customerServicePage);
     }
     @FXML
