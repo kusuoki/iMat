@@ -240,6 +240,9 @@ public class MainPageController implements Initializable, ShoppingCartListener {
     @FXML
     Pane lightboxAddPane;
 
+    @FXML
+    AnchorPane headAnchorForEverything;
+
     ListItem currentLightboxItem;
 
     ArrayList<menuItem> menuItems = new ArrayList<menuItem>();
@@ -916,9 +919,19 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void mainPageToFront() {
-        //Det här togs bort
-        //anchorPaneMainPage.toFront();
-        anchorPaneMainLightbox.toBack();
+        
+        String showing = headAnchorForEverything.getChildren().get(headAnchorForEverything.getChildren().size() - 2).getId();
+        String secondShowing = headAnchorForEverything.getChildren().get(headAnchorForEverything.getChildren().size() - 3).getId();
+
+        if (showing.equals("orderLightbox")) {
+            anchorPaneMainPage.toFront();
+            orderLightbox.toFront();
+        } else if (secondShowing.equals("orderLightbox") && showing.equals("labelNoResults")) {
+            anchorPaneMainPage.toFront();
+            orderLightbox.toFront();
+        } else {
+            anchorPaneMainPage.toFront();
+        }
 
             if (currentlySelectedPane != null) {
             lastClickedArrow = null;
