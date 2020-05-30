@@ -15,9 +15,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1277.0" style="-fx-background-color: white;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPageController">
     <children>
-        <AnchorPane fx:id="orderLightbox" onMouseClicked="#tidigareKopMouseTrap" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
+        <AnchorPane fx:id="orderLightbox" onMouseClicked="#exitOrderLightbox" prefHeight="753.0" prefWidth="1377.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);" stylesheets="@style.css">
             <children>
-            <Pane layoutX="265.0" layoutY="106.0" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;" stylesheets="@style.css">
+            <Pane layoutX="265.0" layoutY="106.0" onMouseClicked="#tidigareKopMouseTrap" prefHeight="625.0" prefWidth="748.0" style="-fx-background-color: white;" stylesheets="@style.css">
             <children>
                 <FlowPane fx:id="flowPaneTidigareKopDetalj" layoutX="41.0" layoutY="127.0" prefHeight="450.0" prefWidth="664.0" style="-fx-background-color: white;" />
                 <Button fx:id="buttonAddOrderToCart" layoutX="43.0" layoutY="80.0" mnemonicParsing="false" onAction="#addAllItemsInTidigareKop" prefHeight="31.0" prefWidth="327.0" styleClass="add-button" text="LÄGG TILL HELA LISTAN I DIN VARUKORG" />

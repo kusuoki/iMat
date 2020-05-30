@@ -916,8 +916,11 @@ public class MainPageController implements Initializable, ShoppingCartListener {
 
     @FXML
     public void mainPageToFront() {
-        anchorPaneMainPage.toFront();
-        if (currentlySelectedPane != null) {
+        //Det här togs bort
+        //anchorPaneMainPage.toFront();
+        anchorPaneMainLightbox.toBack();
+
+            if (currentlySelectedPane != null) {
             lastClickedArrow = null;
             lastClickedButton = null;
 
@@ -935,6 +938,8 @@ public class MainPageController implements Initializable, ShoppingCartListener {
                 lastClickedButton = null;
             }
         }
+
+
     }
 
     @FXML
