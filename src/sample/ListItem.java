@@ -141,8 +141,9 @@ public class ListItem extends AnchorPane {
 
     @FXML
     public void addOneOfProduct() {
+    if (model.getShoppingItemMap().get(product.getProductId()).getAmount()<999){
         model.updateShoppingCart(product, 1);
-        updateTextfieldWithAmountOfProduct();
+        updateTextfieldWithAmountOfProduct();}
     }
 
     @FXML
@@ -154,8 +155,12 @@ public class ListItem extends AnchorPane {
             } else if (i == 0) {
                 model.setShoppingCartItem(product, 1);
                 removeOneOfProduct();
-            } else {
+            } else if (i<1000){
                 model.setShoppingCartItem(product, i);
+                updateTextfieldWithAmountOfProduct();
+            }
+            else if (i>999){
+                model.setShoppingCartItem(product,999);
                 updateTextfieldWithAmountOfProduct();
             }
 

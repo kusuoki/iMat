@@ -102,9 +102,10 @@ public class VarukorgItem extends AnchorPane {
 
     @FXML
     public void plusButton(){
+        if (shoppingItem.getAmount()<999){
         model.updateShoppingCart(shoppingItem.getProduct(), 1);
         model.getShoppingCart().fireShoppingCartChanged(shoppingItem, true);
-    }
+    }}
 
     @FXML
     public void minusButton(){
@@ -134,16 +135,19 @@ public class VarukorgItem extends AnchorPane {
                 "Buttons/Plus-knapp-pressed.png")));
     }
 
-    public void manualNumberEnterOfProduct(String s){
+    public void manualNumberEnterOfProduct(String s) {
         try {
             int i = Integer.parseInt(s);
-            if (i < 0){
+            if (i < 0) {
                 updateThisItem();
             } else if (i == 0) {
                 model.setShoppingCartItem(shoppingItem.getProduct(), 1);
                 minusButton();
-            } else {
+            } else if (i < 1000) {
                 model.setShoppingCartItem(shoppingItem.getProduct(), i);
+                updateThisItem();
+            } else if (i > 999) {
+                model.setShoppingCartItem(shoppingItem.getProduct(), 999);
                 updateThisItem();
             }
 
@@ -151,6 +155,7 @@ public class VarukorgItem extends AnchorPane {
             updateThisItem();
         }
     }
+
 
     @FXML
     public void minusButtonMouseEntered(){
